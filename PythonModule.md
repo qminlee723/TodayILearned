@@ -18,9 +18,9 @@
 
 * from *module* import *
 
-  * "*" = 전체
+  * "*" = 전체 ( 제대로 알고 싶다면 => [정규표현식](https://wikidocs.net/4308#dot))
 
-* from *package* import module
+* from *package* import *module*
 
 * from *package.module* import *var, function, Class*
 
@@ -67,7 +67,7 @@
 
 #### 파이썬 표준 라이브러리(Python Standard Library, PSL)
 
-* https://docs.python.org/ko/3/library/index.html
+* [파이썬 표준 라이브러리](https://docs.python.org/3/library/index.html)
 
   
 
@@ -82,7 +82,9 @@
   * 이미 설치되어 있는 경우 설치되어 있음을 알리고 아무것도 하지 않음
 
     ```bash
-    $pip install SomePackage>=1.0.4
+    $ pip install SomePackage	# 가장 최신의 배포판을 인스톨
+    $ pip install SomePackage>=1.0.4	#
+    $ pip install 'Somepackage>=1.0.4'	#
     
     (SomePackage 버전 1.0.4보다 최신 버전을 설치)
     ```
@@ -131,9 +133,12 @@
   $pip install -r requirements.txt
   ```
 
+
+
 #### PyTorch
 
-
+* An open source machine learning library based on the Torch library, used for applications such as computer vision and natural language processing, primarily developed by Facebook's AI Research lab(FAIR).
+* 
 
 
 
@@ -179,7 +184,7 @@
 
 * 여러 모듈/하위 패키지로 구조화
 
-* 모든 폴더에는 \_\_init\_\_.py를 만들어 패키지로 인식
+* :100: 모든 폴더에는 \_\_init\_\_.py를 만들어 패키지로 인식(python 3.3 부터는 파일이 없어도 되지만, 하위 버전 호환 및 프레임워크 등에서의 동작을 위해 파일 생성을권장한다. )
 
 * 예시
 
@@ -219,9 +224,9 @@
 * 복수의 프로젝트를 하는 경우 버전이 상이할 수 있다
 * 이러한 경우 가상환경을 만들어 프로젝트별로 독립적인 패키지를 관리할 수 있음
 
-#### venv
+#### venv(virtual environment)
 
-* 특정 디렉토리에 가상 환경을 만들어, 고유한 파이썬 패키지 집합을 가질 수 있ㅇ므
+* 특정 디렉토리에 가상 환경을 만들어, 고유한 파이썬 패키지 집합을 가질 수 있음
 
   * 특정 폴더에 가상 환경이 있고
   * 실행환경(ex-bash)에서 가상환경을 활성화 시켜
@@ -236,7 +241,27 @@
 
 #### 가상환경 생성
 
+* 가상환경을 생성하면, 해당 디렉토리에 별도의 파이썬 패키지가 설치됨
+* $ python -m venv <폴더명>
+
+<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120101533633.png" alt="image-20220120101533633" style="zoom: 50%;" />
+
+
+
 #### 가상환경 활성화/비활성화
+
+* <venv>는 가상환경을 포함하는 디렉토리의 경로
+* <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120101838896.png" alt="image-20220120101838896" style="zoom:67%;" />
+
+<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102357788.png" alt="image-20220120102357788" style="zoom: 50%;" />
+
+<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102630421.png" alt="image-20220120102630421" style="zoom: 50%;" />
+
+* 비활성화시: $ deactivate 명령어 사용
+
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102747385.png" alt="image-20220120102747385" style="zoom:67%;" />
+
+  
 
 #### 가상환경 예시
 
@@ -244,7 +269,7 @@
 
 <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119155211464.png" alt="image-20220119155211464" style="zoom:50%;" />
 
-
+* bash shell 에서는 source 명령어를 사용!
 
 
 
