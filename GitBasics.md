@@ -193,8 +193,6 @@ repository 안에 repository 만들면 헷갈림
 
 
 
-
-
 **git log** : git의 commit history 보기
 
 **git diff**: 두 commit 간 차이 보기
@@ -202,6 +200,16 @@ repository 안에 repository 만들면 헷갈림
 * git log에서 고유 아이디(노란색)간의 차이 볼 수 있음
 * 아이디 전부 다 칠 필요 없이, 첫 4자릿수만 비교 가능함.
 * 순서 중요함: 앞의 것을 기준으로 뒤의 커밋을 비교해 주는 것. 빈 파일과 안 빈 파일이 비교되면 추가 된 정보를 보여주고, 안 빈 파일을 기준으로 빈 파일이 비교되면, 
+
+
+
+git ignore: remote repository에 올리고 싶지 않은 폴더 혹은 파일을 ignore시키는 것
+
+git rm -r --cached . : 이미 remote repository에 올라간 폴더 혹은 파일을 삭제시키는 것(local 에는 존재)
+
+
+
+정규표현식: 파일 조건값 (ex. 폴더명에 '1'이 들어가는 모든 폴더를 ignore하기)
 
 
 
