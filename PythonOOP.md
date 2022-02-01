@@ -102,10 +102,12 @@
 
 #### 2. 객체의 특징
 
+- 객체(object) = 속성(attribute) + 기능(Method)
+
 - **타입(type)** 
 
   - 어떤 연산자(operator)와 조작(method)이 가능한가?
-  - 데이터의 타입이 클래스!
+  - 데이터의 타입이 **클래스**!
   - 즉 클래스를 만든다는 것은, 새로운 데이터 타입을 만드는 것과 같다 . 
 
   ```python
@@ -139,10 +141,9 @@
 - **조작법(method)** 
 
   - 어떤 행위(함수)를 할 수 있는가?
-  - 객체(object) = 속성(attribute) + 기능(Method)
   - .method() 에서 '.'도 dot 연산자
-
-    - len()같은 경우, 파이썬 안에서 정의가 되어 있음
+  
+  - len()같은 경우, 파이썬 안에서 정의가 되어 있음
 
 
 
@@ -154,7 +155,7 @@
 
 - 절차지향프로그래밍과의 비교
 
-  - :grey_question: 하나하나 변수에 담아서 처리해야 하는 절차지향프로그래밍과 다름 (rewrite)
+  - 하나하나 변수에 담아서 처리해야 하는 절차지향프로그래밍과 다름
 
   ```python
   # 절차지향프로그래밍
@@ -249,7 +250,7 @@
 
     
 
-- 예시: 사각형 넓이 구하기
+- **예시**: 사각형 넓이 구하기
 
   - 절차지향
 
@@ -268,10 +269,6 @@
     print(area_02)
     ```
 
-    20000
-
-    100
-
     ```python
     # 함수
     def area(x, y):
@@ -280,54 +277,54 @@
     print(area(x_01, y_01))
     print(area(x_02, y_02))
     ```
-
-    20000
-
-    100
-
-  
-
+    
+    
+    
   - 객체지향프로그래밍
-
+  
     ```python
     # 객체
-    class Rectangle:
-        
-        def area(self):
+    class Rectangle:		# 클래스(class)
+            
+        def area(self):		# 메소드(method)
             return self.x * self.y
         
-    r1 = Rectangle()
+    r1 = Rectangle()	# 인스턴스(instance): 객체를 저장해놓는 변수
+    					# rectangle이라는 class를 불러오기 위한 instance
     r1.x = 100
     r1.y = 200
     r1.area()
-    ```
-
-    20000
-
-    ```python
-    r2 = Rectangle()
+    
+    r2 = Rectangle()		# 인스턴스(instance)
     r2.x = 10
     r2.y = 10
     r2.area()
     ```
-
-    100
-
     
-
-  * 예시에서의 객체 구분
-
-    * class : Rectangle
-
-    * instance : each 사각형(r1, r2) 
-
-    * attribute: 사각형의 정보 
-      * 가로 길이, 세로 길이
-
-    * method: 행동
-      * 넓이를 구한다, 높이를 구한다
-      
-      
+    ```python
+    class Rectangle:
+        
+        def __init__(self, x, y):
+            self.x = x			# self란 class에 귀속된 변수
+            self.y = y			# 클래스를 호출하지 않으면 사용불가능
+            
+        def area(self):
+            return self.x * self.y
+        
+    r1 = Rectangle(100, 200)
+    print(r1.x)
+    r1.area()
+    
+    r2 = Rectangle(300, 500)
+    r2.area()
+    
+    # 같은 Rectangle이라는 클래스를 다른 인스턴스(r1, r2)안에 넣어서 재사용
+    # Rectangle이라는 분류 아래에 r1, r2와 같은 분류 내의 다른 존재
+    # Class는 인간이고, r1, r2는 나랑 창환이... 그런 느낌..
+    ```
+    
+    
+  
 
 * 객체지향의 장점
   * 프로그램을 **유연하고 변경이 용이**하게 만들기 때문에 **대규모 소프트웨어개발**에 사용
@@ -342,7 +339,7 @@
 <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220127133635816.png" alt="image-20220127133635816" style="zoom: 67%;" />
 
 ```python
-class MyClass:				# 클래스 정의
+class MyClass:				# 클래스 정의(파스칼)
 
 my_instance = MyClass		# 인스턴스 생성
 my_instance.my_method()		# 메소드 호출
@@ -353,11 +350,12 @@ my_instance.my_attribute	# 속성
 
 #### 2. 클래스(class)
 
-* 객체들의 분류
+* 객체들의 분류(class)
+* 파스칼형태로 쓴다 
 
 ```python
 class Person:
-    name = 'aiden'		#attribute
+    name = 'aiden'		# attribute
     
     def run():			# class안쪽에 정의된 함수, 즉 run은 메소드
         print('헥헥')
@@ -404,19 +402,34 @@ person_2 = Person()
 * 특정 데이터 타입/클래스의 객체에 공통적으로 적용 가능한 행위(함수)
 
   ```python
-  class Person
+       
+  class Person:
   
-  	def talk(self):			# 메소드 = 클래스 내부에 정의된 함수
+      def talk(self):					# 메소드 = 클래스 내부에 정의된 함수
           print('안녕')
           
-      def eat(self, food):	# def eat(self, *args):
-          print(f'{food}를 냠냠')
+      def eat(self, food):			# def eat(self, *args):
+          print(f'{food}를 냠냠')	# self = Person이라는 class에 귀속되는 애들
+          
+  
+  hello = Person()
+  hello.talk()
+  hello.eat('hamburger')
+  
+  saram = Person()
+  saram.talk()
+  saram.eat('pizza')
+  
+  # 같은 Person이라는 클래스를 다른 인스턴스안에 넣어서 재사용이 가능!
+  # hello 와 saram이 인스턴스
       
   ```
 
+  * method에 필요한 것들을 받아오는 애들 = arguments '=. parameter
+
   
 
-* 객체 비교하기
+  #### 6. 객체 비교하기
 
   * ==
     
@@ -451,11 +464,15 @@ person_2 = Person()
   b = True	#bool이라는 클래스로 인스턴스가 만들어진 것
   ```
 
+
+
 #### 2. 인스턴스 메소드
 
 * 인스턴스 변수를 사용하거나, 인스턴스 변수에 값을 설정하는 메소드
 * 클래스 내부에 정의되는 메소드의 기본
 * 호출 시, 첫번째 인자로 **인스턴스 자기자신(self)**이 전달됨
+
+
 
 #### 3. self
 
@@ -481,14 +498,11 @@ person_2 = Person()
   # 인스턴스 생성(p1)
   p1 = Person()
   
-  # p1.test()
-  # TypeError: test() takes 0 positional arguments but 1 was given
-      
   # <__main__.Person object at 0x00000228B53D4F70>
   s = p1.test()
   print(s, p1)
   ```
-
+  
   
 
 #### 4. 생성자(constructor) 메소드
@@ -582,7 +596,7 @@ person_2 = Person()
 
 #### 5. 소멸자(destructor) 메소드
 
-* 인스턴스 객체가 소멸(파괴)되기 직전에 
+* 인스턴스 객체가 소멸(파괴)되기 직전에 호출되는 메소드
 
   ```python
   class Person:
@@ -613,70 +627,109 @@ person_2 = Person()
 
 * 특정 상황에 자동으로 불리는 메소드
 
-* 매직 메소드 예시
+* 매직 메소드 종류
 
   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220126103640656.png" alt="image-20220126103640656" style="zoom:67%;" />
 
-  1. \__str__ : 해당 객체의 출력 형태를 지정
+  1. **\__str__** : 해당 객체의 출력 형태를 지정
 
      - 프린트 함수를 호출할 때, 자동으로 호출
-     - 어떤 인스턴스를 출력하면 \__str__의 return값이 출력
+     - 어떤 인스턴스를 출력하면 \__str__의 return값이 출력**\__gt__**: 부등호 연산자(>, greater than)
 
+  3. **\__eq__**: 등호 연산자(=, equal)
+  
+  4. **\__doc__**: docstring
+  
      ```python
-     class Person:
-         
-         def __init__(self, name, age, height):
-             self.name = name
-             self.age = age
-             self.height = height
-         
-         def __lt__(self):				#less than
-             return self.age > other.age
-         
-         def __gt__(self, other):		#greater than
-             print(f'{self.name}: {self.age} / {other.name}: {other.age}살')
-             return self.age > other.age
-         
-         def __len__(self):
-         	return f'{self.height}cm'
-     ```
-
-     ```python
-     p1 = Person('재영', 100, 190)
-     p2 = Person('지선', 10, 185)
-     
-     p1 > p2
-     
-     len(p1)
-     
-     len(p2)
-     ```
-
-     ```python
-     a = map(int, '1, 2, 3'.split())
-     ```
-
-     
-
-  2. \__gt__: 부등호 연산자(>, greater than)
-
-  3. \__eq__: 등호 연산자(=, equal)
-
-  4. \__doc__: docstring
-
-     ```
      'abc'.__doc__
      ```
-
-     
-
   
+* 매직 메소드 예시
+
+  * 예시 1(from professor)
+
+    ```python
+    class Person:
+        
+        def __init__(self, name, age, height):
+            self.name = name
+            self.age = age
+            self.height = height
+        
+        def __lt__(self):				#less than
+            return self.age > other.age
+        
+        def __gt__(self, other):		#greater than
+            print(f'{self.name}: {self.age} / {other.name}: {other.age}살')
+            return self.age > other.age
+        
+        def __len__(self):
+        	return f'{self.height}cm'
+    ```
+
+    ```python
+    p1 = Person('재영', 100, 190)
+    p2 = Person('지선', 10, 185)
+    
+    p1 > p2
+    
+    len(p1)
+    
+    len(p2)
+    ```
+
+    ```python
+    a = map(int, '1, 2, 3'.split())
+    ```
+
+  * 예시 2 (from powerpoint)
+
+    ```python
+    class Circle:
+        
+        def __init__(self, r):
+            self.r = r
+        
+        def area(self):
+            return 3.14 * self.r * self.r
+        
+        def __str__(self):
+            return f'{원} radius: {self.r}'
+        
+        def __gt__(self, other):
+            return self.r > other.r
+    ```
+
+    ```python
+    c1 = Circle(10)
+    c2 = Circle(1)
+    ```
+
+    ```python
+    print(c1)
+    print(c2)
+    ```
+
+    [원] radius: 10
+
+    [원] radius: 1
+
+    ```python
+    c1 > c2
+    c1 < c2
+    ```
+
+    True
+
+    False
+
+
 
 ### :four: 클래스
 
 #### 1. 클래스 변수
 
-* 한 클래스의 모든 인스턴스라도 똑같은 값을 가지고 있는 속성 :question:
+* 한 클래스의 모든 인스턴스가 가지고 있는, 똑같은 값을 가지고 있는 속성
 
 * 클래스 속성(attribute)
 
@@ -688,7 +741,7 @@ person_2 = Person()
   <classname>.<name>으로 접근 및 할당
   
   class Circle:
-      pi = 3.14
+      pi = 3.14		# 클래스 변수 정의
       
       def __init__(self, r):
           self.r = r
@@ -705,7 +758,7 @@ person_2 = Person()
 
   ```python
   c1 = Circle(2)
-  c1.area()
+  c1.area()		
   ```
 
   12.56
@@ -752,12 +805,13 @@ person_2 = Person()
   
 
   ```python
-  class MyClass:				#class 이름은 Camel Case
+  class MyClass:				#class 이름은 Pascal Case
       var = 'Class 변수'
       
       #클래스 메서드: 클래스를 조작하고 싶어
       # 함수 내부에 클래스를 던져주도록 설계
       # 메서드를 정의할 때 cls로 받도록
+      
       @classmethod
       def class_method(cls):	#함수, 변수 이름은 Snake Case
           print(cls.var)
@@ -778,6 +832,8 @@ person_2 = Person()
 
   \__main__.MyClass
 
+  
+
 * 데코레이터 
 
   * 함수
@@ -796,7 +852,6 @@ person_2 = Person()
             print('---')
             
         # 만든 함수를 리턴해준다
-        # 리턴 없으면 NoneType Error가 남
         return decorated
     
     
@@ -821,7 +876,6 @@ person_2 = Person()
     # 이렇게 정의를 하면 얘가 이제 데코레이터가 됩니다.(????)
     
     ```
-
     
 
 * 예시
@@ -880,31 +934,16 @@ person_2 = Person()
   test_b()
   ```
 
-  
 
 
-
-
-
-
-
-### :five: 메소드
-
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220126094750348.png" alt="image-20220126094750348" style="zoom: 67%;" />
-
-#### 1. 인스턴스 메소드(Instance Method)
-
-* 예시
-
-#### 2. 클래스 메소드(Class Method)
-
-* 예시
 
 #### 3. 스태틱 메소드(Static Method)
 
-* 클래스가 사용할 메소드
+* 인스턴스 변수, 클래스 변수를 전혀 다루지 않는 메소드
 
-* @staticmetion 데코레이터를 사용하여 정의
+* 속성을 다루지 않고, 단지 기능(행동)만을 하는 메소드를 정의할 때 사용한다
+
+* @staticmethod 데코레이터를 사용하여 정의
 
 * 호출 시, 어떠한 인자도 전달되지 않음(클래스 정보에 접근/수정 불가)
 
@@ -942,11 +981,104 @@ person_2 = Person()
 
   
 
-* 인스턴스와 클래스간의 이름공간(namespace)
+#### 4. 인스턴스와 클래스간의 이름공간(namespace)
 
-  * 클래스 정의시, 클래스와 해당하는 이름공간 생성
-  * 인스턴스 만들면, 인스턴스 객체가 생성되고 이름 공간 생성
-  * 인스턴스에서 특정 '속성'에 접근하면, 인스턴스 -> 클래스 순서로 탐색
+* 클래스 정의시, 클래스와 해당하는 이름공간 생성
+
+* 인스턴스 만들면, 인스턴스 객체가 생성되고 이름 공간 생성
+
+* 인스턴스에서 특정 '속성'에 접근하면, 인스턴스 -> 클래스 순서로 탐색
+
+  ![image-20220202130312602](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202130312602.png)
+
+  ```python
+  class Person:
+      name = 'unknown'
+      
+      def talk(self):
+          print(self.name)
+  ```
+
+  ```python
+  #p1: 인스턴스 변수 정의되지 않음 => 클래스 변수가 출력
+  p1 = Person()
+  p1.talk()
+  ```
+
+  ```python
+  #p2: 인스턴스 변수 정의됨 ('Kim') => 인스턴스 변수가 출력
+  p2 = Person()
+  p2.talk()
+  p2.name = 'Kim'
+  p2.talk()
+  ```
+
+  ```python
+  print(Person.name)
+  print(p1.name)
+  print(p2.name)
+  # Person 클래스의 값이 Kim으로 변경된 것이 아님
+  # p2인스턴스의 이름 공간에 name이 Kim으로 저장된다
+  ```
+
+
+
+#### 5. 정리
+
+* 클래스 구현
+  * 클래스 정의
+  * 데이터 속성 정의(객체의 정보는 무엇인지)
+  * 메소드 정의(객체를 어떻게 사용할 것인지)
+* 클래스 활용
+  * 해당 객체 타입의 인스턴스 생성 및 조작
+
+
+
+
+
+
+
+### :five: 메소드
+
+<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220126094750348.png" alt="image-20220126094750348" style="zoom: 67%;" />
+
+![image-20220202131133134](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131133134.png)
+
+
+
+#### 1. 인스턴스 메소드(Instance Method)
+
+* self 매개변수를 통해 동일한 객체에 정의된 속성 및 다른 메소드에 자유롭게 접근이 가능
+
+* 클래스 자체에도 접근 가능 => 인스턴스 메소드가 클래스 상태를 수정할 수도 있음
+
+  ![image-20220202131224352](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131224352.png)
+
+  
+
+#### 2. 클래스 메소드(Class Method)
+
+* 클래스를 가리키는 cls 매개 변수를 받는다
+
+* cls 인자에만 접근할 수 있기 때문에 객체 인스턴스 상태를 수정할 수 없음
+
+* 클래스 자체에서 각 메소드를 호출하는 경우, 인스턴스 메소드는 호출이 불가능하다
+
+  ![image-20220202131314127](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131314127.png)
+
+  
+
+#### 3. 스태틱 메소드
+
+* 임의 개수의 매개변수를 받을 수 있지만, self나 매개변수는 사용하지 않음
+
+* 객체 상태나 클래스 상태를 수정할 수 없음
+
+* 일반 함수처럼 동작하지만, 클래스의 이름공간에 귀속된다.
+
+  * 주로 해당 클래스로 한정하는 용도로 사용
+
+  ![image-20220202131503640](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131503640.png)
 
 
 
@@ -961,15 +1093,24 @@ person_2 = Person()
 ### :one: 추상화
 
 * 현실 세계를 프로그램 설계에 반영
+
 * 고수준의 것에서 저수준의 것으로 설명하는 것
+
 * 공통적인 속성을 뽑아내서 코드로 만드는 것
+
 * 예시
+
+  ![image-20220202131612816](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131612816.png)
+
+
 
 ### :two: :star2: 상속 (inheritance)
 
+#### 1. 상속
+
 * 두 클래스 사이 부모=자식 관계를 정립하는 것
 
-  * A라는 클래스와 B라는 클래스가 있을 때, B가 A를 상송받아서 만들어진다면, A클래스에 있는 모든 것들이 B에 그대로 넘어가게된다. 
+  * A라는 클래스와 B라는 클래스가 있을 때, B가 A를 상속받아서 만들어진다면, A클래스에 있는 모든 것들이 B에 그대로 넘어가게된다. 
   * 하위 클래스는 상위 클래스에 정의된 속성, 행동, 관계 및 제약 조건을 모두 상속받는다.
   * 부모 클래스의 속성, 메소드가 자식 클래스에 상속되므로, **코드 재사용성**이 높아진다. 
     * :exclamation: DRY 원칙: Don't Repeat Yourself 
@@ -987,79 +1128,96 @@ person_2 = Person()
      						# object 클래스를 상속받은 class A를 정의하겠다
   ```
 
+* 메소드 재사용 예시
+
+  ![image-20220202131905540](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131905540.png)
+
+
+
+#### 2. 상속 관련 함수와 메소드
+
+1. **isinstance(object, classinfo)**
+
+   - 이 object가 classinfo로 만들어졌니?
+
+   - classinfo의 instance거나 subclass*인 경우 True
+
+   - object = student이라면,  classinfo = Person으로 만들어졌니?
+
+     ![image-20220202132045570](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132045570.png)
+
+     
+
+2. **issubclass(class, classinfo)**
+
+   * class 가 classinfo의 subclass면 True
+
+   * classinfo는 클래스 객체의 튜플일 수 있음, classinfo의 모든 항목을 검사
+
+     ![image-20220202132120735](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132120735.png)
+
+   
+
+3. **super()**
+
+   * 자식클래스에서 부모클래스를 사용하고 싶은 경우
+
+   * 상위클래스에 있는 것을 직접 접근하고 싶을 때 
+
+     ```python
+     class Person:
+         def __init(self, name, age, number, email):
+             self.name = name
+             self.age = age
+             self.number = number
+             self.email = email
+             
+     class Student(Person):
+         def __init__(self, name, age, number, email, student_id):
+             super().__init__(name, age, number, email)
+             self.student_id = student_id
+             
+     # 만약 super()를 쓰지 않으면, 메소드 오버라이딩이 된다.
+     # 자식 이기는 부모 없다. 
+     # 똑같은 메소드를 쓰면 자식클래스의 메소드가 부모클래스를 덮어쓰게 된다. 
+     ```
+
+     ![image-20220202132144654](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132144654.png)
+
+   
+
+#### 3. 상속 정리
+
+* 파이썬의 모든 클래스는 ojbect로부터 상속된다.
+* 래스의 모든 요소 
+* 상속관계에서의 이름 공간은 인스턴스, 자식클래스, 부모클래스 순으로 탐색을 하게 된다. 
+
+
+
+#### 4. 다중 상속
+
+* 두개 이상의 클래스를 상속 받는 경우
+
+* 상속 받은 모든 클래스의 요소를 활용 가능함
+
+* 중복된 속성이나 메서드가 있는 경우 **상속 순서**에 의해 결정된다. 
+
+  ![image-20220202132239857](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132239857.png)
   
+![image-20220202132256524](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132256524.png)
 
-* 상속 관련 함수와 메소드
 
-  1. **isinstance(object, classinfo)**
 
-     - 이 object가 classinfo로 만들어졌니?
-     - cassinfo의 instance거나 subclass*인 경우 True
-     - object = student이라면,  classinfo = Person으로 만들어졌니?
+#### 5. 상속 관련 함수와 메소드
 
-     
-
-  2. **issubclass(class, classinfo)**
-
-     * class 가 classinfo의 subclass면 True?
-     * classinfo는 클래스 객체의 튜플일 수 있음, classinfo의 모든 항목
-
-     
-
-  3. **super()**
-
-     * 자식클래스에서 부모클래스를 사용하고 싶은 경우
-
-     * 상위클래스에 있는 것을 직접 접근하고 싶을 때 
-
-       ```python
-       class Person:
-           def __init(self, name, age, number, email):
-               self.name = name
-               self.age = age
-               self.number = number
-               self.email = email
-               
-       class Student(Person):
-           def __init__(self, name, age, number, email, student_id):
-               super().__init__(name, age, number, email)
-               self.student_id = student_id
-               
-       # 만약 super()를 쓰지 않으면, 메소드 오버라이딩이 된다.
-       # 자식 이기는 부모 없다. 
-       # 똑같은 메소드를 쓰면 자식클래스의 메소드가 부모클래스를 덮어쓰게 된다. 
-       ```
-
-       
-
-     
-
-  
-
-* 정리
-
-  * 파이썬의 모든 클래스는 ojbect로부터 상속된다.
-  * 래스의 모든 요소 
-  * 상속관계에서의 이름 공간은 인스턴스, 자식클래스, 부모클래스 순으로 탐색을 하게 된다. 
-
-* 다중 상속
-
-  * 두개 이상의 클래스를 상속 받는 경우
-
-  * 상속 받은 모든 클래스의 요소를 활용 가능함
-
-  * 중복된 속성이나 메서드가 있는 경우 **상속 순서**에 의해 결정된다. 
-
-    ```
-    ```
-
-    
-
-* 상속 관련 함수와 메소드
-
-  * mro 메소드(Method Resolution Order)
+* mro 메소드(Method Resolution Order)
+  * 해당 인스턴스의 클래스가 어떤 부모 클래스를 가지는 확인하는 메소드
+  * 기존의 인스턴스 -> 클래스 순으로 이름 공간을 탐색하는 과정
+  * 상속 관계에 있으면 인스턴스 -> 자식 클래스 -> 부모 클래스로 확장
 
 * 예시
+
+  ![image-20220202132603756](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132603756.png)
 
   ```python
   class Person:
@@ -1075,204 +1233,244 @@ person_2 = Person()
 
 ### :three: 다형성(Polymorphism)
 
-* 다형성(Polymorphism)
-  * 여러 모양을 뜻하는 그리스어
-  * 동일한 메소드가 클래스에 따라 다르게 행동할 수 있음을 의미
-  * 즉, 서로 다른 클래스에 속해있는객체들이 동일한 메시지에 대해 다른 방식으로 응답될 수 있음
+#### 1. 다형성(Polymorphism)
 
-* 메소드 오버라이딩
-* 
+* 여러 모양을 뜻하는 그리스어
+* 동일한 메소드가 클래스에 따라 다르게 행동할 수 있음을 의미
+* 즉, 서로 다른 클래스에 속해 있는객체들이 동일한 메시지에 대해 다른 방식으로 응답될 수 있음
+
+
+
+#### 2. 메소드 오버라이딩
+
+* 상속 받은 메소드를 재정의
+
+  * 클래스 상속 시, 부모 클래스에서 정의한 메소드를 자식 클래스에서 변경
+  * 부모 클래스의 메소드 이름과 기본 기능은 그대로 사용하지만, 특정 기능을 바꾸고 싶을 때 사용
+  * 상속 받은 클래스에서 같은 이름의 메소드로 덮어씀
+  * 부모 클래스의 메소드를 실행시키고 싶은 경우 :question: super를 활용
+
+* 예시
+
+  ![image-20220202132909392](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132909392.png)
 
 
 
 ### :four: 캡슐화(Encapsulation)
 
+#### 1. 캡슐화
+
 * 객체의 일부 구현 내용에 대해 외부로부터의 직접적인 액세스를 차단
-
   * 주민등록번호
-
 * 비슷한 기능을 하는 속성과 메서드를 묶는 작업 + 은닉성(접근권한)
-
 * 응집도(cohesion), 결합도/의존성(coupling/dependency)
 
   * 모듈 내 응집도가 높고, 모듈 간 결합도가 낮은것이 좋다!
 
-* 접근제어자 종류
+#### 2. 접근제어자 종류 
 
-  * 밑에서 위로 갈수록 접근이 쉬워짐
+* **Public Access Modifier**: 다 가능
 
-  * Public Access Modifier: 다 가능
+  * 언더바 없이 시작하는 메소드나 속성
 
-    * 언더바 없이 시작하는 메소드나 속성
+  * 어디서나 호출이 가능, 하위 클래스 override 허용
 
-    * 어디서나 호출이 가능, 하위 클래스 override 허용
+  * 일반적으로 작성되는 메소드와 속성의 대다수를 차지 
 
-    * 일반적으로 작성되는 메소드와 속성의 대다수를 차지 
-
-      ```
-      ```
-
-      
-
-  * Protected Access Modifier: 나랑 내 자식(안에서)만 가능
-
-    * 언더바 1개로 시작하는 메소드나 속성
-
-    * 암묵적 규칙에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
-
-    * 하위 클래스 override 허용
-
-      ```python
-      class Person:
-          def __init__(self, name, age):
-              self.name = name
-              self._age = age
-              
-      p1 = Person('김싸피', 30)
-      p1.get_age
-      
-      
-      ```
-
-      
-
-  * Private Access Modifier: 나만 가능
-    * 언더바 2개로 시작하는 메소드나 속성
-
-    * 본 클래스 내부에서만 사용이 가능
-
-    * 하위 클래스 상속 및 호출이 불가능(오류)
-
-    * 외부 호출 불가능(오류)
-
-    * _{class_name}\__attribute : name mangling(파이썬이 private접근을 막는다.. 원래 \__age__를 찾고자 했던거임)
-
-      ```python
-      class Person:
-          def __init__(self, age)
-          	self.__age = age
-              
-          def get_age(self):		#public method
-              return self.__age	#private value
-          
-          def set_age(self): 		# public method
-              self.__age += 1
-          
-      tony = Person(27)
-      print(tony.__age)
-      
-      ========================================
-      AtributeError: 'Person' object has no attribute '__age'
-          
-      =============================================
-      
-      print(tony.get_age())
-      
-      # 직접 접근하지말고, 메서드를 이용해 접근하세요 
-      
-      tony.set_age()
-      print(tony.get_age())
-      ```
-
+    ```python
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self._age = age
+            
+    # Person 클래스의 인스턴스인 p1은 이름(name)과 나이(age) 모두 접근이 가능
+    p1 = Person('김싸피', 30)
+    print(p1.name)
+    print(p1.age)
+    ```
+    
     
 
-* getter메소드와 setter 메소드
+* **Protected Access Modifier**: 나랑 내 자식(안에서)만 가능
 
-  * getter
+  * 언더바 1개로 시작하는 메소드나 속성
 
-    * 데코레이터 사용
+  * 암묵적 규칙에 의해 부모 클래스 내부와 자식 클래스에서만 호출 가능
 
-      ```python
-      class Person:
-          def __init__(self, age):
-              self._age = age
-              
-          @property
-          def age(self):
-              return self._age - 10
+  * 하위 클래스 override 허용
+
+    ```python
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self._age = age
+            
+        def get_age(self):
+            return self._age
+        
+    # 인스턴스를 만들고, get_age 메서드를 활용하여 호출이 가능
+    p1 = Person('김싸피', 30)
+    p1.get_age
+    
+    # _age에 직접 접근해도 호출 가능
+    # 파이썬에서 암묵적으로 활용됨
+    
+    p1._age
+    ```
+    
+    
+
+* **Private Access Modifier**: 나만 가능
+
+  * 언더바 2개로 시작하는 메소드나 속성
+
+  * 본 클래스 내부에서만 사용이 가능
+
+  * 하위 클래스 상속 및 호출이 불가능(오류)
+
+  * 외부 호출 불가능(오류)
+
+  * \_\_{class_name}\_\_attribute : name mangling(파이썬이 private접근을 막는다.. 원래 \__age__를 찾고자 했던거임)
+
+    ```python
+    class Person:
+        def __init__(self, age)
+        	self.__age = age	# private(언더바 두 개 )
+            
+        def get_age(self):		# public method
+            return self.__age	# private value(언더바 두 개)
+        
+        def set_age(self): 		# public method
+            self.__age += 1
+        
+    tony = Person(27)
+    print(tony.__age)
+    
+    ========================================
+    AttributeError: 'Person' object has no attribute '__age'
+        
+    =============================================
+    
+    print(tony.get_age())
+    
+    # 직접 접근하지말고, 메서드를 이용해 접근하세요 
+    
+    tony.set_age()
+    print(tony.get_age())
+    ```
+
+
+
+
+#### 3. getter메소드와 setter 메소드
+
+* getter 메소드
+
+  * 변수의 값을 읽는 메소드
+
+  * @property 데코레이터 사용setter 메소드
+
+* setter 메소드
+
+  * 변수의 값을 설정하는 성격의 메소드
+  * @변수.setter 사용
+
+  
+
+* 예시1
+
+  ```python
+  class Person:
+      def __init__(self, age):
+          self._age = age
           
-          @age.setter
-          def age(self):
-              return self._age - 10
-      ```
-
-      ```python
-      p1 = Person(10)
-      ---------------------------
-      #TypeError: 'int' obejct is not callable
-      ```
-
-      ```python
-      p1.age() #  매서드를 정의헀는데, 속성처럼 쓰도록 한다.
-      ```
-
-      ```python
-      p1 = Person(40)
-      ```
-
-      ```
-      p1.age()
-      ```
-
-    * 예시
-
-      ```python
-      class Person:
-          def __init__(self, age):
-              self._age = age
-              
-          def get_age(self):			 #getter method
-              return self.__age 		#private value
-          
-          def set_age(self, new_age): # setter method
-              self.__age = new_age # private method
+      @property
+      def age(self):
+          return self._age - 10
       
-          def get_age(self):			 #getter method
-              return self.__age		 #private value
+      @age.setter
+      def age(self):
+          return self._age - 10
+  ```
+
+  ```python
+  p1 = Person(10)
+  ---------------------------
+  #TypeError: 'int' obejct is not callable
+  ```
+
+  ```python
+  p1.age() #  매서드를 정의헀는데, 속성처럼 쓰도록 한다.
+  ```
+
+  ```python
+  p1 = Person(40)
+  ```
+
+  ```
+  p1.age()
+  ```
+
+* 예시2
+
+  ```python
+  class Person:
+      def __init__(self, age):
+          self._age = age
           
-          def set_age(self, new_name): # setter method
-              self.__age = new_name # private method
-          
-          
-      aiden = Person()
-      aiden.set_age(24)
-      ```
+      def get_age(self):			 #getter method
+          return self.__age 		#private value
+      
+      def set_age(self, new_age): # setter method
+          self.__age = new_age # private method
+  
+      def get_age(self):			 #getter method
+          return self.__age		 #private value
+      
+      def set_age(self, new_name): # setter method
+          self.__age = new_name # private method
+      
+      
+  aiden = Person()
+  aiden.set_age(24)
+  ```
 
-      * 가져와야 할 메소드가 많아진다면, 데코레이터를 이용해서 반복을 줄인다. 
+  * 가져와야 할 메소드가 많아진다면, 데코레이터를 이용해서 반복을 줄인다. 
 
-        ```python
-        class Person:
-            def __init__(self, age):
-                self._age = age
-                
-            def get_age(self):				#getter method
-                return self.__age 			#private value
+    ```python
+    class Person:
+        def __init__(self, age):
+            self._age = age
             
-            def set_age(self, new_age): 	# setter method
-                self.__age = new_age 		# private method
+        def get_age(self):				#getter method
+            return self.__age 			#private value
         
-            @property # 게터
-            def name(self):			 		# getter method
-                return self.__age		 	#private value
-            
-            @name.setter # 세터
-            def name(self, new_name):		# setter 
-                self.__name = new name 		# private method
-            
-            @name.getter 
-            #상속 받아서 name의 getter를 오버라이딩 해야 할 때만 쓰임. 
-            
-        aiden = Person()
-        aiden.set_age(24)
+        def set_age(self, new_age): 	# setter method
+            self.__age = new_age 		# private method
+    
+        @property # 게터
+        def name(self):			 		# getter method
+            return self.__age		 	#private value
         
-        aiden.set_name('aiden')
-        aiden.name = 'aiden'
-        print(aiden.name) # ====> getter가 자동으로 호출됨.
-        			      # method를 마치 속성처럼 사용할 수 있따. 
-            
-        ```
-
+        @name.setter # 세터
+        def name(self, new_name):		# setter 
+            self.__name = new name 		# private method
         
+        @name.getter 
+        #상속 받아서 name의 getter를 오버라이딩 해야 할 때만 쓰임. 
+        
+    aiden = Person()
+    aiden.set_age(24)
+    
+    aiden.set_name('aiden')
+    aiden.name = 'aiden'
+    print(aiden.name) # ====> getter가 자동으로 호출됨.
+    			      # method를 마치 속성처럼 사용할 수 있따. 
+        
+    ```
 
-  * setter
+* 예시 3
 
+  ![image-20220202134234000](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202134234000.png)
+
+  ![image-20220202134250996](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202134250996.png)
