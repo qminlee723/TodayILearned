@@ -17,3 +17,7 @@ alt + shift + 방향키 -> 바로 아랫줄에 위의 내용을 그대로 복사
 genre id 를 for 로 돌리고
 
 랙
+
+
+
+ctrl + , : setting 열기
