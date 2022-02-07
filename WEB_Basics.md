@@ -345,7 +345,7 @@
 
 #### 2. 결합자(Combinators)
 
-* 자손 결합자, 자식 결합자
+* 자손(descendant) 결합자, 자식(child) 결합자
 
   * 자손 결합자: A B (A를 만족하는 모든 하위요소 중에서 B를 만족하는 모든 요소)
   * 자식 결합자: A > B (A의 자식(1차 하위요소) 중에서 B를 만족하는 애를 선택하겠다)
@@ -732,4 +732,91 @@
 # :star::star: 유용한 사이트
 
 노션 참고!
+
+
+
+
+
+contnet box and border box의 차이
+
+- content box 가 default
+- image와 배경색상은 padding까지 적용된다
+- box-sizing의 기본은 content box, but 더 주고 싶다면 box-sizing에다가 border-box
+- content+padding+border까지 합쳐서 border-box(width-height)
+
+* class는  동일한 속성을 여러 id에다가 주고 싶을 때
+
+  ```css
+  .box {
+      width:600px
+      height: 400px
+      border 2px solid black;
+  }
+  
+  
+  ```
+
+  
+
+* id는 한개
+
+  ```html
+  <div class="box" id="box-01"></div>
+  ```
+
+  ```css
+  #box-01 {
+      background-color: white;
+  }
+  ```
+
+  
+
+
+
+:star: 시험에 잘 나온느 부분
+
+CSS selector
+
+CSS 심화
+
+
+
+
+
+
+
+Emmet
+
+- `>`  태그를 만들고 들여쓰기
+- `*n` 반복
+- `+` 줄바꿈 + 다음 태그 추가
+- `.` class 지정
+- `#` id 지정
+
+- `{content}` 내용 입력
+
+```html
+table>tr*5>td*3 (row 5줄, column 3줄)
+
+div*5.box (div 다섯개 줄 건데 클래스를 다섯개 만들 것)
+
+div>a (div 안쪽에 a 태그)
+
+div>p (div 안쪽에다가 p 태그를 만들겠어)
+
+div>p*5+span*3 (div안쪽에 p를 다섯 개, span을 세 개)
+
+div.box(div에 box라는 클래스를 줄거야)
+
+div.box>div*3#hello(div에 box라는 클래스를 줄 거고, 이 div 안에 div를 3개 더 만들건데, 이 3개의 div에 hello라는 아이디를 줄 거야)
+
+
+- `>`  태그를 만들고 들여쓰기
+- `*n` 반복
+- `+` 줄바꿈 + 다음 태그 추가
+- `.` class 지정
+- `#` id 지정
+- `{content}` 내용 입력
+```
 
