@@ -106,19 +106,53 @@ inline에서 ... lineheight를 높이랑 똑같이 줘서!
       - 아이템을 여러 줄로 표시하겠다
       - 내 viewport 크기에 따라서 item들이 여러 줄로 표시되게 된다. 
     - wrap-reverse
-  - `justify-content` - 주 축(main-axis)의 정렬  방법 설정
-  - `align-content` - 교차 축(cross-axis)의 정렬 방법 설정 (2줄 이상)
+  - :star: `justify-content` - 주 축(main-axis)의 정렬  방법 설정
+    - flex-start
+      - 정렬 기준에 따라서 
+    - flex-end
+    - center
+    - space-between
+      - 가장 가에 있는 아이템을 가장 왼쪽 오른쪽에 두고, 나머지 아이템들을 간격이 동일하게 정렬해준다 
+    - space-around
+      - 아이템들 + 마진이라고 생각하면 쉬울 것 같음(그런데 마진 아님!!)
+      - 
+    - space-evenly
+      - 모든 여백을 균등한 여백으로 만들어서 정렬
+  - `align-content` - 교차 축(cross-axis)의 정렬 방법 설정 (2줄 이상일 때 적용됨. 한줄일 때는 align-items를 쓴다.)
+    - flexwrap이 no wrap이면 정렬의 의미가 없다
+    - stretch(default)
+    - flex-start
+    - flex-end
+    - center ==> 교차축을 기준으로 한다. (flex-direction은 메인축을 기준으로 )
+    - space-between
+    - space-around
 
   - `align-items` - 교차 축(cross-axis)의 정렬 방법 설정 (1줄)
+    - :star: align-content와 유사하지만, baseline이라는 코드가 추가가된다
+    - item들 안에 
+
+  
 
 * item(축 이라는 개념을 가지고있다)에 넣을 수 있는 속성
 
-  * * 
-  * order
-  * flex
-  * align-self
-
-* 
+  - :star: `order` - Item의 순서를 설정
+    - 
+  - `flex` - `flex-grow` , `flex-shrink` , `flex-basis` 에 대한 단축 속성!
+    - 더하기(상하)
+    - 나누기(위 중간 아래)
+    - 시계방향
+    - flex-grow(default)
+    - flex-basis의 기본 값은 auto인데 flex만 쓸 땐 auto가 아니라 0이 됨
+  - :star: `flex-grow` - Item의 너비 증가(grow) 비율 설정
+    * 각각의 아이템이 너비가 증가할 수 있는 상태여야 한다. 
+    * == no wrap이 아니면 의미가 없다 (wrap인 경우 동작하지 않는다)
+    * 
+  - :x: `flex-shrink` - Item의 너비 감소(shrink) 비율 설정
+    - viewport가 줄어들면 감소하는 아이템의 비율 
+  - `flex-basis` - Item의 기본 너비 설정
+  - ``align-self`` - 교차축을 기준으로 아이템을 정렬하는 방법을 설정한다
+    - align-self > align-items (우선순위 더 높다)
+    - stretch, start, end, center, baseline.... default값은 auto
 
 #### 2. Flex-direction
 
@@ -142,13 +176,47 @@ inline에서 ... lineheight를 높이랑 똑같이 줘서!
 
 ### :three: Grid
 
-
+resume
 
 
 
 ## :ballot_box_with_check: Bootstrap
 
-### bootstrap grid system
+### 활용방법
+
+* 다운받아서 이용
+
+* 
+
+* CDN(Content Delivery(distribution) Network)
+
+  * 컨텐츠(CSS, JS, Image, Text 등)을 효율적으로 전달하기 위해 여러 노드에 
+
+* JS: 화면 요소들을 변경하는 것, 사용자의 반응에 response를 주는 것 
+
+* 이건 </body> 바로 위쪽에 위치하게 둔다.
+
+  * 화면 요소를 읽기도 전에 script를 읽는 것을 방지하기 위해
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap05.1.3/dist/is/bootstrap"
+
+* :star: m-3 = rem1 = 16px
+
+### :star: bootstrap grid system
+
+* :star: container, rows, column
+* container는 부트스트랩의 가장 기본적 class (class="container")
+  * container
+    * 반응형
+  * container-fluid
+    * width를 100%로 지정하는 것
+    * 
+  * container-{BP}
+* container를 만들고, row를 만든 후에 column은 row에 들어가는 각각의 컨텐츠를 의미한다
+* column은 아무런 조건을 걸지 않음녀 블록 요소처럼 한줄을 차지한다. 
+* :star: 12개의 column 시스템 (약수 많음~~~)
+* :star: 6개의 gridpoint
+* col-A-B
 
 
 
