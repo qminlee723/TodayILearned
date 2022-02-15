@@ -1,10 +1,10 @@
-# Algorithm Stack, Que, Deck
+# Algorithm Stack, Que, Deque
 
 
 
-## :zero: Overview
+## :zero: Overview 
 
-### 1. Stack, Que, Deck이 필요한 이유
+### 1. Stack, Que, Deque이 필요한 이유
 
 - 프로그래밍에서는 그래프, 트리 등의 **자료구조** 안에서 **탐색** 하는 문제를 자주 다룸
 - 대표적인 탐색 알고리즘으로 DFS, BFS가 있음
@@ -24,10 +24,8 @@
 
 * Stacking - 즉, 박스 쌓기
   * 박스는 아래에서부터 위로 차곡차곡 쌓고, 들어낼 때는 마지막에 올린 것부터 내린다.
-* 즉, 선입 후출 (First In Last Out)
+* 즉, 후입선출 (LIFO: Last in First Out)
 * append 시 제일 뒤에(오른쪽) 추가되고, pop 시에도 제일 뒤의 것(오른쪽)이 사라짐 
-
-### 2. 예시
 
 
 
@@ -41,15 +39,36 @@
 
   * 나중에 온 사람일수록 나중에 들어가므로 '공정한' 자료구조
 
-* 즉, 선입 선출(First In First Out)
+* 즉, 선입 선출(FIFO: First In First Out)
 
-* append시 앞으로(왼쪽) 추가되고, pop 시에는 뒤의 것(오른쪽)이 사라짐
+* append시 뒤로 추가되고, pop 시에는 앞쪽의 것(왼쪽)이 사라짐
 
   
+
+## :three: :star: 덱 Deque
+
+### 1. 개념
+
+* Double Ended Queue의 약자
+
+* Stack과 Queue 연산을 모두 지원하는 자료구조
+
+* 양 끝에서 모두 삽입과 삭제가 가능한 Queue
+
+  * 속도가 리스트 이용시보다 효율적이고, queue 라이브러리 이용하는것보다 간단
+
+    ```python
+    from collections import deque
+    ```
+
+* 함수는 queue 이용할때와 동일!
+
+
 
 ### 2. 예시
 
 * Append & Pop
+
   * `append, appendleft, pop, popleft`를 사용할 수 있다 
   * `append`, `pop`은 무조건 오른쪽, 왼쪽에 추가 혹은 삭제 원한다면 `appendleft`, `popleft`
 
@@ -78,30 +97,4 @@
     d.extendleft([b, b, b])
     print(d) #[b, b, b, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, a, a]
     ```
-
-
-
-## :three: 덱 Deque
-
-### 1. 개념
-
-* Double Ended Queue의 약자
-
-* Stack과 Queue 연산을 모두 지원하는 자료구조
-
-* 양 끝에서 모두 삽입과 삭제가 가능한 Queue
-
-  * 속도가 리스트 이용시보다 효율적이고, queue 라이브러리 이용하는것보다 간단
-
-    ```python
-    from collections import deque
-    ```
-
-* 함수는 queue 이용할때와 동일!
-
-
-
-### 2. 예
-
-
 
