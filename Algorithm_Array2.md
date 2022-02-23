@@ -169,7 +169,7 @@ for i in range(n):
   arr = [[1,2,3],[4,5,6],[7,8,9]]
   N = 3
   for i in range(N):
-      for j in range(N):
+      for j in range(N
           for di, dj in[(0,1), (1,0), (0,-1), (-1,0)]:
               ni = i + di
               nj = j + dj
@@ -460,10 +460,10 @@ print()
 * 이진 검색의 경우, 자료에 삽입이나 삭제가 발생했을 때 배열의 상태를 항상 정렬 상태로 유지하는 추가 작업이 필요하다.
 
 ```python
-def binarySearch(a, N, key)
+def binarySearch(a, N, key):
 	start = 0						# 구간의 시작 인덱스
     end = N - 1						# 구간의 끝 인덱스
-    while start <= end				# 스타트보다 엔드가 끝에 있어야
+    while start <= end:				# 스타트보다 엔드가 끝에 있어야
     	middle = (start + end)//2	# 중간 원소의 인덱스 
         if a[middle] == key:		# 검색 성공
             return true
@@ -473,6 +473,10 @@ def binarySearch(a, N, key)
             start = middle + 1		# 아래 구간을 버림
     return false					# 검색 실패
 ```
+
+![image-20220217231405899](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220217231405899.png)
+
+![image-20220217232249435](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220217232249435.png)
 
 
 
