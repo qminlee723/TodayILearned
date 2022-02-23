@@ -59,10 +59,10 @@
 
 * 무엇이 좋은 알고리즘인가?
 
-  * 정확성
-  * 작업량: 적은 연산으로 원하는 결과
-  * 메모리사용량: 적은 메모리
-  * 단순성
+  * 정확성: 얼마나 정확하게 동작하는가
+  * 작업량: 적은 연산으로 원하는 결과를 얻어내는가
+  * 메모리사용량: 적은 메모리를 사용하는가
+  * 단순성: 얼마나 단순한가
   * 최적성: 개선불가능한 최적
 
   
@@ -71,12 +71,15 @@
 
   * 실제 걸리는 시간 측정
 
-    * O(n^2): 웬만큼 커도 돌아가겠다(효율적이진 않음)
-    * O(n^3) : 좀 느리겠네
-    * O(2^n) : 입력이 매우 작아야 함.. 코딩 하지 말고 다른 길을 찾아 떠나라
-    * O(n!): 다른 길을 찾아 떠나라 
+    * (가장 빠름) O(logN) > O(N) > O(NlogN) > O(N^2) > O(N^3) > O(2^N) (가장 느림)
+      * O(n^2): 웬만큼 커도 돌아가겠다(효율적이진 않음)
+      * O(n^3) : 좀 느리겠네
+      * O(2^n) : 입력이 매우 작아야 함.. 코딩 하지 말고 다른 길을 찾아 떠나라
+      * O(n!): 다른 길을 찾아 떠나라!
 
   * 실행되는 명령문의 개수(연산의 횟수) 계산
+
+    * 계수(coefficient)은 생략하고 표시
 
   * 최악의 경우를 상정하고 계산
 
@@ -113,11 +116,11 @@
 
 
 
-## :one: 배열
+## :one: :star: 배열
 
 ### 1. 개념
 
-* 일정한 자료형의 변수들을 하나의 이름으로 열거하여 사용하는 자료구조
+* 일정한 **자료형**의 **변수**들을 **하나의 이름**으로 **열거**하여 사용하는 자료구조
 * 파이썬에서는 리스트
 
 
@@ -126,7 +129,7 @@
 
 * 프로그램 내에서 여러 개의 변수가 필요할 때, 일일이 다른 변수명을 이용하는 것은 비효율적
 * 배열 사용시 하나의 선언을 통해 둘 이상의 변수를 선언하는 효과 가짐
-* 다수의 변수로는 하기 힘든 작업을 비열을 활용해 쉽게 할 수 있다
+* 다수의 변수로는 하기 힘든 작업을 배열을 활용해 쉽게 할 수 있다
 
 
 
@@ -144,14 +147,18 @@
 
 * 1차원 배열의 접근
 
-  * Arr[0]=10;//
+  * Arr[0]=10;
     * 배열 Arr의 0번 원소에 10을 저장
-  * Arr[idx]=20;//
+  * Arr[idx]=20;
     * 배열 ARr의 idx번 원소에 20을 저장
 
-* :white_check_mark: 예제
+* :white_check_mark: 예제: Gravity
 
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220220235301631.png" alt="image-20220220235301631" style="zoom:67%;" />
 
+  ![image-20220221000058697](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221000058697.png)
+
+  
 
 ### 4. 정렬
 
@@ -283,11 +290,26 @@
   * 숫자의 범위
   * 숫자의 갯수
 
-  ```python
-  
-  ```
 
-  
+* 1단계
+
+  ![image-20220221053035673](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053035673.png)
+
+  ![image-20220221053053254](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053053254.png)
+
+  ![image-20220221053108102](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053108102.png)
+
+  ![image-20220221053120933](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053120933.png)
+
+  .
+
+  .
+
+  .
+
+  ![image-20220221053208525](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053208525.png)
+
+
 
 * count = [0]*(N+1)
 
