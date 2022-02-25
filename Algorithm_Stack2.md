@@ -83,11 +83,17 @@
 bit
 ```
 
-* \
+
+
+### 3. 백트래킹과 DFS의 차이
+
+* 어떤 노등서 출발하는 경로가 해결책으로 이어질 것 같지 않으면, 더 이상 그 경로를 따라가지 않음으로써 시도의 **횟수를 줄인다**(Prunning 가지치기)
+* 깊이우선탐색을 가하기에는 경우의 수가 너무나 많다. 즉,  N! 가지의 경우의 수를 가진 문제에 대해 깊이우선탐색을 가하면 당연히 처리 불가능한 문제
+* 백트래킹 알고리즘을 적용하면 일반적으로 경우의 수가 줄어들지만, 이 역시 최악의 경우에는 여전히 지수함수 시간(Exponential Time)을 요하므로 처리가 불가능하다
 
 
 
-## :six: 부분집합 구하기
+## :three: 부분집합 구하기
 
 ### 1. 개념
 
@@ -104,28 +110,24 @@ bit
 
 
 ```python
-def backtrack(a, k, input):
-    global MAXCANDIDATES
-    c = [0] * MAXCANDIDATES
-    
-    if k == input :
-        process_solution(a, k) # 답이면 원하는 작업을 한다.
-    else:
-        k += 1
-        ncandidates = construct_candidates(a, k, input, c)
-        for i in range(ncandidates):
-            a[k] = c[i]
-            backtrack(a, k, input)
-            
-def construct_candidates(a, k, input, c):
-    c[0] = True
-    c[1] = False
-    return 2
+def powerset(idx, N):
 
-MAXCANDIDATES = 2
-NMAX = 4
-a = [0] * NMAX
-backgrack(a, 0, 3)
+    if idx == N:  # 종료 조건
+        print(bit)
+        return
+
+    bit[idx] = 1
+    powerset(idx + 1, N)
+
+    bit[idx] = 0
+    powerset(idx + 1, N)
+
+
+a = [0, 7, 2, 3]
+N = len(a)
+bit = [0] * N
+
+powerset(idx=0, N=N)
 ```
 
 
@@ -224,4 +226,34 @@ vertex의 갯수가 1000개가 넘어가면 인접리스트를 쓰는 것이 좋
 
 
 ![image-20220223211135890](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220223211135890.png)
+
+
+
+
+
+## :four: 퀵소트(Quick Sort)
+
+### 1. 개념
+
+* 분할(Divide): 해결할 문제를 여러 개의 작은 부분으로 나눈다
+* 정복(Conquer): 나눈 작은 문제를 각각 해결한다
+* 통합(Combine): 해결된 해답을 모은다(If needed)
+
+
+
+### 2. 합병정렬과의 다른 점
+
+* 주어진 배열을 두 개로 분할하고, 각각을 정렬한다
+  * 합병정렬(Merge Sort)과 동일한가?
+* 다른점1 : 합병정렬은 그냥 두 부분으로 나누는 반면에, 퀵정렬을 분할할 때, 기준 아이템(pivot item) 중ㅅ미으로, 이보다 작은 것은 왼편, 큰 것은 오른편에 위치시킨다.
+* 다른점2: 각 부분 정렬이 끝난 후, 합병정렬은 "합병"이란 후처리 작업이 필요하지만 퀵정렬은 필요없음
+
+
+
+### 3. 퀵정렬 알고리즘
+
+```python
+```
+
+
 

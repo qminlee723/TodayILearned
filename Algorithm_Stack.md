@@ -335,3 +335,9 @@ print(stack)
 * 가장 마지막에 만났던 갈림길의 정점으로 되돌아가서 다시 깊이 우선 탐색을 반복해야 하므로 후입선출 구조의 스택 사용
 
 
+
+
+
+### 2. 기본 형태
+
+![image-20220224163246799](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220224163246799.png)
