@@ -13,6 +13,8 @@
 
 
 
+
+
 ## :one: Web Framework
 
 <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302090755215.png" alt="image-20220302090755215" style="zoom:67%;" />
@@ -27,15 +29,22 @@
 ### 2. Web(World Wide Web)
 
 * 정적 웹 페이지(Static web page)
+
   * 서버에 미리 저장된 파일이 사용자에게 그대로 전달되는 웹 페이지
   * 서버가 **요청**을 받은 경우, 서버는 추가적인 처리 과정 없이 클라이언트에게 **응답**을 보냄
   * 모든 상황에서 모든 사용자에게 동일한 정보를 표시
   * HTML, CSS, JavaScrpit
   * flat page라고도 한다.
+
 * 동적 웹 페이지(Dynamic web page)
+
   * 서버가 요청을 받은 경우, 서버는 추가적인 처리 과정 이후 클라이언트에게 응답을 보냄
+
   * 동적 페이지는 방문자와 **상호작용**하기 때문에 페이지 내용은 그때그때 다름
+
   * 서버 사이드 프로그램이언어(python, java, c++등)가 사용되며, 파일을 처리하고 데이터베이스와의 상호작용(수정, 삭제, 조회 등)이 이루어짐
+
+    
 
 ### 3. Framework
 
@@ -90,6 +99,8 @@
 
 
 
+
+
 ## :two: Django Intro
 
 ### 1. LTS
@@ -139,8 +150,6 @@
 
     
 
-     
-
 ### 3. 프로젝트 구조
 
 :exclamation: 볼드체로 작성된 파일만 사용할 것. 나머지는 건드리지 말 것 :exclamation:
@@ -171,7 +180,7 @@
 
 #### articles/
 
-* **admins.py**
+* **admin.py**
   * 관리자용 페이지를 설정하는 곳
 * apps.py
   * 앱의 정보가 작성된 곳
@@ -198,7 +207,7 @@
 
   * vs code에 등록해야 함
     * `settings.py` > `INSTALLED_APPS` 리스트 안에 앱 이름 등록해주기
-    * 생성 이후 등록!!! (otherwise 생성 안 됨)
+    * :star: 생성 이후 등록!!! (otherwise 생성 안 됨)
 
 * 서버 끄는 법: `ctrl + c`
 
@@ -212,8 +221,6 @@
 
     
 
-
-
 ### 5. Project 와 Application  관계
 
 * Project
@@ -224,6 +231,8 @@
   * 앱은 실제 요청을 처리하고 페이지를 보여주고 하는 등의 역할을 담당
   * 하나의 프로젝트는 여러 앱을 가짐
   * 일반적으로 앱은 하나의 역할 및 기능 단위로 작성함
+
+
 
 
 
@@ -281,6 +290,8 @@
 * view 함수 만들어주기
 
   * articles/ views.py
+  * render는 **django.shortcuts** 에서 가져온다.
+  * 'index.html' = 템플릿경로
 
   ![image-20220302104843902](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302104843902.png)
 
@@ -292,12 +303,17 @@
 
 * app/ > **templates > index.html**
 
-  * templates라고 쓰느
+  * templates라고 쓰는 것이 관례
 
   
 
 ### 2. 참고
 
+* LANGUAGE_CODE = 'en-us'
+  * 'ko-kr'
+* TIME_ZONE = 'UTC'
+  * 데이터베이스에 저장되어있는 날짜 시간 정보를 장고에서 사용
+  * 'Asia/Seoul'
 * USE_I18N
   * Django의 번역 시스템을 활성화해야 하는지 여부를 지정
 * USE_L10N
@@ -316,10 +332,14 @@
 ### 1.  Django Template
 
 * 데이터 표현을 제어하는 도구이자 표현에 관련된 로직
+
 * 사용하는 built-in system
+
   * Django template language
 
-### 2. Django Tempalte Language(DTL)
+    
+
+### 2. Django Template Language(DTL)
 
 * Django template에서 사용하는 built-in template system
 * 조건, 반복, 변수 치환, 필터 등의 기능 제공
@@ -330,19 +350,21 @@
 
 ### 3. DTL Syntax
 
-#### 1) 변수(Variable)
+#### 1) :star: 변수(Variable)
 
-* `{{variable}}`
+* `{{ variable }}`
 
 * render()를 사용하여 views.py에서 정의한 변수를  template 파일로 넘겨 사용하는 것
 
-* `render(request, 'templatefile.html', {'key': 'value'})`
+* `render(request, 'templatefile.html', {'key': 'value',})`
 
   * 첫 번째 인자(고정): request
-  * 두 번째 인자: 템플릿 파일 이름
+  * 두 번째 인자: 템플릿 파일 이름(경로)
   * 세 번째 인자: {'key': value}와 같이 딕셔너리 형태로 넘겨주며, 여기서 정의한 key에 해당하는 문자열이 template에서 사용 가능한 변수명이 된다. optional.
 
-* 변수명은 영어, 숫자, 밑줄의 조합으로 구성될 수 있으나, 밑줄로는 시작할 수 없음
+* 변수명은 영어, 숫자, 밑줄의 조합으로 구성될 수 있으나, 밑줄로는 시작할 수 없음(python과 동일)
+
+  * 공백이나 구두점 문자 또한 사용할 수 없음(이건 파이썬보다 엄격)
 
 * dot(.)를 사용하여 변수 속성에 접근가능
 
@@ -356,17 +378,17 @@
 
   * greeting.html
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143500813.png" alt="image-20220302143500813" style="zoom: 50%;" />
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143500813.png" alt="image-20220302143500813" style="zoom: 67%;" />
 
   * urls.py
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143608546.png" alt="image-20220302143608546" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143608546.png" alt="image-20220302143608546" style="zoom: 80%;" />
 
   * 만약, 변수가 많아진다면?
 
     * context 안에 포함
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145004185.png" alt="image-20220302145004185" style="zoom: 67%;" />
+      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145004185.png" alt="image-20220302145004185" style="zoom: 80%;" />
 
     * ``{{ }}` 을 사용해서 view 안의 값을 불러올 수 있다. 
 
@@ -374,7 +396,7 @@
 
     * foods 리스트 안의 첫번째 인자를 받아오고 싶다면 `foods.0`
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302144235398.png" alt="image-20220302144235398" style="zoom: 67%;" />
+      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302144235398.png" alt="image-20220302144235398" style="zoom: 80%;" />
 
     * 출력
 
@@ -396,15 +418,15 @@
 
   * join 필터 다음에 ', ' 로 이어질 수 있게 되어있다.
 
-  ![image-20220302150218136](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150218136.png)
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150218136.png" alt="image-20220302150218136"  />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150926625.png" alt="image-20220302150926625" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150926625.png" alt="image-20220302150926625" style="zoom: 67%;" />
 
 * 예시1
 
   * 소문자로 바꿈
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145102354.png" alt="image-20220302145102354" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145102354.png" alt="image-20220302145102354" style="zoom: 80%;" />
 
   * 출력 예시: 소문자로 바뀌어서 
 
@@ -422,7 +444,7 @@
 
      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150006791.png" alt="image-20220302150006791"  />
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150019197.png" alt="image-20220302150019197" style="zoom: 50%;" />
+     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150019197.png" alt="image-20220302150019197" style="zoom: 67%;" />
 
      
 
@@ -430,7 +452,7 @@
 
   
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145723260.png" alt="image-20220302145723260" style="zoom: 67%;" />
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145723260.png" alt="image-20220302145723260" style="zoom: 80%;" />
 
   
 
@@ -446,7 +468,7 @@
 
   * `{% if %}{% endif %}`
 
-* 약 24개의 built-in template tags를 제공
+* 약 24개의 :computer_mouse: *built-in template tags* 를 제공
 
 * 예시
 
@@ -454,9 +476,19 @@
 
     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302151319660.png" alt="image-20220302151319660" style="zoom:67%;" />
 
+  * 뒤로가기
+
+    ![image-20220303095010080](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303095010080.png)
+
+    `<a href="/index/">뒤로</a>`
+
+    인덱스 앞에 /를 쓰는 이유는 IP port가장 앞에 붙여주라는 뜻
+
   * 출력
 
   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302151240309.png" alt="image-20220302151240309" style="zoom:67%;" />
+
+
 
 #### 4) Comments
 
@@ -479,9 +511,7 @@
 
   * `{# {% if ... %} text {% else %} #}`
 
-* 한 줄 주석에만 사용할 수 있음(줄바꿈 허용안됨)
 
-* 여러 줄 주석은 
 
 ### 4. 코드 작성 순서
 
@@ -554,7 +584,7 @@
 
 * 템플릿 상속은 기본적으로 코드의 재사용성에 초점
 
-* 템플리 삿ㅇ속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override)할 수 있는 블록을 정의하는 기본 'skeleton' 템플릿을 만들 수 있다.
+* 템플리 상속을 사용하면 사이트의 모든 공통 요소를 포함하고, 하위 템플릿이 재정의(override)할 수 있는 블록을 정의하는 기본 'skeleton' 템플릿을 만들 수 있다.
 
 * 부트스트랩 사용하고 싶을 때
 
@@ -581,8 +611,11 @@
   1. settings > `TEMPLATES = []`
 
      * DIRS: [] 빈 리스트 안에 추가 경로를 설정해 줄 것
+     * 밑에 `'APP_DIRS': True` 라는 것이 templates의 위치를 지정하고 있기 때문에, 그 외의 공간에 templates가 있으려면 `'DIRS'`에 따로 지정을 해 줘야 한다.
 
      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302154255599.png" alt="image-20220302154255599" style="zoom:67%;" />
+
+     ![image-20220303102251899](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303102251899.png)
 
   2. 최상단에 새 `templates` 폴더 만들고 안에 base.html(부모템플릿)을 만들어줌 (그래야 가장 먼저 읽음)
 
@@ -620,6 +653,7 @@
      * 최상단에 `{% extends '부모템플릿.html' %} `
      * html 기본 구조 다 지우고, <body></body> 안의 내용만 남긴다.
      * 그 내용들을 `{% block content %} {% endblock %}` 사이에 넣어줌
+     * 들여쓰기는 선택사항!
 
   6. 만약 Navbar를 따로 관리하고 싶다면?
 
@@ -656,11 +690,206 @@
 
 ## :five: HTML Form
 
+### 1. HTML "form" element
+
+* 개념
+
+  * 웹에서 사용자 정보를 입력하는 여러 방식을 제공하고, 사용자로부터 할당된 데이터를 서버로 전송하는 역할을 담당
+    * text, button, checkbox, file, hidden, image, password, radio, reset, submit
+    * radio vs checkbox: checkbox는 multi selection가능, radio는 하나만 가능
+
+* 핵심 속성(attribute)
+
+  * action: 입력 데이터가 전송될 URL지정
+
+  * method: 입력 데이터 전달 방식 지정
+
+    * **GET**: 데이터를 달라고 할 때 요청
+
+    * **POST**: 글을 작성하거나 회원 가입을 하거나 등 데이터를 저장 및 쓸 때
+
+    * RESTFUL
+
+    * 둘 다 semantic tag와 유사하게, 의미를 구분하기 위해서 그렇게 쓴다. 기능에는 차이 X 
+
+      
+
+### 2. HTML "input" element
+
+* 개념
+  * 사용자로부터 데이터를 입력받기 위해 사용
+  * type속성에 따라 동작 방식이 달라짐
+* 핵심 속성
+  * NAME
+    * 중복 가능, 양식을 제출핼ㅆ을 때 name이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음
+    * 주 용도는 GET/POST 방식으로 서버에 전달하는 파라미터(name은 key, value는 value)로 매핑하는 것
+    * GET 방식에서는  URL에서 `?key=value&key=value` 형식으로 데이터 전달
+      * 보안이 좋지 않음
+      * 따라서 검색 키워드 등 보안이 필요하지 않은 데이터에 대해서 GET을 많이 사용
+
+
+
+### 3. HTML "label" element
+
+* 사용자 인터페이스 항목에 대한 설명(caption)을 나타냄
+
+* label을 input요소와 연결하기
+
+  * input에 id속성 부여
+  * label에는 input의 id와 동일한 값의 for 속성이 필요
+
+* label과 input요소의 연결의 주요이점
+
+  * 시각적인 기능 뿐만 아니라 화면리더기에서 label을 읽어 사용자가 입력해야 하는 텍스트가 무엇인지 더 쉽게 이해할 수 있도록 돕는 프로그래밍적 이점도 있음
+
+  * label을 클릭해서 input에 초점(focus)을 맞추거나 활성화(activate) 시킬 수 있음
+
+    
+
+### 4. HTML "for" attribute
+
+* for 속성의 값과 일치하는 id를 가진 문서의 첫 번째 요소를 제어
+
+  * 연결 된 요소가 labelable elements 인 경우, 이 요소에 대한 labled control이 됨
+
+* "labelable elements"
+
+  * label 요소와 연결할 수 있는 요소
+  * button, input(not hidden type), select, textarea ...
+
+  
+
+### 5. HTML "id" attribute
+
+* 전체 문서에서 고유(must me unique)해야 하는 식별자를 정의
+* 사용 목적
+  * linking, scripting, styling 시 요소를 식별
+
+
+
+### 6. HTTP
+
+#### 1) 개념
+
+* Hyper Text Transfer Protocol
+* 웹에서 이루어지는 모든 데이터 교환으 ㅣ기초
+* 주어진 리소스가 수행 할 작업을 나타내는 request methods를 정의
+* HTTP request method 종류
+  * **GET, POST**, PUT, DELETE ...
+
+#### 2) HTTP request method - 'GET'
+
+* 서버로부터 정보를 조회하는데 사용
+* 데이터를 가져올 때만 사용해야 함
+* 데이터를 서버로 전송할 때 body가 아닌 Query String Parameters를 통해 전송
+  * Query String: URL에다 ? 찍고 보내는거...
+  * POST는 body를 통해 전송
+* 우리는 서버에 요청을 하면 HTML 문서 파일 한 장을 받는데 이 때 사용하는 요청의 방식이 GET
+
+
+
+#### 3) 예시 1
+
+1. url
+
+   ![image-20220303111519609](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111519609.png)
+
+2. view
+
+   ![image-20220303111929409](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111929409.png)
+
+   
+
+3. html
+   ![image-20220303111656450](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111656450.png)
+
+   ![image-20220303112747240](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303112747240.png)
+
+
+
+#### 4) 예시 2
+
+* throw로 던진 정보를 catch로 잡는 것
+
+1. url
+
+2. view
+
+   ![image-20220303113640241](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303113640241.png)
+
+3. html
+
+4. 
+
+
+
 
 
 ## :six: URL
 
+### 1. Django URLs
+
+* Dispatcher(발송자, 운항 관리자)로서의 URL
+* 웹 어플리케이션은 URL을 통한 클라이언트의 요청에서부터 시작 됨
+
+### 2. Variable Routing
+
+* URL 주소를 변수로 사용하는 것
+* URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
+* 즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결시킬 수 있음
+
+### 3. URL Path converters
 
 
 
+### 4. App URL mapping
+
+* app의 view 함수가 많아지면서, 사용하는 path() 또한 많아지고, app ㅇ또한 더 많ㅇ이 작성되기 때문에 프로젝트의 urls.py에서 모두 관리하는 것은 프로젝트 유지보수에 좋지 않음
+
+### 5. Including other URLconfs
+
+#### 1)
+
+#### 2) include()
+
+* 다른 URLconf(app1/urls.py)들을 참조할 수 있도록 도움
+* 함수 include()를 만나게 되면, URL의 그 시점까지 일치하는 부분을 잘라내고, 남은 문자열 부분을 후속 처리를 위해 include된 URLconf로 전달
+
+
+
+
+
+![image-20220303132441408](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303132441408.png)
+
+![image-20220303132515619](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303132515619.png)
+
+
+
+* pages > url.py 새로 생성
+
+![image-20220303133458110](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303133458110.png)
+
+* pjt01>url.py의 import path 뒤에 `, include` 추가
+
+  ![image-20220303133646725](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303133646725.png)
+
+  ![image-20220303134410455](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303134410455.png)
+
+
+
+### 6. Naming URL patterns
+
+* path() 
+
+![image-20220303142430058](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303142430058.png)
+
+
+
+
+
+* app_name
+
+![image-20220303143439901](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143439901.png)
+
+![image-20220303143606132](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143606132.png)
 
