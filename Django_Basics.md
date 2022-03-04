@@ -81,14 +81,17 @@
 <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302092233985.png" alt="image-20220302092233985" style="zoom:67%;" />
 
 * Model - *database, data*
+  * DB에 저장되는 테이블 구조를 정의
   * 응용 프로그램의 데이터 구조를 정의하고 데이터베이스의 기록을 관리(추가, 수정, 삭제)
 * Template(view) -  *HTML*
   * 파일의 구조나 레이아웃을 정의
   * 실제 내용을 **보여주는 데** 사용(presentation)
+  * 사용자에게 보여지는 UI
 * View(controller)  - *조작, 가공*
   * **HTTP 요청을 수신하고 HTTP 응답을 반환**
   * Model을 통해 요청을 충족시키는 데 필요한 데이터에 접근
   * template에게 응답의 서식 설정을 맡김
+  * 프로그램의 로직이 동작하여 데이터를 가져오고 적절하게 처리한 결과를  template과 결합하여 전달
 
 
 
@@ -655,7 +658,7 @@
      * 그 내용들을 `{% block content %} {% endblock %}` 사이에 넣어줌
      * 들여쓰기는 선택사항!
 
-  6. 만약 Navbar를 따로 관리하고 싶다면?
+  6.  만약 Navbar를 따로 관리하고 싶다면?
 
      * articles > templates 에 새로 파일을 만들어서 관리가능
 
@@ -809,7 +812,7 @@
 
 #### 4) 예시 2
 
-* throw로 던진 정보를 catch로 잡는 것
+* throw로 던진 정보를 catch로 잡는 것pip 
 
 1. url
 
@@ -834,7 +837,7 @@
 
 ### 2. Variable Routing
 
-* URL 주소를 변수로 사용하는 것
+* URL 주소를 변수로 사용하여 동적으로 주소를 만드는 것
 * URL의 일부를 변수로 지정하여 view 함수의 인자로 넘길 수 있음
 * 즉, 변수 값에 따라 하나의 path()에 여러 페이지를 연결시킬 수 있음
 
@@ -892,4 +895,9 @@
 ![image-20220303143439901](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143439901.png)
 
 ![image-20220303143606132](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143606132.png)
+
+
+
+
+
 
