@@ -125,7 +125,7 @@
 
  2. django 설치
 
-    `pip install django==3.2.12`
+    `pip install django==3.2.11`
 
  3. 프로젝트 생성
 
@@ -895,7 +895,6 @@
 ![image-20220303143439901](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143439901.png)
 
 ![image-20220303143606132](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143606132.png)
-
 
 
 
