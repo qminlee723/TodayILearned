@@ -149,6 +149,18 @@
 
     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302140216832.png" alt="image-20220302140216832" style="zoom:50%;" />
 
+ 7. 패키지 한꺼번에 설치하기
+
+    ```bash
+    $ pip install -r requirements.txt
+    ```
+
+ 8. 활성화
+
+    ```bash
+    $ source venv\Scripts\activate
+    ```
+
     
 
     
