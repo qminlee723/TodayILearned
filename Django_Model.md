@@ -76,18 +76,29 @@
 <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113636961.png" alt="image-20220308113636961" style="zoom:50%;" />
 
 * Object-Relational-Mapping
+
 * 객체 지향 프로그래밍 언어를 사용하여 호환되지 않는 유형의 시스템 간(Django-SQL) 데이터를 변환하는 프로그래밍 기술
+
 * OOP 프로그래밍에서 RDBMS를 연동할 때, 데이터베이스와 객체 지향 프로그래밍 언어 간의 호환되지 않는 데이터를 변환하는 프로그래밍 기법
+
 * Django는 내장 Django ORM 사용
+
+  
 
 ### 2. 장점 및 단점
 
 * 장점
+
   * SQL을 잘 몰라도 DB 조작이 가능
   * SQL의 절차적 접근이 아닌 객체 지향적 접근으로 인한 높은 생산성
+
 * 단점
+
   * ORM만으로 완전한 서비스를 구현하기 어려운 경우가 있음
+
   * 속도가 느리고 효율적이지 못함(현대 웹 프레임워크의 요점은 웹 개발의 속도를 높이는 것 (생산성))
+
+    
 
 ### 3. ORM 사용목적
 
@@ -109,12 +120,50 @@
 ![image-20220308101939167](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101939167.png)
 
 * 각 모델은 django.models.Model 클래스의 서브 클래스로 표현됨
+
   * django.db.models 모듈의 Model 클래스를 상속받음
+
 * mdoels 모듈을 통해 어떠한 타입의 DB 컬럼을 정의할 것인지 정의
+
   * title, content는 모델의 필드를 나타냄
   * 각 필드는 클래스 속성으로 지정되어 있으며, 각 속성은 각 데이터베이스의 열에 매핑
 
-#### 3)
+  
+
+#### 3) Field Types
+
+* `CharField(max_length=00)`
+  * max_length 필수
+  * 필드의 최대 길이(문자), 데이터베이스레벨과 Django의 유효성검사(값을 검증하는 것)에서 활용
+* `TextField()`
+  * 길이 제한 없음(글자의 수가 많을 때 사용)
+  * max_length 옵션 작성시 자동 양식 필드인 textarea 위젯에 반영은 되지만,  모델과 데이터베이스 수준에는 적용되지 않음
+* `models.DateTimeField`
+  * auto_now_add
+  * auto_now
+
+* 참고
+
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101645717.png" alt="image-20220308101645717" style="zoom:50%;" />
+
+  *reference: https://docs.djangoproject.com/en/4.0/ref/models/fields/*
+
+
+
+#### 4) Field options
+
+* `null`
+
+  * 파이썬의 none과 유사
+
+  * Default는 False. 
+
+  * null=True이면 없는 값도 들어갈 수 있다는 것
+    * If True, Django will store empty values as NULL in the database
+
+* 참고
+
+  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101613530.png" alt="image-20220308101613530" style="zoom:50%;" />
 
 
 
@@ -122,80 +171,74 @@
 
 ## :three: Migration
 
+### 1. 개념
 
+* Django가 model에 생긴 변화를 반영하는 방법
 
-Model
+* 모델이 변경된 것에 대한 히스토리
 
-* 
+* Migration 실행 및 DB 스키마를 다루기 위한 몇가지 명령어
 
-| <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101613530.png" alt="image-20220308101613530" style="zoom:50%;" /> | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101645717.png" alt="image-20220308101645717" style="zoom:50%;" /> |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+  ```bash
+  makemigrations
+  migrate
+  sqlmigrate
+  showmigrations
+  ```
 
-*reference: https://docs.djangoproject.com/en/4.0/ref/models/fields/*
-
-
-
-* Field options
-  * null
-    * 파이썬의 none과 유사
-    * Default는 False. 
-    * null=True이면 없는 값도 들어갈 수 있다는 것
-      * If True, Django will store empty values as NULL in the database
-  * blank
-* Field types
+  
 
 
 
-* 모델 조작(생성, 수정, 삭제)
+### 2. 모델 조작(생성, 수정, 삭제)
 
-  * Migration: 모델이 변경된 것에 대한 히스토리
+* Migration 생성
 
-  * Migration 생성
+  ```bash
+  $ python manage.py makemigrations
+  ```
 
-    ```bash
-    $ python manage.py makemigrations
-    ```
+  `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
 
-    `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
+  ​	<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130" style="zoom:50%;" />
 
-    ​	<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130" style="zoom:50%;" />
+  
 
-    
+* Migration 반영(적용)
 
-  * Migration 반영(적용)
+  ```bash
+  $ python manage.py migrate
+  ```
 
-    ```bash
-    $ python manage.py migrate
-    ```
+  * `db.sqlite3` : 데이터베이스
 
-    * `db.sqlite3` : 데이터베이스
+    ![image-20220308103533240](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308103533240.png)
 
-      ![image-20220308103533240](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308103533240.png)
+  
 
-  * 각 Migration이 어떻게 sql로 변환되었는지 알고싶다면
+* 각 Migration이 어떻게 sql로 변환되었는지 알고싶다면
 
-    ```bash
-    $ python manage.py sqlmigrate articles 0001
-    ```
+  ```bash
+  $ python manage.py sqlmigrate articles 0001
+  ```
 
-  * 각 Migration이 실제로 데이터베이스에 반여되었는지 체크하고 싶다면
+  
 
-    ```bash
-    $ python manage.py showmigrations
-    ```
+* 각 Migration이 실제로 데이터베이스에 반여되었는지 체크하고 싶다면
 
-* `models.DateTimeField`
+  ```bash
+  $ python manage.py showmigrations
+  ```
 
-  * auto_now_add
-  * auto_now
+  
+
+* 모델 조작후(DateTimeField 넣어줌) migration 생성 및 반영
 
   ![image-20220308104819909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308104819909.png)
 
-  * 모델을 조작했으면 migration을 만들고, DB에 반영해 주어야 한다
+  * migrate 생성
 
-    * migrate 생성
-
-      ![image-20220308105727213](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105727213.png)
+    ![image-20220308105727213](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105727213.png)
 
     
 
@@ -207,30 +250,55 @@ Model
 
     
 
-    * 반영
+  * 반영
 
-      ![image-20220308105802462](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105802462.png)
+    ![image-20220308105802462](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105802462.png)
 
-    * 시각화: 이런식으로 table을 생성해 준 것
+  * 시각화: 이런식으로 table을 생성해 준 것
 
-      | id   | title | content | created_at | updated_at |
-      | ---- | ----- | ------- | ---------- | ---------- |
-      |      |       |         |            |            |
+    | id   | title | content | created_at | updated_at |
+    | ---- | ----- | ------- | ---------- | ---------- |
+    |      |       |         |            |            |
 
-      
+    
 
-      이제 CRUD(Create, Read, Update, Delete) 
+### 3. CRUD
 
-      ORM 을 사용할 것
+#### 0) Shell 설치
 
-      Model 은 뷰에서 조
+* Django로 켠 shell > django 의 모든 기능들 사용가능
 
-      
+* 설치
 
-* ORM 연습
+  * `pip install django_extensions==3.1.5`
 
-  * django로 켠 shell > django 의 모든 기능들 사용가능
-  * 모델에서 데이터 가져오기
+  * `pip install ipython`
+
+  * `INSTALLED_APPS` 에 `django_extensions`추가
+
+    * `ipython`은 안 넣어줘도 됨. 
+
+    ![image-20220308132012335](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308132012335.png)
+
+* `pip freeze > requirements.txt`
+
+* 사용
+
+  ```bash
+  $ python manage.py shell
+  
+  $ python manage.py shell_plus # 가독성이 좋음 # django_extensions 설치해야 함
+  ```
+
+  
+
+  
+
+#### 1) CREATE
+
+* **모델에서 데이터 가져오기**
+
+  ![image-20220308131250570](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308131250570.png)
 
   ```bash
   $ python manage.py shell
@@ -245,7 +313,7 @@ Model
 
   
 
-  * 데이터 추가하기(인스턴스를 만들고, save)
+* **데이터 추가하기(인스턴스를 만들고, save)**
 
   ```bash
   # 만든 row에다가 내용을 넣어보자
@@ -256,23 +324,25 @@ Model
   >>> article.save()
   ```
 
+  
+
   * 추가한 데이터 확인
 
-  ```bash
-  >>> Article.objects.all()
-  <QuerySet [<Article: Article object (1)>]>
-  >>> article = Article.objects.all()[0]
-  >>> article.title
-  '첫번째 글' # 출력됨
-  >>> article.content
-  '푸틴아 정신차려' # 출력됨
-  ```
+    ```bash
+    >>> Article.objects.all()
+    <QuerySet [<Article: Article object (1)>]>
+    >>> article = Article.objects.all()[0]
+    >>> article.title
+    '첫번째 글' # 출력됨
+    >>> article.content
+    '푸틴아 정신차려' # 출력됨
+    ```
+
+    ![image-20220308111934133](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308111934133.png)
 
   
 
-  ![image-20220308111934133](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308111934133.png)
-
-  * 데이터 한꺼번에 추가하기(Keyword인자를 넘기는 방식, save)
+* **데이터 한꺼번에 추가하기(Keyword인자를 넘기는 방식, save)**
 
   ```bash
   >>> article = Article(title="두번째 글", content="점심 뭐 먹지?")
@@ -281,7 +351,7 @@ Model
 
   
 
-  * save 없이 데이터 추가하기(Create 이용)
+* **save 없이 데이터 추가하기(Create 이용)**
 
   ```bash
   >>> Article.objects.create(title="세번째 글", content="살 빼야하는데?")  
@@ -290,4 +360,136 @@ Model
 
   
 
-  
+#### 2) READ
+
+* `python manage.py shell_plus`
+
+*  모델을 찾아서  import를 쫙 해줌
+
+  ![image-20220308132445994](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308132445994.png)
+
+  * QuerySet에 타이틀이 보이게 하고 싶다면 `models.py` `Article` 클래스 **안**에 `__str__` 을 정의해준다
+
+    ![image-20220308134555532](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134555532.png)
+
+* 
+
+![image-20220308133321232](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133321232.png)
+
+![image-20220308133339752](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133339752.png)
+
+
+
+
+
+
+
+![image-20220308133524098](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133524098.png)
+
+![image-20220308133605304](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133605304.png)
+
+get은 한가지만 반환한다 -> 따라서 제목이나 내용보다는 id를 자주 사용한다
+
+![image-20220308133743688](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133743688.png)
+
+pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙여준다
+
+
+
+
+
+
+
+* filter
+
+  * title이 "첫번째 글"인 모든 Article을 호출하고 싶을 때
+
+  ![image-20220308134051368](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134051368.png)
+
+  * ex) 어떠한 field가 정수라면, 1보다 크면 가져와, 3보다 크면 가져와... 등등 다양한 필터들이 있음
+
+  * 참고: https://docs.djangoproject.com/en/3.2/ref/models/querysets/
+
+  * contains
+
+    ![image-20220308134702847](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134702847.png)
+
+  * in 
+
+  * isstartwith
+
+  * 
+
+
+
+#### 3) Update
+
+![image-20220308140838419](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140838419.png)
+
+
+
+#### 4) Delete
+
+![image-20220308140910219](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140910219.png)
+
+
+
+
+
+
+
+## :six: Admin 
+
+```bash
+$ python manage.py runserver
+
+http://127.0.0.1:8000/admin
+```
+
+```bash
+$ python manage.py createsuperuser
+Username (leave blank to use 'gyumin'): gyumin
+Email address: gyumin@test.com       
+Password:						# password라서 화면에는 안 뜨지만 키보드 눌리고 있는 것임	#dlrbals12
+Password (again): 				# 너무 짧거나, 숫자로만 구성되어 있거나 하면 warning
+Superuser created successfully.
+```
+
+
+
+`articles/` 안 `admin.py`에 편집
+
+![image-20220308142005828](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142005828.png)
+
+`.models` 쩜은 장고에서 권장하는 포맷임
+
+
+
+![image-20220308142152188](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142152188.png)
+
+
+
+![image-20220308142315688](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142315688.png)
+
+
+
+![image-20220308142451268](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142451268.png)
+
+
+
+
+
+![image-20220308142431608](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142431608.png)
+
+
+
+
+
+![image-20220308142401062](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142401062.png)
+
+
+
+
+
+
+
