@@ -141,6 +141,9 @@
 * `models.DateTimeField`
   * auto_now_add
   * auto_now
+  * DateTimeField가 아닌 DateField의 optinos를 확인한 이유
+    * DateTimeField는 Datefield와 동일한 추가 인자(extra argument)를 사용함
+    * DateTimeField는 Datefiled의 서브 클래스
 
 * 참고
 
@@ -151,6 +154,13 @@
 
 
 #### 4) Field options
+
+* `auto_now_add`
+  * 최초 생성 일자
+  * Django ORM이 최초 insert(테이블에 데이터 입력)시에만 현재 날짜와 시간으로 갱신(테이블에 어떤 값을 최초로 넣을 때)
+* `auto_now`
+  * 최초 수정 일자
+  * Django ORM이 save할 때마다, 현재 날짜와 시간으로 갱신
 
 * `null`
 
@@ -186,29 +196,40 @@
   showmigrations
   ```
 
-  
+* 반드시 기억해야 할 migration 3단계
+
+  1. `models.py` : model 변경사항 발생 시
+  2. `$ python manage.py makemigrations` : migrations 파일 생성
+  3. `$ python manage.py migrate` : DB반영(model과 DB의 동기화)
 
 
 
 ### 2. 모델 조작(생성, 수정, 삭제)
 
-* Migration 생성
+* Migration 생성: `makemigrations`
 
   ```bash
   $ python manage.py makemigrations
   ```
 
-  `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
+  * `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
+  * model을 변경한 것에 기반한 새로운 migration(like 설계도)을 만들 때 사용
 
   ​	<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130" style="zoom:50%;" />
 
   
 
-* Migration 반영(적용)
+* Migration 반영(적용): `migrate`
 
   ```bash
   $ python manage.py migrate
   ```
+
+  * 마이그레이션을 DB에 반영하기 위해 사용
+
+  * 설계도를 실제 DB에 반영하는 과정
+
+  * 모델에서의 변경 사항들과 DB의 스키마가 동기화를 이룸
 
   * `db.sqlite3` : 데이터베이스
 
@@ -216,23 +237,29 @@
 
   
 
-* 각 Migration이 어떻게 sql로 변환되었는지 알고싶다면
+* 각 Migration이 어떻게 sql로 변환되었는지 알고싶다면: `sqlmigrate`
 
   ```bash
   $ python manage.py sqlmigrate articles 0001
   ```
 
+  * migration에 대한 SQL 구문을 보기 위해 사용
+  * migration이 SQL문으로 어떻게 해석되어 동작할지 미리 확인할 수 있음
+
   
 
-* 각 Migration이 실제로 데이터베이스에 반여되었는지 체크하고 싶다면
+* 각 Migration이 실제로 데이터베이스에 반여되었는지 체크하고 싶다면: `showmigrations`
 
   ```bash
   $ python manage.py showmigrations
   ```
 
+  * 프로젝트 전체의 migration상태를 확인하기 위해 사용
+  * migration 파일들이 migrate 됐는지, 안됐는지 여부를 확인할 수 있음
+
   
 
-* 모델 조작후(DateTimeField 넣어줌) migration 생성 및 반영
+* 모델 조작후(DateTimeField 넣어줌) migration 생성 및 반영과정
 
   ![image-20220308104819909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308104819909.png)
 
@@ -260,7 +287,15 @@
     | ---- | ----- | ------- | ---------- | ---------- |
     |      |       |         |            |            |
 
-    
+
+
+## :four: DB API
+
+
+
+
+
+## :five: CRUD
 
 ### 3. CRUD
 
@@ -438,54 +473,63 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-## :six: Admin 
+## :six: Admin Site
 
-```bash
-$ python manage.py runserver
+### 1. Admin Site 활용하기
 
-http://127.0.0.1:8000/admin
-```
+* Django에서 제공하는 Admin Site  들어가기
 
-```bash
-$ python manage.py createsuperuser
-Username (leave blank to use 'gyumin'): gyumin
-Email address: gyumin@test.com       
-Password:						# password라서 화면에는 안 뜨지만 키보드 눌리고 있는 것임	#dlrbals12
-Password (again): 				# 너무 짧거나, 숫자로만 구성되어 있거나 하면 warning
-Superuser created successfully.
-```
+  ``` bash
+  $ python manage.py runserver
+  
+  http://127.0.0.1:8000/admin
+  ```
+
+* Admin Site 로그인하기
+
+  * username, password 설정
+
+  ```bash
+  $ python manage.py createsuperuser
+  Username (leave blank to use 'gyumin'): gyumin
+  Email address: gyumin@test.com       
+  Password:						# password라서 화면에는 안 뜨지만 키보드 눌리고 있는 것임	#dlrbals12
+  Password (again): 				# 너무 짧거나, 숫자로만 구성되어 있거나 하면 warning
+  Superuser created successfully.
+  ```
+
+  * `articles/` > `admin.py`에 편집
+
+    * ​	*`.models` 쩜은 장고에서 권장하는 포맷*
+
+      ![image-20220308142005828](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142005828.png)
+
+  * http://127.0.0.1:8000/admin 에서 로그인
+
+    ![image-20220308142152188](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142152188.png)
+
+  
+
+  * 로그인 하면 아래 처럼  Django가 제공하는 UI 나타남. 여기서 방금까지 생성했던 데이터를 시각적으로 볼 수 있음
+
+    * 기본 페이지
+
+      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142315688.png" alt="image-20220308142315688" style="zoom:80%;" />
+
+    * Articles안에 들어가면 데이터들을 눈으로 볼 수 있다
+
+      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142451268.png" alt="image-20220308142451268" style="zoom:80%;" />
+
+    * 직접 delete 및 edit 가능, add 도 가능
+
+      | Edit & Delete                                                | Add                                                          |
+      | ------------------------------------------------------------ | ------------------------------------------------------------ |
+      | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142431608.png" alt="image-20220308142431608" style="zoom: 67%;" /> | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142401062.png" alt="image-20220308142401062" style="zoom: 67%;" /> |
+
+      
 
 
 
-`articles/` 안 `admin.py`에 편집
-
-![image-20220308142005828](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142005828.png)
-
-`.models` 쩜은 장고에서 권장하는 포맷임
-
-
-
-![image-20220308142152188](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142152188.png)
-
-
-
-![image-20220308142315688](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142315688.png)
-
-
-
-![image-20220308142451268](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142451268.png)
-
-
-
-
-
-![image-20220308142431608](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142431608.png)
-
-
-
-
-
-![image-20220308142401062](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142401062.png)
 
 
 
@@ -493,3 +537,195 @@ Superuser created successfully.
 
 
 
+
+
+
+
+
+
+
+
+
+1. 먼저 articles 폴더 안에 urls.py 만들어준다
+
+   * from . import views 하기
+   * urlpatterns 채워준다
+
+2. views에 index함수 설정
+
+   * index 함수 설정해준다
+
+3. templates/ > articles/ > `index.html`생성
+
+   * 샌드위치 모양
+
+4. crud 프로젝트의 urls.py 업데이트 해준다
+
+   ![image-20220308143922314](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308143922314.png)
+
+5. base.html적용하려면
+
+   ![image-20220308144951873](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308144951873.png)
+
+   
+
+
+
+
+
+
+
+##### 실습
+
+
+
+![image-20220308150700631](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308150700631.png)
+
+
+
+1. 모델을 이용해서 모든 데이터를 가져온다: `views.py`
+
+   ![image-20220308152943494](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308152943494.png)
+
+   
+
+2. 가져온 데이터를 템플릿으로 넘긴다: `index.html`
+
+   ![image-20220308153401061](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153401061.png)
+
+   
+
+3. 템플릿에서 데이터를 보여준다
+
+   ![image-20220308153633724](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153633724.png)
+
+4. 걍 참고: `base.html`
+
+![image-20220308153453914](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153453914.png)
+
+
+
+5. 글을 써 봅시당
+
+   * `urls.py` 에 `new` 포함해주기
+   * `views.py`에 `new` 정의해주기
+   * `new.html`생성해주기
+
+6. form
+
+   * `form` 사용해서 Title과 Content 인풋박스를 만들어준다.
+
+   * `textarea`
+
+     ![image-20220308155106225](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155106225.png)
+
+     
+
+     * textarea 쓰니까 input 지워주자
+
+   * 이렇게 나옵니당
+
+     ![image-20220308155138406](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155138406.png)
+
+   * url 다시 설정
+
+     * <a href="/articles/index/"></a> 해 주고 싶지 않아서
+
+     * `articles/` 내 `urls.py`에 `app_name`과 `name=""` 설정을 해준다
+
+       ![image-20220308155257039](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155257039.png)
+
+     * `new.html` <a></a>태그 다시 설정
+
+       ![image-20220308155404332](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155404332.png)
+
+     * `index.html` 에서도 태그 다시 설정
+
+       <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155722892.png" alt="image-20220308155722892" style="zoom:80%;" />
+
+       * 어 근데 나중에 별명을 create > new로 바꿔줌 필기는 알아서 바꾸기
+       * ![image-20220308160801068](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308160801068.png)
+       * ![image-20220308160830478](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308160830478.png)
+       * 
+
+   * 글쓰기 기능 구현헤ㅐ보지ㅏ
+
+     * 제출한 뒤에 데이터가 가는 곳을 만들어 주는 것
+
+     * `urls`, `views.py` 에 새로 만듬
+
+     * ![image-20220308161117574](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161117574.png)
+
+     * `new.html`에서 보내줄 곳 action에 추가해주기
+
+       ![image-20220308161418282](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161418282.png)
+
+     * 주소창이 달라진 것을 볼 수 있다
+
+     * content에 dddd 쓰고 제출한거임
+
+       ![image-20220308161540704](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161540704.png)
+
+       
+
+       * `views.py` 에서 title과 content 가져오는 함수 써주기
+
+       * 대, 소문자 확인 잘 하기!
+
+         ![image-20220308161813210](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161813210.png)
+
+         
+
+         runserver해보면 title 제목데이터 content내용데이터 나옴
+
+         ![image-20220308161652454](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161652454.png)
+
+       * ![image-20220308161740694](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161740694.png)
+
+
+
+* DB에 데이터 저장하기
+
+  ![image-20220308162643502](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162643502.png)
+
+  ![image-20220308162655506](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162655506.png)
+
+  분홍: 모델에 있는 필드명
+
+  초록: 입력된 데이터 변수
+
+* 이 작업 이후, new에 글을 쓰면, index에 이렇게 추가됨
+
+  * 글번호 5가 추가된것임
+
+  ![image-20220308162935768](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162935768.png)
+
+* 최신 글이 가장 위로 올라오게 하려면?
+
+  * `views.py` 조작
+
+    1. 데이터를 가져온 다음에 바꾸는 방법
+
+    ![image-20220308163147927](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163147927.png)
+
+    2. 처음부터 DB에서 가져올 때 순서를 지정하는 방법
+
+       * pk: 오름차순
+       * -pk: 내림차순
+
+       
+
+       ![image-20220308163607849](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163607849.png)
+
+    3. 내가 쓴 내용이 url에 들어가지 않게 하고 싶다면:?
+
+       ![image-20220308163800402](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163800402.png)
+
+       * GET method(R only: Read)
+         * 기본값, 서버 리소스를 요청할 때
+         * 내용에 URL에 Query String을 포함해서 
+       * POST method(CUD: Create, Update, Delete)
+         * 리소스를 생성, 수정, 삭제 할 때 
+         * 내용을 Body 안 쪽에 숨겨서 보낸다.
+
+    
