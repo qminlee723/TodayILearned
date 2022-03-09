@@ -2,13 +2,13 @@
 
 ## :zero: OVERVIEW
 
-1. Model
+1. **Model**
 
-2. ORM
-3. Migrations
-4. Database API
-5. CRUD
-6. Admin Site
+2. **ORM**
+3. **Migrations**
+4. **Database API**
+5. **CRUD**
+6. **Admin Site**
 
 
 
@@ -19,7 +19,8 @@
 * 단일한 데이터에 대한 정보 가짐
   * 사용자가 저장하는 데이터들의 필수적인 필드들과 동작들을 포함
 * 저장된 데이터베이스의 구조(layout)
-* :star: Django는 model을 통해 데이터에 접속하고 관리
+* Class로 정해주는 것
+* :star: Django는 model을 통해 데이터에 접속하고 관리 :star:
 * 일반적으로 각각의 model은 하나의 데이터베이스 테이블에 매핑 됨
 
 
@@ -27,25 +28,21 @@
 ### 2. 하위 개념
 
 * 데이터베이스(DB)
-
   * 체계화된 데이터의 모임
-
 * 쿼리(Query)
-
   * 데이터를 조회하기 위한 명령어
   * 조건에 맞는 데이터를 추출하거나 조작하는 명령어
   * "Query를 날린다" > DB를 조작한다
-
 * 스키마(Schema)
-
   * 데이터베이스에서 자료의 구조, 표현방법, 관계 등을 정의한 구조(structure)
-
 * 테이블(Table)
-
   * 열(column): 필드(field) or 속성
   * 행(row): 레코드(record) or 튜플
 
-  
+* pk(Primary Key)
+  * 자동생성된다
+
+
 
 ### 3. 데이터베이스의 기본 구조
 
@@ -63,7 +60,7 @@
 
 ### 4. 정리
 
-* 웹 어플리케이션의 데이터를 구조화하고 조작하기 위한 도구
+* 웹 어플리케이션의 데이터를 구조화하고 조작하기 위한 도구 - CRUD로 함
 
   
 
@@ -111,6 +108,13 @@
 #### 1) 기본환경 세팅
 
 ```bash
+$ python -m venv venv
+$ django-admin startproject firstpjt .
+$ python manage.py runserver
+$ python manage.py startapp articles
+# settings.py > INSTALLED_APPS=[]에 추가
+$ pip install -r requirements.txt
+$ source venv\Scripts\activate
 ```
 
 #### 2) models.py 작성
@@ -206,20 +210,23 @@
 
 ### 2. 모델 조작(생성, 수정, 삭제)
 
-* Migration 생성: `makemigrations`
+* **Migration 생성**: `makemigrations`
 
   ```bash
   $ python manage.py makemigrations
   ```
 
   * `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
+
+    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308212318555.png" alt="image-20220308212318555" style="zoom:80%;" />
+
   * model을 변경한 것에 기반한 새로운 migration(like 설계도)을 만들 때 사용
 
-  ​	<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130"  />
 
   
 
-* Migration 반영(적용): `migrate`
+* **Migration 반영(적용)**: `migrate`
 
   ```bash
   $ python manage.py migrate
@@ -237,29 +244,35 @@
 
   
 
-* 각 Migration이 어떻게 sql로 변환되었는지 알고싶다면: `sqlmigrate`
+* **각 Migration이 어떻게 sql로 변환되었는지 알고싶다면**: `sqlmigrate`
 
   ```bash
   $ python manage.py sqlmigrate articles 0001
   ```
 
+  * `articles` 는 app name
   * migration에 대한 SQL 구문을 보기 위해 사용
   * migration이 SQL문으로 어떻게 해석되어 동작할지 미리 확인할 수 있음
 
   
 
-* 각 Migration이 실제로 데이터베이스에 반여되었는지 체크하고 싶다면: `showmigrations`
+* **각 Migration이 실제로 데이터베이스에 반영되었는지 체크하고 싶다면**: `showmigrations`
 
   ```bash
   $ python manage.py showmigrations
   ```
 
   * 프로젝트 전체의 migration상태를 확인하기 위해 사용
+
   * migration 파일들이 migrate 됐는지, 안됐는지 여부를 확인할 수 있음
+
+    * [X]표시 된게 migrate됐다는 것
+
+    ![image-20220308212620773](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308212620773.png)
 
   
 
-* 모델 조작후(DateTimeField 넣어줌) migration 생성 및 반영과정
+* **모델 조작후(속성 추가 created_at, updated_at) migration 생성 및 반영과정**
 
   ![image-20220308104819909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308104819909.png)
 
@@ -291,45 +304,79 @@
 
 ## :four: DB API
 
+### 1. 개념
+
+* DB를 조작하기 위한 도구
+* Django가 기본적으로 ORM을 제공함에 따른 것으로 DB를 편하게 조작할 수 있도록 도움
+* Model을 만들면, Django는 객체들을 만들고 읽고 수정하고 지울 수 있는 database-abstract API를 자동으로 만듦
+* database-abstract API 혹은 database-access API라고도 함
 
 
 
+### 2. 하위 개념
 
-## :five: CRUD
+* `Manager`
+  * Django 모델에 데이터베이스 query 작업이 제공되는 인터페이스
+  * 기본적으로 모든 Django 모델 클래스에 objects라는 Manager를 추가
+* `QuerySet`
+  * 데이터베이스로부터 전달받은 객체 목록(리스트 같이 활용 가능. 슬라이싱 가능)
+  * queryset 안의 객체는 0개, 1개, 혹은 여러 개 일 수 있음
+  * 데이터베이스로부터 조회, 필터, 정렬 등을 수행할 수 있음
+* Making Queries
 
-### 3. CRUD
+<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165636552.png" alt="image-20220308165636552" style="zoom:67%;" />
 
-#### 0) Shell 설치
 
-* Django로 켠 shell > django 의 모든 기능들 사용가능
 
-* 설치
+### 3. Django Shell
+
+* 일반 Python shell을 통해서는 장고 프로젝트 환경에 접근할 수 없음
+
+  * 따라서 장고 프로젝트 설정이 load 된 Python shell을 활용해 DB API 구문 테스트 진행
+
+  * Django로 켠 shell > django 의 모든 기능들 사용가능
+  * `Django-extensions`라이브러리 기능 중 하나인`shell_plus` 를 사용(더 많은 기능)
+
+* 설치방법
 
   * `pip install django_extensions==3.1.5`
 
-  * `pip install ipython`
+  * `pip install ipython` # 필수 아님 # 가독성
 
-  * `INSTALLED_APPS` 에 `django_extensions`추가
+  * `settings.py` > `INSTALLED_APPS` 에 `django_extensions`추가
 
     * `ipython`은 안 넣어줘도 됨. 
 
     ![image-20220308132012335](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308132012335.png)
 
-* `pip freeze > requirements.txt`
+  * `pip freeze > requirements.txt`
 
-* 사용
+    * requirements.txt는 사용된 패키지 목록이 나열되어있는 텍스트 파일임
+    * 이러한 텍스트 파일을 생성시켜주는 명령어
+
+    
+
+* 사용 명령어
 
   ```bash
   $ python manage.py shell
   
-  $ python manage.py shell_plus # 가독성이 좋음 # django_extensions 설치해야 함
+  $ python manage.py shell_plus # 기능이 더 많음 # django_extensions 설치해야 함
   ```
 
   
 
-  
 
-#### 1) CREATE
+
+
+
+## :five: :star: CRUD
+
+:link: [참조: Django 공식문서](https://docs.Djangoproject.com/en/3.2/ref/models/querysets/#queryset-api-reference)
+
+
+
+### 0. 데이터 가져오기(Making queries)
 
 * **모델에서 데이터 가져오기**
 
@@ -346,38 +393,45 @@
   				# 쉬운 이해: 빈 row를 생성한거
   ```
 
-  
 
-* **데이터 추가하기(인스턴스를 만들고, save)**
+
+### 1. CREATE(생성)
+
+* **인스턴스 생성 후 인스턴스 변수 설정 및 SAVE해주는 방식으로 데이터 추가하기**
 
   ```bash
   # 만든 row에다가 내용을 넣어보자
   
-  >>> article = Article()
-  >>> article.title = "첫번째 글"
-  >>> article.content = "푸틴아 정신차려"
-  >>> article.save()
+  >>> article = Article()						# Article(class) 로부터 article(instance)
+  >>> article.title = "첫번째 글"				 # 인스턴스 변수(title)에 값을 할당
+  >>> article.content = "푸틴아 정신차려"	   # 인스턴스 변수(content)에 값을 할당
+  >>> article.save()							#### 무조건 SAVE!
   ```
-
-  
 
   * 추가한 데이터 확인
 
     ```bash
+    >>> article
+    <Article: Article object (1)>				# 데이터 한 개 들었다고 1 나오는 거
     >>> Article.objects.all()
-    <QuerySet [<Article: Article object (1)>]>
+    <QuerySet [<Article: Article object (1)>]> 
+    
+    
+    # 인스턴스인 article을 활용하여 변수에 접근
     >>> article = Article.objects.all()[0]
     >>> article.title
-    '첫번째 글' # 출력됨
+    '첫번째 글' 
     >>> article.content
-    '푸틴아 정신차려' # 출력됨
+    '푸틴아 정신차려'
+    >>> article.pk
+    1
     ```
 
     ![image-20220308111934133](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308111934133.png)
 
   
 
-* **데이터 한꺼번에 추가하기(Keyword인자를 넘기는 방식, save)**
+* **Keyword 인자를 넘기고 SAVE 해주는 방식으로 데이터 한꺼번에 추가하기**: 초기 값과 함께 인스턴스 생성
 
   ```bash
   >>> article = Article(title="두번째 글", content="점심 뭐 먹지?")
@@ -386,7 +440,7 @@
 
   
 
-* **save 없이 데이터 추가하기(Create 이용)**
+* **Create 이용해서 SAVE 없이 데이터 추가하기**: QuerySet API - `create()` 사용
 
   ```bash
   >>> Article.objects.create(title="세번째 글", content="살 빼야하는데?")  
@@ -395,9 +449,37 @@
 
   
 
-#### 2) READ
+* CREATE 관련 메서드
 
-* `python manage.py shell_plus`
+  * `save()`
+
+    * 객체를 데이터베이스에 저장
+    * 데이터 생성 시 save() 호출 전에는 객체의 ID 값이 무엇인지 알 수 없음
+      * ID 값은 Django가 아니라, DB에서 계산되기 때문
+    * 단순히 모델을 인스턴스화 하는 것은 DB에 영향을 미치지 않기 때문에 반드시 save()가 필요
+
+  * `__str__`
+
+    * 표준 파이썬 클래스의 method인 str()을 정의하여 각각의 object가 사람이 읽을 수 있는 문자열을 반환(return)하도록 할 수 있음. 
+    * 반드시 shell_plus를 재시작해야 반영이된다
+
+    
+
+### 2. READ(읽기)
+
+* QuerySet API method는 크게 2 가지로 분류된다
+  * Methods that **return** new querysets
+    * `all()` : 
+    * `get()`: 
+    * `filter()`
+  * Methods that **do not return** querysets
+* READ 관련 메서드
+  * `all()`
+    * 현재 QuerySet의 복사본 반환
+  * `get()`
+    * 주어진 lookup 매개변수와 일치하는 객체를 반환
+    * 객체를 찾을 수 없으면 DoesNotExist
+  * `filter()`
 
 *  모델을 찾아서  import를 쫙 해줌
 
@@ -443,9 +525,19 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * ex) 어떠한 field가 정수라면, 1보다 크면 가져와, 3보다 크면 가져와... 등등 다양한 필터들이 있음
 
+  * 조건과 일치하는 모든 데이터를 가져옴
+
   * 참고: https://docs.djangoproject.com/en/3.2/ref/models/querysets/
 
-  * contains
+  * Field lookups
+
+    * 조회 시 특정 검색 조건을 지정
+    *  QuerySet 메서드 `filter()`, `exclude()` 및 `get()`에 대한 키워드 인수로 지정
+    * 예시
+      * `Article.objects.filter(pk__gt=2)`
+      * `Article.objects.filter(content__contains='ja')`
+
+  * contains (속성값 쓰고 던더 contains..)
 
     ![image-20220308134702847](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134702847.png)
 
@@ -457,25 +549,36 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-#### 3) Update
+### 3. UPDATE(갱신)
+
+* article 인스턴스 객체의 인스턴스 변수 값을 변경 후 저장
+  * `article.title = "네번째 글"` 처럼 인스턴스 객체에 다른 변수를 할당
 
 ![image-20220308140838419](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140838419.png)
 
 
 
-#### 4) Delete
+### 4. DELETE(삭제)
+
+* QuerySet의 모든 행에 대해 SQL 삭제 쿼리를 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환
+  * `article.delete()` 
 
 ![image-20220308140910219](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140910219.png)
 
 
 
-
+* * 
 
 
 
 ## :six: Admin Site
 
-### 1. Admin Site 활용하기
+### 1. 개념
+
+* Automatic admin interface
+* 
+
+### 2. Admin Site 활용하기
 
 * Django에서 제공하는 Admin Site  들어가기
 
@@ -527,16 +630,6 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
       | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142431608.png" alt="image-20220308142431608" style="zoom: 67%;" /> | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142401062.png" alt="image-20220308142401062" style="zoom: 67%;" /> |
 
       
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -672,6 +765,9 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
        * 대, 소문자 확인 잘 하기!
 
+         * title이라는 데이터를 가지고 올 때 쓰는 get
+         * GET은 form의 메서드
+
          ![image-20220308161813210](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161813210.png)
 
          
@@ -685,6 +781,8 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 * DB에 데이터 저장하기
+
+  * 
 
   ![image-20220308162643502](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162643502.png)
 
@@ -717,15 +815,107 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
        ![image-20220308163607849](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163607849.png)
 
-    3. 내가 쓴 내용이 url에 들어가지 않게 하고 싶다면:?
+    3. 내가 쓴 내용이 url에 들어가지 않게 하고 싶다면:? - url 에 querystring으로 
 
        ![image-20220308163800402](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163800402.png)
 
        * GET method(R only: Read)
+
          * 기본값, 서버 리소스를 요청할 때
          * 내용에 URL에 Query String을 포함해서 
+
        * POST method(CUD: Create, Update, Delete)
+
          * 리소스를 생성, 수정, 삭제 할 때 
          * 내용을 Body 안 쪽에 숨겨서 보낸다.
 
-    
+       * `new.html` 에서 `action`부분에 `method` 를 설정해준다
+
+         ![image-20220308164313543](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308164313543.png)
+
+       * `views.py`에도 바꿔줌
+
+         ![image-20220308165309833](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165309833.png)
+
+       * 만약, 내용이 url에 포함된다면
+
+         ![image-20220308164519410](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308164519410.png)
+
+         * 이렇게 조작이 가능함
+
+         * confidential한 내용이거나, 지나치게 많은 submit이 들어오게 된다면 문제가 생길 것
+
+         * 이를 처리 하기 위해서 CSRF token을 사용
+
+           * CSRF(Cross Site Request Forgery) 공격 
+
+             * 인터넷 사용자가 내 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)을 특정 웹사이트에 요청하게 만드는 공격
+
+           * CSRF token
+
+             * 공격에 대응하기 위해 나온 것
+
+             * 간단히 말하면 암호 같은 것
+
+             * **POST method를 쓸 때 사용**합니다
+
+               ![image-20220308165053236](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165053236.png)
+
+               ALWAYS
+
+         * MIDDLEWARE
+
+           * 요청이 거쳐가는 곳
+
+           * 여기 CSRF token 관련해서 설정되어 있음
+
+             ![image-20220308165205042](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165205042.png)
+
+         * 이걸 다 완료하면 url이 안지저분하고 create/에서 멈춤
+
+           ![image-20220308165412893](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165412893.png)
+
+           
+
+       * ?? 뭔지 모르겠는데 일단 이걸 바꾸셨음
+
+         * 질답:
+
+           1. create view에서 return redirect를 하는 이유는 기술적인 문제라기보다 사용자가 불편하기 때문입니다 ^^
+
+           우리가 게시판에서 글을 쓸때, 새로운 글을 쓰고나면 글 작성이 완료되었습니다. 라는 페이지를 보고나서 다시 목록보기를 누르지않고
+
+           바로 목록 보기로 가서 새로운 글을 확인할 수 있게 되죠?
+
+
+           네 그렇게 처리하기 위함이고
+
+           2. render를 사용하면 데이터가 보이지 않는이유는 
+           index view를 보시면 index.html을 render 할 때, 반복할 articles 데이터를 함께 넘겨주고 있습니다.
+           하지만 create 에서 render 안쪽에 템플릿 이름만 바꿔준다고해도, 함께 context로 넘겨주는 articles 데이터가 없으니 안보이게 되는거죠
+           우리는 단순히 template을 바꾸는게 필요한게아니라
+           아예 새로운 URL로 사용자를 가도록 하는기능이 필요한거고
+           그게 바로 redirect 입니다.
+
+           
+
+       * 사용자의 편의성을 위해서 redirect을 써 주는 것
+
+         ![image-20220308165948350](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165948350.png)
+
+       * render를 사용하면 데이터가 보이지 않는 이유
+
+       * 
+
+       * 그래서 redirect 기능을 사용해줍시다
+
+       * `views.py` `import redirect` 해주고, ` return`도 다시
+
+         ![image-20220308170211306](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170211306.png)
+
+       * redirect page가 완성되었으니, 작성완료 페이지 필요 없으니 `create.html` 지워준다
+
+       * ![image-20220308170355200](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170355200.png)
+
+
+

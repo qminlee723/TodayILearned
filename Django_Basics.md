@@ -305,6 +305,7 @@
 * view 함수 만들어주기
 
   * articles/ views.py
+  * 
   * render는 **django.shortcuts** 에서 가져온다.
   * 'index.html' = 템플릿경로
 
