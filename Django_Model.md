@@ -1,3 +1,5 @@
+
+
 # Django_Model
 
 ## :zero: OVERVIEW
@@ -113,8 +115,9 @@ $ django-admin startproject firstpjt .
 $ python manage.py runserver
 $ python manage.py startapp articles
 # settings.py > INSTALLED_APPS=[]에 추가
-$ pip install -r requirements.txt
 $ source venv\Scripts\activate
+$ pip install -r requirements.txt
+$ touch .gitignore
 ```
 
 #### 2) models.py 작성
@@ -127,7 +130,7 @@ $ source venv\Scripts\activate
 
   * django.db.models 모듈의 Model 클래스를 상속받음
 
-* mdoels 모듈을 통해 어떠한 타입의 DB 컬럼을 정의할 것인지 정의
+* models 모듈을 통해 어떠한 타입의 DB 컬럼을 정의할 것인지 정의
 
   * title, content는 모델의 필드를 나타냄
   * 각 필드는 클래스 속성으로 지정되어 있으며, 각 속성은 각 데이터베이스의 열에 매핑
@@ -889,7 +892,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
            네 그렇게 처리하기 위함이고
-
+    
            2. render를 사용하면 데이터가 보이지 않는이유는 
            index view를 보시면 index.html을 render 할 때, 반복할 articles 데이터를 함께 넘겨주고 있습니다.
            하지만 create 에서 render 안쪽에 템플릿 이름만 바꿔준다고해도, 함께 context로 넘겨주는 articles 데이터가 없으니 안보이게 되는거죠
@@ -897,25 +900,177 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
            아예 새로운 URL로 사용자를 가도록 하는기능이 필요한거고
            그게 바로 redirect 입니다.
 
-           
+              * 사용자의 편의성을 위해서 redirect을 써 주는 것
+    
+     ![image-20220308165948350](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165948350.png)
 
-       * 사용자의 편의성을 위해서 redirect을 써 주는 것
+   * render를 사용하면 데이터가 보이지 않는 이유
 
-         ![image-20220308165948350](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165948350.png)
+   * 
 
-       * render를 사용하면 데이터가 보이지 않는 이유
+   * 그래서 redirect 기능을 사용해줍시다
 
-       * 
+   * `views.py` `import redirect` 해주고, ` return`도 다시
 
-       * 그래서 redirect 기능을 사용해줍시다
+     ![image-20220308170211306](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170211306.png)
 
-       * `views.py` `import redirect` 해주고, ` return`도 다시
+   * redirect page가 완성되었으니, 작성완료 페이지 필요 없으니 `create.html` 지워준다
 
-         ![image-20220308170211306](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170211306.png)
+   * ![image-20220308170355200](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170355200.png)
 
-       * redirect page가 완성되었으니, 작성완료 페이지 필요 없으니 `create.html` 지워준다
-
-       * ![image-20220308170355200](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170355200.png)
+    
 
 
 
+1. url
+
+![image-20220310093740284](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310093740284.png)
+
+![image-20220310093723269](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310093723269.png)
+
+
+
+2. views
+
+![image-20220310094244941](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310094244941.png)
+
+
+
+
+
+3. html - detail page
+
+   ![image-20220310101444792](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101444792.png)
+
+4. html - index page에서 글 제목 누르면 디텔ㄹ로 가게 
+
+
+
+![image-20220310101326953](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101326953.png)
+
+
+
+5. settings.py > TIME_ZONE
+
+   ![image-20220310101756701](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101756701.png)
+
+   
+
+6. 삭제
+
+![image-20220310103559640](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103559640.png)
+
+![image-20220310103541409](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103541409.png)
+
+![image-20220310103428100](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103428100.png)
+
+* 이 때 엔터 누르면 글 번호 10 사라짐
+
+![image-20220310103954164](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103954164.png)
+
+
+
+* GET은 데이터를 가지고 올 때만 쓰는거고, 나머지는 POST를 사용해줍니다(수정, 삭제, 생성)
+* 그래서 바꿔줘야됨 + csrf token
+* ![image-20220310104630744](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310104630744.png)
+  * 터미널에서 삭제시 POST로 바뀐 걸 알 수 있음
+
+![image-20220310104604376](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310104604376.png)
+
+* 이렇게 설정을 해 줘도, url을 통해서 삭제가 가능함(GET방식)
+
+* 그래서 view.py에 다시 설정
+
+  ![image-20220310105107991](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310105107991.png)
+
+
+
+
+
+
+
+* 업데이트 할 때
+* url![image-20220310110456684](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310110456684.png)
+* view
+* ![image-20220310110604352](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310110604352.png)
+* html
+* new.html을 복붙 한 다음에 수정 해준다
+* 빈 input을 원래 내용들로 채워준다
+* ![image-20220310111342957](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310111342957.png)
+* 수정하기 버튼 만들기(<a></a> 왜냐면 edit에 액션 보내서 처리할 거고, 페이지로 이동할 거라서 a 태그 써줌) :question: 왜 a 태그?
+* 
+* ![image-20220310111606181](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310111606181.png)
+
+
+
+
+
+update 페이지
+
+![image-20220310112503866](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112503866.png)
+
+
+
+이걸 한번에 아래처럼 표현도 가능
+
+![image-20220310112624909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112624909.png)
+
+
+
+![image-20220310112814315](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112814315.png)
+
+
+
+
+
+
+
+
+
+
+
+***
+
+SQLite
+
+`ctrl + shift + p` > `SQLite: Open Database` > `db.sqlite3`
+
+outline 밑에 `SQLITE EXPLORER`나옴
+
+![image-20220310125246187](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125246187.png)
+
+![image-20220310125445236](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125445236.png)
+
+
+
+`articles_article` 은 우리가 생성한 데이터베이스. 그 밑은 장고자 자동으로 생성
+
+저기 세모난 버튼 누르면
+
+![image-20220310125543431](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125543431.png)
+
+이렇게 시각적으로 볼 수 있음
+
+
+
+
+
+
+
+
+
+*** form 안 써서
+
+*** csrf token 안 써서
+
+*** form 안에는 a 태그 안됨
+
+
+
+
+
+
+
+
+
+![image-20220311164436085](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311164436085.png)

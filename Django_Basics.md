@@ -149,20 +149,32 @@
 
     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302140216832.png" alt="image-20220302140216832" style="zoom:50%;" />
 
+ 7. 활성화
+
+    ```bash
+    $ source venv\Scripts\activate
+    ```
+
  7. 패키지 한꺼번에 설치하기
 
     ```bash
     $ pip install -r requirements.txt
     ```
 
- 8. 활성화
+ 8. 만약 github나 public repository 에 올라갈 거라면,
 
     ```bash
-    $ source venv\Scripts\activate
+    $ touch .gitignore
     ```
 
-    
+    `.gitignore` file 안에 제외해 줄 폴더나 파일을 기재
 
+    ```bash
+    venv/
+    ```
+    
+    
+    
     
 
 ### 3. 프로젝트 구조
