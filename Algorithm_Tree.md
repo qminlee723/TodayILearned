@@ -313,17 +313,32 @@
 
   * 이진 트리의 모든 노드는 최대 2개의 자식 노드를 가지므로, 일정한 구조의 단순 연결리스트 노드를 사용하여 구현
 
-    
+* 완전이진트리의 연결리스트
 
-  * 
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316145342087.png" alt="image-20220316145342087" style="zoom:50%;" />
+
+  
 
 
 
 ### 6. 수식트리
 
+* 개념
+  * 수식을 표현하는 이진트리
+  * 수식 이진 트리(Expression Binary Tree)라고 부르기도 함
+  * 연산자는 루트 노드이거나 가지 노드
+  * 피연산자는 모두 잎 노드
+* 수식 순회의 순회
+  * 중위순회
+    * `A / B * C * D + E`
+  * 후위순회
+    * `A B / C * D * E`
+  * 전위순회
+    * `+ * * / A  B C D E`
 
 
-### [참고] 이진트리의 저장
+
+### :white_check_mark: [참고] 이진트리의 저장
 
 #### 1. 부모 번호를 인덱스로 자식 번호를 저장
 
@@ -348,7 +363,7 @@
 
   ```python
   E = int(input())	# edge 수
-  arr = lsit(map(int, input().split()))
+  arr = list(map(int, input().split()))
   V = E + 1 			# vertex/node 수
   
   child1 = [0] * (V + 1)
@@ -461,8 +476,6 @@
 
 #### 3. 루트 찾기, 조상 찾기
 
-* ㅇㅇ
-
 * pseudo code
 
   ```python
@@ -476,7 +489,6 @@
 * python code
 
   ```python
-  
   # root 찾기    
   root = 0
   for i in range(1, V + 1):
@@ -500,12 +512,272 @@
   
     * root 찾기
   
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220316142546048.png" alt="image-20220316142546048" style="zoom:50%;" />
+      <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316142546048.png" alt="image-20220316142546048" style="zoom:50%;" />
   
     * 조상찾기
   
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220316144154608.png" alt="image-20220316144154608" style="zoom: 50%;" />
+      <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316144154608.png" alt="image-20220316144154608" style="zoom: 50%;" />
   
       
-  
+
+
+
+## :three: 이진 탐색 트리
+
+### 1. 개념
+
+<img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316150045394.png" alt="image-20220316150045394" style="zoom:50%;" />
+
+* 탐색작업을 효율적으로 하기 위한 자료구조
+* 모든 원소는 서로 다른 유일한 키를 가짐
+* key(왼쪽 서브트리) < key(루트 노드) < key(오른쪽 서브트리)
+* 왼쪽 서브트리와 오른쪽 서브트리도 이진 탐색 트리
+* 중위 순회하면 오름차순으로 정렬된 값을 얻을 수 있다.
+
+
+
+### 2. 연산
+
+* 탐색연산
+
+  * 루트에서 시작
+
+  * 탐색할 키 값 x를 루트 노드의 키 값과 비교
+
+    * `키 값 x = 루트노드의 키 값`인 경우: 원하는 원소를 찾았으므로 탐색연산 성공
+    * `키 값 x < 루트노드의 키 값`인 경우: 루트노드의 **왼쪽** 서브트리에 대해 탐색연산 수행
+    * `키 값 x > 루트노드의 키 값`인 경우: 루트노드의 **오른쪽** 서브트리에 대해 탐색연산 수행
+
+  * 예시: 13 탐색
+
+    <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316150328620.png" alt="image-20220316150328620" style="zoom:50%;" />
+
+
+
+* 삽입 연산
+
+  * 먼저 탐색 연산을 수행
+
+    * 삽입할 원소와 같은 원소가 트리에 있으면 삽입할 수 없으므로, 같은 원소가 트리에 있는지 확인
+    * 탐색에서 탐색 실패가 결정되는 위치가 삽입 위치가 됨
+
+  * 탐색을 실패한 위치에 원소를 삽입
+
+  * 예시: 5를 삽입
+
+    <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316150440840.png" alt="image-20220316150440840" style="zoom:50%;" />
+
+* 삭제 연산
+
+  * 예시: 다음 트리에 대해서 13, 12, 9를 차례로 삭제해 보자
+
+  * :question: 만약 15를 삭제한다면?
+
+    ```python
+    ```
+
+    <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316152821958.png" alt="image-20220316152821958" style="zoom:50%;" />
+
     
+
+    
+
+### 3. 성능
+
+* 탐색(searching), 삽입(insertion), 삭제(deletion) 시간은 트리의 높이 만큼 시간이 걸린다.
+  * O(h), h : BST(Binary Search Tree)의 깊이(height)
+* 평균의 경우
+  * 이진 트리가 균형적으로 생성되어 있는 경우
+* 최악의 경우
+  * 한쪽으로 치우친 경사 이진트리의 경우
+  * O(n)
+  * 순차탐색과 시간복잡도기 길다.
+
+* 검색 알고리즘의 비교
+  * 배열에서의 순차 검색: O(N)
+  * 정렬된 배열에서의 순차 검색: O(N)
+  * 정렬된 배열에서의 이진탐색: O(logN)
+    * 고정 배열 크기와 삽입, 삭제 시 추가 연산 필요
+  * 이진 탐색트리에서의 평균: O(logN)
+    * 최악의 경우: O(N)
+    * 완전 이진 트리 또는 균형트리로 바꿀 수 있다면 최악의 경우를 없앨 수 있다.
+      * 새로운 원소 삽입시 삽입 시간 줄임
+      * 평균과 최악의 시간이 같다. O(logn)
+    * 해쉬검색: O(1)
+      * 추가 저장 공간이 필요
+
+
+
+
+
+## :four: 힙
+
+### 1. 개념
+
+* 완전 이진 트리에 있는 노드 중 키값이 가장 큰 노드나 키값이 가장 작은 노드를 찾기 위해서 만든 자료구조
+
+* 최대 힙(max heap)
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153203778.png" alt="image-20220316153203778" style="zoom: 50%;" />
+
+  * 키값이 가장 큰 노드를 찾기 위한 완전 이진 트리
+  * `{부모노드의 키값 > 자식노드의 키값}`
+  * 루트 노드: 키값이 가장 큰 노드
+
+* 최소 힙(min heap)
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153310165.png" alt="image-20220316153310165" style="zoom:50%;" />
+
+  * 키 값이 가장 작은 노드를 찾기 위한 완전 이진 트리
+  * `{부모노드의 키값 < 자식노드의 키값}`
+  * 루트 노드: 키값이 가장 작은 노드
+
+* 힙이 아닌 이진 트리의 예
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153438515.png" alt="image-20220316153438515" style="zoom:50%;" />
+
+  * 아닌 이유
+    * 트리 1: 최소 힙 / 최대 힙 기준을 충족하지 못하고 있음 
+    * 트리 2: 완전 이진 트리가 아님
+
+### 2. 삽입
+
+* 예시: 17삽입
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153805911.png" alt="image-20220316153805911" style="zoom:50%;" />
+
+  1. 마지막 정점 번호를 확보한다 (6번)
+  2. 마지막 정점 번호를 확장시킨다 (7번)
+  3. 해당 정점 번호에 데이터를 삽입한다.
+  4. 최대힙/최소힙 조건 만족하는지 확인
+
+  
+
+* 예시: 23 삽입
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153825840.png" alt="image-20220316153825840" style="zoom:50%;" />
+
+  1. 마지막 정점 번호 확보 (6번)
+  2. 마지막 정점 번호 확장 (7번)
+  3. 해당 정점 번호에 데이터 삽입 (7번에 23 넣음)
+  4. 최대합/최소힙 조건 만족하는지
+     * `부모키값 < 자식키값` 이므로 최대힙 만족할 때 까지(더 큰 부모를 만날 때 까지) 자리 바꿔준다 
+
+* 예시 3
+
+  * 최대 100개의 정수가 키로 입력됨
+  * 최대힙
+
+  ```python
+  
+  def enq(n): # 우선순위 큐
+      global last
+      last += 1
+      tree[last] = n		# 완전이진트리 유지
+      c = last			# 새로 추가된 정점을 자식으로
+      p = c//2			# 완전이진트리에서의 부모 정점 번호
+      while p >= 1 and tree[p] < tree[c]:			# 자식의 키 값이 부모보다 더 크면,
+          tree[p], tree[c] = tree[c], tree[p]		# 부모와 자리 바꿔줌
+          c = p
+          p = c // 2
+          
+  # # 포화 이진트리의 정점번호 1 ~ 100까지
+  tree = [0] * (101)
+  last = 0 	#  마지막 정점번호
+  
+  # 삽입되었는지 확인
+  enq(3)
+  enq(2)
+  enq(4)
+  enq(7)
+  enq(5)
+  enq(1)
+  print(tree[1])
+  # 출력: 7
+  enq(9)
+  print(tree[1])
+  # 출력: 9
+  ```
+
+  
+
+### 3. 삭제
+
+* 힙에서는 루트 노드의 원소만을 삭제할 수 있다
+
+* 루트 노드의 원소를 삭제하여 반환한다
+
+* 힙의 종류의 따라 최대값 또는 최소값을 구할 수 있다.
+
+* 예시
+
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316153933152.png" alt="image-20220316153933152" style="zoom:50%;" />
+
+  1. 루트 노드안의 원소 보관
+  2. 마지막 노드 반환 후 루트로 옮김
+  3. 마지막 노드 인덱스 감소
+  4. 최대힙이 되도록 자리 바꾸기
+  5. 자리 확정(부모보다 더 큰 자식이 없을 때 까지)
+
+  ```python
+  def deq():
+      global last
+      tmp = tree[1] 			# root의 키 값 보관
+      tree[1] = tree[last] 	# 마지막 노드의 키를 루트에 복사
+      last -= 1				# 마지막 노드 인덱스 감소
+      
+      #부모>자식 규칙 유지(최대힙 조건)
+      p = 1
+      c = p * 2			# 왼쪽자식노드 번호
+      while c <= last:	# 왼쪽자식이 있으면
+          if c + 1 <= last and tree[c] < tree[c+1]:	# 오른쪽 자식노드가 있고, 더 크면
+              c += 1				# 오른쪽 자식 선택
+          if tree[p] < tree[c]:	# 자식의 키 값이 더 크면 교환
+              tree[p], tree[c] = tree[c], tree[p]
+          	p = c
+              c = p * 2
+          else:
+              break
+      return tmp
+  
+  print(tree[1])
+  while last > 0:
+      print(deq())
+      print(tree[1])
+  ```
+
+  * 출력
+
+    ![image-20220316161852247](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316161852247.png)
+
+
+
+### 4. 힙을 이용한 우선순위 큐
+
+* 들어올 때는 뒤로 들어오고, 나갈 때는 우선순위에 따라 나감
+
+<img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220316155034391.png" alt="image-20220316155034391" style="zoom:50%;" />
+
+
+
+
+
+## :five: 연습
+
+### 1. 완전이진트리에서의 순회
+
+```python
+def pre_order(v):
+    global last
+    if v <= last: # 마지막 정점번호 이내
+        print(v)  # visit(v)
+        pre_order(v*2) # 왼쪽 자식 정점 방문
+        pre_order(v*2+1) # 오른쪽 자식 정점 방문
+```
+
+
+
+
+
+
+
