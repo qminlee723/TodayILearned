@@ -252,7 +252,7 @@ print(x, y)
   
 * 연습문제
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118003101439.png" alt="image-20220118003101439" style="zoom: 50%;" />
+  <img src="images\image-20220118003101439.png" alt="image-20220118003101439" style="zoom: 50%;" />
 
 
 
@@ -551,7 +551,7 @@ print(x, y)
 
 ## 컨테이너형
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118010239211.png" alt="image-20220118010239211" style="zoom: 50%;" />
+<img src="images\image-20220118010239211.png" alt="image-20220118010239211" style="zoom: 50%;" />
 
 * 여러 개의 값을 담을 수 있는 것(객체)으로, 서로 다른 자료형을 저장할 수 있음.
   * Ordered/Unordered
@@ -559,7 +559,7 @@ print(x, y)
 
 * **컨테이너 형 변환(Container Typecasting)**: 컨테이너 간 형 변환은 아래와 같이 가능
 
-  ![image-20220118021829653](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118021829653.png)
+  ![image-20220118021829653](images\image-20220118021829653.png)
 
 
 
@@ -575,7 +575,7 @@ print(x, y)
 
 * 생성과 접근
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118010609122.png" alt="image-20220118010609122" style="zoom:50%;" />
+  <img src="images\image-20220118010609122.png" alt="image-20220118010609122" style="zoom:50%;" />
 
   ```python
   my_list = []
@@ -608,7 +608,7 @@ print(x, y)
 
 * **List 예시**
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118010837508.png" alt="image-20220118010837508" style="zoom:50%;" />
+  <img src="images\image-20220118010837508.png" alt="image-20220118010837508" style="zoom:50%;" />
 
 
 
@@ -843,7 +843,7 @@ print(x, y)
 
   list
   
-* ![image-20220118103827982](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118103827982.png)
+* ![image-20220118103827982](images\image-20220118103827982.png)
 
 
 
@@ -869,11 +869,11 @@ print(x, y)
 
   6
 
-  ![image-20220118103851257](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118103851257.png)
+  ![image-20220118103851257](images\image-20220118103851257.png)
   
 * :question:
 
-![image-20220118104007428](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118104007428.png)
+![image-20220118104007428](images\image-20220118104007428.png)
 
 여기서 패킹이랑 언패킹 구분 다시
 
@@ -1059,13 +1059,13 @@ print(x, y)
   
   * str*, float => int
   
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118015328036.png" alt="image-20220118015328036" style="zoom:67%;" />
+    <img src="images\image-20220118015328036.png" alt="image-20220118015328036" style="zoom:67%;" />
   
 * **float**
   
   * str*, int => float
   
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118015415376.png" alt="image-20220118015415376" style="zoom:67%;" />
+    <img src="images\image-20220118015415376.png" alt="image-20220118015415376" style="zoom:67%;" />
   
 * **str**
   
@@ -1260,13 +1260,13 @@ print(x, y)
 
   * 시퀀스 간의 concatenation(연결/연쇄)
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118020535004.png" alt="image-20220118020535004" style="zoom:67%;" />
+    <img src="images\image-20220118020535004.png" alt="image-20220118020535004" style="zoom:67%;" />
 
 * **반복연산자(*)**
 
   * 시퀀스(리스트, 튜플, 문자열)를 반복
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118020637935.png" alt="image-20220118020637935" style="zoom:67%;" />
+    <img src="images\image-20220118020637935.png" alt="image-20220118020637935" style="zoom:67%;" />
 
   
 
@@ -1322,7 +1322,7 @@ print(x, y)
 
   2. **시퀀스를 k 간격으로 슬라이싱**
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118021043387.png" alt="image-20220118021043387" style="zoom:67%;" />
+  <img src="images\image-20220118021043387.png" alt="image-20220118021043387" style="zoom:67%;" />
 
   3. **문자열 슬라이싱**
 
@@ -1366,13 +1366,13 @@ print(x, y)
 
 * **예시**
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118021541026.png" alt="image-20220118021541026" style="zoom:67%;" />
+  <img src="images\image-20220118021541026.png" alt="image-20220118021541026" style="zoom:67%;" />
 
 
 
 #### 연산자 우선순위
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118021638643.png" alt="image-20220118021638643" style="zoom: 67%;" />
+<img src="images\image-20220118021638643.png" alt="image-20220118021638643" style="zoom: 67%;" />
 
 
 

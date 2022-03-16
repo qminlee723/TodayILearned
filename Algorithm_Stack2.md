@@ -29,7 +29,7 @@
 
   * 괄호를 제거한다
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220223094116791.png" alt="image-20220223094116791" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220223094116791.png" alt="image-20220223094116791" style="zoom:50%;" />
 
 * 증위 표기법에서 후위 표기법으로 변환 알고리즘(스택 이용)2
 
@@ -49,9 +49,9 @@
 
 
 
-![image-20220224091523144](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220224091523144.png)
+![image-20220224091523144](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220224091523144.png)
 
-![image-20220224092143761](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220224092143761.png)
+![image-20220224092143761](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220224092143761.png)
 
 
 
@@ -75,7 +75,7 @@
 
 ### 2. 미로 찾기
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220223171246995.png" alt="image-20220223171246995" style="zoom:67%;" />
+<img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220223171246995.png" alt="image-20220223171246995" style="zoom:67%;" />
 
 
 
@@ -217,7 +217,7 @@ def construct_candidates(a, k, input, c):
 
 
 
-![](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220223164729549.png)
+![](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220223164729549.png)
 
 
 
@@ -225,7 +225,7 @@ vertex의 갯수가 1000개가 넘어가면 인접리스트를 쓰는 것이 좋
 
 
 
-![image-20220223211135890](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220223211135890.png)
+![image-20220223211135890](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220223211135890.png)
 
 
 

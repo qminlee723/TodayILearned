@@ -68,13 +68,13 @@
 
 * 유니코드 인코딩
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216092933301.png" alt="image-20220216092933301" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216092933301.png" alt="image-20220216092933301" style="zoom:50%;" />
 
   * 여기서 8비투, 16비트는 최소 비트 수
 
 * Python 인코딩
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216094214820.png" alt="image-20220216094214820" style="zoom: 50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216094214820.png" alt="image-20220216094214820" style="zoom: 50%;" />
 
   
 
@@ -86,7 +86,7 @@
 
 ### 1. 문자열의 분류
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216094306649.png" alt="image-20220216094306649" style="zoom:67%;" />
+<img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216094306649.png" alt="image-20220216094306649" style="zoom:67%;" />
 
 ### 2. Java, C언어의 문자열 처리(언어별 특징)
 
@@ -124,7 +124,7 @@
 
   * 문자열 기호
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216101736539.png" alt="image-20220216101736539" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216101736539.png" alt="image-20220216101736539" style="zoom:50%;" />
 
   * 문자열은 시퀀스 자료형으로 분류되고, 시퀀스 자료형에서 사용할 수 있는 인덱싱, 슬라이싱 연산들을 할 수 있다.
   * 문자열 클래스에서 제공되는 메소드
@@ -172,7 +172,7 @@
     s5 = s1[:2] + 'c'
     ```
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216103407707.png" alt="image-20220216103407707" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216103407707.png" alt="image-20220216103407707" style="zoom:50%;" />
 
 * 문자열 크기비교
 
@@ -300,9 +300,9 @@
 
 * 아이디어 설명
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216131138429.png" alt="image-20220216131138429" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216131138429.png" alt="image-20220216131138429" style="zoom:50%;" />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216131152521.png" alt="image-20220216131152521" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216131152521.png" alt="image-20220216131152521" style="zoom:50%;" />
 
   * 패턴의 불일치가 된 인덱스부터 계산을 시작해!
   * 변수명은 lps, next 등을 많이 씁니다
@@ -356,17 +356,17 @@
 
   1. 오른쪽 끝에 있는 문자가 불일치 하고, 이 문자가 패턴 내에 존재하지 않는 경우
 
-     ![image-20220216144313885](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216144313885.png)
+     ![image-20220216144313885](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216144313885.png)
 
   2. 오른쪽 끝에 있는 문자가 불일치 하고, 이 문자가 패턴 내에 존재하는 경우
 
-     ![image-20220216144324244](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216144324244.png)
+     ![image-20220216144324244](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216144324244.png)
 
 * 예시
 
-  ![image-20220216144402563](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216144402563.png)
+  ![image-20220216144402563](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216144402563.png)
 
-  ![image-20220216144551581](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216144551581.png)
+  ![image-20220216144551581](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216144551581.png)
 
   
 
@@ -395,9 +395,9 @@
 
 * 평문에서 사용되고 있는 알파벳을 일정한 문자 수만큼 평행이동 시킴으로써 암호화
 
-  ![image-20220216150520977](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216150520977.png)
+  ![image-20220216150520977](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216150520977.png)
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216150532666.png" alt="image-20220216150532666"  />
+  <img src="C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216150532666.png" alt="image-20220216150532666"  />
 
   
 
@@ -411,7 +411,7 @@
 
 * 1초에 10억개의 키를 적용하는 속도로 조사한다고 해도, 모두 키를 조사하는데 120억년 이상의 시간이 걸린다.
 
-  ![image-20220216150608528](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216150608528.png)
+  ![image-20220216150608528](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216150608528.png)
 
   
 
@@ -419,7 +419,7 @@
 
 * 배타적 논리합(exclusive-or) 연산 사용
 
-  ![image-20220216150634914](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216150634914.png)
+  ![image-20220216150634914](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216150634914.png)
 
 * :100: 서술형이 나올지도... 왜 XAND를 안쓰고 XOR쓰는지!
 
@@ -429,7 +429,7 @@
 
 * 예시
 
-  ![image-20220216150809539](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220216150809539.png)
+  ![image-20220216150809539](C:\Users\Gyumin\ssafy7\TodayILearned\images\image-20220216150809539.png)
 
   
 

@@ -17,7 +17,7 @@
 
 ## :one: Web Framework
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302090755215.png" alt="image-20220302090755215" style="zoom:67%;" />
+<img src="images\image-20220302090755215.png" alt="image-20220302090755215" style="zoom:67%;" />
 
 ### 1. Django
 
@@ -76,9 +76,9 @@
 
 ### 4. MTV Pattern
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302092215079.png" alt="image-20220302092215079" style="zoom:50%;" />
+<img src="images\image-20220302092215079.png" alt="image-20220302092215079" style="zoom:50%;" />
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302092233985.png" alt="image-20220302092233985" style="zoom:67%;" />
+<img src="images\image-20220302092233985.png" alt="image-20220302092233985" style="zoom:67%;" />
 
 * Model - *database, data*
   * DB에 저장되는 테이블 구조를 정의
@@ -108,7 +108,7 @@
 
 ### 1. LTS
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302094859741.png" alt="image-20220302094859741" style="zoom:67%;" />
+<img src="images\image-20220302094859741.png" alt="image-20220302094859741" style="zoom:67%;" />
 
 * Long Term Support(장기 지원 버전)
 * 일반적인 경우보다 장기간에 걸쳐 지원하도록 고안된 소프트웨어 버전
@@ -147,7 +147,7 @@
 
     settings.py > INSTALLED_APPS = [] 리스트 안에 추가
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302140216832.png" alt="image-20220302140216832" style="zoom:50%;" />
+    <img src="images\image-20220302140216832.png" alt="image-20220302140216832" style="zoom:50%;" />
 
  7. 활성화
 
@@ -244,7 +244,7 @@
 
     
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302102853270.png" alt="image-20220302102853270" style="zoom:50%;" />
+    <img src="images\image-20220302102853270.png" alt="image-20220302102853270" style="zoom:50%;" />
 
     
 
@@ -273,7 +273,7 @@
 
 `https://127.0.0.1:8000/` 이 서버 주소 받고 들어가면 로켓 페이지 나옴
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302103407358.png" alt="image-20220302103407358" style="zoom: 33%;" />
+<img src="images\image-20220302103407358.png" alt="image-20220302103407358" style="zoom: 33%;" />
 
 `https://127.0.0.1:8000/admin` 더해주면 아래 페이지 나옴
 
@@ -281,13 +281,13 @@
 
 
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302103224079.png" alt="image-20220302103224079" style="zoom:67%;" />
+<img src="images\image-20220302103224079.png" alt="image-20220302103224079" style="zoom:67%;" />
 
 
 
 주소의 비밀
 
-![image-20220302175112169](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302175112169.png)
+![image-20220302175112169](images\image-20220302175112169.png)
 
 
 
@@ -303,13 +303,13 @@
 
 * view함수는 firstpjt안에 있는게 아니라, articles하에 있음
 
-  ![image-20220302104515310](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302104515310.png)
+  ![image-20220302104515310](images\image-20220302104515310.png)
 
   * `from articles import views` 를 `urlpatterns` 위에 적어줌
 
 * trailing comma
 
-  ![image-20220302104420158](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302104420158.png)
+  ![image-20220302104420158](images\image-20220302104420158.png)
 
   * 리스트 안에 요소가 하나 있는데도, 리스트 바깥에 콤마를 찍어줌
   * 생산성을 높이기 위해(이후에 연결시킬 때 편하라고)
@@ -321,11 +321,11 @@
   * render는 **django.shortcuts** 에서 가져온다.
   * 'index.html' = 템플릿경로
 
-  ![image-20220302104843902](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302104843902.png)
+  ![image-20220302104843902](images\image-20220302104843902.png)
 
 * 다시 url에 써주기
 
-  ![image-20220302105109617](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302105109617.png)
+  ![image-20220302105109617](images\image-20220302105109617.png)
 
   
 
@@ -400,23 +400,23 @@
 
   * views.py
 
-    ![image-20220302143550096](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143550096.png)
+    ![image-20220302143550096](images\image-20220302143550096.png)
 
     
 
   * greeting.html
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143500813.png" alt="image-20220302143500813" style="zoom: 67%;" />
+  <img src="images\image-20220302143500813.png" alt="image-20220302143500813" style="zoom: 67%;" />
 
   * urls.py
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302143608546.png" alt="image-20220302143608546" style="zoom: 80%;" />
+    <img src="images\image-20220302143608546.png" alt="image-20220302143608546" style="zoom: 80%;" />
 
   * 만약, 변수가 많아진다면?
 
     * context 안에 포함
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145004185.png" alt="image-20220302145004185" style="zoom: 80%;" />
+      <img src="images\image-20220302145004185.png" alt="image-20220302145004185" style="zoom: 80%;" />
 
     * ``{{ }}` 을 사용해서 view 안의 값을 불러올 수 있다. 
 
@@ -424,11 +424,11 @@
 
     * foods 리스트 안의 첫번째 인자를 받아오고 싶다면 `foods.0`
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302144235398.png" alt="image-20220302144235398" style="zoom: 80%;" />
+      <img src="images\image-20220302144235398.png" alt="image-20220302144235398" style="zoom: 80%;" />
 
     * 출력
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145147839.png" alt="image-20220302145147839" style="zoom:50%;" />
+      <img src="images\image-20220302145147839.png" alt="image-20220302145147839" style="zoom:50%;" />
 
 
 
@@ -446,33 +446,33 @@
 
   * join 필터 다음에 ', ' 로 이어질 수 있게 되어있다.
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150218136.png" alt="image-20220302150218136"  />
+  <img src="images\image-20220302150218136.png" alt="image-20220302150218136"  />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150926625.png" alt="image-20220302150926625" style="zoom: 67%;" />
+  <img src="images\image-20220302150926625.png" alt="image-20220302150926625" style="zoom: 67%;" />
 
 * 예시1
 
   * 소문자로 바꿈
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145102354.png" alt="image-20220302145102354" style="zoom: 80%;" />
+    <img src="images\image-20220302145102354.png" alt="image-20220302145102354" style="zoom: 80%;" />
 
   * 출력 예시: 소문자로 바뀌어서 
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145224333.png" alt="image-20220302145224333" style="zoom:50%;" />
+    <img src="images\image-20220302145224333.png" alt="image-20220302145224333" style="zoom:50%;" />
 
 * 예시2: 랜덤한 value 추천하는 웹 만들기! (순서: **url > view > html**)
 
   1. url
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145859812.png" alt="image-20220302145859812" style="zoom:67%;" />
+     <img src="images\image-20220302145859812.png" alt="image-20220302145859812" style="zoom:67%;" />
 
   2. view
 
      * random import해주기
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150006791.png" alt="image-20220302150006791"  />
+     <img src="images\image-20220302150006791.png" alt="image-20220302150006791"  />
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302150019197.png" alt="image-20220302150019197" style="zoom: 67%;" />
+     <img src="images\image-20220302150019197.png" alt="image-20220302150019197" style="zoom: 67%;" />
 
      
 
@@ -480,7 +480,7 @@
 
   
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302145723260.png" alt="image-20220302145723260" style="zoom: 80%;" />
+  <img src="images\image-20220302145723260.png" alt="image-20220302145723260" style="zoom: 80%;" />
 
   
 
@@ -502,11 +502,11 @@
 
   * html에서 for 문 돌리기
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302151319660.png" alt="image-20220302151319660" style="zoom:67%;" />
+    <img src="images\image-20220302151319660.png" alt="image-20220302151319660" style="zoom:67%;" />
 
   * 뒤로가기
 
-    ![image-20220303095010080](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303095010080.png)
+    ![image-20220303095010080](images\image-20220303095010080.png)
 
     `<a href="/index/">뒤로</a>`
 
@@ -514,7 +514,7 @@
 
   * 출력
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302151240309.png" alt="image-20220302151240309" style="zoom:67%;" />
+  <img src="images\image-20220302151240309.png" alt="image-20220302151240309" style="zoom:67%;" />
 
 
 
@@ -596,7 +596,7 @@
 
 1. URL
 
-![image-20220302151910527](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302151910527.png)
+![image-20220302151910527](images\image-20220302151910527.png)
 
 2. VIEW
 
@@ -632,7 +632,7 @@
 
   * 즉, 하위 템플릿이 채울 수 있는 공간
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302154041239.png" alt="image-20220302154041239" style="zoom:50%;" />
+    <img src="images\image-20220302154041239.png" alt="image-20220302154041239" style="zoom:50%;" />
 
 * 예시
 
@@ -641,17 +641,17 @@
      * DIRS: [] 빈 리스트 안에 추가 경로를 설정해 줄 것
      * 밑에 `'APP_DIRS': True` 라는 것이 templates의 위치를 지정하고 있기 때문에, 그 외의 공간에 templates가 있으려면 `'DIRS'`에 따로 지정을 해 줘야 한다.
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302154255599.png" alt="image-20220302154255599" style="zoom:67%;" />
+     <img src="images\image-20220302154255599.png" alt="image-20220302154255599" style="zoom:67%;" />
 
-     ![image-20220303102251899](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303102251899.png)
+     ![image-20220303102251899](images\image-20220303102251899.png)
 
   2. 최상단에 새 `templates` 폴더 만들고 안에 base.html(부모템플릿)을 만들어줌 (그래야 가장 먼저 읽음)
 
-     ![image-20220302154603995](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302154603995.png)
+     ![image-20220302154603995](images\image-20220302154603995.png)
 
   3. 그리고 DIRS (directories)에 경로 추가
 
-     ![image-20220302154730161](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302154730161.png)
+     ![image-20220302154730161](images\image-20220302154730161.png)
 
      *객체 지향 경로시스템*
 
@@ -661,7 +661,7 @@
 
   4. 부모 템플릿 조작
 
-     ![image-20220302160501543](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302160501543.png)
+     ![image-20220302160501543](images\image-20220302160501543.png)
 
      a. Bootstrap CDN
 
@@ -676,7 +676,7 @@
 
   5. 자식 템플릿 조작
 
-     ![image-20220302160052735](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302160052735.png)
+     ![image-20220302160052735](images\image-20220302160052735.png)
 
      * 최상단에 `{% extends '부모템플릿.html' %} `
      * html 기본 구조 다 지우고, <body></body> 안의 내용만 남긴다.
@@ -689,11 +689,11 @@
 
      * 새로 만든 파일 `_nav.html` 에 navbar 코드를 뜯어서 붙여넣고
 
-       <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302161310929.png" alt="image-20220302161310929" style="zoom:67%;" />
+       <img src="images\image-20220302161310929.png" alt="image-20220302161310929" style="zoom:67%;" />
 
      * 부모템플릿인 `base.html`에 `{% include '_nav.html' %}` 추가해주면 더 깔끔한 코드정리 가능
 
-       <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220302161215725.png" alt="image-20220302161215725" style="zoom: 67%;" />
+       <img src="images\image-20220302161215725.png" alt="image-20220302161215725" style="zoom: 67%;" />
 
      * :honey_pot: 파일 이름 앞에 언더바(_)를 쓰면: (예시에서는 `_nav_`라고 했지만.. 그냥 앞에만)
 
@@ -820,18 +820,18 @@
 
 1. url
 
-   ![image-20220303111519609](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111519609.png)
+   ![image-20220303111519609](images\image-20220303111519609.png)
 
 2. view
 
-   ![image-20220303111929409](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111929409.png)
+   ![image-20220303111929409](images\image-20220303111929409.png)
 
    
 
 3. html
-   ![image-20220303111656450](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303111656450.png)
+   ![image-20220303111656450](images\image-20220303111656450.png)
 
-   ![image-20220303112747240](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303112747240.png)
+   ![image-20220303112747240](images\image-20220303112747240.png)
 
 
 
@@ -843,7 +843,7 @@
 
 2. view
 
-   ![image-20220303113640241](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303113640241.png)
+   ![image-20220303113640241](images\image-20220303113640241.png)
 
 3. html
 
@@ -887,21 +887,21 @@
 
 
 
-![image-20220303132441408](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303132441408.png)
+![image-20220303132441408](images\image-20220303132441408.png)
 
-![image-20220303132515619](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303132515619.png)
+![image-20220303132515619](images\image-20220303132515619.png)
 
 
 
 * pages > url.py 새로 생성
 
-![image-20220303133458110](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303133458110.png)
+![image-20220303133458110](images\image-20220303133458110.png)
 
 * pjt01>url.py의 import path 뒤에 `, include` 추가
 
-  ![image-20220303133646725](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303133646725.png)
+  ![image-20220303133646725](images\image-20220303133646725.png)
 
-  ![image-20220303134410455](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303134410455.png)
+  ![image-20220303134410455](images\image-20220303134410455.png)
 
 
 
@@ -909,7 +909,7 @@
 
 * path() 
 
-![image-20220303142430058](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303142430058.png)
+![image-20220303142430058](images\image-20220303142430058.png)
 
 
 
@@ -917,9 +917,9 @@
 
 * app_name
 
-![image-20220303143439901](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143439901.png)
+![image-20220303143439901](images\image-20220303143439901.png)
 
-![image-20220303143606132](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220303143606132.png)
+![image-20220303143606132](images\image-20220303143606132.png)
 
 
 

@@ -111,7 +111,7 @@
 
    * margin shorthand
 
-     ![image-20220214025129414](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214025129414.png)
+     ![image-20220214025129414](images\image-20220214025129414.png)
 
    * box-sizing
 
@@ -224,7 +224,7 @@
 
       * html의 root 글꼴 크기는 16px
 
-        <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214033156369.png" alt="image-20220214033156369" style="zoom:50%;" />
+        <img src="images\image-20220214033156369.png" alt="image-20220214033156369" style="zoom:50%;" />
 
       * mx-auto: 수평 중앙 정렬
 

@@ -42,7 +42,7 @@
 
 * :repeat_one: 0으로 둘러싼 배열을 채우고 싶은 경우
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214110734747.png" alt="image-20220214110734747" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214110734747.png" alt="image-20220214110734747" style="zoom:50%;" />
 
   ```python
   #2차원 배열에서 리스트에 0 집어넣기!
@@ -77,7 +77,7 @@
 
   * 안되는 경우!!!!! 이런식으로 받아내지 마세요!
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214103709015.png" alt="image-20220214103709015" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214103709015.png" alt="image-20220214103709015" style="zoom:50%;" />
 
   * 되는 경우
 
@@ -145,7 +145,7 @@ for i in range(n):
   			if 0 <= ni<N and 0 <=nj<N # 유효한 인덱스면 test(arr[ni][nj])
   ```
 
-  ![image-20220214105252224](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214105252224.png)
+  ![image-20220214105252224](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214105252224.png)
 
 * 예시
 
@@ -193,7 +193,7 @@ for i in range(n):
               arr[i][j], arr[j][i] = arr[j][i], arr[i][j]
   ```
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214140804346.png" alt="image-20220214140804346" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214140804346.png" alt="image-20220214140804346" style="zoom:50%;" />
 
   ```python
   # 파란색 영역에 접근할 수 있는 다른 방법
@@ -311,11 +311,11 @@ print()
 
     * print(10&16) :question: 이진수로 어떻게 변환시키져?
 
-      ![image-20220214164037426](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214164037426.png)
+      ![image-20220214164037426](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214164037426.png)
 
     * print(10|16)
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214164125540.png" alt="image-20220214164125540" style="zoom:67%;" />
+      <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214164125540.png" alt="image-20220214164125540" style="zoom:67%;" />
 
     
 
@@ -474,9 +474,9 @@ def binarySearch(a, N, key):
     return false					# 검색 실패
 ```
 
-![image-20220217231405899](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220217231405899.png)
+![image-20220217231405899](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220217231405899.png)
 
-![image-20220217232249435](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220217232249435.png)
+![image-20220217232249435](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220217232249435.png)
 
 
 
@@ -484,7 +484,7 @@ def binarySearch(a, N, key):
 
 * 재귀 함수 ( 그냥 읽어나보자 )
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214154350712.png" alt="image-20220214154350712" style="zoom:67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214154350712.png" alt="image-20220214154350712" style="zoom:67%;" />
 
   
 
@@ -526,13 +526,13 @@ def binarySearch(a, N, key):
 
 * 과정
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214153705813.png" alt="image-20220214153705813" style="zoom: 67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214153705813.png" alt="image-20220214153705813" style="zoom: 67%;" />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214153801347.png" alt="image-20220214153801347" style="zoom:67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214153801347.png" alt="image-20220214153801347" style="zoom:67%;" />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214153717003.png" alt="image-20220214153717003" style="zoom:67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214153717003.png" alt="image-20220214153717003" style="zoom:67%;" />
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214153740482.png" alt="image-20220214153740482" style="zoom:67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214153740482.png" alt="image-20220214153740482" style="zoom:67%;" />
 
 * 버블소트와 셀렉션 소트의 차이점 알아야 함
 
@@ -572,7 +572,7 @@ def binarySearch(a, N, key):
 
 ## :five: 정렬 알고리즘 비교
 
-![image-20220214155209491](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214155209491.png)
+![image-20220214155209491](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214155209491.png)
 
 * Bubble sort와 Selection sort 같은 경우, 손으로 그려서 차이점을 나타낼 수 있게 연습
 
@@ -590,4 +590,4 @@ def binarySearch(a, N, key):
 
 
 
-![image-20220214191350858](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214191350858.png)
+![image-20220214191350858](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220214191350858.png)

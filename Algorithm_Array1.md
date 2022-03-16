@@ -51,7 +51,7 @@
 
   * 의사코드(Pseudocode)
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220210090807111.png" alt="image-20220210090807111" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220210090807111.png" alt="image-20220210090807111" style="zoom:50%;" />
 
   * 순서도
 
@@ -93,7 +93,7 @@
 
   * 빅-오 표기법(Big-Oh Notation)
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220210091321762.png" alt="image-20220210091321762" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220210091321762.png" alt="image-20220210091321762" style="zoom:50%;" />
 
   * 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시
 
@@ -101,7 +101,7 @@
 
   * 예시
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220210091420299.png" alt="image-20220210091420299" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220210091420299.png" alt="image-20220210091420299" style="zoom:50%;" />
 
     * n개의 데이터를 입력 받아 저장한 후 각 데이터에 1 씩 증가시킨 후 각 데이터를 화면에 출력하는 알고리즘의 시간복잡도는 어떻게 될까?
       * O(n)
@@ -112,7 +112,7 @@
 
 * 요소 수가 증가함에 따라 각기 다른 시간복잡도의 알고리즘은 아래와 같은 연산 수를 보임
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220210092035134.png" alt="image-20220210092035134" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220210092035134.png" alt="image-20220210092035134" style="zoom:50%;" />
 
 
 
@@ -154,9 +154,9 @@
 
 * :white_check_mark: 예제: Gravity
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220220235301631.png" alt="image-20220220235301631" style="zoom:67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220220235301631.png" alt="image-20220220235301631" style="zoom:67%;" />
 
-  ![image-20220221000058697](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221000058697.png)
+  ![image-20220221000058697](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221000058697.png)
 
   
 
@@ -293,21 +293,21 @@
 
 * 1단계
 
-  ![image-20220221053035673](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053035673.png)
+  ![image-20220221053035673](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221053035673.png)
 
-  ![image-20220221053053254](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053053254.png)
+  ![image-20220221053053254](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221053053254.png)
 
-  ![image-20220221053108102](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053108102.png)
+  ![image-20220221053108102](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221053108102.png)
 
-  ![image-20220221053120933](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053120933.png)
-
-  .
+  ![image-20220221053120933](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221053120933.png)
 
   .
 
   .
 
-  ![image-20220221053208525](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221053208525.png)
+  .
+
+  ![image-20220221053208525](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221053208525.png)
 
 
 
@@ -427,7 +427,7 @@
 
   
 
-  ![image-20220209140340274](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220209140340274.png)
+  ![image-20220209140340274](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220209140340274.png)
 
 
 
@@ -456,7 +456,7 @@
 
   * nPr: 서로 다른 n개 중 r개를 택하는 순열은 아래와 같이 표현
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220209140927272.png" alt="image-20220209140927272" style="zoom: 33%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220209140927272.png" alt="image-20220209140927272" style="zoom: 33%;" />
 
     ```
     nPr = n!/(n-r)!
@@ -470,7 +470,7 @@
 
   동일한 숫자가 포함되지 않았을 때, 각 자리 수 별로 loop을 이용해 아래와 같이 구현 가능
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220209141135135.png" alt="image-20220209141135135" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220209141135135.png" alt="image-20220209141135135" style="zoom:50%;" />
 
   * i1과 겹치는지 확인하고, 다르면 i2를 결정하자
   * i1과 i2와 겹치는지 확인한 후에 i3를 결정하자
@@ -611,7 +611,7 @@
 
 * 해답을 찾아내지 못하는 경우도 있음
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220209152717044.png" alt="image-20220209152717044" style="zoom:50%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220209152717044.png" alt="image-20220209152717044" style="zoom:50%;" />
 
   
 

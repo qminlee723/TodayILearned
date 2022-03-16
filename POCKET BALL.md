@@ -2,11 +2,9 @@
 
 
 
-![image-20220306221145770](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220306221145770.png)
+![image-20220306221425974](images\image-20220306221425974.png)
 
-![image-20220306221425974](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220306221425974.png)
-
-![image-20220306231201310](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220306231201310.png)
+![image-20220306231201310](images\image-20220306231201310.png)
 
 
 

@@ -23,7 +23,7 @@
 
 ### 함수 기본 구조
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119092024266.png" alt="image-20220119092024266" style="zoom: 50%;" />
+<img src="images\image-20220119092024266.png" alt="image-20220119092024266" style="zoom: 50%;" />
 
 1) 선언과 호출(define & call)
 
@@ -41,7 +41,7 @@
      print(add)
      ```
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119093121886.png" alt="image-20220119093121886" style="zoom:50%;" />
+     <img src="images\image-20220119093121886.png" alt="image-20220119093121886" style="zoom:50%;" />
 
 2) 입력(input)
 
@@ -449,7 +449,7 @@ SyntaxError: positional argument follows keyword argument
 
 * 아래와 같은 순서로 이름을 찾으며, **LEGB Rule**이라고 부른다
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119134322445.png" alt="image-20220119134322445" style="zoom:50%;" />
+  <img src="images\image-20220119134322445.png" alt="image-20220119134322445" style="zoom:50%;" />
 
   1. Local scope
   2. Enclosed scope
@@ -897,7 +897,7 @@ print(n,m)
   
   ```
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119144223704.png" alt="image-20220119144223704" style="zoom:50%;" />
+  <img src="images\image-20220119144223704.png" alt="image-20220119144223704" style="zoom:50%;" />
 
   ```python
   def factorial(n):

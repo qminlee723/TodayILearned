@@ -23,17 +23,17 @@
 
     * 왜냐면 `settings` > `INSTALLED_APPS = []` 안에 `articles`가 `pages`보다 먼저 등록되어있음
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304094354451.png" alt="image-20220304094354451" style="zoom:67%;" />
+      <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304094354451.png" alt="image-20220304094354451" style="zoom:67%;" />
 
   * 예시: 
 
     articles>templates>index와 pages>templates>index와 이름이 같아서 Django가 구분을 못하는 상황
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304093917562.png" alt="image-20220304093917562" style="zoom:50%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304093917562.png" alt="image-20220304093917562" style="zoom:50%;" />
 
-    ![image-20220304094039860](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304094039860.png)
+    ![image-20220304094039860](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304094039860.png)
 
-    ![image-20220304094126905](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304094126905.png)
+    ![image-20220304094126905](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304094126905.png)
 
     
 
@@ -63,11 +63,11 @@
 
   * `articles` > `views`
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304095521541.png" alt="image-20220304095521541" style="zoom:67%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304095521541.png" alt="image-20220304095521541" style="zoom:67%;" />
 
   * `articles`>`index.html`
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304100105651.png" alt="image-20220304100105651" style="zoom:67%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304100105651.png" alt="image-20220304100105651" style="zoom:67%;" />
 
     * url 이후에 `'articles:name'` 써서 따로 **이름공간 설정**해줌
 
@@ -77,15 +77,15 @@
 
     * action 부분이 있다면 신경써서 바꿔주기
 
-      ![image-20220304101935974](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304101935974.png)
+      ![image-20220304101935974](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304101935974.png)
 
   * `articles`>`views`
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304100728907.png" alt="image-20220304100728907" style="zoom:67%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304100728907.png" alt="image-20220304100728907" style="zoom:67%;" />
 
   * `pjtfolder` > `base.html`
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304100905745.png" alt="image-20220304100905745" style="zoom: 80%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304100905745.png" alt="image-20220304100905745" style="zoom: 80%;" />
 
     * _nav.html을 찾을 수 없다고 에러 메시지가 뜰 것
     * 이 때, `articles/_nav.html` 을 확인해 볼 것 
@@ -133,7 +133,7 @@
 
 3. 템플릿에서 static 템플릿 태그를 사용하여 지정된 상대경로에 대한 URL을 빌드
 
-   ![image-20220304102448121](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304102448121.png)
+   ![image-20220304102448121](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304102448121.png)
 
 4. 앱의 static 디렉토리에 정적 파일을 저장
 
@@ -145,14 +145,14 @@
 
 * `STATICFILES_DIRS`
 
-  ![image-20220304103433895](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304103433895.png)
+  ![image-20220304103433895](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304103433895.png)
 
   * `app/static/` 디렉토리 경로(기본 경로)를 사용하는 것 외에 추가적인 정적 파일 경로 목록을 정의하는 리스트
   * 추가 파일 디렉토리에 대한 전체 경로를 포함하는 문자열 목록으로 작성되어야 함
 
 * `STATIC_URL`
 
-  ![image-20220304103419856](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304103419856.png)
+  ![image-20220304103419856](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304103419856.png)
 
   * `STATIC_ROOT`에 있는 정적 파일을 참조할 때 사용할 URL
     * 개발 단계에서는 실제 정적 파일들이 저장되어 있는 'app/static/'경로(기본 경로) 및 `STATICFILES_DIRS`에 정의된 추가 경로들을 탐색함
@@ -174,7 +174,7 @@
 
   * STATIC_ROOT에 정적 파일을 수집(정리해서 만들어줌)
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304104027760.png" alt="image-20220304104027760" style="zoom:67%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304104027760.png" alt="image-20220304104027760" style="zoom:67%;" />
 
 
 
@@ -184,7 +184,7 @@
 
   * 사용자 정의 템플릿 태그 세트를 로드(load)
 
-    ![image-20220304105138488](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105138488.png)
+    ![image-20220304105138488](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105138488.png)
 
     * built-in tag가 아니므로 `{% load static %}`
     * load만 치고 엔터 하면 나옴
@@ -195,15 +195,15 @@
 
   * `STATIC_ROOT`에 저장된 정적 파일에 연결
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105607990.png" alt="image-20220304105607990" style="zoom:200%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105607990.png" alt="image-20220304105607990" style="zoom:200%;" />
 
-    ![image-20220304105008816](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105008816.png)
+    ![image-20220304105008816](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105008816.png)
 
     (예시랑 다르긴 한데.. 폴더명 따르려면 `{% static 'sample-img.jpg' %}` 가 되면 됨)
 
   * `extends`가 가장 위로 오게! `load`는 그 밑에 쓰자
 
-    ![image-20220304105054459](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105054459.png)
+    ![image-20220304105054459](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105054459.png)
 
     
 
@@ -215,15 +215,15 @@
 
 * 파일
 
-  ![image-20220304105515093](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105515093.png)
+  ![image-20220304105515093](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105515093.png)
 
-![image-20220304105506357](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304105506357.png)
+![image-20220304105506357](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304105506357.png)
 
 * 스태틱 파일에 추가경로 작성하기
 
   * 최상단에 static이라는 폴더 확인
 
-  ![image-20220304110029351](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304110029351.png)
+  ![image-20220304110029351](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304110029351.png)
 
   * static folder만든 후, css파일(static)만들어 줌 
 
@@ -231,11 +231,11 @@
 
   *  `base.html`가서 `{% block style %}`을 만들어줌
 
-    ![image-20220304110401721](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304110401721.png)
+    ![image-20220304110401721](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304110401721.png)
 
   * `index.html`에서 block설정
 
-    ![image-20220304110801779](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220304110801779.png)
+    ![image-20220304110801779](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220304110801779.png)
 
     
 

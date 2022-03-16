@@ -36,7 +36,7 @@
 
 * 스택의 삽입/삭제 과정
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220221162315997.png" alt="image-20220221162315997" style="zoom: 67%;" />
+  <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220221162315997.png" alt="image-20220221162315997" style="zoom: 67%;" />
 
   
 
@@ -201,7 +201,7 @@ print(stack)
 
 * 함수 호출과 복귀에 따른 전체 프로그램의 수행 순서
 
-  ![image-20220222094704973](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220222094704973.png)
+  ![image-20220222094704973](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220222094704973.png)
 
   
 
@@ -238,7 +238,7 @@ print(stack)
 
   * 연산량이 많다 - 중복 호출이 엄청나다
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220222100441032.png" alt="image-20220222100441032" style="zoom: 67%;" />
+    <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220222100441032.png" alt="image-20220222100441032" style="zoom: 67%;" />
 
   * 이를 해결하기 위해 Memoizatin 기술이 발전
 
@@ -340,4 +340,4 @@ print(stack)
 
 ### 2. 기본 형태
 
-![image-20220224163246799](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220224163246799.png)
+![image-20220224163246799](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220224163246799.png)

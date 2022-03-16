@@ -20,7 +20,7 @@
 
      * 만약 버전 관리가 안 되어있다면? - 독립된 작업공간 성립하지 않음
 
-       <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311094614709.png" alt="image-20220311094614709" style="zoom:67%;" />
+       <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311094614709.png" alt="image-20220311094614709" style="zoom:67%;" />
 
 1. ㅇ
 
@@ -28,7 +28,7 @@
 
 
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311092448904.png" alt="image-20220311092448904" style="zoom:67%;" />
+<img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311092448904.png" alt="image-20220311092448904" style="zoom:67%;" />
 
 
 
@@ -38,7 +38,7 @@ text 수정후
 
 
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311092514828.png" alt="image-20220311092514828" style="zoom:67%;" />
+<img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311092514828.png" alt="image-20220311092514828" style="zoom:67%;" />
 
 
 
@@ -50,17 +50,17 @@ HEAD는 mater-4
 
 현재 test.txt 상태
 
-![image-20220311092928557](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311092928557.png)
+![image-20220311092928557](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311092928557.png)
 
 
 
 login 쪽을 개발해보려고 한다면,
 
-![image-20220311092707347](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311092707347.png)
+![image-20220311092707347](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311092707347.png)
 
 
 
-![image-20220311093003075](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093003075.png)
+![image-20220311093003075](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093003075.png)
 
 
 
@@ -68,7 +68,7 @@ login 쪽을 개발해보려고 한다면,
 
 다시 master로 가고자 한다면,
 
-![image-20220311093034102](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093034102.png)
+![image-20220311093034102](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093034102.png)
 
 
 
@@ -78,11 +78,11 @@ login 쪽을 개발해보려고 한다면,
 
 git log --oneline
 
-![image-20220311093210509](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093210509.png)
+![image-20220311093210509](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093210509.png)
 
 git log--oneline --all
 
-![image-20220311093146411](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093146411.png)
+![image-20220311093146411](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093146411.png)
 
 
 
@@ -92,9 +92,9 @@ test_login.txt를 생성 후 add, commit
 
 
 
-![image-20220311093437940](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093437940.png)
+![image-20220311093437940](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093437940.png)
 
-![image-20220311093459621](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093459621.png)
+![image-20220311093459621](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093459621.png)
 
 
 
@@ -102,7 +102,7 @@ test_login.txt를 생성 후 add, commit
 
 다시 마스터로 가서 지워보자
 
-![image-20220311093558140](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311093558140.png)
+![image-20220311093558140](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311093558140.png)
 
 
 
@@ -130,19 +130,19 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * fast-forward 통해 login branch를 만들면서 이동
 
-![image-20220311102032181](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311102032181.png)
+![image-20220311102032181](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311102032181.png)
 
 
 
 * login.txt 파ㅇ리 생성 후 add commit, log 확인
 
-  ![image-20220311102303582](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311102303582.png)
+  ![image-20220311102303582](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311102303582.png)
 
 * merge를 하려면, main 브랜치로 이동 한 후에 머지해야
 
 * 따라서 switch 명령어를 통해 master로 돌아가준다
 
-  ![image-20220311102437778](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311102437778.png)
+  ![image-20220311102437778](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311102437778.png)
 
   
 
@@ -150,7 +150,7 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * merge해 줌
 
-  ![image-20220311102635055](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311102635055.png)
+  ![image-20220311102635055](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311102635055.png)
 
   
 
@@ -164,7 +164,7 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * merge된 브랜치 삭제
 
-  ![image-20220311103715313](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311103715313.png)
+  ![image-20220311103715313](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311103715313.png)
 
 * 
 
@@ -176,27 +176,27 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * signout.txt 생성 후 add, commit
 
-  ![image-20220311104015022](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311104015022.png)
+  ![image-20220311104015022](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311104015022.png)
 
 * 아까 fastforward 상황과 동일한 상황
 
 * 마스터로 이동
 
-  ![image-20220311104149734](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311104149734.png)
+  ![image-20220311104149734](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311104149734.png)
 
 * 또다른 branch 생성 후  master.txt add, commit
 
-  ![image-20220311104242819](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311104242819.png)
+  ![image-20220311104242819](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311104242819.png)
 
 * 현재 상황
 
-  ![image-20220311104331552](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311104331552.png)
+  ![image-20220311104331552](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311104331552.png)
 
 * signout.txt 생성, add commit
 
 * `git merge signout` (왜인지 모르게 새로운 창이 떠서 ..  일단 유튜브 화면 캡쳐)
 
-  ![image-20220311104740825](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311104740825.png)
+  ![image-20220311104740825](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311104740825.png)
 
 * merge 됐으니 signout branch도 삭제해준다
 
@@ -209,16 +209,16 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 * merge하는 두 브랜치에서 같은 파일의 같은 부분을 동시에 수정하고 merge 하면, git은 해당 부분을 자동으로 merge해주지 못함
 * 반면, 동일 파일이더라도 서로 다른 부분을 수정했다면 conflict없이 자동으로 merge commit된다.
 * hotfix branch만듦 ==> test.txt에 수정 후 add commit
-* ![image-20220311105440389](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311105440389.png)
-* ![image-20220311105327131](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311105327131.png)
+* ![image-20220311105440389](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311105440389.png)
+* ![image-20220311105327131](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311105327131.png)
 
 * master로 switch -> hotfix에서 작성한 문장이 사라진 걸 볼 수 있음
 
-  ![image-20220311105536768](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311105536768.png)
+  ![image-20220311105536768](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311105536768.png)
 
 * master branch인 상태로 ,text.txt 같은 라인에 수정을 해 주고 add commit
 
-  ![image-20220311105715133](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311105715133.png)
+  ![image-20220311105715133](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311105715133.png)
 
 * `git merge` 하면, conflict 남
 
@@ -226,7 +226,7 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * status로도 conflict 확인가능
 
-  ![image-20220311110012137](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311110012137.png)
+  ![image-20220311110012137](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311110012137.png)
 
   
 
@@ -238,15 +238,15 @@ git_merge란 폴더에 test.txt만들고 add commit 한 상태
 
 * conflict난 부분(2번째~6번째) 다 지우고 새로 파일을 수정해줌 > add > commit
 
-  ![image-20220311110056201](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311110056201.png)
+  ![image-20220311110056201](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311110056201.png)
 
 * `git commit`하면 아래처럼 VIM 화면이 뜸
 
-  ![image-20220311110242792](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311110242792.png)
+  ![image-20220311110242792](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311110242792.png)
 
   `:`, `wq` 로 빠져나온다
 
-  ![image-20220311110339178](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311110339178.png)
+  ![image-20220311110339178](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220311110339178.png)
 
 * 머지 끝나면 hotfix branch 삭제해주기
 

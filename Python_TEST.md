@@ -140,7 +140,7 @@ abs(a - b) <= sys.float_info.epsilon
 
 ### 7. 복합 연산자
 
-![image-20220203004655861](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203004655861.png)
+![image-20220203004655861](images\image-20220203004655861.png)
 
 
 
@@ -152,7 +152,7 @@ abs(a - b) <= sys.float_info.epsilon
 
 * 257이후의 id는 각각 다르다
 
-  ![image-20220203005023726](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203005023726.png)
+  ![image-20220203005023726](images\image-20220203005023726.png)
 
 
 

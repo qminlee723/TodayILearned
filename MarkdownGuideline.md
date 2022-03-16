@@ -66,7 +66,7 @@
 - 이미지의 너비(width)와 높이(height)는 조절할 수 없음
 - 하지만 굳이 Typora내 조절하려면 마우스 우클릭 > Zoom image > 배율설정 
 - 조절이 필요하다면 html을 사용해야합니다.
-- <img src="test.assets/cat.jpg" alt="CAT" style="zoom:50%;" />
+- <img src="images/cat.jpg" alt="CAT" style="zoom:50%;" />
 
 
 
@@ -110,7 +110,7 @@
 **Table**
 
 - 표 형식으로 작성해야 함: |Header_1|Header_2|
-- <img src="test.assets/table.jpg" alt="표" style="zoom: 25%;" />
+- <img src="images/table.jpg" alt="표" style="zoom: 25%;" />
 - 귀찮으므로 그냥 본문 > 표 > 열, 행 
 
 | Header_1 | Header_2 |

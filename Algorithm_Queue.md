@@ -16,11 +16,11 @@
 
 * 주요 연산
 
-![image-20220225094705650](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220225094705650.png)
+![image-20220225094705650](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220225094705650.png)
 
 * **isFull()** and **isEmpty()**
 
-  ![image-20220225125000056](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220225125000056.png)
+  ![image-20220225125000056](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220225125000056.png)
 
 
 
@@ -30,7 +30,7 @@
 
 ### 4. 큐의 구현
 
-![image-20220225124611192](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220225124611192.png)
+![image-20220225124611192](C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220225124611192.png)
 
 
 

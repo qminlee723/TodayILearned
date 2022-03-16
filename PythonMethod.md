@@ -1,5 +1,9 @@
 # Python Method
 
+[TOC]
+
+
+
 * 함수처럼 생각
   - 객체(object) 안쪽에 정의된 함수
 * input과 output 
@@ -16,7 +20,7 @@
 
 #### 1. 문자열 조회/탐색 메소드
 
-![image-20220124133701803](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124133701803.png)
+![image-20220124133701803](images\image-20220124133701803.png)
 
 * s.get() : 기본값이 없으면 Non을 반환
 * is 가 들어간다면 boolean 형(T/F)
@@ -59,15 +63,15 @@
 
 *  **s.isalpha() / s.isupper() / s.islower() / s.istitle()**
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124134441512.png" alt="image-20220124134441512" style="zoom:80%;" />
+<img src="images\image-20220124134441512.png" alt="image-20220124134441512" style="zoom:80%;" />
 
-![image-20220124134547915](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124134547915.png)
+![image-20220124134547915](images\image-20220124134547915.png)
 
 
 
 #### 3. 문자열 변경 메소드
 
-![image-20220124134716850](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124134716850.png)
+![image-20220124134716850](images\image-20220124134716850.png)
 
 * 문자 immutable한데 변경이 가능한가??? 
 
@@ -96,7 +100,7 @@
   * ' ', '\t', '\n' 세 가지 다 공백으로 인식하여 공백 제거해준다. 
   * login 기능 만들 때 많이 쓰인다(불필요한 공백 제거해서 문자열 정리)
 
-  ![image-20220124135451152](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124135451152.png)
+  ![image-20220124135451152](images\image-20220124135451152.png)
 
   * 문자열 양쪽 제거(strip), 왼쪽 문자열만 제거(lstrip), 오른쪽 문자열만 제거(rstrip)
 
@@ -118,7 +122,7 @@
 
     ['a', 'b', 'c']
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124135532455.png" alt="image-20220124135532455" style="zoom:67%;" />
+  <img src="images\image-20220124135532455.png" alt="image-20220124135532455" style="zoom:67%;" />
 
   
 
@@ -162,7 +166,7 @@
 
 #### **문자열 변경 예시**
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124140356925.png" alt="image-20220124140356925" style="zoom:80%;" />
+<img src="images\image-20220124140356925.png" alt="image-20220124140356925" style="zoom:80%;" />
 
 
 
@@ -174,7 +178,7 @@
 
 #### 리스트메소드
 
-![image-20220124140459882](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124140459882.png)
+![image-20220124140459882](images\image-20220124140459882.png)
 
 * **L.append(x)**
 
@@ -221,7 +225,7 @@
 
   * 정해진 index에 x를 추가함
 
-  ![image-20220124141017605](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141017605.png)
+  ![image-20220124141017605](images\image-20220124141017605.png)
 
   
 
@@ -230,7 +234,7 @@
   * 리스트에서 값이 x 인 것 삭제
   * 없으면 Error
 
-  ![image-20220124141051404](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141051404.png)
+  ![image-20220124141051404](images\image-20220124141051404.png)
 
   
 
@@ -239,7 +243,7 @@
   * 마지막 항목을 지움
   * 인덱스 지정하면 지정한 인덱스에 있는 것 지움
 
-  ![image-20220124141110645](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141110645.png)
+  ![image-20220124141110645](images\image-20220124141110645.png)
 
   
 
@@ -247,7 +251,7 @@
 
   * 모든 항목을 삭제
 
-  ![image-20220124141156495](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141156495.png)
+  ![image-20220124141156495](images\image-20220124141156495.png)
 
   
 
@@ -255,7 +259,7 @@
 
   * x값을 찾아 해당 인덱스 값을 반환
 
-  ![image-20220124141304193](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141304193.png)
+  ![image-20220124141304193](images\image-20220124141304193.png)
 
   
 
@@ -263,7 +267,7 @@
 
   * 원하는 값의 갯수를 반환
 
-  ![image-20220124141334415](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141334415.png)
+  ![image-20220124141334415](images\image-20220124141334415.png)
 
   
 
@@ -302,7 +306,7 @@
 
       [[5, -6], [1, -2], [9, 4]]
 
-  ![image-20220124141357044](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141357044.png)
+  ![image-20220124141357044](images\image-20220124141357044.png)
 
   ```python
   a = [100, 10, 1, 5]
@@ -343,7 +347,7 @@
 
   * 순서를 반대로 뒤집는다(정렬하는 거 아니고, 주어진 리스트에서 반대로)
 
-  ![image-20220124141430273](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124141430273.png)
+  ![image-20220124141430273](images\image-20220124141430273.png)
 
   * :star: 원본 자체의 순서를 뒤집는다 
 
@@ -374,7 +378,7 @@
 
 * 리스트 메소드 중 항목을 변경하는 메소드들을 제외하고 대부분 동일
 
-  ![image-20220125111655479](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220125111655479.png)
+  ![image-20220125111655479](images\image-20220125111655479.png)
 
   ```python
   a = (1, 2, 3)
@@ -420,7 +424,7 @@
 
 #### 셋 메소드
 
-![image-20220124143552739](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124143552739.png)
+![image-20220124143552739](images\image-20220124143552739.png)
 
 
 
@@ -431,7 +435,7 @@
   * 셋에 값을 추가
   * 순서가 없으므로 순서는 마음대로 출력
 
-  ![image-20220124143832537](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124143832537.png)
+  ![image-20220124143832537](images\image-20220124143832537.png)
 
   
 
@@ -439,7 +443,7 @@
 
   * 여러 값을 추가
 
-  ![image-20220124143853560](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124143853560.png)
+  ![image-20220124143853560](images\image-20220124143853560.png)
 
   
 
@@ -447,7 +451,7 @@
 
   * 셋에서 삭제하고, 없으면 KeyError
 
-  ![image-20220124143907171](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124143907171.png)
+  ![image-20220124143907171](images\image-20220124143907171.png)
 
   
 
@@ -455,7 +459,7 @@
 
   * 셋에서 삭제하고, 없어도 에러가 발생하지 않음
 
-  ![image-20220124143921169](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124143921169.png)
+  ![image-20220124143921169](images\image-20220124143921169.png)
 
   
 
@@ -463,7 +467,7 @@
 
   * 임의의 원소를 제거해 반환한다
 
-  ![image-20220124144107831](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144107831.png)
+  ![image-20220124144107831](images\image-20220124144107831.png)
 
   * Set.pop() vs List.pop()
 
@@ -476,7 +480,7 @@
 
 #### **딕셔너리 메소드**
 
-![image-20220124144316165](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144316165.png)
+![image-20220124144316165](images\image-20220124144316165.png)
 
 
 
@@ -488,7 +492,7 @@
   * KeyError가 발생하지 않으며, default 값을 설정할 수 있다.(기본:None)
     * dictionary['key'] ==> 여기서 key가 없는 키면 에러남. 그런데 get은 안남.
 
-  ![image-20220124144353658](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144353658.png)
+  ![image-20220124144353658](images\image-20220124144353658.png)
 
   
 
@@ -498,9 +502,9 @@
   * 그렇지 않으면 default를 반환한다
   * default값이 없으면 KeyError
 
-  ![image-20220124144431000](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144431000.png)
+  ![image-20220124144431000](images\image-20220124144431000.png)
 
-  ![image-20220124144627257](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144627257.png)
+  ![image-20220124144627257](images\image-20220124144627257.png)
 
   
 
@@ -508,7 +512,7 @@
 
   * 값을 제공하는 key, value로 덮어쓴다
 
-  ![image-20220124144646072](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124144646072.png)
+  ![image-20220124144646072](images\image-20220124144646072.png)
 
   
 
@@ -520,7 +524,7 @@
 
 * 대입 연산자(=)
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124145551857.png" alt="image-20220124145551857" style="zoom:67%;" />
+  <img src="images\image-20220124145551857.png" alt="image-20220124145551857" style="zoom:67%;" />
   
   * original_list와 copy_list 둘 다 바뀌는가? 
   * 같은 메모리 주소 안에 저장이 되어 있는거임. 같은 메모리 주소를 각자 다른 리스트가 가리키게 한 것 
@@ -536,7 +540,7 @@
 
 * 복사하는 리스트의 원소가 주소를 참조하는 경우. 다른 주소가 같은 리스트를 바라본다.
 
-  ![image-20220125112841085](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220125112841085.png)
+  ![image-20220125112841085](images\image-20220125112841085.png)
 
   
 
@@ -548,7 +552,7 @@
 
 * 메모리를 새롭게 할당해서 copy list가 새로운 메모리를 바라보게 하는 것 
 
-  ![image-20220125112922858](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220125112922858.png)
+  ![image-20220125112922858](images\image-20220125112922858.png)
   
 * 따라서 copylist를 변경해도 원본도 바뀌지 않는다.
 

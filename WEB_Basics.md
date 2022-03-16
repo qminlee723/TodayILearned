@@ -54,7 +54,7 @@
 
 #### 1. 기본구조
 
-![image-20220203101908153](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203101908153.png)
+![image-20220203101908153](images\image-20220203101908153.png)
 
 * html: 문서의 최상위(root) 요소
 * head: 문서 메타데이터 요소
@@ -81,7 +81,7 @@
 
     * 메타정보에 해당하는 제목, 설명 등을 쓸 수 있도록 정의
 
-      ![image-20220203102647203](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203102647203.png)
+      ![image-20220203102647203](images\image-20220203102647203.png)
 
       * 미리보기 같은 것
 
@@ -94,7 +94,7 @@
 
 #### 3. DOM(Document Object Model) 트리
 
-![image-20220203103024456](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203103024456.png)
+![image-20220203103024456](images\image-20220203103024456.png)
 
 * 텍스트 파일인 HTML문서를 브라우저에서 렌더링 하기 위한 구조
 
@@ -104,7 +104,7 @@
 
 * 예시
 
-  ![image-20220203110425549](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203110425549.png)
+  ![image-20220203110425549](images\image-20220203110425549.png)
 
   
 
@@ -112,7 +112,7 @@
 
 * 기본 구조
 
-  ![image-20220203103504509](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203103504509.png)
+  ![image-20220203103504509](images\image-20220203103504509.png)
 
   * 태그 이름은 대소문자를 구분하지 않음. 단, 소문자로 쓰자
 
@@ -134,7 +134,7 @@
 
 #### 5. 속성(attribute)
 
-![image-20220203104032343](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203104032343.png)
+![image-20220203104032343](images\image-20220203104032343.png)
 
 * 속성 작성 방식 통일하기
   * = 양 옆 공백은 없어야 한다 
@@ -174,7 +174,7 @@
   * article: 문서, 페이지, 사이트 안에서 독립적으로 구분되는 영역
   * footer: 문서 전체나 섹션의 푸터(마지막 부분)
 
-  ![image-20220203111139813](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203111139813.png)
+  ![image-20220203111139813](images\image-20220203111139813.png)
 
 * Non semantic 요소는 div, span 등이 있으며, h1, table 태그들도 시맨틱 태그로 볼 수 있음
 
@@ -290,7 +290,7 @@
 
 * 용어 정리
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203140805831.png" alt="image-20220203140805831" style="zoom:50%;" />
+  <img src="images\image-20220203140805831.png" alt="image-20220203140805831" style="zoom:50%;" />
 
 
 
@@ -309,23 +309,23 @@
 
   * inline 
 
-    ![image-20220203142817353](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203142817353.png)
+    ![image-20220203142817353](images\image-20220203142817353.png)
 
     * 해당 태그에 직접 style 속성을 활용
 
   * embedding(내부 참조)
 
-    ![image-20220203142838801](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203142838801.png)
+    ![image-20220203142838801](images\image-20220203142838801.png)
 
-    ![image-20220203143105078](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203143105078.png)
+    ![image-20220203143105078](images\image-20220203143105078.png)
 
     * \<head> 태그 내에 \<style>에 지정
 
   * link file(외부 참조)
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203142926011.png" alt="image-20220203142926011" style="zoom:80%;" />
+    <img src="images\image-20220203142926011.png" alt="image-20220203142926011" style="zoom:80%;" />
 
-    ![image-20220203143118363](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203143118363.png)
+    ![image-20220203143118363](images\image-20220203143118363.png)
 
     * 같은 CSS는 하나의 파일로 묶으면 된다
 
@@ -582,7 +582,7 @@
 
 * 하나의 박스는 네 부분(영역)으로 이루어짐
 
-  ![image-20220203163456777](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203163456777.png)
+  ![image-20220203163456777](images\image-20220203163456777.png)
 
   * content
   
@@ -594,7 +594,7 @@
   
   * :star: margin ( margin, padding 둘 다 동일 )
   
-    ![image-20220214024845898](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220214024845898.png)
+    ![image-20220214024845898](images\image-20220214024845898.png)
   
     * margin-2 이면 십자가(상하좌우)
     * margin-3 이면 나누기(상 좌우 하 )
@@ -643,7 +643,7 @@
 
 #### 4. 속성에 따른 수평 정렬
 
-![image-20220203170428922](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203170428922.png)
+![image-20220203170428922](images\image-20220203170428922.png)
 
 * width를 꼭 줘야 반영이 된다.
 
@@ -674,7 +674,7 @@
 
 #### 2. static(기준위치)
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203172143240.png" alt="image-20220203172143240" style="zoom: 67%;" />
+<img src="images\image-20220203172143240.png" alt="image-20220203172143240" style="zoom: 67%;" />
 
 * 모든 태그의 기본 값(기준 위치)
 
@@ -685,7 +685,7 @@
 
 #### 3. relative(상대위치)
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203172207399.png" alt="image-20220203172207399" style="zoom:67%;" />
+<img src="images\image-20220203172207399.png" alt="image-20220203172207399" style="zoom:67%;" />
 
 * 자기 자신의 static 위치를 기준으로 이동(normal flow 유지)
 * 레이아웃에서 요소가 차지하는 공간은 static일 때와 같음
@@ -695,7 +695,7 @@
 
 #### 4. absolute(절대위치)
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203172226309.png" alt="image-20220203172226309" style="zoom:67%;" />
+<img src="images\image-20220203172226309.png" alt="image-20220203172226309" style="zoom:67%;" />
 
 * 요소를 일반적인 문서 흐름에서 제거 후 레이아웃에 공간을 차지하지 않음(normal flow에서 벗어남)
 * static이 아닌 가장 가까이 있는 부모/조상 요소를 기준으로 이동(없는 경우 body)
@@ -707,7 +707,7 @@
 
 #### 5. fixed(고정위치)
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220203172246271.png" alt="image-20220203172246271" style="zoom:67%;" />
+<img src="images\image-20220203172246271.png" alt="image-20220203172246271" style="zoom:67%;" />
 
 * 요소를 일반적인 문서 흐름에서 제거 후 레이아웃에 공간을 차지하지 않음(normal flow에서 벗어남)
 * 부모 요소와 관계없이 viewport를 기준으로 이동

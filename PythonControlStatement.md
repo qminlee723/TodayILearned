@@ -33,7 +33,7 @@
 
 1. 아래의 순서도를 코드로 나타내시오
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118091132661.png" alt="image-20220118091132661" style="zoom:50%;" />
+   <img src="images\image-20220118091132661.png" alt="image-20220118091132661" style="zoom:50%;" />
 
    ```python
    a = 5
@@ -52,7 +52,7 @@
 
 2. 아래의 순서도를 코드로 나타내시오
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118091213092.png" alt="image-20220118091213092" style="zoom:50%;" />
+   <img src="images\image-20220118091213092.png" alt="image-20220118091213092" style="zoom:50%;" />
 
    ```python
    a = 6
@@ -103,7 +103,7 @@
 
 #### :white_check_mark: 연습 문제
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118092058302.png" alt="image-20220118092058302" style="zoom: 67%;" />
+<img src="images\image-20220118092058302.png" alt="image-20220118092058302" style="zoom: 67%;" />
 
 ```python
 dust = 80
@@ -144,7 +144,7 @@ print('미세먼지 확인 완료!')
 
 #### :white_check_mark: 연습 문제
 
-1. <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118094432031.png" alt="image-20220118094432031" style="zoom:67%;" />
+1. <img src="images\image-20220118094432031.png" alt="image-20220118094432031" style="zoom:67%;" />
 
    ```python
    dust = 500
@@ -199,7 +199,7 @@ print('미세먼지 확인 완료!')
 
 2. **아래의 코드는 무엇을 위한 코드일까요?**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118101607947.png" alt="image-20220118101607947" style="zoom:67%;" />
+   <img src="images\image-20220118101607947.png" alt="image-20220118101607947" style="zoom:67%;" />
 
    답: 절대값 계산기
 
@@ -207,7 +207,7 @@ print('미세먼지 확인 완료!')
 
 3. **다음의 코드와 동일한 조건 표현식을 작성하시오**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118095753128.png" alt="image-20220118095753128" style="zoom: 67%;" />
+   <img src="images\image-20220118095753128.png" alt="image-20220118095753128" style="zoom: 67%;" />
 
    ```python
    result = '홀수입니다.' if num % 2 else '짝수입니다' 
@@ -218,7 +218,7 @@ print('미세먼지 확인 완료!')
 
 4. **다음의 코드와 동일한 조건문을 작성하시오**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118095825435.png" alt="image-20220118095825435" style="zoom: 80%;" />
+   <img src="images\image-20220118095825435.png" alt="image-20220118095825435" style="zoom: 80%;" />
 
    ```python
    num = -5
@@ -256,7 +256,7 @@ print('미세먼지 확인 완료!')
 
 1.  **아래의 순서도를 코드로 나타내시오**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118104217984.png" alt="image-20220118104217984" style="zoom:50%;" />
+   <img src="images\image-20220118104217984.png" alt="image-20220118104217984" style="zoom:50%;" />
 
    ```python
    a = 0
@@ -272,7 +272,7 @@ print('미세먼지 확인 완료!')
 
 2.  **1부터 사용자가 입력한 양의 정수까지의 총합을 구하는 코드를 작성하시오.**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118104311058.png" alt="image-20220118104311058" style="zoom:80%;" />
+   <img src="images\image-20220118104311058.png" alt="image-20220118104311058" style="zoom:80%;" />
 
    ```python
    while n <= user_input:
@@ -298,7 +298,7 @@ print('미세먼지 확인 완료!')
 
 1. **아래의 순서도를 코드로 나타내시오**
 
-   <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118110945321.png" alt="image-20220118110945321" style="zoom: 67%;" />
+   <img src="images\image-20220118110945321.png" alt="image-20220118110945321" style="zoom: 67%;" />
 
    ```python
    for fruit in ['apple', 'mango', 'banana']:
@@ -388,7 +388,7 @@ print('미세먼지 확인 완료!')
 
      
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118112215451.png" alt="image-20220118112215451" style="zoom:80%;" />
+     <img src="images\image-20220118112215451.png" alt="image-20220118112215451" style="zoom:80%;" />
 
      
 
@@ -450,7 +450,7 @@ eric 90
 
     2 철수
 
-* **공식 문서**(Official Documents)<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118111959698.png" alt="image-20220118111959698" style="zoom:80%;" />
+* **공식 문서**(Official Documents)<img src="images\image-20220118111959698.png" alt="image-20220118111959698" style="zoom:80%;" />
 
 * 예제
 
@@ -493,7 +493,7 @@ eric 90
 
   1. 1~3의 세제곱의 결과가 담긴 리스트를 만드시오
 
-     ![image-20220118113029452](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118113029452.png)
+     ![image-20220118113029452](images\image-20220118113029452.png)
 
      ```python
      [number**3 for number in range(1, 4)]
@@ -521,7 +521,7 @@ eric 90
 
   1. 1~3의 세제곱의 결과가 담긴 딕셔너리를 만드시오
 
-     <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220118123743621.png" alt="image-20220118123743621" style="zoom:80%;" />
+     <img src="images\image-20220118123743621.png" alt="image-20220118123743621" style="zoom:80%;" />
 
      ```python
      {number:number**3 for number in range(1,4)}

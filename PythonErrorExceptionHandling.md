@@ -149,7 +149,7 @@
 
 * 파이썬 내장 예외의 클래스 계층 구조
 
-  ![image-20220124151824153](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124151824153.png)
+  ![image-20220124151824153](images\image-20220124151824153.png)
 
 
 
@@ -266,7 +266,7 @@ except ValueError as e :
 
 ### 4. 처리 순서
 
-![image-20220124151844261](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124151844261.png)
+![image-20220124151844261](images\image-20220124151844261.png)
 
 
 
@@ -337,7 +337,7 @@ except ValueError as e :
 
 ### 7. 예외 처리 종합 예시
 
-![image-20220124155844393](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124155844393.png)
+![image-20220124155844393](images\image-20220124155844393.png)
 
 * 단, 알고리즘 문제는 try except 쓰지 않음 무조건 맞는 문제만 주기 때문임
 
@@ -345,7 +345,7 @@ except ValueError as e :
 
 ### 8. 에러 메시지 처리(as)
 
-![image-20220124155906083](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220124155906083.png)
+![image-20220124155906083](images\image-20220124155906083.png)
 
 
 

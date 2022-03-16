@@ -48,15 +48,15 @@
 
 ### 3. 데이터베이스의 기본 구조
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113326237.png" alt="image-20220308113326237" style="zoom: 67%;" />
+<img src="images\image-20220308113326237.png" alt="image-20220308113326237" style="zoom: 67%;" />
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113349774.png" alt="image-20220308113349774" style="zoom:50%;" />
+<img src="images\image-20220308113349774.png" alt="image-20220308113349774" style="zoom:50%;" />
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113407031.png" alt="image-20220308113407031" style="zoom:50%;" />
+<img src="images\image-20220308113407031.png" alt="image-20220308113407031" style="zoom:50%;" />
 
 
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113424983.png" alt="image-20220308113424983" style="zoom:50%;" />
+<img src="images\image-20220308113424983.png" alt="image-20220308113424983" style="zoom:50%;" />
 
 
 
@@ -72,7 +72,7 @@
 
 ### 1. 개념
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308113636961.png" alt="image-20220308113636961" style="zoom:50%;" />
+<img src="images\image-20220308113636961.png" alt="image-20220308113636961" style="zoom:50%;" />
 
 * Object-Relational-Mapping
 
@@ -124,7 +124,7 @@ $ touch .gitignore
 
 
 
-![image-20220308101939167](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101939167.png)
+![image-20220308101939167](images\image-20220308101939167.png)
 
 * 각 모델은 django.models.Model 클래스의 서브 클래스로 표현됨
 
@@ -154,7 +154,7 @@ $ touch .gitignore
 
 * 참고
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101645717.png" alt="image-20220308101645717" style="zoom:50%;" />
+  <img src="images\image-20220308101645717.png" alt="image-20220308101645717" style="zoom:50%;" />
 
   *reference: https://docs.djangoproject.com/en/4.0/ref/models/fields/*
 
@@ -180,7 +180,7 @@ $ touch .gitignore
 
 * 참고
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308101613530.png" alt="image-20220308101613530" style="zoom:50%;" />
+  <img src="images\image-20220308101613530.png" alt="image-20220308101613530" style="zoom:50%;" />
 
 
 
@@ -221,11 +221,11 @@ $ touch .gitignore
 
   * `migrations` 폴더 안에 `0001_initial.py` 와 같은 파일이 생성됨
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308212318555.png" alt="image-20220308212318555" style="zoom:80%;" />
+    <img src="images\image-20220308212318555.png" alt="image-20220308212318555" style="zoom:80%;" />
 
   * model을 변경한 것에 기반한 새로운 migration(like 설계도)을 만들 때 사용
 
-    <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308102943130.png" alt="image-20220308102943130"  />
+    <img src="images\image-20220308102943130.png" alt="image-20220308102943130"  />
 
   
 
@@ -243,7 +243,7 @@ $ touch .gitignore
 
   * `db.sqlite3` : 데이터베이스
 
-    ![image-20220308103533240](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308103533240.png)
+    ![image-20220308103533240](images\image-20220308103533240.png)
 
   
 
@@ -271,21 +271,21 @@ $ touch .gitignore
 
     * [X]표시 된게 migrate됐다는 것
 
-    ![image-20220308212620773](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308212620773.png)
+    ![image-20220308212620773](images\image-20220308212620773.png)
 
   
 
 * **모델 조작후(속성 추가 created_at, updated_at) migration 생성 및 반영과정**
 
-  ![image-20220308104819909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308104819909.png)
+  ![image-20220308104819909](images\image-20220308104819909.png)
 
   * migrate 생성
 
-    ![image-20220308105727213](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105727213.png)
+    ![image-20220308105727213](images\image-20220308105727213.png)
 
     
 
-    ![image-20220308105848036](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105848036.png)
+    ![image-20220308105848036](images\image-20220308105848036.png)
 
     ​		*`migration` 폴더 내에 `0002_auto_20220308_...` 하는 py파일 생성됨*
 
@@ -295,7 +295,7 @@ $ touch .gitignore
 
   * 반영
 
-    ![image-20220308105802462](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308105802462.png)
+    ![image-20220308105802462](images\image-20220308105802462.png)
 
   * 시각화: 이런식으로 table을 생성해 준 것
 
@@ -327,7 +327,7 @@ $ touch .gitignore
   * 데이터베이스로부터 조회, 필터, 정렬 등을 수행할 수 있음
 * Making Queries
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165636552.png" alt="image-20220308165636552" style="zoom:67%;" />
+<img src="images\image-20220308165636552.png" alt="image-20220308165636552" style="zoom:67%;" />
 
 
 
@@ -350,7 +350,7 @@ $ touch .gitignore
 
     * `ipython`은 안 넣어줘도 됨. 
 
-    ![image-20220308132012335](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308132012335.png)
+    ![image-20220308132012335](images\image-20220308132012335.png)
 
   * `pip freeze > requirements.txt`
 
@@ -383,7 +383,7 @@ $ touch .gitignore
 
 * **모델에서 데이터 가져오기**
 
-  ![image-20220308131250570](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308131250570.png)
+  ![image-20220308131250570](images\image-20220308131250570.png)
 
   ```bash
   $ python manage.py shell
@@ -430,7 +430,7 @@ $ touch .gitignore
     1
     ```
 
-    ![image-20220308111934133](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308111934133.png)
+    ![image-20220308111934133](images\image-20220308111934133.png)
 
   
 
@@ -486,31 +486,31 @@ $ touch .gitignore
 
 *  모델을 찾아서  import를 쫙 해줌
 
-  ![image-20220308132445994](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308132445994.png)
+  ![image-20220308132445994](images\image-20220308132445994.png)
 
   * QuerySet에 타이틀이 보이게 하고 싶다면 `models.py` `Article` 클래스 **안**에 `__str__` 을 정의해준다
 
-    ![image-20220308134555532](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134555532.png)
+    ![image-20220308134555532](images\image-20220308134555532.png)
 
 * 
 
-![image-20220308133321232](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133321232.png)
+![image-20220308133321232](images\image-20220308133321232.png)
 
-![image-20220308133339752](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133339752.png)
-
-
+![image-20220308133339752](images\image-20220308133339752.png)
 
 
 
 
 
-![image-20220308133524098](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133524098.png)
 
-![image-20220308133605304](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133605304.png)
+
+![image-20220308133524098](images\image-20220308133524098.png)
+
+![image-20220308133605304](images\image-20220308133605304.png)
 
 get은 한가지만 반환한다 -> 따라서 제목이나 내용보다는 id를 자주 사용한다
 
-![image-20220308133743688](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308133743688.png)
+![image-20220308133743688](images\image-20220308133743688.png)
 
 pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙여준다
 
@@ -524,7 +524,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * title이 "첫번째 글"인 모든 Article을 호출하고 싶을 때
 
-  ![image-20220308134051368](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134051368.png)
+  ![image-20220308134051368](images\image-20220308134051368.png)
 
   * ex) 어떠한 field가 정수라면, 1보다 크면 가져와, 3보다 크면 가져와... 등등 다양한 필터들이 있음
 
@@ -542,7 +542,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * contains (속성값 쓰고 던더 contains..)
 
-    ![image-20220308134702847](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308134702847.png)
+    ![image-20220308134702847](images\image-20220308134702847.png)
 
   * in 
 
@@ -557,7 +557,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 * article 인스턴스 객체의 인스턴스 변수 값을 변경 후 저장
   * `article.title = "네번째 글"` 처럼 인스턴스 객체에 다른 변수를 할당
 
-![image-20220308140838419](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140838419.png)
+![image-20220308140838419](images\image-20220308140838419.png)
 
 
 
@@ -566,7 +566,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 * QuerySet의 모든 행에 대해 SQL 삭제 쿼리를 수행하고, 삭제된 객체 수와 객체 유형당 삭제 수가 포함된 딕셔너리를 반환
   * `article.delete()` 
 
-![image-20220308140910219](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308140910219.png)
+![image-20220308140910219](images\image-20220308140910219.png)
 
 
 
@@ -608,11 +608,11 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
     * ​	*`.models` 쩜은 장고에서 권장하는 포맷*
 
-      ![image-20220308142005828](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142005828.png)
+      ![image-20220308142005828](images\image-20220308142005828.png)
 
   * http://127.0.0.1:8000/admin 에서 로그인
 
-    ![image-20220308142152188](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142152188.png)
+    ![image-20220308142152188](images\image-20220308142152188.png)
 
   
 
@@ -620,17 +620,17 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
     * 기본 페이지
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142315688.png" alt="image-20220308142315688" style="zoom:80%;" />
+      <img src="images\image-20220308142315688.png" alt="image-20220308142315688" style="zoom:80%;" />
 
     * Articles안에 들어가면 데이터들을 눈으로 볼 수 있다
 
-      <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142451268.png" alt="image-20220308142451268" style="zoom:80%;" />
+      <img src="images\image-20220308142451268.png" alt="image-20220308142451268" style="zoom:80%;" />
 
     * 직접 delete 및 edit 가능, add 도 가능
 
       | Edit & Delete                                                | Add                                                          |
       | ------------------------------------------------------------ | ------------------------------------------------------------ |
-      | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142431608.png" alt="image-20220308142431608" style="zoom: 67%;" /> | <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308142401062.png" alt="image-20220308142401062" style="zoom: 67%;" /> |
+      | <img src="images\image-20220308142431608.png" alt="image-20220308142431608" style="zoom: 67%;" /> | <img src="images\image-20220308142401062.png" alt="image-20220308142401062" style="zoom: 67%;" /> |
 
       
 
@@ -657,11 +657,11 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 4. crud 프로젝트의 urls.py 업데이트 해준다
 
-   ![image-20220308143922314](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308143922314.png)
+   ![image-20220308143922314](images\image-20220308143922314.png)
 
 5. base.html적용하려면
 
-   ![image-20220308144951873](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308144951873.png)
+   ![image-20220308144951873](images\image-20220308144951873.png)
 
    
 
@@ -675,29 +675,29 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-![image-20220308150700631](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308150700631.png)
+![image-20220308150700631](images\image-20220308150700631.png)
 
 
 
 1. 모델을 이용해서 모든 데이터를 가져온다: `views.py`
 
-   ![image-20220308152943494](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308152943494.png)
+   ![image-20220308152943494](images\image-20220308152943494.png)
 
    
 
 2. 가져온 데이터를 템플릿으로 넘긴다: `index.html`
 
-   ![image-20220308153401061](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153401061.png)
+   ![image-20220308153401061](images\image-20220308153401061.png)
 
    
 
 3. 템플릿에서 데이터를 보여준다
 
-   ![image-20220308153633724](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153633724.png)
+   ![image-20220308153633724](images\image-20220308153633724.png)
 
 4. 걍 참고: `base.html`
 
-![image-20220308153453914](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308153453914.png)
+![image-20220308153453914](images\image-20220308153453914.png)
 
 
 
@@ -713,7 +713,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
    * `textarea`
 
-     ![image-20220308155106225](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155106225.png)
+     ![image-20220308155106225](images\image-20220308155106225.png)
 
      
 
@@ -721,7 +721,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
    * 이렇게 나옵니당
 
-     ![image-20220308155138406](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155138406.png)
+     ![image-20220308155138406](images\image-20220308155138406.png)
 
    * url 다시 설정
 
@@ -729,19 +729,19 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
      * `articles/` 내 `urls.py`에 `app_name`과 `name=""` 설정을 해준다
 
-       ![image-20220308155257039](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155257039.png)
+       ![image-20220308155257039](images\image-20220308155257039.png)
 
      * `new.html` <a></a>태그 다시 설정
 
-       ![image-20220308155404332](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155404332.png)
+       ![image-20220308155404332](images\image-20220308155404332.png)
 
      * `index.html` 에서도 태그 다시 설정
 
-       <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308155722892.png" alt="image-20220308155722892" style="zoom:80%;" />
+       <img src="images\image-20220308155722892.png" alt="image-20220308155722892" style="zoom:80%;" />
 
        * 어 근데 나중에 별명을 create > new로 바꿔줌 필기는 알아서 바꾸기
-       * ![image-20220308160801068](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308160801068.png)
-       * ![image-20220308160830478](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308160830478.png)
+       * ![image-20220308160801068](images\image-20220308160801068.png)
+       * ![image-20220308160830478](images\image-20220308160830478.png)
        * 
 
    * 글쓰기 기능 구현헤ㅐ보지ㅏ
@@ -750,17 +750,17 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
      * `urls`, `views.py` 에 새로 만듬
 
-     * ![image-20220308161117574](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161117574.png)
+     * ![image-20220308161117574](images\image-20220308161117574.png)
 
      * `new.html`에서 보내줄 곳 action에 추가해주기
 
-       ![image-20220308161418282](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161418282.png)
+       ![image-20220308161418282](images\image-20220308161418282.png)
 
      * 주소창이 달라진 것을 볼 수 있다
 
      * content에 dddd 쓰고 제출한거임
 
-       ![image-20220308161540704](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161540704.png)
+       ![image-20220308161540704](images\image-20220308161540704.png)
 
        
 
@@ -771,15 +771,15 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
          * title이라는 데이터를 가지고 올 때 쓰는 get
          * GET은 form의 메서드
 
-         ![image-20220308161813210](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161813210.png)
+         ![image-20220308161813210](images\image-20220308161813210.png)
 
          
 
          runserver해보면 title 제목데이터 content내용데이터 나옴
 
-         ![image-20220308161652454](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161652454.png)
+         ![image-20220308161652454](images\image-20220308161652454.png)
 
-       * ![image-20220308161740694](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308161740694.png)
+       * ![image-20220308161740694](images\image-20220308161740694.png)
 
 
 
@@ -787,9 +787,9 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * 
 
-  ![image-20220308162643502](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162643502.png)
+  ![image-20220308162643502](images\image-20220308162643502.png)
 
-  ![image-20220308162655506](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162655506.png)
+  ![image-20220308162655506](images\image-20220308162655506.png)
 
   분홍: 모델에 있는 필드명
 
@@ -799,7 +799,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * 글번호 5가 추가된것임
 
-  ![image-20220308162935768](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308162935768.png)
+  ![image-20220308162935768](images\image-20220308162935768.png)
 
 * 최신 글이 가장 위로 올라오게 하려면?
 
@@ -807,7 +807,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
     1. 데이터를 가져온 다음에 바꾸는 방법
 
-    ![image-20220308163147927](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163147927.png)
+    ![image-20220308163147927](images\image-20220308163147927.png)
 
     2. 처음부터 DB에서 가져올 때 순서를 지정하는 방법
 
@@ -816,11 +816,11 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
        
 
-       ![image-20220308163607849](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163607849.png)
+       ![image-20220308163607849](images\image-20220308163607849.png)
 
     3. 내가 쓴 내용이 url에 들어가지 않게 하고 싶다면:? - url 에 querystring으로 
 
-       ![image-20220308163800402](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308163800402.png)
+       ![image-20220308163800402](images\image-20220308163800402.png)
 
        * GET method(R only: Read)
 
@@ -834,15 +834,15 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
        * `new.html` 에서 `action`부분에 `method` 를 설정해준다
 
-         ![image-20220308164313543](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308164313543.png)
+         ![image-20220308164313543](images\image-20220308164313543.png)
 
        * `views.py`에도 바꿔줌
 
-         ![image-20220308165309833](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165309833.png)
+         ![image-20220308165309833](images\image-20220308165309833.png)
 
        * 만약, 내용이 url에 포함된다면
 
-         ![image-20220308164519410](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308164519410.png)
+         ![image-20220308164519410](images\image-20220308164519410.png)
 
          * 이렇게 조작이 가능함
 
@@ -862,7 +862,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
              * **POST method를 쓸 때 사용**합니다
 
-               ![image-20220308165053236](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165053236.png)
+               ![image-20220308165053236](images\image-20220308165053236.png)
 
                ALWAYS
 
@@ -872,11 +872,11 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
            * 여기 CSRF token 관련해서 설정되어 있음
 
-             ![image-20220308165205042](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165205042.png)
+             ![image-20220308165205042](images\image-20220308165205042.png)
 
          * 이걸 다 완료하면 url이 안지저분하고 create/에서 멈춤
 
-           ![image-20220308165412893](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165412893.png)
+           ![image-20220308165412893](images\image-20220308165412893.png)
 
            
 
@@ -899,10 +899,10 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
            우리는 단순히 template을 바꾸는게 필요한게아니라
            아예 새로운 URL로 사용자를 가도록 하는기능이 필요한거고
            그게 바로 redirect 입니다.
-
+    
               * 사용자의 편의성을 위해서 redirect을 써 주는 것
     
-     ![image-20220308165948350](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308165948350.png)
+     ![image-20220308165948350](images\image-20220308165948350.png)
 
    * render를 사용하면 데이터가 보이지 않는 이유
 
@@ -912,27 +912,27 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
    * `views.py` `import redirect` 해주고, ` return`도 다시
 
-     ![image-20220308170211306](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170211306.png)
+     ![image-20220308170211306](images\image-20220308170211306.png)
 
    * redirect page가 완성되었으니, 작성완료 페이지 필요 없으니 `create.html` 지워준다
 
-   * ![image-20220308170355200](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220308170355200.png)
+   * ![image-20220308170355200](images\image-20220308170355200.png)
 
-    
+​    
 
 
 
 1. url
 
-![image-20220310093740284](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310093740284.png)
+![image-20220310093740284](images\image-20220310093740284.png)
 
-![image-20220310093723269](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310093723269.png)
+![image-20220310093723269](images\image-20220310093723269.png)
 
 
 
 2. views
 
-![image-20220310094244941](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310094244941.png)
+![image-20220310094244941](images\image-20220310094244941.png)
 
 
 
@@ -940,48 +940,48 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 3. html - detail page
 
-   ![image-20220310101444792](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101444792.png)
+   ![image-20220310101444792](images\image-20220310101444792.png)
 
 4. html - index page에서 글 제목 누르면 디텔ㄹ로 가게 
 
 
 
-![image-20220310101326953](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101326953.png)
+![image-20220310101326953](images\image-20220310101326953.png)
 
 
 
 5. settings.py > TIME_ZONE
 
-   ![image-20220310101756701](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310101756701.png)
+   ![image-20220310101756701](images\image-20220310101756701.png)
 
    
 
 6. 삭제
 
-![image-20220310103559640](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103559640.png)
+![image-20220310103559640](images\image-20220310103559640.png)
 
-![image-20220310103541409](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103541409.png)
+![image-20220310103541409](images\image-20220310103541409.png)
 
-![image-20220310103428100](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103428100.png)
+![image-20220310103428100](images\image-20220310103428100.png)
 
 * 이 때 엔터 누르면 글 번호 10 사라짐
 
-![image-20220310103954164](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310103954164.png)
+![image-20220310103954164](images\image-20220310103954164.png)
 
 
 
 * GET은 데이터를 가지고 올 때만 쓰는거고, 나머지는 POST를 사용해줍니다(수정, 삭제, 생성)
 * 그래서 바꿔줘야됨 + csrf token
-* ![image-20220310104630744](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310104630744.png)
+* ![image-20220310104630744](images\image-20220310104630744.png)
   * 터미널에서 삭제시 POST로 바뀐 걸 알 수 있음
 
-![image-20220310104604376](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310104604376.png)
+![image-20220310104604376](images\image-20220310104604376.png)
 
 * 이렇게 설정을 해 줘도, url을 통해서 삭제가 가능함(GET방식)
 
 * 그래서 view.py에 다시 설정
 
-  ![image-20220310105107991](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310105107991.png)
+  ![image-20220310105107991](images\image-20220310105107991.png)
 
 
 
@@ -990,16 +990,16 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 * 업데이트 할 때
-* url![image-20220310110456684](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310110456684.png)
+* url![image-20220310110456684](images\image-20220310110456684.png)
 * view
-* ![image-20220310110604352](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310110604352.png)
+* ![image-20220310110604352](images\image-20220310110604352.png)
 * html
 * new.html을 복붙 한 다음에 수정 해준다
 * 빈 input을 원래 내용들로 채워준다
-* ![image-20220310111342957](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310111342957.png)
+* ![image-20220310111342957](images\image-20220310111342957.png)
 * 수정하기 버튼 만들기(<a></a> 왜냐면 edit에 액션 보내서 처리할 거고, 페이지로 이동할 거라서 a 태그 써줌) :question: 왜 a 태그?
 * 
-* ![image-20220310111606181](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310111606181.png)
+* ![image-20220310111606181](images\image-20220310111606181.png)
 
 
 
@@ -1007,17 +1007,17 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 update 페이지
 
-![image-20220310112503866](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112503866.png)
+![image-20220310112503866](images\image-20220310112503866.png)
 
 
 
 이걸 한번에 아래처럼 표현도 가능
 
-![image-20220310112624909](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112624909.png)
+![image-20220310112624909](images\image-20220310112624909.png)
 
 
 
-![image-20220310112814315](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310112814315.png)
+![image-20220310112814315](images\image-20220310112814315.png)
 
 
 
@@ -1037,9 +1037,9 @@ SQLite
 
 outline 밑에 `SQLITE EXPLORER`나옴
 
-![image-20220310125246187](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125246187.png)
+![image-20220310125246187](images\image-20220310125246187.png)
 
-![image-20220310125445236](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125445236.png)
+![image-20220310125445236](images\image-20220310125445236.png)
 
 
 
@@ -1047,7 +1047,7 @@ outline 밑에 `SQLITE EXPLORER`나옴
 
 저기 세모난 버튼 누르면
 
-![image-20220310125543431](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220310125543431.png)
+![image-20220310125543431](images\image-20220310125543431.png)
 
 이렇게 시각적으로 볼 수 있음
 
@@ -1073,4 +1073,4 @@ outline 밑에 `SQLITE EXPLORER`나옴
 
 
 
-![image-20220311164436085](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220311164436085.png)
+![image-20220311164436085](images\image-20220311164436085.png)

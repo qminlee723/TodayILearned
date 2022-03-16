@@ -336,7 +336,7 @@
 
 #### 1. 기본 문법
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220127133635816.png" alt="image-20220127133635816" style="zoom: 67%;" />
+<img src="images\image-20220127133635816.png" alt="image-20220127133635816" style="zoom: 67%;" />
 
 ```python
 class MyClass:				# 클래스 정의(파스칼)
@@ -629,7 +629,7 @@ person_2 = Person()
 
 * 매직 메소드 종류
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220126103640656.png" alt="image-20220126103640656" style="zoom:67%;" />
+  <img src="images\image-20220126103640656.png" alt="image-20220126103640656" style="zoom:67%;" />
 
   1. **\__str__** : 해당 객체의 출력 형태를 지정
 
@@ -989,7 +989,7 @@ person_2 = Person()
 
 * 인스턴스에서 특정 '속성'에 접근하면, 인스턴스 -> 클래스 순서로 탐색
 
-  ![image-20220202130312602](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202130312602.png)
+  ![image-20220202130312602](images\image-20220202130312602.png)
 
   ```python
   class Person:
@@ -1040,9 +1040,9 @@ person_2 = Person()
 
 ### :five: 메소드
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220126094750348.png" alt="image-20220126094750348" style="zoom: 67%;" />
+<img src="images\image-20220126094750348.png" alt="image-20220126094750348" style="zoom: 67%;" />
 
-![image-20220202131133134](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131133134.png)
+![image-20220202131133134](images\image-20220202131133134.png)
 
 
 
@@ -1052,7 +1052,7 @@ person_2 = Person()
 
 * 클래스 자체에도 접근 가능 => 인스턴스 메소드가 클래스 상태를 수정할 수도 있음
 
-  ![image-20220202131224352](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131224352.png)
+  ![image-20220202131224352](images\image-20220202131224352.png)
 
   
 
@@ -1064,7 +1064,7 @@ person_2 = Person()
 
 * 클래스 자체에서 각 메소드를 호출하는 경우, 인스턴스 메소드는 호출이 불가능하다
 
-  ![image-20220202131314127](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131314127.png)
+  ![image-20220202131314127](images\image-20220202131314127.png)
 
   
 
@@ -1078,7 +1078,7 @@ person_2 = Person()
 
   * 주로 해당 클래스로 한정하는 용도로 사용
 
-  ![image-20220202131503640](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131503640.png)
+  ![image-20220202131503640](images\image-20220202131503640.png)
 
 
 
@@ -1100,7 +1100,7 @@ person_2 = Person()
 
 * 예시
 
-  ![image-20220202131612816](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131612816.png)
+  ![image-20220202131612816](images\image-20220202131612816.png)
 
 
 
@@ -1119,7 +1119,7 @@ person_2 = Person()
 
 * 코드의 재사용성이 높아진다
 
-  ![image-20220127104235015](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220127104235015.png)
+  ![image-20220127104235015](images\image-20220127104235015.png)
 
   ```python
   class A():				# 세 개 다 같은 것
@@ -1130,7 +1130,7 @@ person_2 = Person()
 
 * 메소드 재사용 예시
 
-  ![image-20220202131905540](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202131905540.png)
+  ![image-20220202131905540](images\image-20220202131905540.png)
 
 
 
@@ -1144,7 +1144,7 @@ person_2 = Person()
 
    - object = student이라면,  classinfo = Person으로 만들어졌니?
 
-     ![image-20220202132045570](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132045570.png)
+     ![image-20220202132045570](images\image-20220202132045570.png)
 
      
 
@@ -1154,7 +1154,7 @@ person_2 = Person()
 
    * classinfo는 클래스 객체의 튜플일 수 있음, classinfo의 모든 항목을 검사
 
-     ![image-20220202132120735](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132120735.png)
+     ![image-20220202132120735](images\image-20220202132120735.png)
 
    
 
@@ -1182,7 +1182,7 @@ person_2 = Person()
      # 똑같은 메소드를 쓰면 자식클래스의 메소드가 부모클래스를 덮어쓰게 된다. 
      ```
 
-     ![image-20220202132144654](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132144654.png)
+     ![image-20220202132144654](images\image-20220202132144654.png)
 
    
 
@@ -1202,9 +1202,10 @@ person_2 = Person()
 
 * 중복된 속성이나 메서드가 있는 경우 **상속 순서**에 의해 결정된다. 
 
-  ![image-20220202132239857](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132239857.png)
+  ![image-20220202132239857](images\image-20220202132239857.png)
   
-![image-20220202132256524](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132256524.png)
+
+![image-20220202132256524](images\image-20220202132256524.png)
 
 
 
@@ -1217,7 +1218,7 @@ person_2 = Person()
 
 * 예시
 
-  ![image-20220202132603756](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132603756.png)
+  ![image-20220202132603756](images\image-20220202132603756.png)
 
   ```python
   class Person:
@@ -1252,7 +1253,7 @@ person_2 = Person()
 
 * 예시
 
-  ![image-20220202132909392](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202132909392.png)
+  ![image-20220202132909392](images\image-20220202132909392.png)
 
 
 
@@ -1471,6 +1472,6 @@ person_2 = Person()
 
 * 예시 3
 
-  ![image-20220202134234000](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202134234000.png)
+  ![image-20220202134234000](images\image-20220202134234000.png)
 
-  ![image-20220202134250996](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220202134250996.png)
+  ![image-20220202134250996](images\image-20220202134250996.png)

@@ -244,22 +244,22 @@
 * 가상환경을 생성하면, 해당 디렉토리에 별도의 파이썬 패키지가 설치됨
 * $ python -m venv <폴더명>
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120101533633.png" alt="image-20220120101533633" style="zoom: 50%;" />
+<img src="images\image-20220120101533633.png" alt="image-20220120101533633" style="zoom: 50%;" />
 
 
 
 #### 가상환경 활성화/비활성화
 
 * <venv>는 가상환경을 포함하는 디렉토리의 경로
-* <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120101838896.png" alt="image-20220120101838896" style="zoom:67%;" />
+* <img src="images\image-20220120101838896.png" alt="image-20220120101838896" style="zoom:67%;" />
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102357788.png" alt="image-20220120102357788" style="zoom: 50%;" />
+<img src="images\image-20220120102357788.png" alt="image-20220120102357788" style="zoom: 50%;" />
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102630421.png" alt="image-20220120102630421" style="zoom: 50%;" />
+<img src="images\image-20220120102630421.png" alt="image-20220120102630421" style="zoom: 50%;" />
 
 * 비활성화시: $ deactivate 명령어 사용
 
-  <img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220120102747385.png" alt="image-20220120102747385" style="zoom:67%;" />
+  <img src="images\image-20220120102747385.png" alt="image-20220120102747385" style="zoom:67%;" />
 
   
 
@@ -267,7 +267,7 @@
 
 
 
-<img src="C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220119155211464.png" alt="image-20220119155211464" style="zoom:50%;" />
+<img src="images\image-20220119155211464.png" alt="image-20220119155211464" style="zoom:50%;" />
 
 * bash shell 에서는 source 명령어를 사용!
 
