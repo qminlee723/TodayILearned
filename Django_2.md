@@ -45,11 +45,11 @@
   * 프로그래밍을 하다 보면, 모든 변수명과 함수명 등 이들 모두를 겹치지 않게 정의 하는 것은 매우 어려운 일
   * 그래서 django에서는
     * 서로 다는 app의 다른 이름을 가진 url name은 이름 공간을 설정해서 구분
-    * template, static 등 django는 정해진 경로 하나로 모아서 보기 때문에, 중간에 폴더를 임의로 만들어 줌으로써 이름공간을 설정
+    * template, static 등 django는 정해진 경로 하나로 모아서 보기 때문에, 중간에 폴더를 임의로 만들어 줌으로써 이름공간을 설정 :question: 
 
 
 
-### 2. URL namespace(app_name 설정)
+### 2. :100: URL namespace(app_name 설정)
 
 * URL namespace를 사용하면, 서로 다른 앱에서 동일한 URL 이름을 사용하는 경우에도 이름이 지정된 URL을 고유하게 사용할 수 있음
 

@@ -20,7 +20,7 @@
 
 * 단일한 데이터에 대한 정보 가짐
   * 사용자가 저장하는 데이터들의 필수적인 필드들과 동작들을 포함
-* 저장된 데이터베이스의 구조(layout)
+* 저장된 데이터베이스의 구조(layout)를 정의하고 데이터베이스의 기록을 관리한다
 * Class로 정해주는 것
 * :star: Django는 model을 통해 데이터에 접속하고 관리 :star:
 * 일반적으로 각각의 model은 하나의 데이터베이스 테이블에 매핑 됨
@@ -36,6 +36,7 @@
   * 조건에 맞는 데이터를 추출하거나 조작하는 명령어
   * "Query를 날린다" > DB를 조작한다
 * 스키마(Schema)
+  * 명세서
   * 데이터베이스에서 자료의 구조, 표현방법, 관계 등을 정의한 구조(structure)
 * 테이블(Table)
   * 열(column): 필드(field) or 속성
@@ -43,6 +44,7 @@
 
 * pk(Primary Key)
   * 자동생성된다
+  * 중복되지 않음
 
 
 
@@ -162,7 +164,7 @@ $ touch .gitignore
 
 #### 4) Field options
 
-* `auto_now_add`
+* :100: `auto_now_add`
   * 최초 생성 일자
   * Django ORM이 최초 insert(테이블에 데이터 입력)시에만 현재 날짜와 시간으로 갱신(테이블에 어떤 값을 최초로 넣을 때)
 * `auto_now`
@@ -247,7 +249,7 @@ $ touch .gitignore
 
   
 
-* **각 Migration이 어떻게 sql로 변환되었는지 알고싶다면**: `sqlmigrate`
+* :100: **각 Migration이 어떻게 sql로 변환되었는지 알고싶다면**: `sqlmigrate`
 
   ```bash
   $ python manage.py sqlmigrate articles 0001
@@ -473,9 +475,10 @@ $ touch .gitignore
 * QuerySet API method는 크게 2 가지로 분류된다
   * Methods that **return** new querysets
     * `all()` : 
-    * `get()`: 
     * `filter()`
   * Methods that **do not return** querysets
+    * `get()`: 
+  
 * READ 관련 메서드
   * `all()`
     * 현재 QuerySet의 복사본 반환
@@ -532,10 +535,10 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * 참고: https://docs.djangoproject.com/en/3.2/ref/models/querysets/
 
-  * Field lookups
+  * **Field lookups**
 
     * 조회 시 특정 검색 조건을 지정
-    *  QuerySet 메서드 `filter()`, `exclude()` 및 `get()`에 대한 키워드 인수로 지정
+    * QuerySet 메서드 `filter()`, `exclude()` 및 `get()`에 대한 **키워드 인수**로 지정
     * 예시
       * `Article.objects.filter(pk__gt=2)`
       * `Article.objects.filter(content__contains='ja')`
@@ -548,7 +551,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
   * isstartwith
 
-  * 
+    
 
 
 
@@ -570,7 +573,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-* * 
+
 
 
 
@@ -579,7 +582,8 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 ### 1. 개념
 
 * Automatic admin interface
-* 
+
+  
 
 ### 2. Admin Site 활용하기
 
@@ -663,15 +667,12 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
    ![image-20220308144951873](images\image-20220308144951873.png)
 
-   
 
 
 
 
 
-
-
-##### 실습
+## :seven: 실습
 
 
 
@@ -785,8 +786,6 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 * DB에 데이터 저장하기
 
-  * 
-
   ![image-20220308162643502](images\image-20220308162643502.png)
 
   ![image-20220308162655506](images\image-20220308162655506.png)
@@ -809,7 +808,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
     ![image-20220308163147927](images\image-20220308163147927.png)
 
-    2. 처음부터 DB에서 가져올 때 순서를 지정하는 방법
+    2. :100: 처음부터 DB에서 가져올 때 순서를 지정하는 방법
 
        * pk: 오름차순
        * -pk: 내림차순
@@ -822,15 +821,17 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
        ![image-20220308163800402](images\image-20220308163800402.png)
 
-       * GET method(R only: Read)
+       * :star: **GET method(**R only: Read)
 
          * 기본값, 서버 리소스를 요청할 때
          * 내용에 URL에 Query String을 포함해서 
-
-       * POST method(CUD: Create, Update, Delete)
-
+         * DB에 변화를 주지 않음
+       
+       * **:star: POST method**(CUD: Create, Update, Delete)
+       
          * 리소스를 생성, 수정, 삭제 할 때 
          * 내용을 Body 안 쪽에 숨겨서 보낸다.
+         * 서버에 변경사항을 만듦
 
        * `new.html` 에서 `action`부분에 `method` 를 설정해준다
 
@@ -887,7 +888,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
            1. create view에서 return redirect를 하는 이유는 기술적인 문제라기보다 사용자가 불편하기 때문입니다 ^^
 
            우리가 게시판에서 글을 쓸때, 새로운 글을 쓰고나면 글 작성이 완료되었습니다. 라는 페이지를 보고나서 다시 목록보기를 누르지않고
-
+       
            바로 목록 보기로 가서 새로운 글을 확인할 수 있게 되죠?
 
 
@@ -942,11 +943,11 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
    ![image-20220310101444792](images\image-20220310101444792.png)
 
-4. html - index page에서 글 제목 누르면 디텔ㄹ로 가게 
+4. html - index page에서 글 제목 누르면 디텔ㄹ로 가게 ![image-20220310101326953](images\image-20220310101326953.png)
 
 
 
-![image-20220310101326953](images\image-20220310101326953.png)
+![image-20220320191851590](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220320191851590.png)
 
 
 
@@ -989,7 +990,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-* 업데이트 할 때
+* **업데이트 할 때**
 * url![image-20220310110456684](images\image-20220310110456684.png)
 * view
 * ![image-20220310110604352](images\image-20220310110604352.png)
@@ -1005,7 +1006,7 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 
 
 
-update 페이지
+**update 페이지**
 
 ![image-20220310112503866](images\image-20220310112503866.png)
 

@@ -108,11 +108,11 @@
   * 높이가 h일 때, 최대의 노드 갯수의 노드를 가진 이진 트리
   * 루트를 1번으로 하여 정해진 위치에 대한 노드 번호를 가짐. 목차 '특성'에 있는 이진트리가 포화 이진트리
 
-* 완전 이진 트리(Complete Binary Tree) :question:
+* 완전 이진 트리(Complete Binary Tree) 
 
   <img src="C:\Users\Gyumin\ssafy7\todayilearned\images\image-20220316094244196.png" alt="image-20220316094244196" style="zoom: 50%;" />
 
-  * 높이가 h이고 노드 수가 n개 일 때(단, **h + 1 < n < 2^(h+1) -1**) 포화 이진 트리의 노드 번호 1번부터 n번까지 **빈 자리가 없는** 이진 트리
+  * 높이가 h이고 노드 수가 n개 일 때(단, **h + 1 < n < 2^(h+1) -1**) 포화 이진 트리의 노드 번호 1번부터 n번까지 **빈 자리가 없는** 이진 트리 
 
 * 편향 이진 트리(Skewed Binary Tree)
 
@@ -774,10 +774,6 @@ def pre_order(v):
         pre_order(v*2) # 왼쪽 자식 정점 방문
         pre_order(v*2+1) # 오른쪽 자식 정점 방문
 ```
-
-
-
-
 
 
 

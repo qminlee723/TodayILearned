@@ -21,7 +21,7 @@
 
 ### 1. Django
 
-* A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+* A high-level Python Web framework that encourages **rapid development** and clean, pragmatic design.
 * It takes care of much of the hassle for Web development, so you can focus on writing your app without needing to reinvent the wheel
 
 
@@ -46,7 +46,7 @@
 
     
 
-### 3. Framework
+### 3. :100: Framework
 
 * Framework
 
@@ -58,7 +58,7 @@
 
   * 개발을 하는데 필요한 개발툴, 환경 등을 제공함
 
-* Web Framework
+* Web Framework 
 
   * 웹 페이지를 개발하는 과정에서 겪는 어려움을 줄이는 것이 주 목적
   * 데이터베이스 연동, 템플릿 형태의 표준, 세션 관리, 코드 재사용 등의 기능을 포함
@@ -70,7 +70,7 @@
     * 앱이 어떤식으로 디자인 되어 있는지?
   * 소프트웨어공항에서 사용되는 디자인 패턴 중 하나
   * 사용자 인터페이스로부터 프로그램 로직을 분리하여 애플리케이션의 시각적 요소나 이면에서 실행되는 부분을 서로 영향 없이 쉽게 고칠 수 있는 애플리케이션을 만들 수 있음
-  * Django = MTV pattern (명칭만 다를 뿐 기능은 동일함)
+  * :100:Django = MTV pattern (명칭만 다를 뿐 기능은 동일함)
 
   
 
@@ -82,7 +82,7 @@
 
 * Model - *database, data*
   * DB에 저장되는 테이블 구조를 정의
-  * 응용 프로그램의 데이터 구조를 정의하고 데이터베이스의 기록을 관리(추가, 수정, 삭제)
+  * 응용 프로그램의 데이터 구조를 정의하고 데이터베이스의 기록을 관리(**추가, 수정, 삭제**)
 * Template(view) -  *HTML*
   * 파일의 구조나 레이아웃을 정의
   * 실제 내용을 **보여주는 데** 사용(presentation)
@@ -123,9 +123,17 @@
 
     `python -m venv venv` 
 
- 2. django 설치
+ 2. 활성화
+
+    ```bash
+    $ source venv\Scripts\activate
+    ```
+
+ 3. django 설치
 
     `pip install django==3.2.11`
+
+    `$ pip install -r requirements.txt`
 
  3. 프로젝트 생성
 
@@ -143,23 +151,11 @@
 
     `$ python manage.py startapp articles`
 
- 6. 앱 등록
+ 7. 앱 등록
 
     settings.py > INSTALLED_APPS = [] 리스트 안에 추가
 
     <img src="images\image-20220302140216832.png" alt="image-20220302140216832" style="zoom:50%;" />
-
- 7. 활성화
-
-    ```bash
-    $ source venv\Scripts\activate
-    ```
-
- 7. 패키지 한꺼번에 설치하기
-
-    ```bash
-    $ pip install -r requirements.txt
-    ```
 
  8. 만약 github나 public repository 에 올라갈 거라면,
 
@@ -265,7 +261,7 @@
 
 ## :three: 요청과 응답
 
-### 
+### 1. admin page
 
 장고 실행하고 싶으면
 
@@ -295,7 +291,7 @@
 
 
 
-### 1. URLs
+### 2. URLs
 
 * `urls.py` > `urlpatterns` 리스트 안에 설정가능
 
@@ -317,7 +313,6 @@
 * view 함수 만들어주기
 
   * articles/ views.py
-  * 
   * render는 **django.shortcuts** 에서 가져온다.
   * 'index.html' = 템플릿경로
 
@@ -335,7 +330,7 @@
 
   
 
-### 2. 참고
+### 3. 참고
 
 * LANGUAGE_CODE = 'en-us'
   * 'ko-kr'
@@ -554,19 +549,23 @@
 
 * for tag
 
-  `{{ forloop }}`
+  `{{ forloop.counter }}`: idx와 같이 나온다
 
-  `{{ forloop.counter }}`
+  `{{ forloop.countr0 }}`: idx와 같이 나오는데 0부터 시작한다
 
-  `{{ for _ in empty }}`
+  `{{ for _ in empty }}`: 리스트가 비었다면 이걸 출력해
+
+  ![image-20220320165955877](C:\Users\Gyumin\AppData\Roaming\Typora\typora-user-images\image-20220320165955877.png)
 
 * if tag
 
   `{% if forloop.first %}`: 첫 바퀴일 때만 true`{% endif %}`
 
-  `{% lorem %}`
+  `{% lorem %}`: 랜덤한 텍스트
 
-  `{% lorem 4 w  %}`
+  `{% lorem 4 w %}`: 4 단어만 출력
+
+  `{% lorem 4 w random %}`: 4단어만 랜덤으로 출력
 
 * 연산
 
@@ -620,7 +619,7 @@
 
   
 
-*  `{% extends ' ' %}`
+*  :100: `{% extends ' ' %}`
 
   * 자식 템플릿이 부모 템플릿을 확장한다는 것을 알림
   * 반드시 템플릿 최상단에 작성되어야 함
@@ -649,7 +648,7 @@
 
      ![image-20220302154603995](images\image-20220302154603995.png)
 
-  3. 그리고 DIRS (directories)에 경로 추가
+  3. :100:그리고 DIRS (directories)에 경로 추가
 
      ![image-20220302154730161](images\image-20220302154730161.png)
 
@@ -732,7 +731,7 @@
 
   * method: 입력 데이터 전달 방식 지정
 
-    * **GET**: 데이터를 달라고 할 때 요청
+    * :star: **GET**: 데이터를 달라고 할 때 요청
 
     * **POST**: 글을 작성하거나 회원 가입을 하거나 등 데이터를 저장 및 쓸 때
 
@@ -749,7 +748,7 @@
   * type속성에 따라 동작 방식이 달라짐
 * 핵심 속성
   * NAME
-    * 중복 가능, 양식을 제출핼ㅆ을 때 name이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음
+    * 중복 가능, 양식을 제출했을 때 name이라는 이름에 설정된 값을 넘겨서 값을 가져올 수 있음
     * 주 용도는 GET/POST 방식으로 서버에 전달하는 파라미터(name은 key, value는 value)로 매핑하는 것
     * GET 방식에서는  URL에서 `?key=value&key=value` 형식으로 데이터 전달
       * 보안이 좋지 않음
@@ -837,7 +836,7 @@
 
 #### 4) 예시 2
 
-* throw로 던진 정보를 catch로 잡는 것pip 
+* throw로 던진 정보를 catch로 잡는 것
 
 1. url
 
@@ -872,7 +871,7 @@
 
 ### 4. App URL mapping
 
-* app의 view 함수가 많아지면서, 사용하는 path() 또한 많아지고, app ㅇ또한 더 많ㅇ이 작성되기 때문에 프로젝트의 urls.py에서 모두 관리하는 것은 프로젝트 유지보수에 좋지 않음
+* app의 view 함수가 많아지면서, 사용하는 path() 또한 많아지고, app ㅇ또한 더 많이 작성되기 때문에 프로젝트의 urls.py에서 모두 관리하는 것은 프로젝트 유지보수에 좋지 않음
 
 ### 5. Including other URLconfs
 
@@ -925,3 +924,4 @@
 
 
 
+ 
