@@ -1,4 +1,4 @@
-# Django 2
+# Django Namespace/Staticfiles
 
 ## :zero: OVERVIEW
 

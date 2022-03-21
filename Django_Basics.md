@@ -549,9 +549,9 @@
 
 * for tag
 
-  `{{ forloop.counter }}`: idx와 같이 나온다
+  `{{ forloop.counter }}`: idx 나온다
 
-  `{{ forloop.countr0 }}`: idx와 같이 나오는데 0부터 시작한다
+  `{{ forloop.counter0 }}`: idx와 같이 나오는데 0부터 시작한다
 
   `{{ for _ in empty }}`: 리스트가 비었다면 이걸 출력해
 
