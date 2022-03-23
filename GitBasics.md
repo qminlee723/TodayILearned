@@ -265,3 +265,9 @@ local repo의 최신 커밋을 remote repo로 push 합니다
 
 내 master에 있는 변경사항들을 origin에 푸쉬할거야
 
+
+
+**GPG Key**
+
+같은 repository 에 다른 사람들이 푸시해도, 누가 푸시하는지 확실히 알려주는 것
+
