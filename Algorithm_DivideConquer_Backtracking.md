@@ -229,7 +229,7 @@ Iterative_Power(x, n)
 
     ```python
     def hoare(A, 1, r):
-        P = A[1]
+        p = A[1]
         i, j = 1, r
         while i <= j:
             while i <= j and A[i] <= p:

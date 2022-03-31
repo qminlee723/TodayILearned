@@ -74,28 +74,94 @@
 
 ### 3. 일반 백트래킹 알고리즘
 
-* Pseudo Code
+#### 1) Pseudo Code
+
+```python
+checknode (node v):
+    IF promising(v)
+    	IF there is a solution at v
+        	write the solution
+        ELSE
+        	FOR each child u of v
+            	checknode(u)
+```
+
+
+
+#### 2) 상태 공간 트리
+
+![image-20220330103426914](C:/Users/Gyumin/AppData/Roaming/Typora/typora-user-images/image-20220330103426914.png)
+
+#### 3) DFS vs 백트래킹
+
+* DFS: 155노드
+
+* 백트래킹: 27노드 :1st_place_medal:
+
+* 예시: SWEA 5189. 전자카트
+
+  * 경유지를 다 거친 다음에 전체비용 계산하는 방법
 
   ```python
-  checknode (node v):
-      IF promising(v)
-      	IF there is a solution at v
-          	write the solution
-          ELSE
-          	FOR each child u of v
-              	checknode(u)
+  def nPr(i, N, s):
+      global minV
+  
+      if i == N:
+          s += arr[p[N-1]][0]
+          if minV > s:
+              minV = s
+      elif s >= minV
+          return
+      else:
+          for j in range(i, N):
+              p[i], p[j] = p[j], p[i]
+              nPr(i+1, N, s + arr[p[i-1]][p[i]])
+              p[i], p[j] = p[j], p[i]
+      return
   ```
 
-* 상태 공간 트리
+  * 경유지가 결정이 될 때마다 비용을 계산하는 방법
 
-  ![image-20220330103426914](C:/Users/Gyumin/AppData/Roaming/Typora/typora-user-images/image-20220330103426914.png)
-
-* DFS vs 백트래킹
-
-  * DFS: 155노드
-  * 백트래킹: 27노드 :1st_place_medal:
-
+  ```python
+  # 2. 경유지가 결정이 될 때마다 비용을 계산하는 방법 ( = sol1 침고)
+  def dfs(s, cnt, acc):
+      global result
   
+      if acc >= result:
+          return
+  
+      if cnt == N - 1:
+          acc += arr[s][0]
+          result = min(result, acc)
+  
+      else:
+          for w in range(1, N):
+              if not visited[w]:
+                  visited[w] = 1
+                  dfs(w, cnt + 1, acc + arr[s][w])
+                  visited[w] = 
+      return
+  ```
+
+  * 재귀호출의 경우 (f'#{tc} {ans} {cnt}')
+
+    * cnt: 정답 도출을 위해 몇 번 탐색했는지 나타냄
+
+    ![image-20220330114328155](Algorithm_Backtracking.assets/image-20220330114328155.png)
+
+  * 백트래킹의 경우 (f'#{tc} {ans} {cnt}')
+
+    ![image-20220330114315069](Algorithm_Backtracking.assets/image-20220330114315069.png)
+
+    
+
+
+
+### 4. 
+
+
+
+
 
 ## :one: 상태공간트리
 
@@ -107,15 +173,37 @@
 
 #### 1) 구축
 
-
+![image-20220330155204372](Algorithm_Backtracking.assets/image-20220330155204372.png)
 
 #### 2) {1, 2, 3}의 powerset을 구하는 백트래킹 알고리즘
+
+```python
+backtrack(a[], k, input)
+	c[MAXCANDIDATES]	# 후보군을 저장할 배열
+    ncands # 후보의 수
+    
+```
+
+
+
+![image-20220330155225881](Algorithm_Backtracking.assets/image-20220330155225881.png)
+
+![image-20220330155242062](Algorithm_Backtracking.assets/image-20220330155242062.png) 
+
+make_candidates => bit배열을 만드는 것
 
 
 
 #### 3) 백트래킹을 이용하여 순열 구하기
 
+![image-20220330160244289](Algorithm_Backtracking.assets/image-20220330160244289.png)
 
+![image-20220330160257685](Algorithm_Backtracking.assets/image-20220330160257685.png)
+
+* 순열 순서
+  * 자리교환
+  * 사용한 숫자 표시
+  * 사용하지 않은 목록 만들기
 
 
 
@@ -208,16 +296,19 @@
 #### 3) 이진 트리 종류
 
 * 포화 이진 트리(Full Binary Tree)
+  * 모든 레벨에 노드가 포화상태로 채워져 있는 이진 트리
 * 완전 이진 트리(Complete Binary Tree)
-* 편한 이진 트리(Skewed Binary Tree)
+  * 마지막 정점 번호 이전까지는 빈틈이 있으면 안됨
+* 편향 이진 트리(Skewed Binary Tree)
+  * 높이 h에 대한 최소 개수의 노드를 가지면서 한쪽 방향의 자식 노드만을 가진 이진트리
 
 
 
 #### 4) 순회(traversal)
 
-* 전위순회
-* 중위순회
-* 후위순회
+* 전위순회: VLR (왼쪽)
+* 중위순회: LVR (가운데)
+* 후위순회: LRV (오른쪽)
 
 
 
