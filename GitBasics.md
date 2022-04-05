@@ -96,16 +96,6 @@ code . gitbash에서 설정된 장소에서 vs code를 엶
 
 
 
-# VS Code
-
-Terminal > New Terminal > dropdown menu (next to +) > Gitbash
-
-단축키: ctrl + shift + `  터미널이 열린다
-
-
-
-
-
 **Repository** 특정 디렉토리를 버전 관리하는 저장소
 
 * **git init** 명령어로 로컬 저장소를 생성
@@ -203,9 +193,9 @@ repository 안에 repository 만들면 헷갈림
 
 
 
-git ignore: remote repository에 올리고 싶지 않은 폴더 혹은 파일을 ignore시키는 것
+**git ignore**: remote repository에 올리고 싶지 않은 폴더 혹은 파일을 ignore시키는 것
 
-git rm -r --cached . : 이미 remote repository에 올라간 폴더 혹은 파일을 삭제시키는 것(local 에는 존재)
+**git rm -r --cached .** : 이미 remote repository에 올라간 폴더 혹은 파일을 삭제시키는 것(local 에는 존재)
 
 
 
@@ -264,6 +254,26 @@ git push origin master
 local repo의 최신 커밋을 remote repo로 push 합니다
 
 내 master에 있는 변경사항들을 origin에 푸쉬할거야
+
+
+
+
+
+**git restore --staged {filename}**: staging area로 올려놓은 파일을 취소
+
+**git restore {file}**: working directory의 변경사항 취소하기 - 이전 커밋의 상태로 변경 
+
+**git reset --hard {c_id}**: commit 되돌리기
+
+* hard: commit의 버전으로 돌아갈 수 있다
+
+**gitignore**
+
+* !profile.png: 모든 png는 빼고, profile.png는 넣고
+
+
+
+
 
 
 

@@ -1,11 +1,6 @@
 # Algorithm Stack
 
-## :zero: OVERVIEW
-
-1. 스택
-2. 재귀호출
-3. Memoization & DP
-4. DFS
+[TOC]
 
 
 

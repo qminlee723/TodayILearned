@@ -62,7 +62,23 @@ for tc in range(1, T + 1):
 
 ![image-20220404194231682](Algorithm_BFS.assets/image-20220404194231682.png)
 
+![image-20220405094435234](Algorithm_BFS.assets/image-20220405094435234.png)
+
+![image-20220405101108521](Algorithm_BFS.assets/image-20220405101108521.png)
+
+* visited 배열의 의미: 각각의 row에 있는 Queen의 위치를 저장해주는 것 
+
+* 나중에 0으로 다 초기화 해도 괜찮음 -> 왜냐하면 차례대로 row를 채울 것이기 때문. 이전 row에 위치한 Queen의 위치를 보면서 새로운 row를 채워나갈 것 + 다음 row에도 영향받지 않을 것
+
+* 대각선 두 개를 한꺼번에 처리할 수 있는 알고리즘
+
+  ![image-20220405102056612](Algorithm_BFS.assets/image-20220405102056612.png)
+
+  
+
 ### 3. 코드
+
+#### 3-1) 유튜브 라이브
 
 ```python
 def check(si, sj):
@@ -112,6 +128,67 @@ for tc in range(1, T + 1):
     ans = 0
 	DFS(0)
     print(f'#{tc} {ans}')
+```
+
+#### 3-2) 웹엑스
+
+```python
+# v 번째 row의 Queen들을 조사 
+# 세로, 대각선 정도 확인해주면된다
+# 왜냐면 가로는 이미 dfs에서 확인해주고 있다(row하나 당 퀸 하나)
+def promising(v):
+    
+    ## 세로줄 확인
+    # row 배열에서, 나보다 인덱스가 작은 키값들에 자기 자신과 같은 값이 있는지 확인
+    # 즉, 나 자신의 세로줄 위쪽에 퀸이 있는지 확인
+    for i in range(v):
+        # 만약에 row배열의 앞쪽에 나랑 같은 값이 있다면, 
+        # 즉 내가 위치한 위쪽(세로줄)에 퀸이 있다면
+        if row[v] == row[i]:
+            return False
+        
+    ## 대각선 확인
+    # column은 내 위치를 기준으로 감소하기도하고 증가하기도 함
+    # 따라서 음수(-)가 나올 가능성도 있음
+    # 그러므로, 절댓값을 취해준다
+    for i in range(v):
+        # 우하향, 좌상향 그래프 둘 다 체크 가능한 조건임
+        if row[v] == row[i] or abs(row[v] - row[i]) == v - i:
+            return False
+        
+        
+    
+### 이게 트리...??
+
+def dfs(v):
+    # 종료조건
+    if v == len(row): # v == N, 즉 N == len(row)
+        #모든 퀸을 배치한 경우
+        cnt += 1
+        return
+    
+    else:
+        for i in range(len(row)):
+            # v번째 row에 i column에다 퀸을 두겠다는 것
+            row[v] = i
+            # 그런데 얘가 그 위치에 있을 수 있는 애인지 확인해줘야 함
+            # 그 확인을 여기서 하면 조금 헷갈리니까, 따로 함수로 빼주자
+            # 가지치기(pruning)
+            if promising(v):
+				# 조건을 만족한다면
+            	# 두었으면 다음줄로 가서 비슷한거 해
+            	dfs(v+1)
+            
+            
+T = int(input())
+for tc in range(1, T+1):
+	N = int(input())
+
+	cnt = 0
+	row = [0] * N # 얘가 어떻게 쓰이는지 - visited 대신 row라고 둔 이유
+
+	dfs(0)
+	print(f'#{tc}, {cnt}')
 ```
 
 

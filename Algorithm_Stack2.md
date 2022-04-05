@@ -1,12 +1,8 @@
 # Algorithm Stack(Calculator/Backtracking)
 
+[TOC]
 
 
-## :zero: OVERVIEW
-
-1. 계산기
-2. 백트래킹
-3. 
 
 ## :one: 계산기(Calculator)
 

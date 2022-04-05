@@ -397,6 +397,8 @@ for i in range(E):
 
 ### 2. 다익스트라(Dijkstra) 알고리즘
 
+
+
 #### 1) 기본개념
 
 * 시작 정점에서 거리가 최소인 정점을 선택해 나가면서 최단 경로를 구하는 방식
@@ -406,11 +408,77 @@ for i in range(E):
 
 
 
+​	
+
+![image-20220405131054560](Algorithm_Graph.assets/image-20220405131054560.png)
+
+![image-20220405131430091](Algorithm_Graph.assets/image-20220405131430091.png)
+
+* II vs III을 비교해서 작은 값을 I에다가 넣어주는 것
+
+
+
 #### 2) 알고리즘
 
 ![image-20220401154323476](Algorithm_Graph.assets/image-20220401154323476.png)
 
 
+
+#### 3) 코드
+
+```txt
+# input
+5 11
+0 1 3
+0 2 5
+1 2 2
+
+```
+
+```python
+def dijkstra(s, V):
+    visited = [0] * (V+1)
+    visited[s] = 1
+    
+    for i in range(V+1):
+        D[i] = adj[s][i] # 초기 D 리스트 만들기
+        
+    minV = INF # 목적지까지 가는 가중치
+    w = 0 # 이번에 선택된 목적지
+    
+    # 방문하지 않은 목적지(노드) 중에서 가장 비용이 적은 노드 선택
+    for in range(V+1):
+        if not visited[i] and minV > D[i]:
+            w = i
+            minV = D[i]
+            
+    visited[w] = 1
+    for i in range(V+1):
+        # 만약 여기가 연결(인접)돼 있으면
+        if 0 < adj[w][i] < INF: 
+            # D[i]를 갱신
+            D[i] = min(D[i], D[w] + adj[w][i]) # 이 한 줄이 III번을 구현한 부분
+
+
+INF = 987654321
+V, E = map(int, input().split())
+# 인접행렬
+adj = [[INF] * (V+1) for _ in range(V+1)]
+
+for i in range(V+1):
+    adj[i][i] = 0
+    
+for _ in range(E):
+    u, v, w = map(int, input().split())
+    adj[u][v] = w
+    
+D = [0] * (V+1)
+dijkstra(0, V)
+```
+
+* import heapq
+* O(n**2) 에서 minheap 사용해서 O(nlogn)으로 바꿔봅시다
+* 네...에..
 
 
 
