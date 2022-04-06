@@ -2,15 +2,7 @@
 
 # Django_Model
 
-## :zero: OVERVIEW
-
-1. **Model**
-
-2. **ORM**
-3. **Migrations**
-4. **Database API**
-5. **CRUD**
-6. **Admin Site**
+[TOC]
 
 
 
