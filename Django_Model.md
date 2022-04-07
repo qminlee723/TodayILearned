@@ -106,13 +106,22 @@
 
 ```bash
 $ python -m venv venv
+$ source venv\Scripts\activate
+$ touch .gitignore
+# gitignore.io로 가서  
+# windows, python, django, visualstudiocode 후 검색
+# 검색해서 나온 내용을 gitignore파일에 복사 하고 저장
+# git add commit 
+$ pip install -r requirements.txt
 $ django-admin startproject firstpjt .
+# git add commit
 $ python manage.py runserver
 $ python manage.py startapp articles
+# $ django-admin startapp articles 해도 됨
+# 이유는: 나중에 여러 프로젝트를 하게 되면 manage.py에서 확인
 # settings.py > INSTALLED_APPS=[]에 추가
-$ source venv\Scripts\activate
-$ pip install -r requirements.txt
-$ touch .gitignore
+# trailing comma 잊지말기!
+# git add commit
 ```
 
 #### 2) models.py 작성
@@ -135,18 +144,20 @@ $ touch .gitignore
 #### 3) Field Types
 
 * `CharField(max_length=00)`
+  
   * max_length 필수
   * 필드의 최대 길이(문자), 데이터베이스레벨과 Django의 유효성검사(값을 검증하는 것)에서 활용
 * `TextField()`
   * 길이 제한 없음(글자의 수가 많을 때 사용)
   * max_length 옵션 작성시 자동 양식 필드인 textarea 위젯에 반영은 되지만,  모델과 데이터베이스 수준에는 적용되지 않음
-* `models.DateTimeField`
+* `models.DateTimeField`sour
+  
   * auto_now_add
   * auto_now
   * DateTimeField가 아닌 DateField의 optinos를 확인한 이유
     * DateTimeField는 Datefield와 동일한 추가 인자(extra argument)를 사용함
     * DateTimeField는 Datefiled의 서브 클래스
-
+  
 * 참고
 
   <img src="images\image-20220308101645717.png" alt="image-20220308101645717" style="zoom:50%;" />
@@ -351,7 +362,8 @@ $ touch .gitignore
 
     * requirements.txt는 사용된 패키지 목록이 나열되어있는 텍스트 파일임
     * 이러한 텍스트 파일을 생성시켜주는 명령어
-
+    * 따라서 현재 상황을 저장하고 싶으면 저 명령어 쓰면 수정된 requirements.txt가 만들어짐
+    
     
 
 * 사용 명령어
@@ -458,9 +470,17 @@ $ touch .gitignore
 
   * `__str__`
 
+    ![image-20220407095424350](Django_Model.assets/image-20220407095424350.png)
+    
+    * `-> str` 은 반환해주는 값이 str인 것을 알려준다는 것
+      * int면 error메시지가 뜸
+    
     * 표준 파이썬 클래스의 method인 str()을 정의하여 각각의 object가 사람이 읽을 수 있는 문자열을 반환(return)하도록 할 수 있음. 
+    
     * 반드시 shell_plus를 재시작해야 반영이된다
-
+    
+      
+    
     
 
 ### 2. READ(읽기)
@@ -659,6 +679,12 @@ pk는 뭔가요? - 장고 내부적으로 id라는 값에 pk라는 별명을 붙
 5. base.html적용하려면
 
    ![image-20220308144951873](images\image-20220308144951873.png)
+   
+   * BASE_DIR 부분에 ctrl하고 마우스 갖다대면 BASE_DIR이 어딘지 나옴
+   
+     ![image-20220407101558810](Django_Model.assets/image-20220407101558810.png)
+   
+     * 지금 존재하고 있는 폴더의 부모의 부모
 
 
 
@@ -1068,3 +1094,72 @@ outline 밑에 `SQLITE EXPLORER`나옴
 
 
 ![image-20220311164436085](images\image-20220311164436085.png)
+
+
+
+
+
+
+
+
+
+## tip
+
+* makemigrations 두 번 하면 나오는 에러들 왜 나는거?
+  * 새로운 필드가 추가됐는데 이 때 기존행의 값을 어떻게 처리할 건지
+
+* 장고 ORM에서 
+  * Queryset
+
+
+
+순서
+
+1. 모델
+
+   * crud, articles 등 생성
+   * model 조작
+   * makemigrations, migrate
+   * createsuperuser
+   * 
+
+2. urls setting
+
+   * `crud/` 안에 있는 `urls.py` 를 articles로 보내주는 코드 쓰기
+
+     ![image-20220407102515819](Django_Model.assets/image-20220407102515819.png)
+
+   * `articles/` 안에 있는 `urls.py`
+
+     ![image-20220407103029453](Django_Model.assets/image-20220407103029453.png)
+
+     * app_name 설정
+     * name='index' 해 주는 것
+
+3. 뷰 
+
+   * 뷰함수 정의해준다
+
+     ![image-20220407105726616](Django_Model.assets/image-20220407105726616.png)
+
+   * dd
+
+     ![image-20220407125254588](Django_Model.assets/image-20220407125254588.png)
+
+4. 템플릿
+
+   
+
+* urls setting
+
+  ![image-20220407101933540](Django_Model.assets/image-20220407101933540.png)
+
+  
+
+
+
+
+
+* *ORM chaining*
+  * `Article.objects.filter().order_by()`
+  * order_by 하고 싶은데 모든 거 말고 어떤 조건을 걸어서 필터링 된 정보만 알고싶을 때 

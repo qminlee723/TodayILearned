@@ -31,7 +31,7 @@
 
 * Django는 form에 관련된 작업의 아래 **세 부분**을 처리
 
-  1. 렌더링을 위한 데이터 준비 및 재구성
+  1. :star: **렌더링을 위한 데이터 준비 및 재구성**
   2. 데이터에 대한 HTML forms 생성
   3. 클라이언트로부터 받은 데이터 수신 및 처리
 
@@ -394,9 +394,16 @@
 
 * 시작하기 전에 합치는 이유
 
+  * 왜 애초에 나눠서 만들었나?
+
+    ![image-20220407145722484](Django_FormClass.assets/image-20220407145722484.png)
+
   * input을 받기 위해 몇 개의 view 함수 쓰고 있는가? 
+
     * `new` & `create` 
+
   * 메서드
+
     * `GET` : 데이터베이스의 데이터를 조회할 때 사용
     * `POST` : 데이터베이스에 뭔가 조작을 가할 때 사용 
     * `new` view 함수가 호출될 때는 `GET` method를 쓰고 있음
@@ -722,3 +729,8 @@ NoReverseMatch 에러가 나면
 
 `url.py`만 확인하면 됨 > 요청한 template의 url을 보면 됨
 
+
+
+form 만들기 전 교수님 막간 git branch 수업
+
+![image-20220407150340639](Django_FormClass.assets/image-20220407150340639.png)
