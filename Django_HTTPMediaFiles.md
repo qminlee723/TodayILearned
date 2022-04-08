@@ -437,7 +437,7 @@
 
 
 
-#### 3) 업로드 순서
+#### 3) 업로드(CREATE) 순서
 
 1. `create.html`에 enctype 속성 지정
 
@@ -450,6 +450,8 @@
 
    ![image-20220408123733416](Django_HTTPMediaFiles.assets/image-20220408123733416.png)
 
+   
+
 2. `views.py` 수정
 
    * title, content는 request 객체의 POST method: `request.POST`
@@ -457,20 +459,158 @@
 
    ![image-20220408212252310](Django_HTTPMediaFiles.assets/image-20220408212252310.png)
 
+   
+
 3. DB 및 파일 트리 확인
 
-   ![image-20220408212516824](Django_HTTPMediaFiles.assets/image-20220408212516824.png)
+   * 실제 파일 위치 `MEDIA_ROOT/images/`
+
+     ![image-20220408215201863](Django_HTTPMediaFiles.assets/image-20220408215201863.png)
+
+     * `MEDIA_ROOT/images/` 안에 들어 있는 이유는  `settings.py`에서 설정해 준대로 들어갔기 때문
+
+       ![image-20220408215103951](Django_HTTPMediaFiles.assets/image-20220408215103951.png)
+
+   * DB에 저장되는 것은 이미지 파일 자체가 아닌 파일의 경로
+
+     ![image-20220408215338056](Django_HTTPMediaFiles.assets/image-20220408215338056.png)
 
 
 
 ### 3. Image Upload(READ)
 
+* `detail.html`의 <img> 태그 수정
+
+  ![image-20220408215908810](Django_HTTPMediaFiles.assets/image-20220408215908810.png)
+
+* 이미지 출력
+
+  <img src="Django_HTTPMediaFiles.assets/image-20220408220629390.png" alt="image-20220408220629390" style="zoom: 50%;" />
+
+* MEDIA_URL 값 확인![image-20220408221424019](Django_HTTPMediaFiles.assets/image-20220408221424019.png)
+
+* static, media 파일 모두 서버에 요청해서 조회하는 것
+
+  * 서버에 요청하기 위해서는 url이 필요
+
+    ![image-20220408221903726](Django_HTTPMediaFiles.assets/image-20220408221903726.png)
+
+    * 근데 난 못찾겠었음
+
+
+
 ### 4. Image Upload(UPDATE)
 
-### 5.
+#### 1) 이미지 수정하기
+
+* 이미지는 바이너리 데이터(하나의 덩어리)이기 때문에 텍스트처럼 일부만 수정하는 것은 불가능
+* 때문에 새로운 사진으로 덮어 씌우는 방식을 사용
 
 
+
+#### 2) 순서
+
+* `update.html` 수정
+
+  * `enctype="multipart/form-data"` 추가
+
+  ![image-20220408222255981](Django_HTTPMediaFiles.assets/image-20220408222255981.png)
+
+* `views.py` 수정
+
+  * update 함수에 `request.FILES` 를 `instance` 인자 앞에 넣어준다.
+
+  ![image-20220408222431031](Django_HTTPMediaFiles.assets/image-20220408222431031.png)
+
+* 이미지 변경
+
+  * 이미지를 완전히 갈아끼우는 것 - 일부만 수정되는 것은 불가능하다
+
+  <img src="Django_HTTPMediaFiles.assets/image-20220408222820330.png" alt="image-20220408222820330" style="zoom:50%;" />
+
+  * 이미지 경로
+
+    ![image-20220408223053797](Django_HTTPMediaFiles.assets/image-20220408223053797.png)
+
+* 만약 동일한 이미지를 새로운 글에다가 쓴다면?
+
+  * 업로드는 잘 됨
+
+  * `media/images/` 폴더 내에 `원래파일이름_임의의문자열값.png`해서 새로운 파일이 저장됨 
+
+    ![image-20220408223558135](Django_HTTPMediaFiles.assets/image-20220408223558135.png)
+
+    * 따라서 같은 이름이 업로드돼도 상관이 없다
+
+* 이미지가 없는 게시글은 표시되지 않는 에러 (ValueError) 해결하기
+
+  * `detail.html` 수정 : 조건문 사용!
+
+    ![image-20220408223940206](Django_HTTPMediaFiles.assets/image-20220408223940206.png)
+
+    * 이미지가 있는 게시글일 때만 이미지 출력
+    * 아니면, 이미지가 없는 게시글에는 대체 이미지 올라가게 설정해 줄 수도 있음(메신저 기본 프로필 처럼) - 정적 파일 이용
+
+    
 
 
 
 ## :three: Image Resizing
+
+### 1. 이미지 크기 변경하기
+
+* 실제 원본 이미지를 서버에 그대로 업로드 하는 것은 서버의 부담이 큰 직업
+
+* <img> 태그에서 직접 사이즈를 조정할 수도 있지만(width와 height 속성 사용), **업로드 될 때** 이미지 자체를 resizing 하는 것을 고려하기
+
+* [django-imagekit](https://github.com/matthewwithanm/django-imagekit/) 라이브러리 활용
+
+  ![image-20220408230400244](Django_HTTPMediaFiles.assets/image-20220408230400244.png)
+
+  ![image-20220408230607100](Django_HTTPMediaFiles.assets/image-20220408230607100.png)
+
+
+
+### 2. 원본 이미지를 재가공하여 저장
+
+#### 1) 원본 X, 썸네일 O
+
+* `models.py`
+
+  * django-imagekit 라이브러리에서 복사해서 `model.py`에 추가
+
+  ![image-20220408232037696](Django_HTTPMediaFiles.assets/image-20220408232037696.png)
+
+* `models.py`에 변경 가했으니 `makemigrations`, `migrate` 해주기
+
+* 이미지 출력
+
+  * 확실히 작아짐
+
+  ![image-20220408232141700](Django_HTTPMediaFiles.assets/image-20220408232141700.png)
+
+  ![image-20220408232237685](Django_HTTPMediaFiles.assets/image-20220408232237685.png)
+
+* 이미지 저장 경로: `media/thumbnails/`
+
+  ![image-20220408232430515](Django_HTTPMediaFiles.assets/image-20220408232430515.png)
+
+
+
+#### 2) 원본 O, 썸네일 O ( 이건 좀 대충 넘어감 )
+
+* 공식문서 참조!
+
+* `model.py` 수정
+
+  ![image-20220408232513248](Django_HTTPMediaFiles.assets/image-20220408232513248.png)
+
+  * 수정 후 `makemigrations`, `migrate`
+
+* `detail.html` 수정
+
+  ![image-20220408232713433](Django_HTTPMediaFiles.assets/image-20220408232713433.png)
+
+* 이미지 출력
+
+  ![image-20220408232729095](Django_HTTPMediaFiles.assets/image-20220408232729095.png)
