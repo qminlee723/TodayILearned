@@ -1,5 +1,3 @@
-
-
 # Django Form Class
 
 [TOC]
@@ -728,6 +726,12 @@ HTML Form, 장고의  Form class, Model Form 세개 파트로 나누어서 정�
 NoReverseMatch 에러가 나면
 
 `url.py`만 확인하면 됨 > 요청한 template의 url을 보면 됨
+
+
+
+
+
+# tip
 
 
 
