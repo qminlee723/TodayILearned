@@ -707,11 +707,22 @@
 * 외부 라이브러리(third party library)의 힘을 빌리기
   * django-bootstrap v5
   * class에 bootstrap을 적용시켜주는 라이브러리
+  
 * 설치
   * 구글에 django-bootstrap v5 검색해서 설치
     1. `$ pip install django-bootstrap-v5`
     2. `$ pip freeze > requirements.txt`
     3. `settings.py`에 `INSTALLED_APPS` 
+  
+* 설치한 library 적용
+
+  * `base.html` 수정
+
+    ![image-20220408232916393](Django_FormClass.assets/image-20220408232916393.png)
+
+  * `update.html` 수정
+
+    ![image-20220408232949750](Django_FormClass.assets/image-20220408232949750.png)
 
 
 
