@@ -195,6 +195,8 @@
      * 유효기간이 없는 것들? session cookies
      * 유효기간이 없는 것들: Persistent cookies
 
+
+
 #### 4) Session in Django
 
 * Django는 세션은 미들웨어를 통해 구현됨
@@ -396,11 +398,11 @@
 
 #### 2) logout 함수
 
-* logout(request)
+* **logout(request)**
 
   * HttpRequest 객체를 인자로 받고 반환 값이 없음
   * 사용자가 로그인하지 않은 경우, 오류를 발생시키지 않음
-  * 현재 요청에 대한 session date를 DB에서 완전히 삭제하고, 클라이언트의 쿠키에서도 sessionid가 삭제됨
+  * 현재 요청에 대한 session date를 DB에서 완전히 삭제하고, 클라이언트의 쿠키에서도 session id가 삭제됨
   * 이는 다른 사람이 동일한 웹 브라우저를 사용하여 로그인하고, **이전 사용자의 세션 데이터에 엑세스하는 것을 방지하기 위함**
 
   
@@ -515,7 +517,7 @@
 
     
 
-#### 4) "next" query string parameter
+#### 4) :question: "next" query string parameter
 
 * 개념
 
