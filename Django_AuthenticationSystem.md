@@ -72,6 +72,8 @@
 
 ### 2. 쿠키와 세션
 
+상태를 유지하기 위해 사용 - 반복적인 요청을 줄이기 위해서
+
 #### 1) HTTP
 
 * Hyper Text Transfer Protocol
@@ -94,10 +96,11 @@
 
 * 개념
 
-  * 서버가 사용자의 웹 브로우저에 전송하는 작은 데이터 조각
-  * 사용자가 웹사이트를 방문할 경우 해당 웹사이트의 서버를 통해 사용자의 컴퓨터에 설치(placed-on)되는 작은 기록 정보 파일
+  * 서버가 사용자의 웹 브라우저(클라이언트)에 전송하는 작은 데이터 조각
+  * 사용자가 웹사이트를 방문할 경우 해당 웹사이트의 서버를 통해 사용자의 컴퓨터에 설치(placed-on)되는 **작은 기록 정보 파일**
     * 브라우저(클라이언트)는 쿠키를 로컬에 KEY-VALUE의 데이터 형식으로 저장
     * 이렇게 쿠키를 저장해 놓았다가, 동일한 서버에 재 요청 시 저장된 쿠키를 함께 전송
+    * 쿠키 안에 session id가 저장되어 있다
   * [참고] 소프트웨어가 아니기 때문에 프로그램처럼 실행될 수 없으며 악성코드를 설치할 수 없지만, 사용자의 행동을 추적하거나 쿠키를 훔쳐서 해당 사용자의 계정 접근 권한을 획득할 수 있음
   * HTTP 쿠키는 상태가 있는 세션을 만들어 줌
   * 쿠키는 두 요청이 동일한 브라우저에서 들어왔는지 아닌지를 판단할 때 주로 사용
@@ -161,7 +164,8 @@
 #### 3) 세션(session)
 
 * 개념
-  * 사이트와 특정 브라우저 사이의 "상태(state)"를 유지시키는 것
+  * 사이트와 특정 브라우저 사이의 "**상태(state)**"를 유지시키는 것
+  * 어떠한 상태를 저장하는 것
   * 클라이언트가 서버에 접속하면 서버가 특정 **session id**를 발급하고, 클라이언트는 발급 받은 session id를 쿠키에 저장
   * 클라이언트가 다시 서버에 접속하면 요청과 함께 쿠키(session id가 저장된)를 서버에 전달
   * 쿠키는 요청 때마다 서버에 함께 전송되므로, 서버에서 session id를 확인해 알맞은 로직을 처리
@@ -505,15 +509,65 @@
 
     ![image-20220411120202246](Django_AuthenticationSystem1.assets/image-20220411120202246.png)
 
-  * 
+  * decorator 붙인 이후 로그인 없이 새 글을 쓰려고 하면 (create 주소로 들어가려고 하면) 로그인 화면으로 redirect 되고, url도 next 쿼리스트링을 포함한 채로 나타남
+
+    <img src="Django_AuthenticationSystem1.assets/image-20220411151331831.png" alt="image-20220411151331831" style="zoom:150%;" />
+
+    
 
 #### 4) "next" query string parameter
 
 * 개념
+
   * 로그인이 정상적으로 진행되면 기존에 요청했던 주소로 redirect하기 위해 마치 주소를 keep해주는 것
   * 단, 별도로 처리해주지 않으면 우리가 view에 설정한 redirect 경로로 이동하게 됨
 
+* 적용
 
+  * redirect
+
+    ![image-20220411120842535](Django_AuthenticationSystem1.assets/image-20220411120842535.png)
+
+    ![image-20220411151905396](Django_AuthenticationSystem1.assets/image-20220411151905396.png)
+
+  * 현재 url(next paramter가 있는)로 요청을 보내기 위해 action 값 비우기
+
+    ![image-20220411120927074](Django_AuthenticationSystem1.assets/image-20220411120927074.png)
+
+  * next값이 들어있는 곳
+
+    ```python
+    # views.py 의 login함수
+    
+    data = request.GET.get('next') #'/articles/create/'
+    ```
+
+    * 이 주소로는 로그인 하고 나서 redirect가 되어야 한다
+
+    * new param 이 없는 경우, 원래대로 index로 갈 수 있게 하려면
+
+      ![image-20220411152623168](Django_AuthenticationSystem1.assets/image-20220411152623168.png)
+
+      
+
+#### 5) 두 데코레이터로 인해 발생하는 구조적 문제와 해결
+
+* 비로그인 상태에서 게시삭제 시도
+
+  *  @require.POST 작성된 함수에 @login_required를 함께 사용하는 경우 에러 발생
+  * 로그인 이후 "next" 매개변수를 따라 해당 함수로 다시 redirect 되는데, 이 때 @require_POST 때문에 405 에러가 발생하게 됨
+
+* 두 가지 문제 발생
+
+  * redirect 과정에서 POST 데이터 손실
+
+    ![image-20220411121151467](Django_AuthenticationSystem1.assets/image-20220411121151467.png)
+
+  * redirect 요청은 POST 방식이 불가능하기 때문에 GET 방식으로 요청됨
+
+    ![image-20220411121141218](Django_AuthenticationSystem1.assets/image-20220411121141218.png)
+
+  
 
 
 
@@ -521,12 +575,98 @@
 
 ### 1. 회원가입
 
+#### 1) UserCreationForm
+
+* 주어진 username과 password로 권한이 없는 새 user를 생성하는 ModelForm
+* 3개의 필드를 가짐
+  * username(from the user model)
+  * password1
+  * password2
+
+#### 2) 회원가입 페이지
+
+#### 3) 회원가입 후 자동으로 로그인 진행하기
+
+#### 4) 회원가입 링크 작성
+
+
+
+
+
 ### 2. 회원탈퇴
+
+#### 1) 개념
+
+* 회원탈퇴는 DB에서 사용자를 삭제하는 것
+
+#### 2)  회원탈퇴 실행
+
+* 회원탈퇴 진행 후 SQLite 확장 프로그램이나 admin 페이지에서 유저가 삭제되었는지 확인
+* 탈퇴하면서 해당 유저의 세션 데이터도 함께 지울 경우(단, 반드시 탈퇴 후 로그아웃 순으로 처리해야 함)
+
+
 
 ### 3. 회원정보 수정
 
+#### 1) UserChangeForm
+
+* 사용자의 정보 및 권한을 변경하기 위해 admin 인터페이스에서 사용되는 ModelForm
+
+#### 2) UserChangeForm 작성
+
+#### 3) UserChangeForm 사용 시 문제점
+
+* 일반 사용자가 접근해서는 안될 정보들(fields)까지 모두 수정이 가능해짐
+* 따라서 UserChangeForm을 상속받아 CustomUserChangeForm이라는 서브클래스를 작성해 접근 가능한 필드를 조정해야 함
+
+#### 4) CustomUserChangeForm 작성
+
+* `get_user_model()`
+  * 현재 프로젝트에서 활성화된 사용자 모델(active user model)을 반환
+  * Django는 User 클래스를 직접 참조하는 대신 `django.contrib.auth.get_user_model()`을 사용해서 참조해야 한다고 강조
+  * User model 참조에 대한 자세한 내용은 추후 모델 관계 수업에서 다룸
+* User모델의 fields
+
+
+
+#### 5) User 클래스 상속 구조 살펴보기
+
+* UserChangeForm 클래스 구조 확인
+* User 클래스 구조 확인
+* AbstractUser 클래스 구조 확인
+* 공식문서의 User모델 Fields 확인
+
+
+
+#### 6)
+
+* 수정시 필요한 필드만 선택해서 작성
+* CustomUserChangeForm으로 변경
+* 회원정보 수정 페이지 확인
+* 
+
+
+
+
+
 ### 4. 비밀번호 변경
 
+#### 1) `PasswordChangeForm`
 
+* 개념
+  * 사용자가 비밀번호를 변경할 수 있도록 하는 Form
+  * 이전 비밀번호를 입력하여 비밀번호를 변경할 수 있도록 함
+  * 이전 비밀번호를 입력하지 않고 비밀번호를 설정할 수 있는 SetPasswordForm을 상속받는 서브 클래스
 
-## :three:
+* 작성
+  * 
+
+#### 2) `SetPasswordForm`
+
+#### 3) 암호 변경 시 세션 무효화 방지
+
+* `update_sessino_auth_has(request, user)`
+  * 현재 요청(current request)과 새 session hash 가 파생될 업데이트 된 사용자 객체를 가져오고, session hash를 적절하게 업데이트
+  * 비밀번호가 변경되면 기존 세션과의 회원 인증 정보가 일치하지 않게 되어 로그인 상태를 유지할 수 없기 때문
+  * 암호가 변경되어도 로그아웃되지 않도록 새로운 password hash로 session을 업데이트함
+
