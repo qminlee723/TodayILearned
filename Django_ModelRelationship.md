@@ -490,6 +490,35 @@ Out[10]: 1
 
 
 
+
+
+
+
+:question: 웹엑스에서 교수님이 따로말씀해주신거
+
+장고에서 다루는 form은 두가지
+
+```python
+comment_form = CommentForm() # 언바운드 폼
+comment_form = CommentForm(request.POST) # 바운드 폼
+
+Django는 바운드 된 폼에 의해서만 유효성 검사를 하고
+Form이 이미 작성된 이후에는 수정이 불가능하다
+
+comment = comment_form.save(commit=False) # database에 저장을 안 했다
+
+```
+
+
+
+
+
+
+
+
+
+
+
 ## :two: :star: Customizing authentication in Django
 
 ### 1. Substituting a custom User model
@@ -501,32 +530,116 @@ Out[10]: 1
 * Django는 User를 참조하는데 사용하는 AUTH_USER_MODEL 값을 제공하여, default user model을 **재정의(override)**할 수 있도록 함
 * Django는 새 프로젝트를 시작하는 경우, 기본 사용자 모델이 충분하더라도 **커스텀 유저 모델을 설정하는 것을 강력하게 권장(highly recommended)**
   * 단, 프로젝트의 모든 migrations 혹은 첫 migrate을 실행하기 전에 이 작업을 마쳐야 함
+  * 이미 User 모델과 다른 모델들과의 관계가 다 설정이 되어버렸기 때문
+  * 만약 굳이굳이 대체해야한다면 **초기화** 해야함
 
 
 
 #### 2) `AUTH_USER_MODEL`
 
 * User를 나타내는데 사용하는 모델
+
 * 프로젝트가 진행되는 동안 변경 불가능
+
   * 프로젝트 중간에(mid-project) AUTH_USER_MODEL 변경하기
-    * 모델 관계에 영향을 미치기 때문에 훨씬 더 어려운 작업 필요
+    * 모델 관계 전체에 영향을 미치기 때문에 훨씬 더 어려운 작업 필요
     * 즉, 중간 변경은 권장하지 않으므로 초기에 설정하는 것을 권장
+
 * 프로젝트 시작 시 설정하기 위한 것이며, 참조하는 모델은 첫번째 마이그레이션에서 사용할 수 있어야 함
+
 * 기본 값: `auth.User` (auth 앱의 User모델)
-* 
+
+  * `settings.py` > `INSTALLED_APPS =[]` 에서 확인할 수 있음 :question: 이게 밑에꺼로대체된다는건가 :question:
+
+  * `AUTH_USER_MODEL = 'auth.User'`
+
+    ![image-20220413142256293](Django_ModelRelationship.assets/image-20220413142256293.png)
+
+  
 
 #### 3) Custom User 모델 정의하기
 
-* 관리자 권한과 함께 완전한 기능을 갖춘 User 모델을 구현하는 기본 클래스인 AbstractUser를 상속받아 새로운 User 모델 작성
+* 관리자 권한과 함께 완전한 기능을 갖춘 User 모델을 구현하는 기본 클래스인 `AbstractUser`를 상속받아 새로운 User 모델 작성
+
   * `accounts/models.py`
-* 기존 Django가 사용한느 User 모델이었던 auth 앱의 User모델을 accounts 앱의 User 모델을 사용하도록 변경
+
+    ```python
+    from django.db import models
+    from django.contrib.auth.models import AbstractUser
+    
+    # Create your models here.
+    class User(AbstractUser):
+        pass
+    
+    # 모든 속성들이 AbstractUser 하위에 있었음
+    # settings.py의 auth.User를 accounts.User 클래스로 바꿈
+    # 이 프로젝트에서 사용하는 기본 User 모델을 AbstractUser로 대체하는 것
+    # 이걸 첫 migrations 전에 해야한다.
+    ```
+
+    
+
+* 기존 Django가 사용하는 User 모델이었던 auth 앱의 User모델을 accounts 앱의 User 모델을 사용하도록 변경: 이걸 첫 migrations 전에 해야한다.
+
   * `settings.py`
+
+    ![image-20220413142841458](Django_ModelRelationship.assets/image-20220413142841458.png)
+
 * admin site에 Custom User 모델 등록
+
   * `accounts/admin.py`
+
+    ![image-20220413143835859](Django_ModelRelationship.assets/image-20220413143835859.png)
+
 * 프로젝트 중간에 진행했기 때문에, 데이터베이스를 초기화 한 후 마이그레이션 진행
-* 초기화 방법
+
+* **초기화 방법**
+
   * db.sqlite3파일 삭제
-  * migrations 파일 모두 삭제(파일명에 숫자가 붙은 파일만 삭제)
+
+  * migrations 파일 모두 삭제(파일명에 숫자가 붙은 **파일**만 삭제 - 폴더, `__init__`파일은 그대로 두기)
+
+  * `python manage.py makemigrations`
+
+    * articles, accounts 폴더 내 migrations 폴더 둘 다에 수정 생김
+    * db.sqlite3 파일 생성됨
+
+  * `python manage.py migrate`
+
+    * db.sqlite3에서 `auth_user` 테이블 이름이 `accounts_user`로 바뀜
+
+  * 초기화 후에는 admin user도 다 초기화 되었으므로, 진행하려면 `createsuperuser`다시해야함
+
+    * 인증 및 권한 테이블 내 사용자 리스트 사라짐
+
+      ![image-20220413143434831](Django_ModelRelationship.assets/image-20220413143434831.png)
+
+      * 이유: built-in User model에서는 admin이 등록이 되어있는데, 이 모델을 우리가 새로 대체해버렸으므로 없어진 것. 이걸 새로 만들어줘야함
+
+  *  사용자 목록 재생성하기
+
+    * customizing authentication in Django
+
+      * Substituting a custom User model에서 순서대로 변경 후 migrate
+
+      ![image-20220413143715943](Django_ModelRelationship.assets/image-20220413143715943.png)
+
+    * `accounts/admin.py`
+
+      ```python
+      # accounts/admin.py
+      from django.contrib import admin
+      from django.contrib.auth.admin import UserAdmin
+      from .models import User
+      
+      admin.site.register(User, UserAdmin)
+      ```
+
+      
+
+    * 출력
+
+      ![image-20220413143908889](Django_ModelRelationship.assets/image-20220413143908889.png)
 
 
 
@@ -536,21 +649,55 @@ Out[10]: 1
 
 * 에러 페이지
 
+  * Model이 변경되면서 생기는 에러 
+
   ![image-20220413114040302](Django_ModelRelationship.assets/image-20220413114040302.png)
+
+  
 
 * 해결방법
 
-  * `UserCreationForm`과 `UserChangeForm`은 기존 내장 User모델을 사용한 ModelForm이기 때문에 커스텀 User 모델로 대체해야 함
+  * `UserCreationForm`과 `UserChangeForm`은 기존 내장 User모델을 사용한 Model Form이기 때문에 커스텀 User 모델로 대체해야 함
 
+    ![image-20220413144158805](Django_ModelRelationship.assets/image-20220413144158805.png)
 
+    
 
 #### 2) Custom Built-in Auth Forms
 
 *  기존 User 모델을 사용하기 때문에 커스텀 User 모델로 다시 작성하거나 확장해야 하는 forms
+
   * `UserCreationForm`
+
+    * `accounts/forms.py`
+
+      ![image-20220413145140138](Django_ModelRelationship.assets/image-20220413145140138.png)
+
+    * `accounts/views.py`
+
+      ![image-20220413145731460](Django_ModelRelationship.assets/image-20220413145731460.png)
+
   * `UserChangeForm`
+
 * 커스텀 User 모델이 `AbstractUser`의 하위 클래스인 경우, 다음과 같은 방식으로 form을 확장
+
   * `UserCreationForm` 확장
+
+  
+
+​    *# User Model을 간접적으로 참조(함수호출을 통해서)하고 있다 -> 이걸 CustomUser로 바꾸려고*
+
+​    *# 우리는 User 모델을 쓰고 있지만, 직접 참조하고 있지는 않다*
+
+​    *# 간점적으로 함수호출을 통해서 프로젝트에서 사용하는 UserModel을 return 받을 수 있다*
+
+​    *# get_user_model : 현재 장고 프로젝트에서 활성화된 User Model을 return해준다*
+
+​    *# UserModel 활성화 된거? accounts 에 있는 User*
+
+  *# 단순 유저 모델 주는게 아니라, 현재 우리 장고 프로젝트에서 메인으로 활성화되어 있는 유저 객체를 리턴*
+
+
 
 #### 3) signup view 함수 코드 수정
 
@@ -559,10 +706,11 @@ Out[10]: 1
 
 #### 4) `get_user_model()`
 
-* 현재 프로젝트에서 활성화된 사용자 모델(active user model)을 반환
+* **현재 프로젝트**에서 활성화된 사용자 모델(active user model)을 반환
   * User 모델을 커스터마이징한 상황에서는 Custom User 모델을 반환
 * 이 때문에 Django는 User 클래스를 직접 참조하는 대신
-  * `django.contrib.auth.get_user_model()`을 사용해 참조해야 한다고 강조
+  * `django.contrib.auth.get_user_model()`을 사용해 참조해야 한다고 강조 (간접 참조)
+  * 직접 참조 하면 - User 대체시 바로 문제 생김
 
 
 
@@ -576,19 +724,53 @@ Out[10]: 1
 
 ### 1. User - Article
 
+* 사용자는 여러 개의 게시글을 작성할 수 있음
+* N 키는 Article이 가지고 있음
+
 #### 1) User 모델 참조하기
 
+![image-20220413150813082](Django_ModelRelationship.assets/image-20220413150813082.png)
+
 * `settings.AUTH_USER_MODEL`
+
   * User 모델에 대한 외래 키 또는 다대다 관계를 정의할 때 사용
   * `models.py`에서 User 모델을 참조할 때 사용
+
 * `get_user_model()`
+
   * 현재 활성화(active)된 User 모델을 반환
     * 커스터마이징한 User 모델이 있을 경우 Custom User 모델, 그렇지 않으면 User를 반환
     * User를 직접 참조하지 않는 이유
   * `models.py`가 아닌 다른 모든 곳에서 유저 모델을 참조할 때 사용
-* 
 
-#### 2) User와 Article 간 모델 관계 정의 후 migration
+* `articles/models.py`
+
+  ![image-20220413150406010](Django_ModelRelationship.assets/image-20220413150406010.png)
+
+* 왜 문자열로 참조?
+
+  * 장고에서 app이 실행되는 순서
+
+  ![image-20220413150438784](Django_ModelRelationship.assets/image-20220413150438784.png)
+
+  * 따라서 `models.py`에서 django에서 user모델을 참조할 때, 
+
+    ```python
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASADE)
+    ```
+
+    이래도 괜찮지만, 장고에서 권장하지는 않음
+
+    ```python
+    # 권장
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ```
+
+    
+
+#### 2) User와 Article 간 모델 관계 정의 후 migration 
+
+![image-20220413151247470](Django_ModelRelationship.assets/image-20220413151247470.png)
 
 * null 값이 허용되지 않는 user_id 필드가 별도의 값 없이 article에 추가되려 하기 때문
 * 1을 입력 후 enter
@@ -602,39 +784,110 @@ Out[10]: 1
 #### 3) 게시글 출력 필드 수정
 
 * 게시글 작성 페이지에서 불필요한 필드가 출력되는 것을 확인
+
+  <img src="Django_ModelRelationship.assets/image-20220413151322584.png" alt="image-20220413151322584" style="zoom:67%;" />
+
 * `articles/forms.py` 
-  * ArticleForm의 출력 필드 수정 후 게시글 작성 재시도
-* 에러 발생
+
+  * ArticleForm의 출력 필드 수정 후 게시글 작성 재시도 (둘 다 똑같음)
+
+    ![image-20220413151456905](Django_ModelRelationship.assets/image-20220413151456905.png)
+
+    <img src="Django_ModelRelationship.assets/image-20220413151508940.png" alt="image-20220413151508940" style="zoom:67%;" />
+
+    
+
+    
+
+    
+
+* 에러 발생: 누가 작성하는데?
+
+  ![image-20220413151558769](Django_ModelRelationship.assets/image-20220413151558769.png)
+
   * 게시글 작성 시 NOT NULL constraint failed: articles_article.user_id 에러 발생
+
   * 게시글 작성 시 작성자 정보(article.user)가 누락되었기 때문
+
+    
 
 
 
 #### 4) CREATE
 
 * 게시글 작성 시 작성자 정보(article.user) 추가 후 게시글 작성 재시도
-* 자신이 작성한 글만 게시 가능하도록 설정
+
+  * `views.py`
+
+  ![image-20220413151811412](Django_ModelRelationship.assets/image-20220413151811412.png)
+
+  
+
+#### 5) DELETE
+
+* 자신이 작성한 글만 삭제 가능하도록 설정
+
+  * 캡쳐본 `authenticated` 스펠링 틀림
+
+  ![image-20220413152649039](Django_ModelRelationship.assets/image-20220413152649039.png)
+
+
+
+#### 6) UPDATE
+
 * 자신이 작성한 글만 수정 가능하도록 설정
 
+* 자신이 작성한 글이 아니면, 수정 페이지도 들어가면 안됨
 
+  ![image-20220413153042968](Django_ModelRelationship.assets/image-20220413153042968.png)
 
-#### 5) READ
+  
+
+#### 7) READ
 
 * 게시글 작성 user가 누구인지 `index.html`에서 출력
+
+  ![image-20220413153203681](Django_ModelRelationship.assets/image-20220413153203681.png)
+
 * 해당 게시글 작성자가 아니라면, 수정/삭제 버튼을 출력하지 못하도록 처리
+
+  ![image-20220413153414643](Django_ModelRelationship.assets/image-20220413153414643.png)
 
 
 
 ### 2. User - Comment
 
+* 한명의 유저는 여러개의 댓글 달 수 있음
+
+* 외래키는 Comment가 가지고 있음
+
+  ![image-20220413153710471](Django_ModelRelationship.assets/image-20220413153710471.png)
+
+  * 댓글을 ForeignKey를 두 개 가지고 있다
+
+    * 댓글은 article하고도 1:N, user하고도 1:N 이므로
+
+    ![image-20220413153825253](Django_ModelRelationship.assets/image-20220413153825253.png)
+
 #### 1) User와 Comment 간 모델 관계 정의 후 migration
 
+* `makemigrations`
+
+![image-20220413153742809](Django_ModelRelationship.assets/image-20220413153742809.png)
+
 * null 값이 허용되지 않는 user_id 필드가 별도의 값 없이 comment에 추가되려 하기 때문
+
 * 1을 입력 후 enter
+
   * 현재 화면에서 기본값을 설정하겠다는 의미
+
 * 1을 입력 후 enter
+
   * 기존 테이블에 추가되는 user_id 필드 값을 1로 설정하겠다는 의미(기존 댓글의 작성자가 모두 1번 user가 됨)
+
 * 마무리
+
+  `migrate`
 
 
 
@@ -642,16 +895,67 @@ Out[10]: 1
 
 * 게시글 작성 페이지에서 불필요한 필드가 출력되는 것을 확인
 
-* 댓글 작성 시 user ForeignKeyField 를 출력하지 않도록 설정
+  ![image-20220413153921932](Django_ModelRelationship.assets/image-20220413153921932.png)
+
+* 댓글 작성 시 user `ForeignKeyField` 를 출력하지 않도록 설정 (아래 그림 둘 다 가능)
+
+  ![image-20220413154059264](Django_ModelRelationship.assets/image-20220413154059264.png)
+
+  ![image-20220413154035811](Django_ModelRelationship.assets/image-20220413154035811.png)
+
+  
 
 * 에러 발생
 
   * 댓글 작성 시 NOT NULL constraint failed: articles_comment.user_id 에러 발생
+
   * 댓글 작성 시 작성자 정보(comment.user)가 누락되었기 때문
+
+    
+
+#### 3) CREATE
+
+* 댓글 작성 시 작성자 정보(request.user) 추가 후 댓글 작성 재시도
+
+  * `articles.views.py`
+
+    ![image-20220413154209595](Django_ModelRelationship.assets/image-20220413154209595.png)
 
   
 
-#### 3)
+
+
+#### 4) READ
+
+* 비로그인 유저에게는 댓글 form 출력 숨기기
+
+  * `detail.html`
+
+    ![image-20220413154656865](Django_ModelRelationship.assets/image-20220413154656865.png)
+
+* 댓글 작성자 출력하기
+
+  * `detail.html`
+
+    ![image-20220413154751007](Django_ModelRelationship.assets/image-20220413154751007.png)
+
+
+
+#### 5) DELETE
+
+* 자신이 작성한 댓글만 삭제 버튼을 볼 수 있도록 수정
+
+  * `detail.html`
+
+    ![image-20220413154909898](Django_ModelRelationship.assets/image-20220413154909898.png)
+
+* 자신이 작성한 댓글만 삭제할 수 있도록 수정
+
+  * `views.py`
+
+    ![image-20220413155023184](Django_ModelRelationship.assets/image-20220413155023184.png)
+
+  
 
 
 
