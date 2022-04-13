@@ -672,3 +672,22 @@
   * 비밀번호가 변경되면 기존 세션과의 회원 인증 정보가 일치하지 않게 되어 로그인 상태를 유지할 수 없기 때문
   * 암호가 변경되어도 로그아웃되지 않도록 새로운 password hash로 session을 업데이트함
 
+
+
+
+
+
+
+
+
+![image-20220412094936553](Django_AuthenticationSystem1.assets/image-20220412094936553.png)
+
+
+
+
+
+* 비밀번호는 암호화 해서 데이터베이스에 저장
+
+  ![image-20220412095238022](Django_AuthenticationSystem1.assets/image-20220412095238022.png)
+
+  
