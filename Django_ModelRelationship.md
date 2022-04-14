@@ -277,7 +277,6 @@ In [2]: article
 Out[2]: <Article: title>
 
 # article입장에서 여기서 작성된 모든 댓글 조회하기(역참조 1 -> N)
-
 In [3]: article.comment_set.all()
 Out[3]: <QuerySet [<Comment: first comment>, <Comment: second comment>]>
 
@@ -549,7 +548,7 @@ comment = comment_form.save(commit=False) # database에 저장을 안 했다
 
 * 기본 값: `auth.User` (auth 앱의 User모델)
 
-  * `settings.py` > `INSTALLED_APPS =[]` 에서 확인할 수 있음 :question: 이게 밑에꺼로대체된다는건가 :question:
+  * 기본값은 `settings.py` > `INSTALLED_APPS =[]` 에서 확인할 수 있음. 이게 밑에꺼로대체된다는 것
 
   * `AUTH_USER_MODEL = 'auth.User'`
 
@@ -743,7 +742,7 @@ comment = comment_form.save(commit=False) # database에 저장을 안 했다
     * User를 직접 참조하지 않는 이유
   * `models.py`가 아닌 다른 모든 곳에서 유저 모델을 참조할 때 사용
 
-* `articles/models.py`
+* `articles/models.py` : 쓰든 안쓰든, 이걸 먼저 세팅해주는것이 좋다
 
   ![image-20220413150406010](Django_ModelRelationship.assets/image-20220413150406010.png)
 
