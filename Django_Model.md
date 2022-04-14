@@ -1163,3 +1163,16 @@ outline 밑에 `SQLITE EXPLORER`나옴
 * *ORM chaining*
   * `Article.objects.filter().order_by()`
   * order_by 하고 싶은데 모든 거 말고 어떤 조건을 걸어서 필터링 된 정보만 알고싶을 때 
+
+
+
+
+
+
+
+
+
+
+
+![image-20220414152308797](Django_Model.assets/image-20220414152308797.png)
+

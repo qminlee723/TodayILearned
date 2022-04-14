@@ -1185,7 +1185,3 @@ SELECT 컬럼1, aggregate_function(컬럼2) FROM 테이블 GROUP BY 컬럼1, 컬
 
   <img src="images\image-20220314155142121.png" alt="image-20220314155142121" style="zoom:67%;" />
 
-# :question:
-
-1. run selected query 나 run query 잘못 누른거 다시 되돌리는 법
-
