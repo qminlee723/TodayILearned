@@ -88,7 +88,7 @@ article_id
 2. 다른 모델 관계와 헷갈리지 않을 수 있음(M:N 과 구분될 수 있게)
 ```
 
-* 주의사항: "Comment 모델은 외래키 article_id를 포함합니다"라는 문장을 보고 클래스 변수명에다가 article_id 쓰면 안 됨. 
+* **주의사항: "Comment 모델은 외래키 article_id를 포함합니다"라는 문장을 보고 클래스 변수명에다가 article_id 쓰면 안 됨.** 
 
   * migrate 이후 데이터베이스 내 articles_comment 테이블의 외래 키 컬럼 확인시 필드 이름에 _id가 자동으로 추가 되는 것을 볼 수 있음
 
@@ -363,6 +363,12 @@ Out[10]: 1
 
   * `detail.html` 에서 action값 바꿔주기
 
+    ```html
+    'articles:comments_create' article.pk
+    ```
+
+    
+
     ![image-20220413103858962](Django_ModelRelationship.assets/image-20220413103858962.png)
 
   * `views.py`
@@ -462,14 +468,11 @@ Out[10]: 1
   ![image-20220413112337811](Django_ModelRelationship.assets/image-20220413112337811.png)
 
   * 이렇게 데코레이터 두 개 쓰면 에러난다
-  * 왜? :question:
+  * 왜? :question: 
   * 그래서 require_POST만 써줌
 
   ![image-20220413112418449](Django_ModelRelationship.assets/image-20220413112418449.png)
 
-  
-
-* 
 
 
 
@@ -507,10 +510,6 @@ Form이 이미 작성된 이후에는 수정이 불가능하다
 comment = comment_form.save(commit=False) # database에 저장을 안 했다
 
 ```
-
-
-
-
 
 
 

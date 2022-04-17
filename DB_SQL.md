@@ -19,6 +19,7 @@
 * 여러 사람이 고유하고 사용할 목적으로 통합 관리되는 정보의 집합
 * 논리적으로 연관된 (하나 이상의) 자료 모음으로 그 내용을 고도로 구조화 함으로써 검색과 갱신의 효율화를 꾀한 것
 * 즉, **몇 개의 자료 파일을 조직적으로 통합**하여 자료 항목의 **중복을 없애고** 자료를 **구조화**하여 기억시켜놓은 자료의 **집합체**
+* 데이터와 자료가 조직적으로 구조화되어있는 집합체
 
 ### 2) 장점
 
@@ -72,7 +73,7 @@
 
   * 각 행(레코드)의 고유 값
 
-  * 반드시 설정해야 하며, 데이터베이스 관리 및 고나계 설정시 주요하게 활용됨
+  * 반드시 설정해야 하며, 데이터베이스 관리 및 관계 설정시 주요하게 활용됨
 
     <img src="images\image-20220314091316306.png" alt="image-20220314091316306" style="zoom:67%;" />
 
@@ -94,7 +95,7 @@
 
 * 서버 형태가 아닌 파일 형식으로 응용 프로그램이 넣어서 사용하는 비교적 가벼운 데이터베이스. 구글 안드로이드 운영체제에 기본적으로 탑재된 데이터베이스이며, 임베디드소프트웨어에도 많이 활용됨. 로컬에서 간단한 DB 구성 가능, 오픈소스프로젝트이므로 자유로운 사용가능
 
-
+  
 
 ### 3) Sqlite Date Type
 
@@ -452,7 +453,7 @@
   * **DISTINCT**
 
     ```sql
-    SELECT 컬럼1, 컬럼2, ... FROM 테이블이름 DISTINCT 숫자;
+    SELECT DISTINCT 컬럼1, 컬럼2, ... FROM 테이블이름;
     ```
 
     * remove duplicate rows in the result set
@@ -651,7 +652,7 @@
 
 * Wildcard character
 
-  * 파일을 지정할 때, 구체적인 이름 대신에 여러 파일을 동시에 지정할 목적으로 사용하는 ㅌ그수 기호
+  * 파일을 지정할 때, 구체적인 이름 대신에 여러 파일을 동시에 지정할 목적으로 사용하는 특수 기호
     * `*`, `?` 등
 
   * 주로 특정한 패턴이 있는 문자열 혹은 파일을 찾거나, 긴 이름을 생략할 때 쓰임
@@ -681,7 +682,7 @@
 * 조회 결과 집합을 정렬
 * SELECT  문에 추가하여 사용
 * 정렬 순서를 위한 2개의 keyword 제공
-  * **ASC** - 오름차순(default)
+  * **ASC** - 오름차순*(default)*
   * **DESC**  - 내림차순
 
 #### 2) 기본구조
@@ -748,9 +749,8 @@ SELECT 컬럼1, aggregate_function(컬럼2) FROM 테이블 GROUP BY 컬럼1, 컬
     ALTER TABLE 테이블이름 DROP COLUMN 삭제할열이름;
     ```
 
-    
-
-
+  
+  
 
 
 
@@ -878,7 +878,7 @@ SELECT 컬럼1, aggregate_function(컬럼2) FROM 테이블 GROUP BY 컬럼1, 컬
 
   <img src="images\image-20220314112353493.png" alt="image-20220314112353493" style="zoom:80%;" />
 
-* **WHERE**: classmates 테이블에서 id, names 컬럼 값 중에 주소가 서울인 경우의 데이터를 조회
+* **WHERE**: classmates 테이블에서  주소가 서울인 경우의 id, names을 조회
 
   ```sql
   SELECT rowid, name FROM classmates WHERE address = '서울';
@@ -971,7 +971,7 @@ SELECT 컬럼1, aggregate_function(컬럼2) FROM 테이블 GROUP BY 컬럼1, 컬
 
 ## 6. AVG, SUM, MIN, MAX
 
-* 그룹의 항목 수를 가져온다(열 수)
+* 그룹의 항목 수를 가져온다(행 수)
 
   ```sql
   SELECT COUNT(*) FROM users;
