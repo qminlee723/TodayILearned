@@ -976,3 +976,11 @@ comment = comment_form.save(commit=False) # database에 저장을 안 했다
 #### 2)
 
 #### 3)
+
+
+
+## :three: TIP
+
+* 대댓글
+
+![image-20220419154632990](Django_ModelRelationship.assets/image-20220419154632990.png)

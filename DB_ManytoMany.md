@@ -589,6 +589,48 @@
 
 * **`articles/views.py` 작성**
 
+  ```python
+  def likes(request, article_pk):
+      article = get_object_or_404(Article, pk=article_pk)
+      if request.user in article.like_users.all():
+          article.like_users.remove(request.user)
+      else:
+          article.like_users.add(request.user)
+      return redirect('articles:index')
+  ```
+
+  ```python
+  @require_POST
+  def likes(request, article_pk):
+      if request.user.is_authenticated:
+          article = get_object_or_404(Article, pk=article_pk)
+  
+          # 이 게시글에 좋아요를 누른 유저 목록에 현재 요청하는 유저가 있다면.. 좋아요 취소
+          # if request.user in article.like_users.all(): 
+          if article.like_users.filter(pk=request.user.pk).exists():
+              article.like_users.remove(request.user)
+              
+          # 아니라면, 좋아요(추가)
+          else:
+              article.like_users.add(request.user)
+          return redirect('articles:index')
+      return redirect('accounts:login')
+  ```
+
+* **`index.html`에 like 출력** 
+
+  * `if user in article.like_users.all`: 이 게시물에 좋아요를 누른 유저에 user가 포함되어 있다면,
+
+  ![image-20220418205743572](DB_ManytoMany.assets/image-20220418205743572.png)
+
+* **좋아요 버튼 클릭 후 테이블 확인**
+
+  <img src="DB_ManytoMany.assets/image-20220419101354984.png" alt="image-20220419101354984" style="zoom:67%;" />
+
+  
+
+  
+
 ### 2. 현재 User-Article 간 사용 가능한 DB API
 
 * **참조**일 때 manager 두 개 
@@ -609,9 +651,6 @@
 * QuerySet 에 결과가 포함되어 있으면 True를 반환하고, 그렇지 않으면 False를 반환
 * 특히 규모가 큰 QuerySet의 컨텍스트에서 특정 개체 존재 여부와 관련된 검색에 유용
 * 고유한 필드(ex. Primary Key)가 있는 모델이 QuerySet의 구성원인지 여부를 찾는 가장 효율적인 방법
-* 
-
-
 
 
 
@@ -640,12 +679,6 @@
   * 팔로잉 수/ 팔로워 수 출력
   * 자기 자신을 팔로우할 수 없음
   * 팔로우 버튼 클릭 후 테이블 확인
-
-
-
-
-
-
 
 
 

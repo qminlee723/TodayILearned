@@ -2,12 +2,7 @@
 
 ## :zero: OVERVIEW
 
-1. Web Framework
-2. Django Intro
-3. 요청과 응답
-4. Template
-5. HTML Form
-6. URL
+[TOC]
 
 :heavy_heart_exclamation: **클라이언트, 서버, 요청, 응답** :heavy_heart_exclamation:
 
