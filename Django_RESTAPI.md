@@ -2,13 +2,28 @@
 
 
 
+* 서버란?
+  * Web server
+    * request가 왔을 때, 웹 페이지를 response의 body에 담아서 응답을 준다
+    * 화면의 재료에 필요한 respons를 body에 담아 주는 것
+  * API server
+    * request가 왔을 때, 요청한 것을 처리하고, 처리한 결과를 response의 body에 담아서 JSON 형식으로 응답을 준다
+
 ## :one: HTTP
 
 ### 1. 개념
 
 * HyperText Transfer Protocol
 * 웹 상에서 컨텐츠를 전송하기 위한 약속
+* 클라이언트와 서버가 서로 어떤 형식으로 데이터를 보내줄건지를 약속한 규약
+  * 클라이언트와 서버가 서로 데이터를 주고받으려면 '프로토콜'이 필요하다. 웹 개발에는 HTTP, HTTPS가 중요하다.
 * HTML 문서와 같은 리소스를 가져올 수 있도록 하는 프로토콜(규약, 약속)
+* 프로토콜 
+  * FTP: torrent, 파일
+  * SSH
+  * TELNET
+  * HTTP
+  * HTTPS: S는 secure의 약자
 * 웹에서 이루어지는 모든 데이터 교환의 기초
   * 요청(request)
     * 클라이언트에 의해 전송되는 메세지
@@ -16,8 +31,14 @@
     * 서버에서 응답이 전송되는 메시지
 * 기본특성
   * Stateless(무상태)
+    * connectionless 가 발생한 것, 서버가 클라이언트를 기억하지 못함(식별 불가능)
+    * 매번 요청할 때마다 내가 누군지를 서버에게 알려줘야 함
   * Connectionless(비연결성)
+    * 클라이언트와 서버가 한 번 응답을 주고 받으면 연결을 끊는다
+    * 리소스 절약을 위해서
 * 쿠키와 세션을 통해 서버 상태를 요청과 연결하도록 함
+  * 쿠키: 클라이언트가 기억하고 서베에 주는 것. 아주 쉽게 뺏긴다: 보안이 취약
+  * 세션: 민감한 정보를 서버가 기억해주겠다
 
 
 
@@ -30,6 +51,7 @@
 ### 3. HTTP request methods
 
 * 자원에 대한 행위(수행하고자 하는 동작)을 정의
+  * 클라이언트가 서버에게 요청을 할 때, 어떤 동작을 하는지 알기 쉽게 알려주는 것
 * 주어진 리소스(자원)에 수행하길 원하는 행동을 나타냄
 * HTTP Method 예시
   * GET, POST, PUT, DELETE
@@ -37,24 +59,65 @@
     * POST: CREATE
     * PUT: UPDATE
     * DELETE: DELETE
+* request는 head와 body로 나뉘어진다
+  * head: 요청에 대한 부가정보, Method는 head에 위치
+  * body: 실제 데이터를 담아 보낸다
+  * header: 
+    * head 안에 담겨있는 있는 키와 밸류들의 쌍, 즉 각각의 정보들을 맒함
+    * 운영체제 정보까지 담겨있다
 
 
 
 ### 4. HTTP response status codes
 
 * 특정 HTTP 요청이 성공적으로 완료되었는지 여부를 나타냄
+
+* STATUS CODE = 숫자
+
+* 각각의 status code는 status message(상태 메시지)를 가지고있다.
+
 * 5개 그룹
-  * (1xx) Informational responses
-  * (2xx) Successful responses
-  * (3xx) Redirection messages
-  * (4xx) Client error responses
-  * (5xx) Server error responses
+
+  * **(1xx) Informational responses**: 서버가 클라이언트한테 정보성 응답을 주는 코드
+
+    * 100 CONTINUE
+
+  * **(2xx) Successful responses**: 정상적 상황
+
+    * 200 OK
+    * 201 CREATED
+
+  * **(3xx) Redirection messages**: 리다이렉션 메시지 - 클라이언트가 요청을 했을 때, 추가적인 정보 필요하다는 것을 알려주는 메시지
+
+    * 301 MOVIED PERMANENTLY
+    * 304 NOT MODIFIED: chrome
+
+  * **(4xx) Client error responses: 클라이언트 에러**
+
+    * 400 BAD REQUEST
+      * 요청은 제대로 했는데, 형식이 잘못됨( 꼭 필요한 정보 누락, 오타 등 )
+    * 401 UNAUTHROIZED
+      * 인증되지 않은 사용자
+    * 403 FORBIDDEN
+      * 권한이 없는 사용자
+    * 404 NOT FOUND
+      * 나에게 없는 요청을 보내는 것 
+
+    * 429 TOO MANY REQUESTS
+
+  * **(5xx) Server error responses: 서버 에러** aka 야근 상태코드
+
+    * 500 INTERNAL SERVER ERROR
+      * 서버 내부 에러에 의해 요청을 처리할 수 없음
+    * 503 SERVICE UNAVAILABLE
+      * 트래픽의 증가 등으로 일시적으로 서비스가 중단되는 것
 
 
 
 ### 5. 웹에서의 리소스 식별
 
 * HTTP 요청의 대상을 리소스(resource, 자원)라고 함
+* 서버에 존재하는 정보를 리소스라고 한다
 * 리소스는 문서, 사진 또는 기타 언떤 것이든 될 수 있음
 * 각 리소스는 리소스 식별을 위해 HTTP 전체에서 사용되는 URI(Uniform Resource Identifier)로 식별됨
 
@@ -110,7 +173,7 @@
 
   * 웹 서버 상의 리소스에 접근하는데 사용되는 기술적인 '문(gate)'
   * 로컬에서 작업할때 자주본다
-  * HTTP 프로토콜의 표준 포트
+  * HTTP 프로토콜의 표준 포트 (일반적일 뿐 강제되는건 아님)
     * HTTP 80 
     * HTTPS 443
   * https://www.example.com`:443`/path/to/myfile.html/?key=value#quick-start
@@ -159,6 +222,7 @@
   * CLI(명령어:Command Line Interfacae)는 명령줄, GUI(Graphical User Interface)는 그래픽(아이콘), API는 프로그래밍을 통해 특정한 기능 수행
 * Web API
   * 웹 애플리케이션 개발에서 다른 서비스에 요청을 보내고 응답을 받기 위해 정의된 명세
+    * 단, 어떻게 설계해도기능적으로는 문제가 없다
   * 현재 웹 개발은 모든 것을 직접 개발하기보다 여러 OPEN API를 활용하는 추세
     * OPEN API에서 주는 응답을 가지고 가공하는 것
 * 응답 데이터 타입
@@ -173,14 +237,19 @@
 #### 1) 개념
 
 * **RE**presentational **S**tate **T**ransfer
-* API Server를 개발하기 위한 일종의 소프트웨어 설계 방법론(규약이나 약속 X)
+* API Server를 개발하기 위한 일종의 소프트웨어 설계 방법론(규약이나 약속 X), 일종의 가이드라인
   * 2000년 로이 필딩의 박사학위 논문에서 처음으로 소개된 후 네트워킹 문화에 널리 퍼짐
 * 네트워크 구조(Network Architecture)원리의 모음
   * 웹상에서 자원을 정의하고 자원에 대한 주소를 지정하는 전반적인 방법
+  * 웹서핑: 거대한 프로그램의 순간순간의 상태를 보고 있는 것
+  * 표현적인(매 순간의 상태)..
   * URI를 어떤 구조로 정의할건지, 방법을 제시하는 방법론
 * REST 원리를 따르는 시스템을 RESTful 이라는 용어로 지칭함
 *  자원을 정의하는 방법에 대한 고민
   * ex) 정의된 자원을 어디에 위치 시킬 것인가와 같은 규칙 제정 필요성
+* 규칙
+  * URL는 리소스를 나타내기 위해서만 사용하고, 리소스에 대한 처리는 메서드로 표현
+  * Document는 단수명사로, Collection은 복수 명사로 표현한다.
 
 
 
@@ -1019,25 +1088,76 @@ $ python manage.py seed articles --number=20
 #### 4) POST - Create Comment
 
 * url 작성 및 comment_create 함수 정의
+
+  * `urls.py`
+
+    ```python
+    urlpatterns = [
+        path('articles/<int:article_pk>/comments/', views.comment_create),
+    ]
+    ```
+
+  * `views.py`
+
+    ```python
+    @api_view(['POST'])
+    def comment_create(request, article_pk):
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    ```
+
 * http://127.0.0.1:8000/api/v1/articles/1/comments/로 POST 요청시도
+
 * Integrity Error
+
+  ![image-20220421005800539](Django_RESTAPI.assets/image-20220421005800539.png)
+
   * Article 생성과 달리 Comment 생성은 생성 시에 참조하는 모델의 객체 정보가 필요하다
     * 1:N 관계에서 N은 어떤 1을 참조하는지에 따른 정보가 필요하다(외래 키)
+
 * 해결: `.save()` 메서드 사용
+
+  ![image-20220421005822482](Django_RESTAPI.assets/image-20220421005822482.png)
+
 * http://127.0.0.1:8000/api/v1/articles/1/comments/로 POST 요청 재시도
+
   * article 필드에 대해 " 이 필드는 필수 항목입니다. " 라는 응답을 수신
+
+    ![image-20220421005851392](Django_RESTAPI.assets/image-20220421005851392.png)
+
 * 읽기 전용 필드
+
+  ![image-20220421005908814](Django_RESTAPI.assets/image-20220421005908814.png)
+
 * http://127.0.0.1:8000/api/v1/articles/1/comments/로 POST 요청 재시도
+
+  ![image-20220421005931291](Django_RESTAPI.assets/image-20220421005931291.png)
+
+  ![image-20220421005942993](Django_RESTAPI.assets/image-20220421005942993.png)
 
 
 
 #### 5) DELETE & PUT - delete, update Comment
 
 * Article 생성 로직에서와 마찬가지로 comment_detail 함수가 모두 처리할 수 있도록 작성
+
+  * `views.py`
+
+    ![image-20220421010010588](Django_RESTAPI.assets/image-20220421010010588.png)
+
+    
+
 * http://127.0.0.1:8000/api/v1/comments/2/ 로 DELETE 요청 후 응답 확인
+
+  ![image-20220421010207485](Django_RESTAPI.assets/image-20220421010207485.png)
+
 * http://127.0.0.1:8000/api/v1/comments/3/ 로 PUT 요청 후 응답 확인
 
+  ![image-20220421010231370](Django_RESTAPI.assets/image-20220421010231370.png)
 
+  
 
 ### 3. Passing Additional attributes to `.save()`
 
@@ -1060,3 +1180,108 @@ $ python manage.py seed articles --number=20
   * 기존 필드 override
 * 특정 게시글에 작성된 댓글 갯수 구하기
   * 새로운 필드 추가
+
+* Serializer는 기존 필드를 override하거나 추가 필드를 구성할 수 있음
+* 우리가 작성한 로직에서는 크게 2가지 형태로 구성할 수 있음
+  *  PrimaryKeyRelatedField
+  * Nested relationships
+
+
+
+#### 1) 특정 게시글에 작성된 댓글 목록 출력하기
+
+* **case1) `PrimaryKeyRelatedField`**
+
+  ![image-20220421010536655](Django_RESTAPI.assets/image-20220421010536655.png)
+
+  * pk를 사용하여 관계된 대상을 나타내는데 사용할 수 있음
+
+  * 필드가 to many relationships(=N)를 나타내는데 사용되는 경우 many=True 속성 필요
+
+  * `comment_set` 필드 값을 form-data로 받지 않으므로 read_only=True 설정 필요
+
+    * 이 필드는 사용자로부터 데이터를 받는게 아니라, 조회만 받는 것 
+
+    * 아까 readonly 추가하는 방법과 다르다!
+
+      * comment_set이 fields 안에 물리적으로 포함되어있지 않기 때문에 밖으로 빼서 설정해준다
+
+      * 비교) `articles`는 fields안에 물리적으로 포함되어 있음
+
+        ![image-20220421011744071](Django_RESTAPI.assets/image-20220421011744071.png)
+
+  * **역참조**시 생성되는 comment_set을 다른 매니저 이름으로 override할 수 있음
+
+    * 단, 다음과 같이 수정할 경우 이전 serializers.py 에서의 클래스 변수명도 일치하도록 수정해야 함
+
+      ![image-20220421010622811](Django_RESTAPI.assets/image-20220421010622811.png)
+
+  * http://127.0.0.1:8000/api/v1/articles/1/로 GET 요청 후 응답 확인
+
+  ![image-20220421010703419](Django_RESTAPI.assets/image-20220421010703419.png)
+
+* **case2) Nested relationships**
+
+  * 모델 관계상으로 참조된 대상(Article)은 참조하는 대상(Comment)의 표현(응답)에 포함되거나 **중첩(nested)** 될 수 있음
+
+  * 이러한 중첩된 관계는 serializers를 필드로 사용하여 표현할 수 있음
+
+  * 두 클래스의 상하위치 변경
+
+    ```python
+    # 원래 ArticleSerializer가 CommentSerializer보다 앞에 써있음
+    class ArticleSerializer(serializers.ModelSerializer):
+    	pass
+    
+    class CommentSerializer(serializers.ModelSerializer):
+    	pass
+    ```
+
+    ![image-20220421010826868](Django_RESTAPI.assets/image-20220421010826868.png)
+
+    * 이렇게 상하위치를 바꿈으로써 `CommentSerializer`를 클래스 내에 불러올 수 있다
+    * 즉, 본인을 참조하고 있는 대상의 serializer 를 호출해서 가져올 수 있다.
+    * 이를 '중첩'되었다고 한다
+    * 댓글이 많으면 좀 복잡해진다는 단점
+
+  * http://127.0.0.1:8000/api/v1/articles/1/로 GET 요청 후 응답 확인
+
+    ![image-20220421010850755](Django_RESTAPI.assets/image-20220421010850755.png)
+
+    * 결과가 살짝 다름: 전에는 pk정보를 줬는데, 이제 코멘트 내용을 다 출력한다
+
+  
+
+#### 2) 특정 게시글에 작성된 댓글의 갯수 구하기
+
+*  comment_set 매니저는 모델 관계로 인해 자동으로 구성되기 때문에 커스텀 필드를 구성하지 않아도 comment_set 이라는 필드명을 fields 옵션에 작성만 해도 사용할 수 있었음]
+
+* 하지만 지금처럼 별도의 값을 위한 필드를 사용하려는 경우 자동으로 구성되는 매니저가 아니기 때문에 직접 필드를 작성해야 함
+
+  ![image-20220421011025078](Django_RESTAPI.assets/image-20220421011025078.png)
+
+* http://127.0.0.1:8000/api/v1/articles/1/로 GET 요청 후 응답 확인
+
+  ![image-20220421011914736](Django_RESTAPI.assets/image-20220421011914736.png)
+
+### 6. `'source'` arguments
+
+![image-20220421011205033](Django_RESTAPI.assets/image-20220421011205033.png)
+
+* `comment_count`는 정해져있는거 아니고 
+* 필드를 채우는데 사용할 속성의 이름
+* 점 표기법(dot notation)을 사용하여 속성을 탐색할 수 있음
+* comment_set 이라는 필드에 .(dot)을 통해 전체 댓글의 개수 확인 가능
+* `.count()`는 built-in Queryset API  중 하나
+
+
+
+### 7. 주의사항 `read_only_fields` shortcut issue
+
+![image-20220421012006427](Django_RESTAPI.assets/image-20220421012006427.png)
+
+* 특정 필드를 override 혹은 추가한 경우, `read_only_fields` shortcut으로 사용할 수 없다
+
+* 혼합할 수 없다는 것!!!
+
+  

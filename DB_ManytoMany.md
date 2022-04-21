@@ -592,6 +592,7 @@
   ```python
   def likes(request, article_pk):
       article = get_object_or_404(Article, pk=article_pk)
+      
       if request.user in article.like_users.all():
           article.like_users.remove(request.user)
       else:
