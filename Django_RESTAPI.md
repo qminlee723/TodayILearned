@@ -937,6 +937,18 @@ $ python manage.py seed articles --number=20
   ![image-20220420170239241](Django_RESTAPI.assets/image-20220420170239241.png)
 
   * 저 빈칸에 써서 수정해도 되지만, json 파일 형식에 맞춰서 넣어줘야 함
+  
+* 만약 부분 수정을 원한다면?
+
+  ![image-20220421155908335](Django_RESTAPI.assets/image-20220421155908335.png)
+
+  ```python
+      elif request.method == 'PUT':
+          serializer = ArticleSerializer(article, data=request.data, partial=True)
+          if serializer.is_valid(raise_exception=True):
+              serializer.save()
+              return Response(serializer.data)
+  ```
 
 
 
@@ -1157,7 +1169,8 @@ $ python manage.py seed articles --number=20
 
   ![image-20220421010231370](Django_RESTAPI.assets/image-20220421010231370.png)
 
-  
+
+
 
 ### 3. Passing Additional attributes to `.save()`
 
@@ -1183,7 +1196,7 @@ $ python manage.py seed articles --number=20
 
 * Serializer는 기존 필드를 override하거나 추가 필드를 구성할 수 있음
 * 우리가 작성한 로직에서는 크게 2가지 형태로 구성할 수 있음
-  *  PrimaryKeyRelatedField
+  *  .PrimaryKeyRelatedField
   * Nested relationships
 
 
@@ -1285,3 +1298,15 @@ $ python manage.py seed articles --number=20
 * 혼합할 수 없다는 것!!!
 
   
+
+
+
+
+
+
+
+
+
+### 8. 팁
+
+![image-20220422183223290](Django_RESTAPI.assets/image-20220422183223290.png)
