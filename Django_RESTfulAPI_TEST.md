@@ -150,7 +150,7 @@ def article_detail(request, article_pk):
     if request.method == 'GET':
         serializer = ArticleSerializer(article)
         return Response(serializer.data)
-    elif request.method == 'PUT':
+    elif request.method == 'PUT': 
         serializer = ArticleSerializer(article, request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
@@ -176,7 +176,7 @@ def article_detail(request, article_pk):
 
 ## 1. `views.py`
 
-* POST일때는, ArtistSerializer(data=request.data)
+* POST(생성)일때는, ArtistSerializer(data=request.data)
 * save()의 인자로 artist=artist 받아주는 것
 
 ```python
@@ -193,8 +193,8 @@ def artist_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
-def create_artist(request, music_pk):
-    artist = get_object_or_404(Artist, music_pk)
+def create_music(request, artist_pk):
+    artist = get_object_or_404(Artist, artist_pk)
     serializer = ArtistSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(artist=artist)

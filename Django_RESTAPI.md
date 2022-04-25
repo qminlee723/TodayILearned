@@ -633,6 +633,7 @@ $ python manage.py migrate
 * 20개의 랜덤한 데이터 생성
 
 ``` bash
+$ pip install django-seed
 $ python manage.py seed articles --number=20
 ```
 
@@ -791,7 +792,7 @@ $ python manage.py seed articles --number=20
 
     ![image-20220420151627584](Django_RESTAPI.assets/image-20220420151627584.png)
 
-    * 500 에러 말고, 404 raise 하고 싶다면: `get_list_or_404`
+    * 500 에러 말고, 404 raise 하고 싶다면: `get_list_or_404` 
 
       ![image-20220420152815287](Django_RESTAPI.assets/image-20220420152815287.png)
 
