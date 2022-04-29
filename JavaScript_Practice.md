@@ -107,8 +107,7 @@
 
 # :two: 이벤트 (q2.html)
 
-
-### 문제 1. 
+## 문제 1. 
 
 주어진 코드에서 button#myButton을 클릭하였을 때, alert 메시지로 '클릭되었습니다.'가 나타나도록 하세요.
 
@@ -164,43 +163,31 @@
 
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-### 문제 2.
+## 문제 2.
 
 주어진 코드에서 input#myInput에 내용이 작성되면 해당 내용이 console에 출력되도록 하세요.
 
-### 문제 3. 
-
-주어진 코드에서 form#myForm을 제출하기 버튼을 눌렀을 때 실제 제출이 되지 않도록 하세요. 
 
 
+### 코드
 
-# 주어진 코드에서 input#myInput에 내용이 작성되면 해당 내용이 console에 출력되도록 하세요.
+* 전체
 
 ```html
 <script>
-
+  const myInput = document.querySelector('#myInput')
+  myInput.addEventListener('keydown', function (event) {
+    console.log(event)
+    console.log(event.target)
+    console.log(event.target.value)
+  } )
 </script>
 ```
 
 
 
-
-
-여기서 console.log(event)하면
-
-KeyboardEvent가 남겨지는게 보임 
+* 발생되는 Event 종류 알아보기
+  * KeyboardEvent 
 
 ```html
 <script>
@@ -215,9 +202,11 @@ KeyboardEvent가 남겨지는게 보임
 
 ![image-20220427193629170](JavaScript_Practice.assets/image-20220427193629170.png)
 
-우리가 사용할 데이터는 키에도 있고 코드라는 부분에도 남겨져 있음
 
-target> 쭉 내려가면 value가 보일 것
+
+* value가 저장되는 위치 
+  * 우리가 사용할 데이터는 키에도 있고 코드라는 부분에도 남겨져 있음
+  * 토글 열어서 <target> 쭉 내려가면 value가 보일 것
 
 ![image-20220427193740061](JavaScript_Practice.assets/image-20220427193740061.png)
 
@@ -225,34 +214,48 @@ target> 쭉 내려가면 value가 보일 것
 
 
 
+* 따라서, value를 출력하라고 하면 console에 아래와 같이 나옴
+
+![image-20220428020109144](JavaScript_Practice.assets/image-20220428020109144.png)
 
 
 
 
-만약
+
+* target 출력
+
+```javascript
+console.log(event.target)
+```
+
+![image-20220428015914230](JavaScript_Practice.assets/image-20220428015914230.png)
+
+
+
+## 문제 3. 
+
+주어진 코드에서 form#myForm을 제출하기 버튼을 눌렀을 때 실제 제출이 되지 않도록 하세요. 
+
+
+
+### 코드(Todo List)
+
+```javascript
+event.preventDefault
+```
 
 ```html
 <script>
-    const myInput = document.querySelector('#myInput')
-    myInput.addEventListener('keydown', function (event) {
-      console.log(event.target.value)
-    } )
-</script>
-```
+  const myForm = document.querySelector('#myForm')
+  const todoList = document.querySelector('#todo-list')
 
-![image-20220427193823644](JavaScript_Practice.assets/image-20220427193823644.png)
+  myForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const todoInput = document.querySelector('#todo-input')
 
-
-
-
-
-
-
-# 주어진 코드에서 form#myForm을 제출하기 버튼을 눌렀을 때 실제 제출이 되지 않도록 하세요. 
-
-```html
-<script>
-
+    const todoItem = document.createElement('li')
+    todoItem.innerText = todoInput.value
+  })
 </script>
 ```
 
@@ -260,7 +263,8 @@ target> 쭉 내려가면 value가 보일 것
 
 
 
-
+* 발생하는 이벤트: SubmitEvent
+  * 너무 순식간에 깜박 하고 화면이 전환돼서 캡쳐는 불가능
 
 ```html
 <script>
@@ -277,11 +281,21 @@ target> 쭉 내려가면 value가 보일 것
 
 
 
+
+
+## TIP: 코드짤때 주의할 점
+
+
+
 bootstrap 버튼 복사해올때, 
 
 type=button 이라고 되어ㅣㅆ는데, submit으로 바꾸어줘야 submit이 이루어짐
 
 
+
+
+
+# :question:
 
 
 
@@ -303,15 +317,11 @@ TodoList~~~~
 
 
 
-Vanilla JS 
 
 
 
 
+![image-20220428162321671](JavaScript_Practice.assets/image-20220428162321671.png)
 
 
-
-# Todo List
-
-![image-20220427195241448](JavaScript_Practice.assets/image-20220427195241448.png)
 

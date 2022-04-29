@@ -1,6 +1,6 @@
 ​                                           
 
-# JavaScript 
+# JavaScript Basic
 
 [TOC]
 
@@ -60,15 +60,15 @@
 ![image-20220425134157700](JavaScript_Basic.assets/image-20220425134157700.png)
 
 * Document Object Model
+* **웹 페이지에 나타나있는 HTML 문서 전체를 각각에 대해서 객체로 나타낸 것**
 * HTML, XML과 같은 문서를 다루기 위한 프로그래밍 인터페이스
 * 문서를 구조화하고, 구조화된 구성 요소를 하나의 객체로 취급하여 다루는 논리적 트리 모델
-* 문서가 객체(object)로 구조화되어있으며 key로 접근 가능
+* 문서가 **객체(object)**로 구조화되어있으며 key로 접근 가능
 * 단순한 속성 접근, 메서드 활용 뿐만 아니라 프로그래밍 언어적 특성을 활용한 조작 가능
 * 주요 객체
   * window: DOM을 표현하는 창(브라우저 탭), 최상위 객체(작성시 생략 가능)
   * document:  페이지 컨텐츠의 Entry Point 역할을 하며, <head>, <body> 등과 같은 수많은 다른 요소들을 포함
   * navigator, location, history, screen
-
 * **문서(HTML)를 프로그램으로 조작할 수 있는 것**
 
 
@@ -107,6 +107,21 @@
 * 브라우저를 조작해야 하는 순간이 온다.. 그때마다 official document 보고 알아가는 것
 
 ![image-20220425134756010](JavaScript_Basic.assets/image-20220425134756010.png)
+
+* window를 콘솔에 찍어보면, window의 구성요소가 보인다 
+
+  * `alert`.. 와 같은 메서드들도 있고
+  * `cookieStore`인것도 알 수 있고
+  * `document` 도 window 내부에 위치한 것을 알 수 있따
+
+  ![image-20220428091844148](JavaScript_Basic.assets/image-20220428091844148.png)
+
+  
+
+  ![image-20220428093137285](JavaScript_Basic.assets/image-20220428093137285.png)
+
+	* `querySelectorAll`로 가지고 오게 되면, 항상 유사배열로 반환
+	* 리스트가 아닌 단일 텍스트 배열로 반환한다(리스트 형태)
 
 
 
@@ -673,7 +688,7 @@
 
    
 
-### 3. for
+### 3. `for`
 
 ![image-20220425170047379](JavaScript_Basic.assets/image-20220425170047379.png)
 
@@ -813,439 +828,3 @@
   ![image-20220425194724883](JavaScript_Basic.assets/image-20220425194724883.png)
 
 
-
-
-
-
-
-## :seven: 함수
-
-### 1. 함수 in JavaScript
-
-* **참조 타입 중 하나**로써 function 타입에 속함
-
-* **:star: 함수는 "값" 이다!**
-
-  ![image-20220426103603903](JavaScript_Basic.assets/image-20220426103603903.png)
-
-  *  소괄호를 통해 실행할 수 있는 특징이 있음 (리스트 같은 경우 index로 접근이 가능한 특징이 있듯)
-  *  너무 자연스럽게 변수에 할당이 가능함
-  *  변수에 들어갈 수 있다 = 다른 함수의 인자로 들어갈 수 있다
-  *  다른 함수의 return 값이 될 수도 있다
-
-* JavaScript에서 함수를 정의하는 방법은 주로 2가지로 구분
-  * 함수 선언식(function declaration)
-  * 함수 표현식(function expression)
-
-* 참고) JavaScript의 함수는 일급 객체(First-class citizen)에 해당
-  * **일급 객체**: 다음의 조건들을 만족하는 객체를 의미
-    * 변수에 할당 가능
-    * 함수의 매개변수로 전달 가능
-    * 함수의 반환 값으로 사용 가능
-
-* python 의 딕셔너리와 유사
-
-  * 어떤 종류의 값이든 올 수 있다
-
-  * 값에 함수를 넣을수도 있는 것! 
-
-    ![image-20220426104753566](JavaScript_Basic.assets/image-20220426104753566.png)
-
-  * 익명 함수(lambda) 사용
-
-    *  이름이 없는 함수 (즉, 불릴 일 없다)
-    *  파이썬에서는 제한적인 상황에서 많이 쓴다. 예) 한줄로 쓸 때
-    *  그런데 JS에는 한줄제약같은게 없다 - 함수의 인자 10줄 가능
-
-    ![image-20220426105054348](JavaScript_Basic.assets/image-20220426105054348.png)
-
-
-
-
-### 2. 함수 선언식(function statement, declaration)
-
-![image-20220426105617281](JavaScript_Basic.assets/image-20220426105617281.png)
-
-![image-20220426105726112](JavaScript_Basic.assets/image-20220426105726112.png)
-
-* 함수의 이름과 함께 정의하는 방식
-* 3가지 부분으로 구성
-  * 함수의 이름(함수명)
-  * 매개변수(파라미터)
-  * 몸통(중괄호 내부)(로직)
-
-
-
-### 3. 함수 표현식(function expression)
-
-![image-20220426105944415](JavaScript_Basic.assets/image-20220426105944415.png)
-
-* :star: 정의한 함수를 별도의 변수에 할당하는 것
-
-* 함수를 표현식내에서 정의하는 방식
-
-  * 표현식: 어떤 하나의 값으로 결정되는 코드의 단위
-
-* 함수의 **이름을 생략하고 익명 함수로 정의 가능**
-
-  ![image-20220426110027639](JavaScript_Basic.assets/image-20220426110027639.png)
-
-  ![image-20220426110305056](JavaScript_Basic.assets/image-20220426110305056.png)
-
-  * 익명 함수(anonymous function): 이름이 없는 함수
-  * 익명 함수는 함수 표현식에서만 가능
-
-* 매개변수가 인자의 갯수 불일치를 허용한다
-
-  ![image-20220426111037782](JavaScript_Basic.assets/image-20220426111037782.png)
-
-* REST parameter
-
-  * 들어오는 매개변수를 배열로 만들어주는 것
-
-  ![image-20220426111157779](JavaScript_Basic.assets/image-20220426111157779.png)
-
-  * 예시
-
-    ![image-20220426111457816](JavaScript_Basic.assets/image-20220426111457816.png)
-
-* spread operator
-
-  * 펼쳐주는 것
-
-    ![image-20220426111917243](JavaScript_Basic.assets/image-20220426111917243.png)
-
-  
-
-* 3가지 부분으로 구성
-  * 함수의 이름(생략 가능)
-  * 매개변수(args)
-  * 몸통(중괄호 내부)
-
-
-
-### 4. 화살표 함수(arrow function)
-
-![image-20220426130402336](JavaScript_Basic.assets/image-20220426130402336.png)
-
-
-
-## :eight: 문자열
-
-![image-20220426131247073](JavaScript_Basic.assets/image-20220426131247073.png)
-
-### 1. `includes`
-
-* `string.includes(value)`
-  * 문자열에 value가 존재하는지 판별 후 참 또는 거짓 반환
-
-### 2. `split`
-
-![image-20220426131717404](JavaScript_Basic.assets/image-20220426131717404.png)
-
-* `string.split(value)`
-  * value가 없을 경우, 기존 문자열을 배열에 담아 반환
-  * value가 빈 문자열일 경우, 각 문자로 나눈 배열을 반환
-  * value가 기타 문자열일 경우, 해당 문자열로 나눈 배열을 반환
-
-
-
-### 3. `replace`
-
-![image-20220426131844419](JavaScript_Basic.assets/image-20220426131844419.png)
-
-
-
-### 4. `trim`
-
-![image-20220426132150953](JavaScript_Basic.assets/image-20220426132150953.png)
-
-
-
-## :nine: 배열(Arrays)
-
-### 1. 배열의 정의와 특징
-
-
-
-### 2. 배열 관련 주요 메서드 목록: 기본
-
-#### 1) `reverse` 
-
-#### 2) `push & pop`
-
-#### 3) `unshift & shift`
-
-#### 4)
-
-
-
-### 3. 배열 관련 주요 메서드 목록: 심화
-
-![image-20220426133609786](JavaScript_Basic.assets/image-20220426133609786.png)
-
-* 배열을 순회하면서 특정 로직을 수행하는 메서드
-
-* 메서드 호출 시 인자로 callback함수를 받는 것이 특징
-
-  * callback함수: 어떤 의 내부에서 실행될 목적으로 인자로 넘겨받는 함수를 말함
-
-  * ```javascript
-    myFunc(myFunc2)
-    // 여기서 myFunc2가 callback 함수
-    ```
-
-  
-
-#### 1) `forEach` 
-
-
-
-![image-20220426134431474](JavaScript_Basic.assets/image-20220426134431474.png)
-
-* 예제
-
-  ![image-20220426134532866](JavaScript_Basic.assets/image-20220426134532866.png)
-
-  * 답
-
-    ```javascript
-    const images = [
-      {height: 10, width: 30},
-      {height: 20, width: 90},
-      {height: 54, width: 32},
-    ]
-    
-    const areas = []
-    
-    images.forEach((elem, idx) => {
-      console.log(elem)
-      console.log(elem['height'])
-      console.log(elem.height) // <<<< 추천 형식
-    
-      areas.push(elem.height * elem.width)
-    })
-    
-    console.log(areas)
-    ```
-
-    
-
-#### 2) `map`
-
-* 배열의 각 요소에 대해 콜백 함수를 한번씩 실행
-* 콜백 함수의 반환 값을 요소로 하는 **새로운 배열** 반환
-* 기존 배열 전체를 다른 형태로 바꿀 때 유용
-
-
-
-#### 3) `filter`
-
-* 배열의 각 요소에 대해 콜백 함수를 한번씩 실행
-* 콜백 함수의 **반환 값이 참인 요소**들만 모아서 **새로운 배열** 반환
-* 기존 배열 요소들을 필터링할 때 유용
-
-
-
-#### 4) `reduce`
-
-![image-20220426142557508](JavaScript_Basic.assets/image-20220426142557508.png)
-
-* init: 초기값
-
-* 배열의 각 요소에 대해 콜백 함수를 한 번씩 실행
-* 콜백 함수의 반환 값들을 하나의 값 (acc)에 누적 후 반환
-* reduce 메서드의 주요 매개변수
-  * acc
-    * 이전 callback함수의 반환 값이 누적되는 변수
-  * initialiValue(optional)
-    * 최초 callback 함수 호출 시 acc에 할당하는 값, default 값은 배열의 첫번째 값
-* (참고) 빈 배열의 경우 initialValue를 제공하지 않으면 에러 발생
-
-#### 5) `find`
-
-* * 
-
-
-
-#### 6) `some`
-
-#### 7) `every`
-
-* 배열의 모든 요소가 주어진 판별 함수를 통과하면 참을 반환
-* 하나의 요소라도 통과하지 못하면 거짓 반환
-* (참고)
-
-#### 8) 
-
-### 4.
-
-### 5.
-
-
-
-
-
-## :keycap_ten: 객체(Objects)
-
-### 1. 객체의 정의와 특징
-
-![image-20220426150306602](JavaScript_Basic.assets/image-20220426150306602.png)
-
-* :star: 어떠한 객체 안에 있는 메서드에서 사용하는 this는 그 객체를 의미한다
-
-* 객체에서 바로쓰는 this는 window를 의미한다.
-
-  ![image-20220426151436728](JavaScript_Basic.assets/image-20220426151436728.png)
-
-  ![image-20220426151239939](JavaScript_Basic.assets/image-20220426151239939.png)
-
-* 객체는 속성(property)의 집합이며, 중괄호 내부에 key와 value의 쌍으로 표현
-* **key**는 **문자열 타입만** 가능
-  * 참고) key 이름에 띄어쓰기 등의 구분자가 있으면 따옴표로 묶어서 표현
-* **value**는 **모든 타입(함수포함)** 가능
-* 객체 요소 접근은 점 또는 대괄호로 가능
-  * 참고) key 이름에 띄어쓰기 같은 구분자가 있으면 대괄호 접근만 가능
-
-### 2. 객체와 메서드
-
-* 메서드는 어떤 객체의 속성이 참조하는 함수
-* `객체.메서드명()` 으로 호출이 가능
-* 메서드 내부에서는 this 키워드가 객체를 의미함
-  * fullName은 메서드가 아니기 때문에 정상출력되지 않음(NaN)
-  * getFullName은 메서드이기 때문에 해다아 객체의 firstName과 lastName을 정상적으로 이어서 반환
-  * 
-
-### 3. 객체 관련 ES6 문법 익히기
-
-#### 1) 속성명 축약(shorthand)
-
-* 객체를 정의할 때 **key와 할당하는 변수명이 같으면** 줄여쓸 수 있다
-
-* 굉장히 많이 씀
-
-![image-20220426151702448](JavaScript_Basic.assets/image-20220426151702448.png)
-
-#### 2) 메서드명 축약(shorthand)
-
-* function 
-
-![image-20220426152059497](JavaScript_Basic.assets/image-20220426152059497.png)
-
-#### 3) 계산된 속성명 사용하기(computed property name)
-
-* 객체를 정의할 때 key의 이름을 표현식을 이용하여 동적으로 생성 가능
-
-* **동적**으로 **key의 이름**을 바꿀 수 있다는 것
-
-  ![image-20220426152405168](JavaScript_Basic.assets/image-20220426152405168.png)
-
-  
-
-#### 4) 구조 분해 할당(destructing assignment)
-
-* 구조 분해 할당은 배열도 가능
-
-* 반복되는 부분을 줄여준다
-
-  ![image-20220426153320403](JavaScript_Basic.assets/image-20220426153320403.png)
-
-#### 5) 객체 전개 구문(Spread Operator) 
-
-![image-20220426153648728](JavaScript_Basic.assets/image-20220426153648728.png)
-
-![image-20220426153841840](JavaScript_Basic.assets/image-20220426153841840.png)
-
-
-
-![image-20220426154006754](JavaScript_Basic.assets/image-20220426154006754.png)
-
-
-
-
-
-
-
-### 4. JSON (JavaScript Object Notation)
-
-#### 1) 개념
-
-*  key-value쌍의 형태로 데이터를 표기하는 언어 독립적 표준 포맷
-* 자바스크립트의 객체와 유사하게 생겼으나, 실제로는 **문자열 타입**
-  * 따라서, JS의 객체로써 조작하기 위해서는 구문 분석(parsing)이 필수
-* :star: 자바스크립트에서는 JSON을 조작하기 위한 두 가지 내장 메서드를 제공
-  * `JSON.parse()`
-    * JSON => 자바스크랩트 객체
-  * `JSON.stringify()`
-    * 자바스크립트 객체 => JSON
-
-#### 2) `JSON.parse()`
-
-#### 3) `JSON.stringify()`
-
-
-
-### 5.
-
-
-
-## :one::one: this 정리
-
-![image-20220426155923676](JavaScript_Basic.assets/image-20220426155923676.png)
-
-### 1. function 키워드와 화살표 함수 차이 
-
-* `this.radiuses`는 메서드(객체.메서드명()으로 호출 가능) 소속이기 때문에 정상적으로 접근 가능
-* `forEach`의 콜백함수의 경우 메서드가 아님(객체.메서드명()으로 호출 불가능)
-* 때문에 콜백함수 내부의 `this`는 `window`가 되어 `this.PI`는 정상적으로 접근이 불가능
-* 이 콜백함수 내부에서 `this.PI` 에 접근하기 위해 함수객체 `.bind(this)` 메서드를 사용
-* 이 번거로운 `bind` 과정을 없앤 것이 화살표 함수
-
-### 2. 
-
-### 3.
-
-### 4.
-
-
-
-## :one::two: lodash
-
-### 1. A modern JavaScript utility LIBRARY
-
-* 라이브러리!
-* [LODASH official documentation](https://lodash.com/docs/4.17.15)
-* array, objects 등 자료구조를 다룰 때 사용하는 유용하고 간편한 유틸리티 함수들을 제공
-* 함수 예시
-  * `reverse`, `sortBy`, `range`, `random`, `cloneDeep`(딥카피)
-
-
-
-### 2. 사용 예시
-
-#### 1) lodash CDN
-
-* `index.html`
-
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    ...
-    ...
-  </head>
-  <body>
-    ...
-    ...
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-    <script src="01_js.js"></script>
-  </body>
-  </html>
-  ```
-
-* `01_js.js`
-
-  ```javascript
-  ```
-
-  
