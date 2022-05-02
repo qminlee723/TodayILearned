@@ -6,17 +6,20 @@
 
 * 브라우저가 뭔지, 어떤 역할을 하는지
 
-  * URL로 웹(WWW)을 탐색하며 서버와 통신하고, HTML 문서나 파일을 출력하는 GUI 기반의 소프트웨어
+  * **URL로 웹(WWW)을 탐색하며 서버와 통신하고, HTML 문서나 파일을 출력하는 GUI 기반의 소프트웨어**
   * 크롬, 파이어폭스 등
 
 * DOM이 무엇인지
 
+  * **웹 페이지에 나타나있는 HTML 문서 전체를 각각에 대해서 객체로 나타낸 것**
   * HTML, XML과 같은 문서를 다루기 위한 프로그래밍 인터페이스
   * 문서를 구조화하고, 구조화된 구성 요소를 하나의 객체로 취급하여 다루는 논리적 트리 모델
   * 문서가 객체(object)로 구조화되어 있으며 key로 접근 가능
   * 단순한 속성 접근, 메서드 활용 뿐만 아니라 프로그래밍적 ㄱ언어적 특성을 활용한 조작 가능
 
 * DOM tree가 뭔지
+
+  * 각각에 대해서 객체로 나타나 있는 것들을 트리 구조로 나타낸 것
 
   ![image-20220430230308766](JavaScript_TEST.assets/image-20220430230308766.png)
 
@@ -120,10 +123,10 @@
   * appendChild 이런거 외우지 말고여
   * innerText vs innerHTML
     * innerText
-    * Node 객체와 그 자손의 텍스트 컨텐츠(DOMString)를 표현(해당 요소 내부의 raw text)
-    * 즉, 줄 바꿈을 인식하고 숨겨진 내용을 무시하는 등 최종적으로 스타일링이 적용된 모습으로 표현
+      * Node 객체와 그 자손의 텍스트 컨텐츠(DOMString)를 표현(해당 요소 내부의 raw text)
+      * 즉, 줄 바꿈을 인식하고 숨겨진 내용을 무시하는 등 최종적으로 스타일링이 적용된 모습으로 표현
     * innerHTML 
-    * 요소(element)내에 포함된 HTML 마크업을 반환
+      * 요소(element)내에 포함된 **HTML 마크업**을 반환
   * remove()하면 삭제되는거다!
     * ChildNode.delete().... 이거면 틀린거
   * setAttribute, getAttribute
@@ -142,7 +145,14 @@
 
 * 처음 보는 설명이면 다 맞는거예요 
 
-
+1. 요소를 추가하는 method 2개와 차이점
+   * append: 여러 노드 추가 가능, 문자열 추가 가능
+   * appendChild: 하나만 추가 가능, 문자열 추가 불가능
+2. innerText와 innerHTML의 차이점
+   + text contents를 표현. 사람이 읽을 수 있는 요소만 남김
+   + HTML요소 내 포함된 HTML마크업 반환
+3. forloop for of forEach 각각의 특징과 차이점은? :heavy_check_mark:
+   * for Each 는 continue break 사용불가
 
 
 
@@ -175,8 +185,6 @@
 
 
 150p
-
-
 
 ![image-20220428022009674](JavaScript_TEST.assets/image-20220428022009674.png)
 

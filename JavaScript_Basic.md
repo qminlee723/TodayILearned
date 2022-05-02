@@ -488,8 +488,31 @@
 * 세 가지 논리 연산자로 구성
 
   * and: `&&`
+
+    * 앞쪽을 false로 변환할 수 있으면 앞을, 아니면 뒤를 반환
+
+    ```javascript
+    console.log(1 && 0) // 0
+    // 1은 true, 0은 false
+    console.log(4 && 7) // true & true -> 7
+    console.log('' && 5) // false & true -> ''
+    ```
+
   * or: `||`
+
+    * 앞쪽을 true로 변환할 수 있으면 앞을, 아니면 뒤를 반환
+
+    ```javascript
+    console.log(1 || 0) // true or false // 1
+    console.log(4 || 7) // true or true // 4
+    console.log('' || 5) // false or true // 5
+    ```
+
   * not: `!`
+
+    ```javascript
+    console.log(!false) // true
+    ```
 
 * 단축 평가 지원
 
