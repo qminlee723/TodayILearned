@@ -111,6 +111,8 @@
 
 * **순차적**, 직렬적 Task 수행
 * 요청을 보낸 후 **응답을 받아야만** 다음 동작이 이루어짐(blocking)
+  * block 과 synchronous는 유사한 의미지만, 같은 의미는 아님 
+  * [참고](https://musma.github.io/2019/04/17/blocking-and-synchronous.html)
 * 버튼 클릭 후 alert 메시지의 확인 버튼을 누를 때까지 문장이 만들어지지 않음
 * 즉, alert이후의 코드는 alert의 처리가 끝날 때까지 실행되지 않음
 * 왜 이런 현상이 발생할까?
@@ -126,6 +128,7 @@
   * 쭉 작업을 하다가, 오래걸리는건 뒤에 미뤄두고 빠른거 먼저 처리 후 느린것 처리하는것
   * 느린 것:  `request.send()`
 * 요청을 보낸 후 응답을 기다리지 않고 다음 동작이 이루어짐(non-blocking)
+  * non-block 과 Asynchronous는 유사한 의미지만, 같은 의미는 아님. 
 * 요청을 보내고 **응답을 기다리지 않고** 다음 코드가 실행됨
 * 결과적으로 변수 todo에는 응답 데이터가 할당되지 않고 빈 문자열이 출력
 * 그렇다면 JS는 왜 기다려주지 않는 방식으로 동작하는가?
@@ -162,6 +165,7 @@
 * thread = 작업할 수 있는 손
 * core = 작업할 수 있는 사람
 * 프로그램이 작업을 완료하기 위해 사용할 수 있는 단일 프로세스
+  * 프로세스와 thread도 구분되는 개념이지만 혼용하는 추세
 * 각 thread(스레드)는 한 번에 하나의 작업만 수행할 수 있음
   * 하나의 탭당 하나의 작업만 수행 가능
 * 예시) Task A > Task B > Task C
@@ -173,7 +177,7 @@
 #### 2) JS는 single threaded
 
 * 컴퓨터가 여러개의 CPU를 가지고 있어도, main thread라 불리는 단일 스레드에서만 작업 수행
-* 즉 이벤트를 처리하는 **Call Stack** 이 하나인 언어라는 의미
+* 즉 이벤트를 처리하는 **Call Stack** 이 하나인 언어라는 의미 - 한 명이 일하는 형태
 * 이 문제를 해결하기 위해 JS는:
   1. 즉시 처리하지 못하는 이벤트들을 다른 곳(**Web API**)으로 보내서 처리하도록 하고, 
      * Web API: 브라우저 내부의 고마운 친구들(?)
@@ -236,6 +240,8 @@
   
 
 ### 6. Concurrency model
+
+![image-20220502190247232](JavaScript_AJAX.assets/image-20220502190247232.png)
 
 #### 1) 종류
 
@@ -389,6 +395,7 @@
 * 이를 해결하기 위해 순차적인 비동기 처리를 위한 2가지 작성 방식
   * **Async callbacks**
     * 백그라운드에서 실행을 시작할 함수를 호출할 때 인자로 지정된 함수
+    * 콜백 함수를 한번 더 넣어서 작성
     * 예시) addEventListener()의 두 번째 인자
   * **:star: promise-style**
     * Modern  Web APIs에서의 새로운 코드 스타일
@@ -479,17 +486,36 @@
 
 * 비동기 작업의 최종 완료 또는 실패를 나타내는 **객체**
   * 미래의 완료 또는 실패와 그 결과 값을 나타냄
-  * 미래의 어떤 상황에 대한 약속
+  * 미래의 어떤 상황에 대한 약속(성공 했을때 + 실패 했을 때)
 * 성공(이행)에 대한 약속:  성공하면 then 쓸거야
   * `.then()`
+  * 콜백: resolve
 * 실패(거절)에 대한 약속: 실패하면 catch 쓸거야
   * `.catch()`
+  * 콜백: reject
 * 장점
   * 가독성 개선
 
 
 
 ### 2. Promise methods
+
+```javascript
+//promise 구조
+
+const promise1 = new Promise((resolve, reject) => {
+  resolve('Success!');
+});
+
+promise1.then((value) => {
+  console.log(value);
+  // expected output: "Success!"
+});
+```
+
+[참조](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+
+![image-20220502192326551](JavaScript_AJAX.assets/image-20220502192326551.png)
 
 ![image-20220502160623724](JavaScript_AJAX.assets/image-20220502160623724.png)
 
@@ -536,16 +562,17 @@
   * `.then()`을 여러 번 사용하여 여러 개의 callback 함수를 추가할 수 있음**(chaining)**
     * 각각의 callback은 주어진 순서대로 하나하나 실행하게 됨
     * **Chaining은 Promise은 가장 뛰어난 장점** :star:
+  * 가독성 향상, 유지보수에 유용
 
 
 
-## :five: :star: Axios
+## :five: :star: Axios :star:
 
 ### 1. 개념
 
-* :star:**Promise based HTTP client for the browser**:star:
+* :star:**Promise based HTTP client for the browser**
 
-* 브라우저를 위한 Promise 기반의 클라이언트
+* 브라우저를 위한 **Promise** 기반의 클라이언트
 
 * 원래는 'XHR'이라는 브라우저 내장 객체를 활용해 AJAX 요청을 처리하는데, 이보다 편리한 AJAX 요청이 가능하도록 도움을 줌
 
@@ -593,35 +620,229 @@
 
 
 
-#### 2)
+#### 2) 예시
 
-![image-20220502163905547](JavaScript_AJAX.assets/image-20220502163905547.png)
+1. Axios 사용 예시 1
 
-```javascript
-const URL = 'https://jsonplaceholder.typicode.com/todos/1'
-```
+   ```javascript
+   const URL = 'https://jsonplaceholder.typicode.com/todos/1'
+   
+   const responsePromise = axios.get(URL) // Promise return
+   
+   responsePromise
+   	.then(function (res) { return res.data }) 
+   	// 데이터 응답 제대로 받아오면 함수 실행
+   	// 이때 리턴값에 파싱도 자동으로 해줌
+   	.then(function (todo) ) { return todo.title }) // todo = res.data
+   	.then(function (title) ) { console.log(title) })
+   ```
 
+2. 사용 예시 2
 
+   * 키 접근할때마다 chaining 해야 하는 것 아님. 그냥 chaining 보여주려는 예시일 뿐
 
+     ```javascript
+     .then(res => console.log(res.data.title)
+     // 이런 식으로 chaining 없이 한꺼번에 부를 수도 있음
+     ```
 
+   ![image-20220502170930138](JavaScript_AJAX.assets/image-20220502170930138.png)
 
+3. 사용 예시 3(화살표 함수)
 
+   ```javascript
+   const URL = 'https://jsonplaceholder.typicode.com/todos/1'
+   
+   const responsePromise = axios.get(URL) // Promise return
+   
+   responsePromise
+   	.then( res => res.data ) 
+   	.then( todo => todo.title ) // todo = res.data
+   	.then( title => console.log(title))
+   ```
+
+   ```javascript
+   // 화살표 함수 + catch(실패시) + finally(결과랑 노상관)
+   const URL = 'https://jsonplacefolder.typicode.com/todos/1' // 원래 jasonplacaeholder
+   const responsePromise = axios.get(URL) 
+   
+   responsePromise
+   	.then( res => res.data ) 
+   	.then( todo => todo.title )
+   	.then( title => console.log(title))
+   	.catch( err => console.log(err)) // error 발생
+   	.finally( () => console.log('어쨌든 끝!'))
+   ```
+
+   ```javascript
+   // 에러 메시지 customizing 하고싶다면
+   // 1. 일반
+   	.catch( err => {
+           if (err.response.status === 404) {
+               alert('그딴건 없다.')
+           }
+       })
+   // 2. 삼항연산자
+   	.catch( err => alert(err.response.status === 404 ? '없다' : '몰?루'))
+   ```
+
+   ![image-20220502171325415](JavaScript_AJAX.assets/image-20220502171325415.png)
+
+4. 사용 예시4( 특정 정보만 가져오려는 경우)
+
+   ```javascript
+   // 전체 중에 10번째 것만 찾아오자 
+   
+   const URL = 'https://jsonplaceholder.typicode.com/todos/'
+   
+   axios.get(URL)
+   	.then ( res => {
+       // todosArray에 전체 데이터를 받아온다
+       const todosArray = res.data
+       // todo 에 내가 원하는 조건, 즉 id=10인 데이터 하나를 찾은 후
+       const todo = res.data.get(todo => todo.id === 10)
+       // 찾은 데이터를 가지고 조작
+       return axios.get(`${URL}${todo.id}`)
+   	})
+   	.then(res => console.log(res.data))
+       .catch( err => {
+              if (err.response.status === 404) {
+       			alert('그런건 없다.')
+   			}
+             })
+   ```
+   
+   
 
 
 
 ## :six: [부록] async & await
 
+### 1. 개념
+
 ![image-20220502131009579](JavaScript_AJAX.assets/image-20220502131009579.png)
 
-* 비동기 코드를 작성하는 새로운 방법
-
+* 비동기 코드를 작성하는 새로운 방법(요즘방법)
 * 기존 Promise시스템 위에 구축된 syntactic sugar
 
   * promise 구조의 then chaining을 제거
-  * 비동기 코드를 조금 더 동기 코드처럼 표현
-
+  * 비동기 코드를 조금 더 동기 코드처럼 표현가능
   * Syntactic sugar
     * 쉽게 읽고 표현할 수 있도록 설계된 프로그래밍 언어 내의 구문
     * 즉, 문법적 기능은 그대로 유지하되 사용자가 **직관적**으로 코드를 읽게 만듦
-
+* callback function !== promise() == async == await
 * Axios가 레거시 코드... 이므로 Axios에 익숙해진 이후에 async & await 을 써보자 
+
+
+
+### 2. 예시
+
+1. async & await
+
+![image-20220502193052529](JavaScript_AJAX.assets/image-20220502193052529.png)
+
+![image-20220502193033086](JavaScript_AJAX.assets/image-20220502193033086.png)
+
+* axios로 똑같이 코딩을 한다면
+
+  ![image-20220502193204596](JavaScript_AJAX.assets/image-20220502193204596.png)
+
+2. 멍멍이들
+
+   ```html
+   <script> CDN 가져오기 </script>
+   <script>
+       const URL = 'https://dog.ceo/api'
+       axios.get(URL + '/breeeds/list/all')
+       	.then(res => console.log(res.data))
+   </script>
+   ```
+
+   * data 안에 message가 들어 있는 것을 알 수 있다
+
+   ![image-20220503002115465](JavaScript_AJAX.assets/image-20220503002115465.png)
+
+   * 전체 종(breed)을 받아 옴 
+
+     * `'/breeds/all/'`
+
+   * 종(breed) 목록 중에 첫번째 종에 대한 이미지 받아오기
+
+     * `'/breed/images/...'` 
+
+   * 일반 코드
+
+     ```html
+     <script> CDN 가져오기 </script>
+     <script>
+         const URL = 'https://dog.ceo/api'
+         
+         
+         axios.get(URL + '/breeeds/list/all')
+         	.then(res => {
+             	// 전체 breed를 받아온다
+             	const breedObj = res.data.message
+                 const breedArray = Object.keys(breedObj)
+                 const breed = breedArray[0] // 배열 젤 첨에 있는 affenpinsscher
+                 
+                 // ending slash 없습니다 
+                 return axios.get(URL + `/breed/${breed}/images`)
+         	})
+         	.then(res => console.log(res))
+         	.catch(err => console.error(err))
+     </script>
+     ```
+
+   * 코드 with async & await
+
+     * async & await 을 쓰려면, 함수로 묶는 작업 필수
+
+     ```html
+     <script>
+         const URL = 'https://dog.ceo/api'
+         
+         function fetchDogImages() {
+             axios.get(URL + '/breeeds/list/all')
+                 .then(res => {
+                     // 전체 breed를 받아온다
+                     const breedObj = res.data.message
+                     const breedArray = Object.keys(breedObj)
+                     const breed = breedArray[0] // 배열 젤 첨에 있는 affenpinsscher
+     
+                     // ending slash 없습니다 
+                     return axios.get(URL + `/breed/${breed}/images`)
+                 })
+                 .then(res => console.log(res))
+                 .catch(err => console.error(err))
+         }
+         
+         fetchDogImages()
+     </script>
+     ```
+
+     * async, await 첨가
+
+     ```html
+     <script>
+         const URL = 'https://dog.ceo/api'
+         
+         // 0. async-await를 사용하려면, 함수로 묶어야 한다
+         // 1. 함수 블록 내부에 비동기로 동작하는 함수들을 찾아서 앞에 await를 남긴다
+         // 이 함수 내부에 async한 작업이 존재한다
+         async function fetchDogImages(){
+             // 아래에서 순서가 보장되지 않는 함수 앞에 await를 적어준다 
+             // 그럼 해당 코드가 끝날때까지 기다렸다가 넘어간다
+             const res = await axios.get(URL + '/breeds/list/all')
+             const breedObj = res.data.message
+             const breedArray = Object.keys(breedObj)
+             const breed = breedArray[0]
+             // await
+             const images = await axios.get(URL + `/breed/${breed}/images`)
+             console.log(newRes)
+         } 
+         fetchDogImages()
+         	.catch(err => console.error(err))
+     </script>
+     ```
+
+     
