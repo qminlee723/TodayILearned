@@ -267,6 +267,7 @@
 * `setTimeout()`, DOM events 그리고 **AJAX**로 데이터를 가져오는 **시간이 소요**되는 일들을 처리
 
   * 비동기 동작
+  * web에서 처리
   * 언제 끝날지 모름
   * 시간 관련 일들 예시
     * `setTimeout()`
@@ -458,8 +459,8 @@
 
 #### 1) 개념
 
-* 순차적인 연쇄 비동기 작업을 처리하기 위해 " callback 함수를 호출하고, 그 다음 callback 함수를 호출하고, 또 그 함수의 callback 함수를 호출하고,..." 의 패턴이 지속적으로 반복됨
-* 즉, 여러개의 연쇄 비동기 작업을 할 때 마주하는 상황
+* **순차적**인 연쇄 비동기 작업을 처리하기 위해 " callback 함수를 호출하고, 그 다음 callback 함수를 호출하고, 또 그 함수의 callback 함수를 호출하고,..." 의 패턴이 지속적으로 반복됨
+* 즉, 여러개의 연쇄 비동기 작업을 할 때 마주하는 상황 ... indent가 미쳤어요 
 * 이를 callback Hell(콜백지옥) 혹은 pyramid of doom(파멸의 피라미드)이라고 함
 * 위와 같은 상황이 벌어질 경우 아래 사항들을 통제하기 어려움
   * 디버깅
@@ -495,6 +496,11 @@
   * 콜백: reject
 * 장점
   * 가독성 개선
+* 상태
+  * pending 시작
+  * fulfilled 성공 => `.then`에 있는 콜백 실행
+  * rejected 실패 => `.catch` 에 있는 콜백 실행
+
 
 
 
@@ -522,23 +528,41 @@ promise1.then((value) => {
 #### 1) `.then(callback)`
 
 * 이전 작업(promise)이 **성공**했을 때(이행했을 때 )수행할 작업을 나타내는 callback 함수
+
 * 그리고 각 callback 함수는 이전 작업의 **성공 결과**를 인자로 전달받음
+
 * 따라서 성공했을때의 코드를 callback 함수 안에 작성
+
+* RETURN 세가지 경우
+
+  ![image-20220503095712462](JavaScript_AJAX.assets/image-20220503095712462.png)
+
+  * promise객체를 return 한다. 
+    * 리턴하는 promise 객체와 동일한 작업성공결과와 상태를 가지게 됨
+
+  * promise 객체가 아닌 값을 리턴하는 경우
+    * 숫자, 문자열, 객체 ... => fulfilled 상태를 가진다고 인식(성공했다고 인식 -> 따라서 다음 `.then` 으로)
+
+  * promise 객체가 아무런 값도 리턴하지 않는 경우
+    * undefined 가 리턴. fulfilled 상태를 가진다고 인식(성공했다고 인식 -> 따라서 다음 `.then` 으로)
+
 
 
 
 #### 2) `.catch(callback)`
 
+![image-20220503102338874](JavaScript_AJAX.assets/image-20220503102338874.png)
+
 * `.then`이 하나라도 **실패**하면(거부되면) 동작(동기식의 'try-except' 구문과 유사)
 * 이전 작업의 실패로 인해 생성된 error 객체는 catch 블록 안에서 사용할 수 있음
 
-* 각각의 `.then()` 블록은 서로 다른 promise를 반환
+* 각각의 `.then()` 블록은 **서로 다른** promise를 반환
   * 즉, `.then()`을 여러 개 사용(chaining)하여 연쇄적인 작업을 수행할 수 있음
   * 결국 여러 비동기 작업을 차례대로 수행할 수 있다는 뜻
-* `.then()`과 `.catch()` 메서드는 모두 **promise를 반환**하기 때문에 **chaining 가능**
+* **`.then()`**과 **`.catch()`** 메서드는 모두 **promise를 반환**하기 때문에 **chaining 가능**
 * 주의
   * 반환 값이 반드시 있어야 함
-  * 없다면 callback 함수가 이전의 promise 결과를 받을 수 없음
+  * 없다면 callback 함수가 이전의 promise 결과를 받을 수 없음(undefined가 들어올수는 있음)
 
 
 
@@ -580,6 +604,14 @@ promise1.then((value) => {
 
     ![image-20220502160933270](JavaScript_AJAX.assets/image-20220502160933270.png)
 
+* promise chaining
+
+  ![image-20220503095120056](JavaScript_AJAX.assets/image-20220503095120056.png)
+
+  * return 된 값이 바로 밑의 then method의 rlt 인자가 받는다. 만약 return이 없다면? undefined를 받음
+  * 이런식으로 chaining이 되는 것
+  * them method는 항상 promise 객체를 return 한다
+
 
 
 ### 2. Axios를 쓰는 이유
@@ -604,7 +636,7 @@ promise1.then((value) => {
 
 * 둘 중 아무거나 사용해도 됨
 
-* <body> 태그 바로 밑에 넣어주기
+* <body> 태그 바로 밑에 넣어주기 - 자바스크립트 파일 불러온 <script> 위에 위치해야 읽을 수 있음
 
   * jsDelivr CDN 
 
@@ -639,6 +671,10 @@ promise1.then((value) => {
 
 2. 사용 예시 2
 
+   ![image-20220503094405070](JavaScript_AJAX.assets/image-20220503094405070.png)
+
+2. 사용 예시 3
+
    * 키 접근할때마다 chaining 해야 하는 것 아님. 그냥 chaining 보여주려는 예시일 뿐
 
      ```javascript
@@ -648,7 +684,7 @@ promise1.then((value) => {
 
    ![image-20220502170930138](JavaScript_AJAX.assets/image-20220502170930138.png)
 
-3. 사용 예시 3(화살표 함수)
+3. 사용 예시 4(화살표 함수)
 
    ```javascript
    const URL = 'https://jsonplaceholder.typicode.com/todos/1'
@@ -688,7 +724,7 @@ promise1.then((value) => {
 
    ![image-20220502171325415](JavaScript_AJAX.assets/image-20220502171325415.png)
 
-4. 사용 예시4( 특정 정보만 가져오려는 경우)
+4. 사용 예시5( 특정 정보만 가져오려는 경우)
 
    ```javascript
    // 전체 중에 10번째 것만 찾아오자 
@@ -846,3 +882,12 @@ promise1.then((value) => {
      ```
 
      
+
+## :seven: JS 비동기처리 패키지 계보(?)
+
+
+
+* XMLHttpResponse() - before
+* fetch - ES6
+* axios:star: - fetch에 기능 더 넣어서 
+* Async/Await - ES8
