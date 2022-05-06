@@ -646,7 +646,7 @@
   * 콜론 (`:`)
   * `v-bind:href` :arrow_right: `:href` 
 
-* 속성 바인딩(setAttribute같은 것)
+* 속성 바인딩
 
   ![image-20220504201017627](Vue_Basics.assets/image-20220504201017627.png)
 
