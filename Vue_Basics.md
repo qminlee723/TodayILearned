@@ -748,11 +748,13 @@
 
 
 
-## :seven: Lifecycle Hooks
+## :seven: Vue Life Cycle Hook
 
 ### 1. Lifecycle Hooks 개념
 
 ![image-20220504165458113](Vue_Basics.assets/image-20220504165458113.png)
+
+![1](Vue_Basics.assets/1.png)
 
 * 각 Vue 인스턴스는 생성될 때 일련의 초기화 단계를 거침
   * 예를 들어, 데이터 관찰 설정이 필요한 경우, 인스턴스를 DOM에 마운트 하는 경우, 데이터가 변경되어 DOM을 업데이트 하는 경우 등

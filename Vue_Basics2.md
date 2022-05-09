@@ -1,4 +1,6 @@
-Vue Basic2
+# Vue Basic2
+
+[TOC]
 
 
 
@@ -9,6 +11,7 @@ Vue Basic2
 *  기본 HTML 엘리먼트를 확장하여 재사용 가능한 코드를 캡슐화 하는데 도움을 줌
 * CS에서는 다시 사용할 수 있는 범용성을 위해 개발된 소프트웨어 구성 요소를 의미
 * 즉, 컴포넌트는 유지보수를 쉽게 만들어 줄 뿐만 아니라, 재사용성의 측면에서도 매우 강력한 기능을 제공
+* 다시 쓸 수 있는 부품
 * Vue 컴포넌트 === Vue 인스턴스
 
 
@@ -265,7 +268,7 @@ vue
 
 * 부모 자식 관계가 설정된 것을 뷰 화면에서 확인할 수 있다
 * name: 'TheAbout'은 안의 구분을 위한 것으로, 어떤 이름으로 설정해도 상관없다
-* 불러오기, 등록하기, 보여주기 안의 TheAbout의 이름은 어떤 것으로 써도 괜찮지만, 편의상 통일해준다
+* 불러오기, 등록하기, 보여주기 안의 TheAbout의 이름은 어떤 것으로 써도 괜찮지만, 편의상 자식 vue 이름으로 통일해준다
 
 #### 1) 불러오기(import)
 
@@ -448,6 +451,10 @@ vue
 
   ![image-20220508163242865](Vue_Basics2.assets/image-20220508163242865.png)
 
+* 인자 전달하기(2개 이상씩 전달도 가능하지만, 권장하지는 않음)
+
+  ![image-20220509165552036](Vue_Basics2.assets/image-20220509165552036.png)
+
 
 
 ### 3. event 이름 컨벤션
@@ -475,6 +482,8 @@ vue
 
 * 라우트(route)에 컴포넌트를 매핑한 후, 어떤 주소에서 렌더링할 지 알려줌
 
+  * url을 통한 하이퍼링크 이동이 아니지만, 그러한 효과를 주는 것
+
 * SPA상에서 라우팅을 쉽게 개발할 수 있는 기능을 제공
 
   
@@ -498,7 +507,201 @@ vue
   ? Use history mode for router? (Requires proper server setup for index fallback in production) (Y/n) Yes
   ```
 
+
+
+### 3. Vue Router로 인한 변화
+
+* App.vue 코드
+
+  ![image-20220509203251684](Vue_Basics2.assets/image-20220509203251684.png)
+
+* router/index.js 생성
+
+  ![image-20220509203519360](Vue_Basics2.assets/image-20220509203519360.png)
+
+* views 디렉토리 생성
+
+  ![image-20220509203303542](Vue_Basics2.assets/image-20220509203303542.png)
+
+
+
+### 4. Vue Router 
+
+#### 1) `index.js`
+
+* route에 관련된 정보 및 설정이 작성되는 곳
+
+#### 2) `<router-link>`
+
+* 사용자 네비게이션을 가능하게 하는 컴포넌트
+* router-link가 a 태그를 대신
+* 목표 경로는 `to` prop으로 지정됨
+* HTML5 히스토리모드에서 router-link는 클릭이벤트를 차단해 브라우저가 페이지를 다시 로드하지 않도록 함
+* a 태그지만 우리가 알고 있는 GET 요청을 보내는 a 태그와 조금 다르게, 기본 GET 요청을 보내는 이벤트를 제거한 형태로 구성됨
+
+#### 3) `<router-view>`
+
+* 주어진 라우트에 대해 일치하는 컴포넌트를 렌더링하는 컴포넌트
+* router-view 자리 = 컴포넌트로 대체되는 자리
+* 실제 component가 DOM에 부착되어 보이는 자리를 의미
+* router-link 를 클릭하면, 해당 경로와 연결되어 있는 `index.js`에 정의한 컴포넌트가 위치
+
+
+
+### 5. History mode
+
+* HTML History API를 사용해서 router를 구현한 것
+  * [참고] History API - 브라우저 전반에 대한 이야기이므로 따로 찾아볼 것
+  * DOM의 Window 객체는 history 객체를 통해 브라우저의 세션 기록에 접근할 수 있는 방법을 제공
+  * history 객체는 사용자를 자신의 방문 기록 앞과 뒤로 보내거나, 기록의 특정 지점으로 이동하느 ㄴ등 유용한 메서드와 속성을 가짐
+* 브라우저의 히스토리는 남기지만 실제 페이지는 이동하지 않는 기능을 지원
+* 즉, 페이지를 다시 로드하지 않고 URL을 탐색할 수 있음
+  * SPA의 단점 중 하나인 URL이 변경되지 않는다를 해결
+
+
+
+### 6. LottoView.vue
+
+#### 1) Named Routes
+
+* 이름을 가지는 랑루트
+* 명명된 경로로 이동하려면 객체를 vue-router 컴포넌트 요소의 prop에 전달
+
+![image-20220509223650685](Vue_Basics2.assets/image-20220509223650685.png)
+
+* 라우터: 실제 화면 전환이 일어난 것 아님
+
+  * `index.js`
+
+    ![image-20220509205558052](Vue_Basics2.assets/image-20220509205558052.png)
+
+  * `App.vue`
+
+    ![image-20220509205633940](Vue_Basics2.assets/image-20220509205633940.png)
+
+    * router-link가 a 태그를 대신
+    * router-view 자리 = 컴포넌트로 대체되는 자리
+    * 바인드(`:`)가 있어야지만 `{ name: 'home' }` 과같은 부분이 객체로 동작한다
+
+  * `LottoView.vue`
+
+  ![image-20220509205406569](Vue_Basics2.assets/image-20220509205406569.png)
+
+#### 2) 프로그래밍 방식 네비게이션
+
+* <router-like>를 사용하여 선언적 탐색을 위한 a 태그를 만드는 것 외에도, router의 인스턴스 메서드를 사용하여 프로그래밍 방식으로 같은 작업을 수행할 수 있음
+
+  * 선언적 방식
+
+    ```html
+    <router-link to="...">
+    ```
+
+  * 프로그래밍 방식
+
+    ```bash
+    $ router.push(...)
+    ```
+
+    
+
+* Vue  인스턴스 내부에서 라우터 인스턴스에 $router로 접근할 수 있음
+
+* 따라서 다른 URL로 이동하려면, this.$router.push를 호출할 수 있음
+
+  * 이 메서드는 새로운 항목을 히스토리 스택에 넣기 때문에 사용자가 브라우저의 뒤로 가기 버튼을 클릭하면 이전 URL로 이동하게 됨
+
+* <router-link>를 클릭할 때 내부적으로 호출되는 메서드이므로 <router-link :to="..."> 를 클릭하면, `router.push(...)` 를 호출하는 것과 같음
+
+* 작성할 수 있는 인자 예시
+
+  ![image-20220509224155303](Vue_Basics2.assets/image-20220509224155303.png)
+
   
+
+* About 에서 Home으로 이동하는 로직 작성
+
+  ![image-20220509230450817](Vue_Basics2.assets/image-20220509230450817.png)
+
+  ![image-20220509230525496](Vue_Basics2.assets/image-20220509230525496.png)
+
+  
+
+#### 3) 동적 인자 전달(Dynamic Route Matching)
+
+* 동적 인자 전달
+
+* 주어진 패턴을 가진 라우트를 동일한 컴포넌트에 매핑해야 하는 경우
+
+* 예를 들어 모든 User에 대해 동일한 레이아웃을 가지지만, 다른 User ID로 렌더링 되어야하는 User 컴포넌트 예시
+
+  ![image-20220509230855023](Vue_Basics2.assets/image-20220509230855023.png)
+
+  ![image-20220509231432693](Vue_Basics2.assets/image-20220509231432693.png)
+
+* 동적 인자는 `:`(colon)으로 시작
+
+* 컴포넌트에서 `this.$route.params`로 사용가능
+
+  * 1 이라는 숫자가, this.$route.params 안에 있음. 해당 route.params에서 원하는 Id도 추출할 수 있음
+
+  ![image-20220509231612607](Vue_Basics2.assets/image-20220509231612607.png)
+
+  ![image-20220509231624725](Vue_Basics2.assets/image-20220509231624725.png)
+
+  * 여러개도 가능
+
+    ![image-20220509232258611](Vue_Basics2.assets/image-20220509232258611.png)
+
+    ![image-20220509232110421](Vue_Basics2.assets/image-20220509232110421.png)
+
+    
+
+  | pattern                              | matched path            | $route.params                       |
+  | ------------------------------------ | ----------------------- | ----------------------------------- |
+  | `/user/:userName`                    | `/user/john`            | `{ username: 'john' }`              |
+  | `/user/:userName/article/:articleId` | `/user/john/article/12` | `{username: 'john', articleId: 12}` |
+
+* `LottoView.vue`예시
+
+  ![image-20220509224647791](Vue_Basics2.assets/image-20220509224647791.png)
+
+  ![image-20220509224656910](Vue_Basics2.assets/image-20220509224656910.png)
+
+  
+
+### 7. components 와 views
+
+* 기본적으로 작성된 구조에서 components 폴더와 views 폴더 내부에 각기 다른 컴포넌트가 존재하게 됨. 
+* 컴포넌트를 작성해 갈 때 정해진 구조가 있는 것은 아니며, 주로 아래와 같이 구조화하여 활용함
+* App.vue
+  * 최상위 컴포넌트
+* views/
+  * router(index.js)에 매핑되는 컴포넌트를 모아두는 폴더
+  * ex) App 컴포넌트 내부에 AboutView & HomeView 컴포넌트 등록
+* components/
+  * router에 매핑된 컴포넌트 내부에 작성하는 컴포넌트를 모아두는 폴더
+  * ex) Home 컴포넌트 내부에 HelloWorld 컴포넌트 등록
+
+
+
+### 8. Vue Router가 필요한 이유
+
+* SPA 등장 이전
+  * 서버가 모든 라우팅을 통제
+  * 요청 경로에 맞는 HTML을 제공
+* SPA 등장 이후
+  * 서버는 `index.html` 하나만 제공
+  * 이후 모든 처리는 HTML 위에서 JS 코드를 활용해 진행
+  * 즉, 요청에 대한 처리를 더 이상 서버가 하지 않음(할 필요가 없어짐)
+  * 더이상 추가 서버를 요청하지 않는다
+* 라우팅 처리 차리
+  * SSR
+    * 라우팅에 대한 결정권을 서버가 가짐
+  * CSR
+    * 클라이언트는 더 이상 서버로 요청을 보내지 않고 응답받은 HTML 문서 안에서 주소가 변경되는 특정 주소에 맞는 컴포넌트를 렌더링
+    * 라우팅에 대한 결정권을 클라이언트가 가짐
+  * 결국, Vue Router는 라우팅의 결정권을 가진 Vue.js에서 라우팅을 편리하게 할 수 있는 Tool을 제공해주는 라이브러리
 
 
 
