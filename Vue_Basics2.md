@@ -28,9 +28,21 @@
 
   
 
+  결국 동일함
+
+  ![image-20220510112519820](Vue_Basics2.assets/image-20220510112519820.png)
+
 * 지역 컴포넌트
 
+  1. 첫번째 방법
 
+     ![image-20220510130830328](Vue_Basics2.assets/image-20220510130830328.png)
+
+  2. 두번째 방법
+
+     ![image-20220510130856581](Vue_Basics2.assets/image-20220510130856581.png)
+
+     
 
 ### 2. SFC(Single File Component)
 
@@ -135,7 +147,22 @@
   $ npm run serve
   ```
 
-  
+
+* 참고
+
+  ![image-20220510161953225](Vue_Basics2.assets/image-20220510161953225.png)
+
+  Local 주소: 내 컴퓨터에서만 사용 가능한 주소
+
+  Network 주소: 같은 LAN, wifi 사용하는 컴퓨터에서 사용가능한 주소 
+
+### 5. CLI와 컴포넌트 비교
+
+![image-20220510161132130](Vue_Basics2.assets/image-20220510161132130.png)
+
+![image-20220510161357998](Vue_Basics2.assets/image-20220510161357998.png)
+
+
 
 ## :three: Babel & Webpack
 
@@ -146,6 +173,12 @@
 ![image-20220508143524877](Vue_Basics2.assets/image-20220508143524877.png)
 
 ![image-20220508143559916](Vue_Basics2.assets/image-20220508143559916.png)
+
+* 하위 컴포넌트 이름 주의
+  * 파스칼 케이스 사용
+  * 두 단어 이상! 
+    * html 기본 태그와 헷갈리는 것을 방지하기 위해서 
+  * ex) AppHead.vue
 
 ![image-20220508143626138](Vue_Basics2.assets/image-20220508143626138.png)
 
@@ -406,11 +439,16 @@ vue
 
 * 마찬가지로 수신할 prop 데이터를 명시적으로 선언 후 사용
 
-* :question: 근데 이부분 ppt랑 좀 다름 ... PPT에서는 parentData를 About.vue에다 따로 선언 안 해줌
+* 예시
 
+  * 웹엑스
+
+    ![image-20220510132516079](Vue_Basics2.assets/image-20220510132516079.png)
+  
   * ppt내용
-
+  
     ![image-20220508160225175](Vue_Basics2.assets/image-20220508160225175.png)
+  
 
 
 
@@ -442,6 +480,8 @@ vue
 * Listening to Child Components Events
 * `$emit(eventName)`
   * 현재 인스턴스에서 이벤트를 트리거
+    * props와 달리, 데이터를 보낼 때 언제 보낼지 **트리거**가 필요함 
+    * 해당 트리거를 상위 컴포넌트가 받아주면, 데이터가 전송됨
   * 추가 인자는 리스너의 콜백 함수로 전달
 * 부모 컴포넌트는 자식 컴포넌트가 사용되는 템플릿에서 v-on을 사용하여 자식 컴포넌트가 보낸 이벤트를 청취(v-on을 이용한 사용사 지정 이벤트)
 
@@ -467,6 +507,10 @@ vue
 
   ![image-20220508163242865](Vue_Basics2.assets/image-20220508163242865.png)
 
+  * CLI 말고 일반 html
+
+    ![image-20220510141207218](Vue_Basics2.assets/image-20220510141207218.png)
+
 * 인자 전달하기(2개 이상씩 전달도 가능하지만, 권장하지는 않음)
 
   ![image-20220509165552036](Vue_Basics2.assets/image-20220509165552036.png)
@@ -484,6 +528,31 @@ vue
 * 이러한 이유로, 이벤트 이름에는 항상 kebab-case를 사용하는 것을 권장
 
   
+
+### 4. props & emit 둘 다 연습
+
+![image-20220510150020435](Vue_Basics2.assets/image-20220510150020435.png)
+
+![image-20220510143040694](Vue_Basics2.assets/image-20220510143040694.png)
+
+![image-20220510150416153](Vue_Basics2.assets/image-20220510150416153.png)
+
+![image-20220510150619026](Vue_Basics2.assets/image-20220510150619026.png)
+
+![image-20220510150717649](Vue_Basics2.assets/image-20220510150717649.png)
+
+* emit
+
+1. appContent 변수 내 버튼에다가 v-on directive 달아줘야함
+2. emit해준다
+3. div 내 content 반영하는곳에다가 @emit받을 준비 (@getNum="getNum")
+4. 상위루트에 methods 작성해주고, data도 작성해주기
+
+* props
+
+1.  props로 받을 속성 .. div내 header 반영하는 곳에다가 v-bind해주기
+
+   
 
 
 
@@ -721,6 +790,39 @@ vue
 
 
 
+## :seven: Router CDN으로 설정
+
+#### 1) 기본 구조
+
+![image-20220510153405595](Vue_Basics2.assets/image-20220510153405595.png)
+
+![image-20220510153641547](Vue_Basics2.assets/image-20220510153641547.png)
 
 
-## :seven: Youtube Project
+
+#### 2) Router 설정
+
+![image-20220510154338677](Vue_Basics2.assets/image-20220510154338677.png)
+
+
+
+#### 3) 주소 내에 `#` 지우기
+
+* 주소: `http://localhost:5050/21_router.html#/hello`
+
+  ![image-20220510155441118](Vue_Basics2.assets/image-20220510155441118.png)
+
+  * mode: 'history' 추가해주기
+
+    ![image-20220510155857734](Vue_Basics2.assets/image-20220510155857734.png)
+
+
+
+## :eight: CLI 실습(web-ex)
+
+![image-20220510165817800](Vue_Basics2.assets/image-20220510165817800.png)
+
+![image-20220510165902946](Vue_Basics2.assets/image-20220510165902946.png)
+
+
+
