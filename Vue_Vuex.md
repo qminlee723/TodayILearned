@@ -15,6 +15,8 @@
   * 애플리케이션의 모든 컴포넌트에 대한 **중앙 집중식 저장소** 역할
 * Vue의 공식 devtools와 통합되어 기타 고급 기능을 제공
 
+
+
 ### 2. State
 
 * state는 곧 **data**이며, 해당 애플리케이션의 핵심이 되는 요소
@@ -28,9 +30,9 @@
 ### 3. 상태 관리 패턴
 
 * 컴포넌트의 공유된 상태를 추출하고 이를 **전역에서 관리**하도록 함
-* 컴포넌트는 커다란 view가 되며, 모든 컴포넌트는 트리에 상관없이 상태에 액세스 하거나 동작을 트리거 할 수 있음
+* 컴포넌트는 커다란 view(HTML DOM)가 되며, 모든 컴포넌트는 트리에 상관없이 상태에 액세스 하거나 동작을 트리거 할 수 있음
   * 트리거: 특정한 동작에 반응해 자동으로 필요한 동작을 실행하는 것
-* 상태 관리 및 특정 규칙 적용과 관련된 개념을 정의하고 분리함으로써 코드의 구조와 유지 관리 기능 향상
+* 상태 관리 및 특정 규칙 적용과 관련된 개념을 정의하고 분리함으로써 **코드의 구조와 유지 관리** 기능 향상
 
 
 
@@ -56,6 +58,9 @@
   * 컴포넌트 중첩이 깊어지는 경우 동위 관계의 컴포넌트로의 데이터 전달이 불편해짐
   * 공통의 상태를 공유하는 여러 컴포넌트가 있는 경우, 데이터 전달 구조가 매우 복잡해짐
     * 지나치게 중첩된 컴포넌트를 통과하는 prop이 그 예시
+    * tree의 depths가 깊어지는 경우, 형제 노드간 데이터 전달이 어려워지므로
+
+
 
 ### 5. Vuex management pattern
 
@@ -80,6 +85,8 @@
   * 상태를 공유하는 컴포넌트의 상태 동기화 관리가 어려움
   * 상태를 전달할 때 상 -> 하로만 가능
 * A 컴포넌트의 상태를 공유하는 다른 컴포넌트에 pass props & emit event를 통해 동기화해야 함
+
+
 
 #### 2) Vuex를 활용한 state(상태) 관리
 
@@ -116,8 +123,11 @@
 ### 2. Mutations
 
 * 실제로 **state**를 **변경**하는 유일한 방법
+  * 단지 state data에 저장만 할 뿐! 나머지 행위는 action에서 함
+  * 은행이라고 생각한다면, actions는 창구직원이고 mutations는 금고지기
 * mutation의 handler(핸들러 함수)는 반드시 동기적이어야 함
   * 비동기적 로직(ex. 콜백함수)은 state가 변화하는 시점이 의도한 것과 달라질 수 있으며, 콜백이 실제로 호출될 시기를 알 수 있는 방법이 없음(추적할 수 없음)
+  * **비동기 X** - 즉 axios나 setTimeOut 같은 경우엔 사용 X
 * 첫번째 인자로 항상 **state**를 받음
 * Actions에서 **`commit()`** 메서드에 의해 호출됨
 
@@ -127,7 +137,9 @@
 
 * Mutations와 유사하지만 다음과 같은 차이점이 있음
   * state를 변경하는 대신, mutations를 `commit()` 메서드로 호출해서 실행
-  * mutations와 달리 비동기 작업이 포함될 수 있음 (Backend API와 통신하여, Data Fetching등의 작업 수행)
+  * mutations와 달리 **비동기 작업**이 포함될 수 있음 (Backend API와 통신하여, Data Fetching등의 작업 수행)
+    * 데이터 조작에 대한 코드 작성(ex-axios API 요청)
+    * 저장할 데이터 확보하는 메서드를 정의
 * **context 객체 인자를 받음**
   * context 객체를 통해 store/index.js 파일 내에 있는 모든 요소의 속성 접근 & 메서드 호출이 가능
   * 단, (가능하긴 하지만) state를 직접 변경하지 않음
@@ -148,6 +160,7 @@
 * getters 자체가 state를 변경하지는 않음
   * state를 특정한 조건에 따라 구분(계산)만 함
   * 즉, 계산된 값을 가져옴
+* computed, getters에 정의되는 메서드는 반드시 **return 이 필요**하다
 
 
 
@@ -210,7 +223,9 @@
 
   ![image-20220511095301897](Vue_Vuex.assets/image-20220511095301897.png)
 
-  
+  * [참고] 만약 프로젝트가 커져서 index.js를 나누게 되면 쓰는 것이 modules.
+
+    ![image-20220511192314465](Vue_Vuex.assets/image-20220511192314465.png)
 
 #### 3) 컴포넌트 작성
 
@@ -288,7 +303,7 @@
 
 ![image-20220511113419360](Vue_Vuex.assets/image-20220511113419360.png)
 
-#### 5) Actions & Mutations
+#### 4) Actions & Mutations
 
 ![image-20220511132849202](Vue_Vuex.assets/image-20220511132849202.png)
 
@@ -378,7 +393,7 @@
 
 
 
-#### 6) Vuex 상태 관리 흐름
+#### 5) Vuex 상태 관리 흐름
 
 ![image-20220511134312419](Vue_Vuex.assets/image-20220511134312419.png)
 
@@ -408,7 +423,9 @@
 
 * `deleteTodo` action 함수 호출
 
-  
+  ![image-20220511171609326](Vue_Vuex.assets/image-20220511171609326.png)
+
+  ![image-20220511171716967](Vue_Vuex.assets/image-20220511171716967.png)
 
 
 
@@ -426,19 +443,55 @@
 
     ![image-20220511163720783](Vue_Vuex.assets/image-20220511163720783.png)
 
+
+
 ### 5. Update Todo
+
+* 완료한 todo에 crossline 긋고, `isCompleted` True로 바꿔주는 거 할 것!
 
 #### 1) `TodoListItem` 컴포넌트
 
 * `updateTodoStatus` action 함수 호출
 
+  
+
 #### 2)  Actions & Mutations
 
-#### 3) JavaScript Spread Syntax
+
+
+#### 3) JavaScript Spread Syntax(전개 구문)
+
+* 전개 구문
+
+  * 배열이나 문자열과 같이 반복 가능한(iterable)문자를 요소(배열 리터럴의 경우)로 확장하여, 0개 이상의 key-value의 쌍으로 된 객체로 확장시킬 수 있음
+
+  * '...'을 붙여서 요소 또는 키가 0개 이상의 iterable object를 하나의 object로 간단하게 표현하는 법
+
+  * ECMAScript2015에서 추가 됨
+
+  * Spread Syntax의 대상은 반드시 iterable 객체여야 함
+
+  * 주 사용처
+    * ~~함수 호출~~
+      * 배열의 목록을 함수의 인수로 활용시
+      * ~~배열~~
+      * 배열 연결
+      * 배열 복사
+      * **객체**
+        * **객체 복사**
+
+* 객체에서의 전개 구문
+  * 객체 복사
+
+* Mutations 변경
+  * 변경 전
+  * title: todoItem.title
+  * 변경 후
+    * ...todo,
 
 #### 4)  취소선 긋기
 
-
+* v-bind를 사용한 class binding
 
 //
 
@@ -446,17 +499,105 @@
 
 ## :four: Getters
 
-### 1. 
+### 1. Getters 정의 및 활용
 
-### 2.
-
-### 3.
-
-
+* 완료된 todo 갯수 계산 `index.js`
+* getters 사용, computed 반환 값으로 사용
+* 완료되지 않은 todo 갯수 계산
+* getters 사용, computed 반환 값으로 사용
+* 전체 todo 갯수 계산
+* getters 사용, computed 반환 값으로 사용
 
 
 
 ## :five: Component Binding Helper
 
+### 1. Component Binding Helper 
+
+* JS Array Helper Method를 통해 배열 조작을 편하게 하는 것과 유사
+  * 논리적인 코드 자체가 변하는 것이 아니라, "쉽게" 사용할 수 있도록 되어 있음에 초점
+* 종류
+  * `mapState`
+  * `mapGetters`
+  * `mapActions`
+  * `mapMutations`
+  * ~~`createNamespaceHelpers`~~
+
+### 2. `mapState`
+
+* computed와 Store의 state를 매핑
+* Vuex Store의 하위 구조를 반환하여 component 옵션을 생성함
+* 매핑된  computed 이름이 state 이름과 같을 때 문자열 배열을 전달 할 수 있음
+* 하지만 다른 computed값을 함께 사용할 수 없기 때문에 최종 객체를 computed에 전달할 수 있도록 다음과 같이 객체 전개 연산자(Object Spread Operator)로 객체를 복사하여 작성
+  * `mapState()`는 객체를 반환
+
+### 3. `mapGetters`
+
+* Computed와 Getters를 매핑
+* getters를 객체 전개 연산자(Object Spread Operator)로 계산하여 추가
+* 해당 컴포넌트 내에서 매핑하고자 하는 이름이 index.js에 정의해 놓은 getters 이름과 동일하면 배열의 형태로 해당 이름만 문자열로 추가
+
+### 4. `mapActions`
+
+* action을 전달하는 컴포넌트 method 옵션을 만듦
+
+  ![image-20220511170417561](Vue_Vuex.assets/image-20220511170417561.png)
+
+  * 축약해서 사용하고 싶다면,
+
+    ![image-20220511170532715](Vue_Vuex.assets/image-20220511170532715.png)
+
+  * 메서드를 추가하고 싶다면
+
+    ![image-20220511171159287](Vue_Vuex.assets/image-20220511171159287.png)
+
+    ```javascript
+    // 이런식으로 여러개의 메서드를 추가할 수 있다
+    methods: {
+        ...mapActions(['deleteTodo', 'createTodo']),
+    }
+    ```
+
+    
+
+* actions를 객체 전개 연산자(Object Spread Operator)로 계산하여 추가하기
+
+* [주의] mapActions를 사용하면, 이전에 dispatch()를 사용했을 때 payload로 넘겨줬던 this.todo를 pass prop으로 변경해서 전달해야 함
 
 
+
+
+
+## :six: LocalStorage
+
+### 1. Vuex-persistendstate
+
+#### 1) 개념
+
+* Vuex state를 자동으로 브라우저의 LocalStorage에 저장해 주는 라이브러리 중 하나
+* 페이지가 새로고침 되어도 Vuex state를 유지시킴
+
+
+
+#### 2) 기본 설정
+
+* 기본 구조 세팅
+
+  ```bash
+  # 설치
+  $ npm i vuex-persistedstate
+  ```
+
+* 라이브러리 사용
+
+* 개발자도구 - Application - Local Storage에 저장된 데이터 확인
+
+
+
+
+
+## :seven: 마무리
+
+![image-20220511165402336](Vue_Vuex.assets/image-20220511165402336.png)
+
+![image-20220511165350871](Vue_Vuex.assets/image-20220511165350871.png)
