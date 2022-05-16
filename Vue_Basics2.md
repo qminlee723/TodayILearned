@@ -573,7 +573,7 @@ vue
 
   
 
-### 2. Vue Router 시작하기
+### 2. Vue Router **시작하기**
 
 * 기본설정
 

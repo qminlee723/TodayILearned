@@ -423,9 +423,21 @@
 
 * `deleteTodo` action 함수 호출
 
-  ![image-20220511171609326](Vue_Vuex.assets/image-20220511171609326.png)
+  ![image-20220513103922027](Vue_Vuex.assets/image-20220513103922027.png)
+
+* mapActions사용시 `deleteTodo(todo)` 로 인자 받아와줘야 함
+
+  * `deleteTodo(todo)`에서 ()는 실행의 의미가 아님. 특수 문법
+    * deleteTodo 함수 걸어두고, 실행할 때 인자로 todo를 남겨주세요
+    * deleteTodo만 쓰면, 원하는 todo가 삭제되지 않고 다른 todo가 삭제됨
+    * `index.js`에서 todoItem을 인자로 받을거면,  todo를 넘겨주자
+
+
+  ![image-20220513102447437](Vue_Vuex.assets/image-20220513102447437.png)
 
   ![image-20220511171716967](Vue_Vuex.assets/image-20220511171716967.png)
+
+  
 
 
 
@@ -453,11 +465,18 @@
 
 * `updateTodoStatus` action 함수 호출
 
+  * mapActions 사용할 것
+  
+    ![image-20220513104448751](Vue_Vuex.assets/image-20220513104448751.png)
+  
   
 
 #### 2)  Actions & Mutations
 
-
+* map 사용
+  * map: 새로운 배열을 생성
+  * map을 사용하는 이유: forEach를 사용할 수 있지만, forEach를 사용하지 않는 이유는 하나만 바꿔야 하기 때문 :question:
+* 
 
 #### 3) JavaScript Spread Syntax(전개 구문)
 
@@ -563,6 +582,11 @@
 * actions를 객체 전개 연산자(Object Spread Operator)로 계산하여 추가하기
 
 * [주의] mapActions를 사용하면, 이전에 dispatch()를 사용했을 때 payload로 넘겨줬던 this.todo를 pass prop으로 변경해서 전달해야 함
+
+  * 이런식으로 :question: ... `deleteTodo(todo)`
+
+    ![image-20220513102447437](Vue_Vuex.assets/image-20220513102447437.png)
+
 
 
 
