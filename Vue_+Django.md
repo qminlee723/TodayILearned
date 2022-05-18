@@ -248,3 +248,263 @@ CORS_ALLOWED_ORIGINS = [
 * JWT 자체가 필요한 정보를 모두 갖기 때문에(self-contained), 이를 검증하기 위한 다른 검증 수단(ex. table)이 필요 없음
 * 사용처
   * Authentication, Information Exchange
+
+
+
+## :five: 실습
+
+### 1. django 기본세팅
+
+#### 1) 기본세팅
+
+1. git branch
+2.  startproject
+3.  startapp
+4.  urls.py
+5.  models.py
+6. 
+
+#### 2) serializers
+
+
+
+![image-20220517094958806](Vue_+Django.assets/image-20220517094958806.png)
+
+class 안쪽에 왜 class 정의?
+
+ArticleSerializer는 ProfileSerializer 안에서만 쓰겠다 라는 의미
+
+노란박스는 django에서 정의해놓은 user 에서 가져올 수 있는거고, articles와 like_articles라는 필드가 모델에 없으니까 어디서 가져와야 하는지를 정해주는 것
+
+
+
+read_only fields는 *CRUD 할 때 R만 하고싶을 때* 사용
+
+
+
+
+
+#### 3) CORS
+
+djanago cors documents 보면 나옴
+
+1. 라이브러리 설치
+
+   ```bash
+   pip install django-cors-headers
+   ```
+
+2. settings.py
+
+   * INSTALLED_APPS
+
+   ```python
+   INSTALLED_APPS = [
+       ...
+       # thirdparty 니까 내가 만든 앱보다는 아래에
+       'corsheaders',
+       ...
+   ]
+   ```
+
+   * MIDDLEWARE
+
+   ```python
+   MIDDLEWARE = [
+       ...
+       'corsheaders.middleware.CorsMiddleware',
+       # CommonMiddleware 보다 위에 넣어주기
+       ...
+   ]
+   ```
+
+   * CORS_ALLOWED_ORIGINS 추가
+
+   ```python
+   # 특정 도메인만 허용
+   CORS_ALLOWED_ORIGINS = [
+       "https://example.com",
+       "https://sub.example.com",
+       "http://localhost:8080",
+       "http://127.0.0.1:9000",
+   ]
+   
+   # 모든 도메인 허용 .. 둘 중 하나 선택하면 됨.
+   CORS_ALLOW_ALL_ORIGINS = True
+   ```
+
+3. 라이브러리 설치
+
+   * dj-rest-auth documents 에도 있음
+     * registration(optional) 파트 읽기
+
+   ```bash
+   $ pip install django-allauth
+   $ pip install dj-rest-auth
+   ```
+
+   * settings.py
+
+   ```python
+   INSTALLED_APPS = [
+       ...
+   	# rest framework
+       'rest_framework',
+       'rest_framework.authtoken',
+       'dj_rest_auth',
+       # rest framework
+       ...
+       'dj_rest_auth.registration',
+       # django
+       'django.contrib.sites',
+       'allauth',
+       'allauth.account',
+       'allauth.socialaccount',
+   ]
+   ```
+
+   * SITE_ID = 1 추가
+
+   ```python
+   # 하나의 프로젝트에서 여러 개의 앱을 쓸 수 있게 multiple 앱 지원
+   # 따라서 그런 경우 사용할 수 있게, mulitple site ID 옵션을 주는 것
+   # 근데 지금은 그럴 일 없으니까 일단 1먼저 써놓자
+   
+   # INSTALLED_APPS = [] 다음에 위치
+   SITE_ID = 1
+   ```
+
+4. DRF 설정코드
+
+   ![image-20220517105908758](Vue_+Django.assets/image-20220517105908758.png)
+
+   * settings.py
+
+   ```python
+   # DRF 설정
+   REST_FRAMEWORK = {
+       # 기본 인증을 토큰 authentiacation 을 사용하도록 변경
+       'DEFAULT_AUTHENTICATION_CLASSES': [
+           'rest_framework.authentication.TokenAuthentication',
+       ],
+   
+       # 인증받은 사용자만 요청하도록 설정하는 곳 
+       'DEFAULT_PERMISSION_CLASSES': [
+           'rest_framework.permissions.AllowAny',
+           'rest_framework.permissions.IsAuthenticated',
+       ]
+   }
+   ```
+
+5. urls.py
+
+   * dj_rest_auth documentation 검색해서 github보기
+   * register 안쪽에 있는 기능들이 있길래, url로 넣어준거 
+
+   ```python
+   urlpatterns = [
+       ...
+       path('api/v1/accounts', include('dj_rest_auth.urls')),
+       # 회원가입은 registration에 모아놓은 것 
+       path('api/v1/accounts/signup/', include('dj_rest_auth.registration.urls')),
+   ]
+   
+   ```
+
+6. profile 처리 해주기
+
+   * accounts/urls.py
+
+   ```python
+   from django.contrib import admin
+   from django.urls import path, include
+   from . import views
+   
+   app_name = 'accounts'
+   urlpatterns = [
+       path('profifle/<str:username>/', views.profile)
+   ]
+   
+   ```
+
+   * accounts/views.py
+
+   ```python
+   from django.shortcuts import render, get_object_or_404
+   from django.contrib.auth import get_user_model
+   from .serializers import ProfileSerializer
+   from rest_framework.response import Response
+   from rest_framework.decorators import api_view
+   
+   User = get_user_model()
+   # Create your views here.
+   @api_view(['GET'])
+   def profile(request, username):
+       user = get_object_or_404(User, username=username)
+       serializer = ProfileSerializer(user)
+       return Response(serializer.data)
+   ```
+
+
+
+![image-20220517112717449](Vue_+Django.assets/image-20220517112717449.png)
+
+지금까지 회원기능 만들고 프로필 페이지 만들었다 
+
+7. 회원가입 잘 되는지 확인해보자
+
+   * POSTMAN 사용해서 확인
+
+   * POST는 body에 넣어서 보낸다 - form data(get은 params)
+
+     ![image-20220517113351607](Vue_+Django.assets/image-20220517113351607.png)
+
+     ![image-20220517113409348](Vue_+Django.assets/image-20220517113409348.png)
+
+   * key 안에 token 값을 넣어서 내려줌
+
+   * token은 한마디로, 토큰을 가지고 있으면 앞으로 로그인이라는게 필요가 없어짐
+
+   * 이 토큰을 클라이언트에게 내려준거
+
+   * FE가 토큰값 받아서 저장해둠 ->  header에 담아줌 -> 서버에게 요청을 보내면, BE는 header에(내가 가지고 있는 토큰 테이블에) 토큰값이 들어있는지 확인해서, 들어 있으면 어서오세요~
+
+   * 이런 일련의 과정을 거치면, 로그인, 세션 등의 과정을 거칠 필요가 없다 
+
+   * 단, 이 토큰 관리를 잘 못해서 토큰이 탈취가 되는 순간 모든 정보 유출됨
+
+   * 토큰 관리가 아주 아주아주 중요해지고, 방법이 여러가지가 있음
+
+     * 토큰 **만료 시간**을 설정해준다
+
+       * 만료 시간이 있는 토큰이 여러개 생긴다면
+
+         ![image-20220517114053797](Vue_+Django.assets/image-20220517114053797.png)
+
+       * 새로운 토큰이 발생된다면, 1, 2번 토큰은 blacklist에 넣어서 더이상 유효하지 않게 만들어줌
+
+     * user의 id(pk) 값이 담겨있음 - 이러한 정보들을 **암호화** 한다 
+
+       * 이게 바로 위 POSTMAN에서 받아온 key
+       * BE는 이렇게 암호화된 id값을 해독하는 것
+
+     * Access Token, Refresh Token
+
+       * Access Token: 실제 user를 인증하는 토큰(2시간~4시간~1주일 max?)
+
+       * Refresh Token
+
+         * Access Token이 만료되면, refresh token을 던짐
+         * 서버가 refresh token을 던져주면 access token을 다시 던져줌
+
+       * 첨에 token 발행시
+
+         ![image-20220517114544158](Vue_+Django.assets/image-20220517114544158.png)
+
+         * access, refresh 둘 다 던져줌
+         * access(4시간) 만료 전에 refresh(한달) 하게되면
+         * 평소에는 access token으로 인증함
+         * 근데 만료되면, refresh token을 던져 - refresh token이 유효하니까 access token을 다시 던져줌
+         * refresh token도 만료되면?
+           * 새로 로그인 해야지!
+           * 엄청 오래 안쓴 애들은 새로 로그인 하게 만드는 이유
