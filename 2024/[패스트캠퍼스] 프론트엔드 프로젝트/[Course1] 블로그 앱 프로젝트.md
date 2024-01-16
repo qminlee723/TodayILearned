@@ -214,9 +214,91 @@ cd fastcampus-blog-app
 
 ### 4. react-router-dom을 이용한 라우팅 실습
 
+- React-router-dom install
+
+```cmd
+yarn add react-router-dom
+```
+
+- Typescript
+
+```cmd
+yarn add @types/react-router-dom
+```
+
+- `index.tsx`
+
+  ```javascript
+  import { BrowserRouter as Router } from "react-router-dom";
+  
+  const root = ReactDOM.createRoot(
+    document.getElementById("root") as HTMLElement
+  );
+  root.render(
+    <React.StrictMode>
+      <Router> // Router
+        <App />
+      </Router>
+    </React.StrictMode>
+  );
+  ```
+
+  
+
 
 
 ## 컴포넌트 만들기
+
+### 컴포넌트란?
+
+- 컴포넌트란?
+
+  - 리액트 앱을 구성하는 최소한의 단위
+  - 즉, 애플리케이션의 구성 요소를 담당하며, 재사용 가능하고 독립적인 단위로 구성
+
+- 클래스 컴포넌트 vs 함수 컴포넌트
+
+  - 클래스 컴포넌트: ES6 클래스 사용해서 정의, render() 메서드로 UI 반환, 생명주기 메서드 기능 제공, 상태관리 기능 제공
+  - 함수 컴포넌트: JavaScript 함수로 정의, JSX로 반환, react-hook 사용하여 생명주기 기능 활용
+    - 좀 더 간단하고 명료한 문법으로 컴포넌트 작성 가능
+
+- 컴포넌트의 장점
+
+  - 재사용성
+    - 독립적이고 모듈화된 단위로 작성되어, 필요한 곳에서 쉽게 재사용 가능
+  - 가독성과 유지보수성
+    - UI구조 명확하게 파악 가능
+    - 개별 컴포넌트를 수정하여 유지보수 용이
+  - 효율적 업데이트
+    - 가상 DOM을 활용해, 필요한 부분만 다시 렌더링해 효율적으로 업데이트 가능
+
+- 컴포넌트 예시
+
+  ```javascript
+  import React from 'react';
+  
+  const HelloWorld = () => {
+    return <div>Hello, World!</div>
+  }
+  
+  export default HelloWorld
+  ```
+
+  ```javascript
+  import React from 'react'
+  import HelloWorld from './HelloWorld';
+  
+  const App = () => {
+    return (
+    	<div>
+      	<h1>My App</h1>
+      	<HelloWorld /> // component
+      </div>
+    )
+  }
+  ```
+
+
 
 
 
