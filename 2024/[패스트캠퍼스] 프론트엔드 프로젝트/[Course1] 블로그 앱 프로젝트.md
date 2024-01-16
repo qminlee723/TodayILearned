@@ -300,6 +300,69 @@ yarn add @types/react-router-dom
 
 
 
+### css의  BEM모델
+
+- BEM이란?
+
+  - Block-Element-Modifier모델: CSS 클래스 네이밍. 가독성, 재사용성이 높음
+
+    ![Screenshot 2024-01-17 at 2.04.40 AM](./assets/Screenshot 2024-01-17 at 2.04.40 AM.png)
+
+- BEM모델의 장단점
+
+  - 장점
+    - 가독성: 클래스명에 구조적인 정보를 담아 코드를 읽기 쉽게 함
+    - 재사용성: 모듈화된 구조로 컴포넌트의 재사용 쉬움
+    - 유지보수성: 클래스간의 의존성 낮춤
+  - 단점
+    - 클래스명이 길어질 수 있음 
+    - 요소 및 수정자 사용을 위해 추가적인 클래스 작성 필요
+
+- BEM 모델 사용 예시
+
+  ```html
+  <div class="block"> <!-- Block -->
+    <h2 class="block__title">Block Title</h2>  <!-- Element(__title) -->
+      <ul class="block__list">  
+        <li class="block__list-item">Item 1</li>
+        <!-- Modifier(--highlighted) -->
+        <li class="block__list-item block__list-item--highlighted">Item 2</li>
+        <li class="block__list-item">Item 3</li>
+      </ul>
+  </div>
+  ```
+
+  ```css
+  /* Block */
+  .block {
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  /* Element */
+  .block__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .block_list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .block__list-item {
+    padding: 5px 10px;
+  }
+  
+  /* Modifier */
+  .block__list-item--highlighted {
+    background-color: yellow;
+    font-weight: bold;
+  }
+  ```
+
+  
+
 
 
 ## 사용자 인증 구현
