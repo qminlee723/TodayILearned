@@ -361,7 +361,150 @@ yarn add @types/react-router-dom
   }
   ```
 
-  
+
+
+### 프로젝트 기본 구조 세팅
+
+1.  `Router.tsx` 파일 생성 후 Route 정보 작성
+
+   ```react
+   import { Route, Routes, Navigate, Link } from "react-router-dom";
+   
+   export default function Router() {
+     return (
+       <>
+         <Routes>
+         <Route path="/" element={<h1>Home</h1>} />
+           <Route path="/posts" element={<h1>Post List</h1>} />
+           <Route path="/posts/:id" element={<h1>Post Detail Page</h1>} />
+           <Route path="/posts/new" element={<h1>New Post Page</h1>} />
+           <Route path="/posts/edit/:id" element={<h1>Post Edit Page</h1>} />
+           <Route path="/profile" element={<h1>Profile Page</h1>} />
+           <Route path="/login" element={<h1>Login Page</h1>} />
+           <Route path="/signup" element={<h1>Signup Page</h1>} />
+           <Route path="*" element={<Navigate replace to="/" />} />
+         </Routes>
+       </>
+     );
+   }
+   ```
+
+   
+
+2. `App.tsx` 에는 Router 컴포넌트만 보이게 세팅
+
+   ```react
+   import Router from "./components/Router";
+   
+   function App() {
+     return <Router />;
+   }
+   
+   export default App;
+   
+   ```
+
+3. `src` 폴더 내에 각 페이지별 폴더 생성 및 하위 파일 생성
+
+   ```
+   src
+   |-- components
+   |			|-- Router.tsx
+   |-- pages
+   			|-- home
+   			|		|-- index.tsx
+   			|-- login
+   			|		|-- index.tsx
+   			|-- posts
+   			|		|-- detail.tsx
+   			|		|-- edit.tsx
+   			|		|-- index.tsx
+   			|		|-- new.tsx
+   			|-- profile
+   			|		|-- index.tsx
+   			|-- signup
+   					|-- index.tsx
+   ```
+
+4. 생성된 파일들을 `Router.tsx` 에서 import 하여 컴포넌트로 사용
+
+   ```react
+   import { Route, Routes, Navigate, Link } from "react-router-dom";
+   import Home from "../pages/home";
+   import PostList from "../pages/posts";
+   import PostDetail from "../pages/posts/detail";
+   import PostNew from "../pages/posts/new";
+   import PostEdit from "../pages/posts/edit";
+   import ProfilePage from "../pages/profile";
+   import LoginPage from "../pages/login";
+   import SignupPage from "../pages/signup";
+   
+   export default function Router() {
+     return (
+       <>
+         <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/posts" element={<PostList />} />
+           <Route path="/posts/:id" element={<PostDetail />} />
+           <Route path="/posts/new" element={<PostNew />} />
+           <Route path="/posts/edit/:id" element={<PostEdit />} />
+           <Route path="/profile" element={<ProfilePage />} />
+           <Route path="/login" element={<LoginPage />} />
+           <Route path="/signup" element={<SignupPage />} />
+           <Route path="*" element={<Navigate replace to="/" />} />
+         </Routes>
+       </>
+     );
+   }
+   ```
+
+5. `index.css` 내 간단 CSS 적용
+
+   ```react
+   /* header */
+   header {
+     display: flex;
+     justify-content: space-between;
+     flex-direction: row-reverse;
+     border-bottom: 1px solid #f2f2f2;
+     padding: 10px 40px;
+     min-height: 40px;
+     align-items: center;
+   }
+   
+   header a {
+     margin: 0px 10px;
+     text-decoration: none;
+     color: gray;
+   }
+   
+   header a:focus,
+   header a:hover {
+     color: black;
+   }
+   
+   /* footer */
+   footer {
+     background-color: #f2f2f2;
+     min-height: 40px;
+     padding: 20px 40px;
+     font-size: 14px;
+     text-align: center;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 20px;
+   }
+   
+   /* post list */
+   .post-list {
+     min-height: 90vh;
+     padding: 20px 40px;
+     text-align: center;
+   }
+   ```
+
+   
 
 
 
