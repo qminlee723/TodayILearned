@@ -504,13 +504,120 @@ yarn add @types/react-router-dom
    }
    ```
 
-   
+
+
+### 컴포넌트 작업(04~07)
+
+- 절대경로 설정
+
+  - `tsconfig.json` > `baseUrl` 설정
+    - baseUrl: 절대경로의 기준이 되는 기본 디렉토리를 지정
+    - Paths: 모듈이름과 모듈파일의 경로를 매핑하는 설정. 모듈이름을 사용해 파일을 찾을 수 있도록 해줌.
+
+  ```javascript
+  {
+    "compilerOptions": {
+     "baseUrl": "src" // baseUrl
+    },
+    "include": [
+      "src"
+    ],
+    "paths": { // Paths
+      "pages/*": ["pages/*"],
+      "components/*": ["components/*"]
+    }
+  }
+  ```
+
+  - `tsconfig.json` 수정 이후에는 껐다 켜 줘야함
+
+
 
 
 
 ## 사용자 인증 구현
 
+### Firebase란
 
+- Firebase란?
+
+  - 실시간 데이터베이스, 인증, 스토리지, 분석 등 다양한 기능을 제공하는 모바일 및 웹 앱 개발 플랫폼
+
+  - 2011년 스타티업에서 시작(실시간 채팅 기능) > 2014년 구글이 인수(백엔드 서버리스)
+
+  - 백엔드 서버 구축하고 관리할 필요 없이, Google Cloud Platform을 이용해 빠르고 효율적인 개발이 가능
+
+  - 특히 실시간 기능 서비스, 클라이언트 사이드 집중, 초기 프로토타입 개발에 유용
+
+- 주요 기능 소개
+
+  - 이번 프로젝트에서 사용할 주요 기능: Authentication, Firestore, Storage, Hosting
+  - **Authentication: 간편한 다중 플랫폼 로그인**
+    - 이메일 인증, 소셜 미디어 계정 인증, 전화번호 인증방식 제공
+    - 보안 강화, 사용자 인증 과정 안전하게 처리
+  - **Firestore: NoSQL 데이터베이스**
+    - Firebase에서 제공하는 NoSQL 형식의 클라우드 데이터베이스
+    - 실시간 데이터 동기화 지원(ex. 실시간 채팅)
+  - **Storage: 사진 및 동영상 저장**
+    - 사용자 파일 저장 및 공유. 강력한 보안
+  - **Hosting: 웹 호스팅**
+    - 정적 및 동적 콘텐츠 모두 호스팅 가능
+
+- Firebase 장단점
+
+  | 장점                                                         | 단점                                                         |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | 백엔드 서버 없이 개발: 개발 시간 절약, 클라이언트에 집중해서 개발 가능 | 쿼리 제한: NoSQL 데이터베이스의 간단한 쿼리만 사용 가능      |
+  | 실시간 데이터베이스: 사용자 데이터 실시간 공유, 실시간 채팅 등의 기능 쉽게 개발 | 비용: 확장성이 중요한 경우, 비용이 빠르게 증가할 수 있음     |
+  | Google 플랫폼 통합: Google Cloud Platform 서비스 쉽게 이용 및 분석 가능 | 마이그레이션 어려움: 타 백엔드 서비스로 전환하는 경우 추가적인 작업 필요 |
+
+- Firebase Pricing
+
+  - 무료 할당량으로 시작 > 이후 지불
+
+- Firebase 설정 방법
+
+  1. 프로젝트 생성
+
+  2. 앱 설정
+
+     - 생성된 Firebase 프로젝트 페이지에서, "웹"을 선택하고 앱의 별칭을 입력
+     - Firebase SDK를 추가하는 과정에서, Firebase가 제공하는 구성 객체를 복사
+
+  3. React 프로젝트에 Firebase 설치
+
+     ```cmd
+     yarn add firebase
+     ```
+
+  4. React 앱에서 Firebase 초기화
+
+     ```javascript
+     import firebase from 'firebase/app'
+     
+     const firebaseConfig = {
+       apiKey: "YOUR_API_KEY",
+       authDomain: "YOUR_AUTH_DOMAIN",
+       projectId: "YOUR_PROJECT_ID",
+       storageBucket: "YOUR_STORAGE_BUCKET",
+       messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+       appId: "YOUR_APP_ID"
+     };
+     
+     firebase.initializeApp(firebaseConfig);
+     ```
+
+  5. React 앱에서 Firebase 사용
+
+     ```javascript
+     import 'firebase/auth'
+     import 'firebase/firestore'
+     
+     const auth = firebase.auth()
+     const db = firebase.firestore()
+     ```
+
+     
 
 ## 게시판 CR(Create, Read) 구현
 
