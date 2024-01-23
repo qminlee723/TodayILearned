@@ -685,9 +685,57 @@ yarn add @types/react-router-dom
      }
      ```
 
-     
 
 
+### `onAuthStateChanged` 메서드
+
+- 개념
+
+  - Firebase Authentication 서비스에서 제공하는 메서드
+  - 인증 상태가 변경될 때마다 호출되는 리스너 설정(로그인, 로그아웃)
+    - 로그인을 하거나 로그아웃을 할 때 마다 실시간으로 호출이 됨
+  - 사용자 객체를 인자로 받는 콜백 함수 등록
+    - 사용자의 로그인 상태 확인 후 적절한 작업 수행
+    - 로그인 상태일 때는 사용자의 정보를, 아니라면 null을 리턴
+
+- 예시
+
+  - 사용자가 로그인 하거나 로그아웃할 때 콘솔에 사용자 상태 출력
+  - `onAuthStateChanged`를 사용해 사용자의 로그인 상태를 실시간으로 파악하고, 원하는 특정 작업을 수애할 수 있음
+    - 동적인 사용자 경험 제공 가능
+    - 현재 사용자를 가져올 때, auth객체가 초기화와 같은 중간단계를 거치지 않기 때문에 빠르고 자연스러운 사용자 경험 제공 가능
+
+  ```react
+  import { getAuth, onAuthStateChanged } from "firebase/auth";
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('사용자가 로그인한 상태입니다.')
+      } else {
+        console.log('사용자가 로그아웃한 상태입니다.')
+      }
+      setInit(true);
+    });
+  }, [auth]);
+  ```
+
+- 공식 문서: Auth 객체에 `onAuthStateChanged` 라는 관찰자 설정하는 것을 권장
+
+  ```react
+  import { getAuth, onAuthStateChanged } from "firebase/auth";
+  
+  const auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      ...
+    } else {
+      ...
+    }
+  });
+  ```
+
+  
 
 ## 게시판 CR(Create, Read) 구현
 
