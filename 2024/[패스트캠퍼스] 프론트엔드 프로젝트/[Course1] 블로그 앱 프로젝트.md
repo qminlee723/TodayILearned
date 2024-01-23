@@ -617,7 +617,77 @@ yarn add @types/react-router-dom
      const db = firebase.firestore()
      ```
 
+
+
+### Firebase Auth란?
+
+- Firebase Authentication
+
+  - 쉽게 사용자 인증을 구현할 수 있도록 돕는 Firebase 서비스
+  - 이메일과 비밀번호 인증, 소셜 미디어 인증, 전화번호 인증
+  - 인증 정보 안전하게 저장
+  - 인증 정보 변경시 실시간으로 앱에 업데이트
+  - 인증 이멩리 전송, 비밀번호 재설정 이메일 전송 등 가능
+
+- 장점
+
+  - 편의성
+    - 복잡한 인증 과정을 Firebase가 대신 처리
+    - 클라이언트 사이드 개발에만 집중이 가능
+  - 소셜 미디어 계정 인증
+    - OAuth 2.0과 OpenID Connect 지원
+    - 각종 소셜 미디어 계정 이용한 인증 구현
+  - 보안
+    - 사용자의 비밀번호 안전하게 암호화
+    -  HTTP 이용해 데이터 전송 보안
+
+- 언제 사용할까?
+
+  - 로그인 시스템 구현시
+  - 사용자 프로필 시스템 구현시
+
+- Firebase Auth 세팅
+
+  1. Firebase 프로젝트 생성 & Firebase SDK 앱 추가
+
+  2. Firebase 초기화
+
+     ```react
+     import firebase from 'firebase/app'
+     import 'firebase/auth'
      
+     const firebaseConfig = {
+       // Firebase 프로젝트 설정 값
+     }
+     
+     firebase.initializeApp(firebaseConfig)
+     
+     const auth = firebase.auth();
+     ```
+
+  3. Authentication 서비스 불러오기
+
+     ```react
+     import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+     
+     const onSubmit = async (e: any) => {
+       e.preventDefault();
+       
+       try {
+         // 로그인 성공
+         const auth = getAuth(app)
+         await signInWithEmailAndPassword(auth, email, password);
+         toast("로그인이 성공했습니다")
+       } catch (error: any) {
+         // 로그인 실패 에러 메시지
+         toast.error(error?.code)
+       }
+     }
+     ```
+
+     
+
+
 
 ## 게시판 CR(Create, Read) 구현
 
