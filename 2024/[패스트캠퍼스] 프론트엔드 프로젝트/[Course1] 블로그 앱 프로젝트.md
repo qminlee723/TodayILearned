@@ -735,7 +735,91 @@ yarn add @types/react-router-dom
   });
   ```
 
-  
+
+
+### Context API
+
+- Context API란?
+
+  -  React가 자체적으로 제공하는 상태 관리 방법
+    - 컴포넌트 트리 안에서 **전역적**으로 사용할 수 있는 값 관리
+    - Props Drilling을 피하고, 컴포넌트 간 상태를 쉽게 공유 가능
+    - 데이터를 공유하기 위한 방법(context)
+    - ex. 로그인한 사용자의 정보, 테마, 언어 설정 등
+
+- 장단점
+
+  - 장점
+    - Prop Drilling 문제 해결
+    - 추가적인 라이브러리 설치 필요 없음
+    - 중간컴포넌트를 거치지 않고도 컴포넌트에 상태를 전달할 수 있기 때문에 코드의 복잡성을 줄이고 가독성을 향상시킬 수 있음
+  - 단점
+    - 복잡한 상태 관리는 어려울 수 있음
+      - Redux, Recoil과 같은 전역 상태관리 라이브러리가 더 적합할 수 있음
+    - 너무 많은 context를 사용하면 재사용성이 떨어짐
+      - 한 component가 특정 context에 너무 의존하게 되면, 그 컨텍스트 없이는 해당 컴포넌트를 재사용하기 어려움
+
+- 사용 사례
+
+  - 전역적으로 관리해야하는 상태가 있는 경우 사용
+  - 다크모드, 사용자 세션 관리, 다국어 처리 구현 등
+
+- 사용법
+
+  1. Context 생성
+
+     ```react
+     import { createContext } from 'react';
+     
+     export const LevelContext = createContext(1);
+     ```
+
+  2. Provider 설정
+
+     - context를 구독하고 있는 컴포넌트들에게 컨텍스트의 변화를 알려주는 역할을 함
+
+     ```react
+     import { LevelContext } from './LevelContext.js';
+     
+     export default function Section({ level, children }) {
+       return (
+       	<section className="section">
+         	<LevelContext.Provider value={level}>
+             {children}
+           </LevelContext.Provider>
+         </section>
+       )
+     }
+     ```
+
+  3. 변화값 받아오기: **Consumer 설정**
+
+     ```react
+     import { LevelContext } from './LevelContext.js';
+     
+     export default function Heading({ children }) {
+         <LevelContext.Consumer>
+           {({level}) => (<div>{level}</div>)}
+         </LevelContext.Consumer>
+     }
+     ```
+
+  4. 변화값 받아오기: **useContext 훅 사용**
+
+     -  React 16.8 버전 이상만 가능
+
+     ```react
+     import { useContext } from 'react';
+     import { LevelContext } from './LevelContext.js';
+     
+     export default function Heading({ children }) {
+       const level = useContext(LevelContext);
+       
+       // 전역 상태인 level 값 사용 가능
+     }
+     ```
+
+     
 
 ## 게시판 CR(Create, Read) 구현
 
