@@ -1,6 +1,6 @@
 # [Course1] 블로그 앱 프로젝트
 
-## 프로젝트 개요
+## 1️⃣ 프로젝트 개요
 
 ### 1. 프로젝트 개요 및 목적
 
@@ -81,7 +81,7 @@
 
 
 
-## 프로젝트 세팅
+## 2️⃣ 프로젝트 세팅
 
 ### 1. Create-react-app 주요 개념 설명
 
@@ -247,7 +247,7 @@ yarn add @types/react-router-dom
 
 
 
-## 컴포넌트 만들기
+## 3️⃣ 컴포넌트 만들기
 
 ### 컴포넌트란?
 
@@ -535,7 +535,7 @@ yarn add @types/react-router-dom
 
 
 
-## 사용자 인증 구현
+## 4️⃣ 사용자 인증 구현
 
 ### Firebase란
 
@@ -821,27 +821,106 @@ yarn add @types/react-router-dom
 
      
 
-## 게시판 CR(Create, Read) 구현
+## 5️⃣ 게시판 CR(Create, Read) 구현
+
+### Firestore란?
+
+- Firebase에서 제공하는 NoSQL 형식의 클라우드 데이터베이스
+
+  - 애플리케이션 개발을 하다보면, 데이터를 저장하고 불러오는 일이 매우 중요한데,  Cloud Firesotre는 이러한 일을 쉽게 도와줌
+  - Firestore는 **실시간 데이터 동기화**를 지원하며, 웹, 안드로이드 iOS에서 데이터를 저장하고 동기화 할 수 있음
+  - 데이터는 문서(document)와 컬렉션(collection)의 형태로 저장되며, 이는 효율적인 쿼리 작성을 가능하게 함
+  - 오프라인 지원 제공
+
+- 실제 화면
+
+  - 한 프로젝트에 여러개의 콜렉션을 만들 수 있고, 하나의 콜렉션 안에는 여러 개의 문서(데이터) 를 추가 가능
+  - 문서마다 새로운 컬렉션 추가도 가능하며, 해당 컬렉션에 필드도 추가/삭제 가능
+    - User라는 상위 컬렉션 안에,  `User1`, `User2`, `User3`, `User4`라는 document가 존재
+      - `User3` document는 Posts라는 또다른 컬렉션을 가지고
+        - Posts라는 컬렉션 안에,  `Post1`, `Post2` 라는 document가 존재
+        - `Post2` document는 Comments 컬렉션을 가지고, 
+          - Comments 라는 컬렉션 안에,  `Comment1`, `Comment2`라는 document가 존재
+
+  ![Screenshot 2024-01-26 at 1.12.44 AM](./assets/Screenshot 2024-01-26 at 1.12.44 AM.png)
+
+- 장점
+  - **실시간 데이터 동기화**
+    - 실시간 채팅 및 데이터 분석 등 실시간 기능 애플리케이션 개발
+  - 구조화된 데이터
+    - 문서 - 컬렉션 형태로 데이터 저장 / 구조화된 데이터 쉽게 저장하고 불러올 수 있음
+  - 보안
+    - 사용자 기반의 보안규칙 설정 가능
+
+- 사용 예시
+
+  - 실시간 채팅 앱
+  - 다양한 데이터 저장 및 불러올 수 있음
+    - 게임 점수, 사용자 설정, 텍스트, 이미지
+  - 사용자별 데이터 접근 권한 관리
+    - 사용자 인증 정보와 함께 사용
+
+- 사용 방법
+
+  1. Firebase 프로젝트 생성 & Firebase SDK 앱 추가
+
+  2. Firestore 인스턴스 가져오기
+
+     ```react
+     import { initializeApp, FirebaseApp, getApp } from "firebase/app";
+     import { getFirestore } from "firebase/firestore";
+     
+     export let app: FirebaseApp;
+     
+     const firebaseConfig = {...};
+     
+     try {
+       app = getApp("app");
+     } catch (e) {
+       app = initializeApp(firebaseConfig, "app");
+     }
+     
+     export const db = getFirestore(app)
+     ```
+
+  3. Firebase 서비스 사용하기
+
+      ```react
+      import { db } from "firebaseApp";
+      
+      const onSubmit = async (e: any) => {
+        e.preventDefault();
+        
+        try {
+          await addDoc(collection(db, "posts"), {
+            
+          });
+          toast.success("게시글을 생성했습니다");
+        } catch (e:any) {
+          console.log(e)
+        }
+      }
+      ```
+
+     
+
+## 6️⃣ 게시판 UD(Update, Delete) 구현
 
 
 
-## 게시판 UD(Update, Delete) 구현
+## 7️⃣ 다크모드 구현
 
 
 
-## 다크모드 구현
+## 8️⃣ 댓글 기능 구현
 
 
 
-## 댓글 기능 구현
+## 9️⃣ 보안 확인하기
 
 
 
-## 보안 확인하기
-
-
-
-## 배포하기
+## 🔟 배포하기
 
 
 
