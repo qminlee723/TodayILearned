@@ -906,9 +906,35 @@ yarn add @types/react-router-dom
 
 ## 6️⃣ 게시판 UD(Update, Delete) 구현
 
+GitHub 참고
+
 
 
 ## 7️⃣ 다크모드 구현
+
+### 전역 상태관리란?
+
+- 컴포넌트간 데이터 전달: 상위 컴포넌트에서 하위 컴포넌트로 props 전달
+- 상태: 컴포넌트 내부에서 관리되는 값
+- 상태 관리: 컴포넌트 간의 데이터 전달과 관리
+- 상태는 컴포넌트가 렌더링 될 때마다 재설정되기 때문에, 컴포넌트 내부에서 상태를 관리할 시 사용자의 입력에 따라 렌더링 결과가 실시간으로 반영.
+  -  단, 상태가 여러 컴포넌트에서 공유되어야 하는 경우, Prop Drilling 상황이 번거롭고 복잡해질 수 있음
+- **Prop Drilling**: 부모 컴포넌트에서 데이터를 전달받은 자식 컴포넌트가, 또다시 하위 컴포턴트로 데이터를 전달하는 상황
+  - 코드의 복잡성, 유지보수 어려움
+- Prop Drililng 해결 방안
+  - 상태 관리 라이브러리(Recoil, Redux)나, Context API를 사용해 전역 상태 관리
+
+
+
+### 다크모드 구현
+
+- Context API로 다크모드 설계
+
+  ![Screenshot 2024-02-05 at 11.57.15 PM](./assets/Screenshot 2024-02-05 at 11.57.15 PM.png)
+
+  -  ThemeContext를 `CreateContext`로 정의해 준 후 필요한 페이지에서 선택적으로 가져가서 사용할 수 있도록 정의
+
+
 
 
 
@@ -924,3 +950,7 @@ yarn add @types/react-router-dom
 
 
 
+
+
+1. 흰 슬링백 
+2. 
