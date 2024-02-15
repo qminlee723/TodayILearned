@@ -985,7 +985,45 @@ GitHub 참고
 
 ## 🔟 배포하기
 
+### Firebase CLI(Command Line Interface)
+
+- Firebase 프로젝트를 관리하고 다양한 Firebase 기능을 로컬에서 사용할 수 있도록 해줌
+- Firebase 프로젝트 설정, 데이터베이스, Cloud Function, 호스팅 등 관리
 
 
-1. 흰 슬링백 
-2. 
+
+### Firebase CLI 설치방법
+
+1. Node.js 및 npm 설치
+2. `npm install -g firebase-tools`
+3. Firebase login(로그인 후 테스트)
+4. firebase projects:list (파이어베이스 프로젝트 확인)
+
+
+
+### Firebase로 배포하기
+
+#### 1. 프로젝트 초기화: 
+
+```cmd
+firebase init hosting
+```
+
+![Screenshot 2024-02-16 at 12.12.14 AM](./assets/Screenshot 2024-02-16 at 12.12.14 AM.png)
+
+#### 2. 사이트 배포
+
+```cmd
+yarn build
+firebase deploy --only hosting
+```
+
+- 배포된 url 확인 (도메인 추가할 것): `https://fastcampus-react-blog-36459.web.app`
+
+![Screenshot 2024-02-16 at 12.14.55 AM](./assets/Screenshot 2024-02-16 at 12.14.55 AM.png)
+
+### 3. Google console 및 Firebase 보안 적용
+
+- 위에서 배포된 url이 이미 저장된 URL과 다르다면
+  - Firebase Auth > settings > 승인된 도메인 추가
+  - Google console > API > 보안 URL 추가
