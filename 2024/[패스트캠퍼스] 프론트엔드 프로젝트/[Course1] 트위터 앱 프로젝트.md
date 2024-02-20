@@ -231,11 +231,11 @@ https://classic.yarnpkg.com/lang/en/docs/install
 #### CRA(create-react-app) 설치
 
 ```cmd
-yarn create react-app fastcampus-blog-app --template typescript
+yarn create react-app fastcampus-react-twitter --template typescript
 ```
 
 ```cmd
-cd fastcampus-blog-app
+cd fastcampus-react-twitter
 ```
 
 
@@ -280,6 +280,8 @@ cd fastcampus-blog-app
   
 
 ### 4. react-router-dom을 이용한 라우팅 실습
+
+![Screenshot 2024-02-20 at 11.37.56 PM](./assets/Screenshot 2024-02-20 at 11.37.56 PM.png)
 
 - React-router-dom install
 
