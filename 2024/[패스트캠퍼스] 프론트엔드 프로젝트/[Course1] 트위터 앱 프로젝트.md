@@ -312,9 +312,151 @@ yarn add @types/react-router-dom
   );
   ```
 
+
+
+
+### 5. Scss 소개
+
+- SCSS란?
+
+  - CSS(Cascading Style Sheets): 웹페이지 디자인 & 레이아웃 정의하는 스타일 시트 언어
+  - SASS(Syntactically Awesome Stylesheets): 간결한 문법을 가진 CSS 전처리기
+  - SCSS(Sassy CSS): CSS를 확장한 CSS 전처리기. CSS의 단점을 보완하며 SASS의 기능을 지원
+    - CSS 전처리기: 기존 CSS 언어의 기능을 확장하고 개선하기 위해 만들어진 도구. 컴파일러를 통해 CSS 포맷으로 변환이 됨. 변수를 사용해서 색상이나 폰트를 컴포넌트화 해서 사용 가능
+
+- SCSS의 장점 및 기능
+
+  - 장점: CSS의 모든 기능 포함 + 추가적인 기능. 가독성 및 유지보수성 향상, 재사용성 높임, 연산 및 함수 정의, 파일 분할 및 모듈화로 코드 관리
+  - 기능
+    - 변수(Variables): 스타일에서 사용되는 색상, 폰트 크기 등을 변수로 정의 
+    - 중첩 규칙(Nested Rules): 요소의 계층 구조를 중첩하여 스타일을 작성
+    - 믹스인(Mixins): 스타일 코드를 재사용하기 위한 함수와 같은 기능 제공
+    - 모듈(Modules): 하나의 파일에 모든 스타일 코드를 작성하지 않고, @use 규칙을 사용해서 여러 파일을 모듈로 나눠서 사용 가능
+    - 연산과 함수(Operators): SCSS는 수치 연산을 지원하며 내장 함수를 사용하여 동적인 스타일을 생성할 수 있음(ex. darken(), lighten())
+
+- 변수(Variables)
+
+  ```scss
+  // 변수 정의
+  $primary-color: #3498db
+  $font-size-large: 18px;
+  $margin-default: 10px;
   
+  // 변수 활용
+  .header {
+    background-color: $primary-color;
+    font-size: $font-size-large;
+    margin: $margin-default
+  }
+  ```
 
+  - 스타일시트에서 자주 사용되는 값을 저장하고 재사용할 수 있게 함
+  - 스타일 일관성 유지, 효율적인 업데이트
+  - 글꼴 크기, 여백 값 등을 변수로 저장해 코드 중복을 피하고 유지보수 간소화
+  - 변수를 사용하면 스타일 코드가 보다 명확해지고, 스타일을 정리하는데 편리
 
+- 중첩 규칙(Nested Rules)
+
+  ```scss
+  .header {
+    background-color: #333;
+    padding: 20px;
+    
+    h1 {
+      font-size: 24px;
+       color: white;
+    }
+  }
+  ```
+
+  - CSS 규칙을 더 명확하고 계층적으로 표현
+  - 코드 가독성을 높이고, 유지보수 쉬움
+  - 웹사이트의 헤더와 메뉴 항목에 대한 스타일을 중첩 규칙으로 작성하면 구조적으로 코드 정리 가능
+  - 상위 요소의 스타일을 중복해서 작성하지 않고도 하위 요소에 쉽게 적용 가능
+
+- 믹스인(Mixins)
+
+  ```scss
+  @mixin button-style {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: darken(#3498db, 10%);
+    }
+  }
+  
+  .button {
+    @include button-style
+  }
+  ```
+
+  - SCSS에서 스타일 속성과 값을 묶어서 재사용 가능한 코드 블럭을 생성하는 기능
+  - 반복되는 스타일 중복 방지
+  - 웹사이트에서 버튼 스타일을 자주 사용한다면 믹스인으로 버튼 스타일을 정의하고 필요한 곳에서 호출하여 사용할 수 있음
+  - 스타일 코드를 재사용 가능한 함수로 사용 가능
+  - 스타일 코드의 간결성과 일관성 유지
+
+- 모듈화(Modules)
+
+  ```scss
+  // _variables.scss 파일
+  $primary-color: #3498db;
+  $font-size-large: 18px;
+  
+  // _button.scss 파일
+  .button {
+    background-color: $primary-color;
+    color:white;
+    padding: 10px 20px;
+    font-size: $font-size-large;
+  }
+  
+  // _header.scss 파일
+  .header {
+    background-color: $primary-color;
+    padding: 20px;
+  }
+  ```
+
+  ```scss
+  // main.scss 파일
+  @import 'variables';
+  @import 'button';
+  @import 'header';
+  ```
+
+  - SCSS에서 스타일을 **여러 파일**로 나눠서 관리
+  - 큰 프로젝트에서 스타일을 조직화하고 유지보수하기 편하게 만들 수 있음
+  - 웹사이트의 다양한 컴포넌트나 섹션마다 별도의 스타일 파일을 만들고, 필요한 곳에서 가져와 사용
+  - 스타일 파일이 독립적으로 유지되므로 복잡성을 낮추고 스타일 충돌 방지
+
+- 연산과 함수(Operators)
+
+  ```scss
+  $base-font-size: 16px;
+  
+  .container {
+    width: 100% - 20px; // 수치 연산
+    font-size: $base-font-size * 1.2; // 곱셈 연산
+    color: darken(#3498db, 20%); // 내장 함수
+  }
+  
+  .button {
+    background-color: lighten(#e74c3c, 10%); // 내장 함수
+    padding: 10px + 5px; // 수치 연산
+  }
+  ```
+
+  - SCSS만의 수치 연산자 혹은 내장 함수를 사용하여 동적인 스타일 생성 (스타일 값 계산 & 변경)
+  - 웹사이트에서 여백 값을 계산하는 경우나 색상을 변화시키는 경우 등에 연산과 함수를 활용
+    - +, -, *, math.div(). %
+  - 반응형 디자인이나 동적 스타일링에 유용
 
 ## 3️⃣ 사용자 인증 구현
 
