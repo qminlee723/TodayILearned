@@ -458,27 +458,11 @@ yarn add @types/react-router-dom
     - +, -, *, math.div(). %
   - 반응형 디자인이나 동적 스타일링에 유용
 
+
+
 ## 3️⃣ 사용자 인증 구현
 
-### 
-
-
-
-
-
-##  사용자 인증 구현
-
 ### Firebase, Firebase Auth 알아보기
-
-### Firebase Auth 세팅하기
-
-### Firebase Auth로 기본 회원가입 실습
-
-### Firebase Auth로 기본 로그인 실습
-
-### Firebase OAuth 실습
-
-### Firebase란
 
 - Firebase란?
 
@@ -568,7 +552,7 @@ yarn add @types/react-router-dom
   - 이메일과 비밀번호 인증, 소셜 미디어 인증, 전화번호 인증
   - 인증 정보 안전하게 저장
   - 인증 정보 변경시 실시간으로 앱에 업데이트
-  - 인증 이멩리 전송, 비밀번호 재설정 이메일 전송 등 가능
+  - 인증 이메일 전송, 비밀번호 재설정 이메일 전송 등 가능
 
 - 장점
 
@@ -626,141 +610,40 @@ yarn add @types/react-router-dom
      }
      ```
 
+- **Firebase Authentication(Oauth)**
 
+  1. Google 제공업체 객체의 인스턴스 생성
 
-### `onAuthStateChanged` 메서드
-
-- 개념
-
-  - Firebase Authentication 서비스에서 제공하는 메서드
-  - 인증 상태가 변경될 때마다 호출되는 리스너 설정(로그인, 로그아웃)
-    - 로그인을 하거나 로그아웃을 할 때 마다 실시간으로 호출이 됨
-  - 사용자 객체를 인자로 받는 콜백 함수 등록
-    - 사용자의 로그인 상태 확인 후 적절한 작업 수행
-    - 로그인 상태일 때는 사용자의 정보를, 아니라면 null을 리턴
-
-- 예시
-
-  - 사용자가 로그인 하거나 로그아웃할 때 콘솔에 사용자 상태 출력
-  - `onAuthStateChanged`를 사용해 사용자의 로그인 상태를 실시간으로 파악하고, 원하는 특정 작업을 수애할 수 있음
-    - 동적인 사용자 경험 제공 가능
-    - 현재 사용자를 가져올 때, auth객체가 초기화와 같은 중간단계를 거치지 않기 때문에 빠르고 자연스러운 사용자 경험 제공 가능
-
-  ```react
-  import { getAuth, onAuthStateChanged } from "firebase/auth";
-  
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log('사용자가 로그인한 상태입니다.')
-      } else {
-        console.log('사용자가 로그아웃한 상태입니다.')
-      }
-      setInit(true);
-    });
-  }, [auth]);
-  ```
-
-- 공식 문서: Auth 객체에 `onAuthStateChanged` 라는 관찰자 설정하는 것을 권장
-
-  ```react
-  import { getAuth, onAuthStateChanged } from "firebase/auth";
-  
-  const auth = getAuth()
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      ...
-    } else {
-      ...
-    }
-  });
-  ```
-
-
-
-### Context API
-
-- Context API란?
-
-  -  React가 자체적으로 제공하는 상태 관리 방법
-     - 컴포넌트 트리 안에서 **전역적**으로 사용할 수 있는 값 관리
-     - Props Drilling을 피하고, 컴포넌트 간 상태를 쉽게 공유 가능
-     - 데이터를 공유하기 위한 방법(context)
-     - ex. 로그인한 사용자의 정보, 테마, 언어 설정 등
-
-- 장단점
-
-  - 장점
-    - Prop Drilling 문제 해결
-    - 추가적인 라이브러리 설치 필요 없음
-    - 중간컴포넌트를 거치지 않고도 컴포넌트에 상태를 전달할 수 있기 때문에 코드의 복잡성을 줄이고 가독성을 향상시킬 수 있음
-  - 단점
-    - 복잡한 상태 관리는 어려울 수 있음
-      - Redux, Recoil과 같은 전역 상태관리 라이브러리가 더 적합할 수 있음
-    - 너무 많은 context를 사용하면 재사용성이 떨어짐
-      - 한 component가 특정 context에 너무 의존하게 되면, 그 컨텍스트 없이는 해당 컴포넌트를 재사용하기 어려움
-
-- 사용 사례
-
-  - 전역적으로 관리해야하는 상태가 있는 경우 사용
-  - 다크모드, 사용자 세션 관리, 다국어 처리 구현 등
-
-- 사용법
-
-  1. Context 생성
-
-     ```react
-     import { createContext } from 'react';
+     ```javascript
+     import { GoogleAuthProvider } from "firebase/auth"
      
-     export const LevelContext = createContext(1);
+     const provider = new GoogleAuthProvider();
      ```
 
-  2. Provider 설정
+  2. Google 제공업체 객체를 사용해 Firebase에 인증 (signInWithPopup)
 
-     - context를 구독하고 있는 컴포넌트들에게 컨텍스트의 변화를 알려주는 역할을 함
-
-     ```react
-     import { LevelContext } from './LevelContext.js';
+     ```javascript
+     import { getAuth, signInWithPopup, GoogleAuthProvidier } from "firebase/auth"
      
-     export default function Section({ level, children }) {
-       return (
-       	<section className="section">
-         	<LevelContext.Provider value={level}>
-             {children}
-           </LevelContext.Provider>
-         </section>
-       )
-     }
-     ```
-
-  3. 변화값 받아오기: **Consumer 설정**
-
-     ```react
-     import { LevelContext } from './LevelContext.js';
+     const auth = getAuth();
      
-     export default function Heading({ children }) {
-         <LevelContext.Consumer>
-           {({level}) => (<div>{level}</div>)}
-         </LevelContext.Consumer>
-     }
-     ```
-
-  4. 변화값 받아오기: **useContext 훅 사용**
-
-     -  React 16.8 버전 이상만 가능
-
-     ```react
-     import { useContext } from 'react';
-     import { LevelContext } from './LevelContext.js';
-     
-     export default function Heading({ children }) {
-       const level = useContext(LevelContext);
+     // SignIn 메서드 사용
+     signInWithPopup(auth, provider)
+     	.then((result) => {
        
-       // 전역 상태인 level 값 사용 가능
-     }
+       // Google Access Token 발급 가능
+       const credential = GoogleAuthProvider.credentialFromResult(result);
+       const token = credential.accessToken;
+       // 혹은 인증된 사용자 정보 가져올 수도 있음
+       const user = result.user;
+     	}).catch((error) => {
+       console.log(error)
+     	});
      ```
 
      
+
+
 
 ## 4️⃣ 게시판 CRUD 구현
 
