@@ -17,3 +17,4 @@
 - KNOU 1학기 ✅ *2024. 02. 19. ~ 2024. 06. 09.*
   - 파이썬프로그래밍의기초, C프로그래밍, 운영체제, 데이터베이스시스템, 디지털논리회로, 이산수학
 - AWS Cloud Practitioner ✅ *2024.06.22*
+- AWS Solutions Architect Associate ✍🏻 *2024.07 ~ ing*
