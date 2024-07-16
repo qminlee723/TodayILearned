@@ -83,3 +83,10 @@
   - CloudFront(Content Delivery Network)
   - WAF(Web Application Firewall)
 - Region-scoped
+  - Amazon EC2(Infrastructure as a Service)
+  - Elastic Beanstalk(Platform as a Service)
+  - Lambda(Function as a Service)
+  - Rekognition (Software as a Service)
+
+
+
