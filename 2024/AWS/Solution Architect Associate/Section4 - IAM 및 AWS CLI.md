@@ -178,3 +178,19 @@
   - Mobile SDKs (Android, iOS, ...)
   - IoT Devices SDKs (Embedded C, Arduino, ...)
 - Example: AWS CLI is built on AWS SDK for Python
+
+
+
+## AWS CloudShell: Region
+
+### AWS 클라우드쉘
+
+- 무료로 사용 가능한 터미널 같은 개념
+- CLI 사용시 API 호출을 반환해줌
+
+
+
+## AWS 서비스에 대한 IAM Role
+
+- Some AWS sercies will need to perform actions on your behalf
+- 
