@@ -192,5 +192,47 @@
 
 ## AWS 서비스에 대한 IAM Role
 
-- Some AWS sercies will need to perform actions on your behalf
-- 
+- Some AWS sercies will need to perform actions on your behalf 
+- To do so, we will assign permissions to AWS services with IAM Roles
+- Common roles
+  - EC2 Instance Roles
+  - Lambda Function Roles
+  - Roles for CloudFormation
+
+
+
+## IAM Security Tools
+
+- IAM Credentials Report(account-level)
+  - a report that lists all your account's users and the status of their various credentials
+- IAM Access Advisor(user-level)
+  - Access advisor shows the service permissions granted to a user and whenthose services were last accessed.
+  - You can use this information to revise your policies
+
+
+
+## IAM Guidelines & Best Practices
+
+- Dont' use the root account except for AWS account setup
+- One physical user = One AWS user
+- Assign users to groups and assign permissions to groups
+- Create a strong password polciy
+- Use and enforce the use of Multi Factor Authentication(MFA)
+- Create and use Roles for giving permissions to AWS services
+- Use Access Keys for Programming Access(CLI/SDK)
+- Audit permissions of your account with the IAM Credentials Report
+- Never share IAM users & Access Keys
+
+
+
+## IAM Section - Summary
+
+- **Users**: mapped to a physical user, has a password for AWS Console
+- **Groups**: contains users only
+- **Policies**: JSON documnet that outlines permissions for users or groups
+- **Roles**: for EC2 instances or AWS services
+- **Security**: MFA + Password Policy
+- **AWS CLI**: manage your AWS services using the **command-line**
+- **AWS SDK**: manage your AWS services using a **programming language**
+- **Access Keys**: access AWS using the CLI or SDK
+- **Audit**: IAM Credential Reports & IAM Access Advisor
