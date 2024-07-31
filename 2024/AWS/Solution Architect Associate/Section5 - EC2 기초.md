@@ -44,5 +44,70 @@
 
 
 
+## 웹사이트 실습
+
+### Hands-On: Launching an EC2 Instance running Linux
+
+- Launching our first virtual server using the AWS Console
+- High-level approach to the various parameters
+- Our web server is launched using EC2 user data
+- How to start / stop / terminate our instance
+
+
+
 ## EC2 인스턴스 유형 기본 사항
+
+### EC2 Instance Types - Overview
+
+- You can use different types of EC2 instances that are optimized for different use cases
+- AWS has the following naming convention:
+  - `m5.2xlarge`
+  - m: instance class
+  - 5: generation (AWS improves them over time)
+  - 2xlarge: size within the instance class
+
+
+
+### EC2 Instance Types (1) General Purpose
+
+- Great for a diversity of workloads such as **web servers** or **code repositories**
+- Blance between:
+  - Compute
+  - Memory
+  - Networking
+
+
+
+### EC2 Instance Types (2) Compute Optimized
+
+- Great for compute-instensive tasks that require high performance processors:
+  - Batch processing workloads
+  - Media transcoding
+  - High performance web servers
+  - High performance computing(HPC)
+  - Scientific modeling & machine learning
+  - Dedicated gaming servers
+
+
+
+### EC2 Instance Types (3) Memory Optimized
+
+- Fast performance for workloads that process large data sets in memory
+- Use cases:
+  - High performance, relational/non-relational databases
+  - Distributed web scale cache stores(Elastic cache)
+  - In-memory databases optimized for BI(business intelligence)
+  - Applications performing real-time processing of big unstructured data
+
+
+
+### EC2 Instance Types (4) Storage Optimized
+
+- Greate for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage
+- Use cases:
+  - High frequency online transaction processing(OLTP) systems
+  - Relational & NoSQL databases
+  - Cache for in-memory databases(like Redis)
+  - Data warehousing applications
+  - Distributed file systems
 
