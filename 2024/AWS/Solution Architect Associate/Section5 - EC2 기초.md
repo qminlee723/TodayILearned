@@ -127,13 +127,32 @@
 ### Security Groups Depper Dive
 
 - Security groups are acting as a "firewall" on EC2 instances
-
 - They regulate:
-
   - Access to Ports
   - Authorized IP ranges - IPv4 and IPv6
   - Control of inbound network (from other to the instance)
   - Control of outbound network (from the instance to other)
 
-  
+
+
+### Security Groups Diagram
+
+- 기본적인 방화벽 작동방법
+
+![Screenshot 2024-08-03 at 11.53.18 PM](./assets/Screenshot 2024-08-03 at 11.55.08 PM.png)
+
+
+
+### Security Groups Good to know
+
+- Can be attached to multiple instances
+- Locked down to a region / VPC combination
+- Does live "outside" the EC2 - if traffic is blocekd the EC2 instance won't see it
+- It's good to maintain one separate security group for SSH access
+- If your application is **not accessible (time out)**, then it's a **security group issue**
+- If your application gives a **"connection refused"** error, then it's an **application error** or it's not launched
+- All **inbound** traffic is **blocked** by default
+- All **outbound** traffic is **authorized** by default
+
+
 
