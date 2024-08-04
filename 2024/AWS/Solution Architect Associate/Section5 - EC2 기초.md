@@ -170,3 +170,33 @@
 - 80 = HTTP - access unsecured websites
 - 443 = HTTPS - access secured websites
 - 3389 = RDP (Remote Desktop Protocol) - log into a Windows instance
+
+
+
+## SSH 개요
+
+### SSH Summary Table
+
+|               | SSH  | Putty | EC2 Instance Connect |
+| ------------- | ---- | ----- | -------------------- |
+| Mac           | O    |       | O                    |
+| Linux         | O    |       | O                    |
+| Windows < 10  |      | O     | O                    |
+| Windows >= 10 | O    | O     | O                    |
+
+
+
+### SSH troubleshooting
+
+- Students have the most problems with SSH
+- If thing's don't work
+  - Re-watch the lecture.
+  - Read the troubleshooting guide
+  - Try EC2 Instance Connect
+
+
+
+### How to SSH into your EC2 Instance Linux/MacOSX
+
+- We'll learn how to SSH into your EC2 instance using Linux/Mac
+- SSH is one of the most important function. It allows you to control a remote machine, all using the command line
