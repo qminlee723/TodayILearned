@@ -200,3 +200,28 @@
 
 - We'll learn how to SSH into your EC2 instance using Linux/Mac
 - SSH is one of the most important function. It allows you to control a remote machine, all using the command line
+
+
+
+### EC2 Instances Purchasing Options
+
+- On-Demand Instances - short workload, predictalbe pridictable pricing, pay by second
+- Reserved(1 & 3 years)
+  - Reserved Instances - long workloads
+  - Convertible Reserved Instances - long workloads with flexible instances
+- Savings Plans (1 & 3 years) - commitmnet to an amount of usage, long workload
+- Spot Instances - short workloads, cheap, can lose instances (less reliable)
+- Dedicated Hosts - book an entire physical server, control instance placement
+- Dedicated Instances - no other customers will share your hardware
+- Capacity Reservations - reserve capacity in a specific AZ for any duration
+
+
+
+### EC2 On Demand
+
+- Pay for what you use
+  - Linux or Windows - billing per second, after the first minute
+  - All other operating systems - billing per hour
+- Has the highest cost but no upfront payment
+- No long-term commitment
+- Recommended for short-term and un-interrupted workloads, where you can't predict how the application will behave
