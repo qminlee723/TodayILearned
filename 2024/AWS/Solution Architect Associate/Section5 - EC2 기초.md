@@ -203,6 +203,8 @@
 
 
 
+## EC2 인스턴스 시작
+
 ### EC2 Instances Purchasing Options
 
 - On-Demand Instances - short workload, predictalbe pridictable pricing, pay by second
@@ -256,3 +258,99 @@
 
 
 
+### EC2 Spot Instances
+
+- Can get a discount of up to 90% compared to On-demand
+- Instances that you can "lose" at any point of time if your max price is less than the current spot price
+- The MOST cost-efficient instances in AWS
+- Useful for workloads that are resilient to failure
+  - Batch jobs
+  - Data analysis
+  - Image processing
+  - Any distributed workloads
+  - Workloads with a flexible start and end time
+- Not suitable for critical job or databases
+
+
+
+### EC2 Dedicated Hosts
+
+- A physical server with EC2 instance capacity fully dedicated to your use
+- Allows you address compliance requirements and use your existing server-bound software licenses (per-soket, per-core, pe -- VM software licenses)
+- Purchasing Options
+  - On-demand
+  - Reserved - 1 or 3 years (No Upfront, Partial Upfront, All Upfront)
+
+- The most expensive option
+- Useful for software that have complicated licensing model (BYOL - Bring Your Own License)
+- Or for companies that have strong regulatory or compliance needs
+
+
+
+### EC2 Dedicated Instances
+
+- Instances run on hardware that's dedicated to you
+- May share hardware with other instances in same account
+- No control over instance placement (can move hardware after Stop/Start)
+
+
+
+### EC2 Capacity Reservation
+
+- Reserve On-Demand instances capacity in a specific AZ for any duration
+
+- You always have access to EC2 capacity when you need it
+
+- No time commitment(create/cancel anytime), no billing discounts
+
+- Combine with Regional Reserved Instances and Savings Plans to benefit from billing discounts
+
+- You're charged at On-Demand rate whether you run instances or not
+
+  Suitable for short-term, uniterrupted workloads that needs to be in a specific AZ
+
+
+
+### Which purchasing option is right for me?
+
+- On demand: coming and staying in resort whenever we like, we pay the full price
+- Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount
+- Saving Plans: pay a certain amount per hour for certain period and stay in any room type
+- Spot instances: the hotel allows people to bid for the empty rooms and the highest bidder keeps the rooms. You can get kicked out at any time
+- Dedicated Hosts: We book an entire building of the resort
+
+
+
+## 스팟 인스턴스 및 스팟 집합
+
+### EC2 Spot Instance Requests
+
+- Can get a discount of up to 90% compared to On-demand
+- Define max spot price and get the instance while current spot price < max
+  - the hourly spot price varies based on offer and capacity
+  - if the current spot price > your max price you can choose to stop or terminate your instance with a 2 minutes grace period
+- Used for batch jobs, data analysis, or workloads that are resilient to failures
+- Not great for critical jobs or databases
+
+
+
+### How to terminate Spot Instances?
+
+- FIRST, **cancel the spot request** **FIRST**
+- Then terminate the associated spot instnances
+
+
+
+### Spot Fleets
+
+- Spot Fleets = set of Spot Instances + (optional) On-Demand Instances
+- The Spot Fleet will try to meet the target capacity with price constraints
+  - Define possible launch pools: instance type(m5.large), OS, Availability Zone
+  - Can have multiple launch pools, so that the fleet can choose
+  - Spot Fleet stops launching instances when reaching capacity or max cost
+- **Strategies to allocate Spot Instances** ⭐️
+  - Lowest price: from the pool with the lowest price (cost optimization, short workload)
+  - Diversified: distributed across all pools(great for availability, long workloads)
+  - capacityOptimized: pool with the optimal capacity for the number of instances
+  - priceCapacityOptimized (recommended): pools with highest capacity available, then select the pool with the lowest price(best choice for most workloads)
+- <u>**Spot fleets allow us to automatically request Spot Instances with the lowest prices**</u>
