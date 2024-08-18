@@ -220,8 +220,39 @@
 ### EC2 On Demand
 
 - Pay for what you use
-  - Linux or Windows - billing per second, after the first minute
-  - All other operating systems - billing per hour
+  - Linux or Windows - **billing per second, after the first minute**
+  - All other operating systems - **billing per hour**
 - Has the highest cost but no upfront payment
 - No long-term commitment
 - Recommended for short-term and un-interrupted workloads, where you can't predict how the application will behave
+
+
+
+### EC2 Reserved Instances
+
+- Up to 72% discount compared to On-demand
+- You reserve a specific instance attributes(Instance Type, Region, Tenancy, OS)
+- Reservation Period - 1 year(+discount) or 3 years(+++discount)
+- Payment Options - No Upront, Partial Upfront, All Upfront
+- Reserved Instance's Scope - Regional or Zonal(reserve capacity in an AZ)
+- Recommended for steady-state usage applications (think database)
+- You can buy and sell in the Reserved Instance Marketplace
+- Convertible Reserved Instance
+  - Can change the EC2 instance type, instance family, OS, scope and tenancy
+  - Up to 66%
+
+
+
+### EC2 Savings Plans
+
+- Get a discount based on long-term usage (up to 72%)
+- Commit to a certain type of usage($10/hour four 1 or 3 years)
+- Usage beyond EC2 Sanges Plans is billed at the On-Demand price
+- Locked to a specific instance family & AWS region (e.g., M5 in us-east-I)
+- Flexible across
+  - Instance Size(m5.xlarge, m5.2xlarge)
+  - OS(Linux, Windows)
+  - Tenancy(Host, Dedicated, Default)
+
+
+
