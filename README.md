@@ -29,4 +29,5 @@
   - 컴파일러구성, 딥러닝, 머신러닝, 시뮬레이션, 오픈소스기반데이터분석 
 
 #### 📂 2026
-- ADSP
+- ADsP(Advanced Data Analytics Semi-Professional) ✍🏻 *2026.05 ~ ing*
+- Web Hacking Bible ✍🏻 *2026.05 ~ ing*
